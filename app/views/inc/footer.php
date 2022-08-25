@@ -1,11 +1,11 @@
 </div>
 
 <div class="container">
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
+    <div class="d-flex flex-wrap justify-content-between align-items-center  py-3 border-top">
         <div class="mx-auto col-md-4 d-flex align-items-center">
-            <span class="mx-auto mb-3 mb-md-0 text-muted">© 2022 Team Connector, IIT-NSTU</span>
+            <span class="mx-auto mb-auto mt-auto mb-md-0 text-muted">© 2022 Team Connector, IIT-NSTU</span>
         </div>
-    </footer>
+</div>
 </div>
 
 <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
