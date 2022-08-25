@@ -8,9 +8,10 @@
                     <div class="col-lg-5 text-center">
                         <img src="<?php echo URLROOT; ?>/img/signIn.png" class="img-fluid">
                     </div>
-                    <?php flash('register_success'); ?>
+                    
                     <div class="col-lg-6">
                         <div class="card2 card border-0 px-4 py-5">
+                        <?php flash('register_success'); ?>
                             <div class="row mb-4 px-3">
                                 <h3 class="mb-0 mr-4 mt-2 text-center">Login</h3>
                             </div>
