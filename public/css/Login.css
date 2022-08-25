@@ -1,0 +1,150 @@
+input[type="checkbox"] {
+    transform: scale(0.6);
+}
+
+body {
+    color: #000;
+    overflow-x: hidden;
+    height: 100%;
+    background-color: #b0bec5;
+    background-repeat: no-repeat;
+}
+
+.card0 {
+    box-shadow: 0px 4px 8px 0px #757575;
+    border-radius: 0px;
+}
+
+.card2 {
+    margin: 0px 40px;
+}
+
+.logo {
+    width: 200px;
+    height: 100px;
+    margin-top: 20px;
+    margin-left: 35px;
+}
+
+img {
+    width: 80%;
+    height: auto;
+    margin-top: 30px;
+    /* vertical-align: middle; */
+}
+
+.btn1 {
+    border: none;
+    outline: none;
+    height: 40px;
+    width: 100%;
+    background-color: black;
+    color: white;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.border-line {
+    border-right: 1px solid #eeeeee;
+}
+
+.line {
+    height: 1px;
+    width: 45%;
+    background-color: #e0e0e0;
+    margin-top: 10px;
+}
+
+.or {
+    width: 10%;
+    font-weight: bold;
+}
+
+.text-sm {
+    font-size: 14px !important;
+}
+
+::placeholder {
+    color: #bdbdbd;
+    opacity: 1;
+    font-weight: 300;
+}
+
+:-ms-input-placeholder {
+    color: #bdbdbd;
+    font-weight: 300;
+}
+
+::-ms-input-placeholder {
+    color: #bdbdbd;
+    font-weight: 300;
+}
+
+input,
+textarea {
+    padding: 10px 12px 10px 12px;
+    border: 1px solid lightgrey;
+    border-radius: 2px;
+    margin-bottom: 5px;
+    margin-top: 2px;
+    width: 100%;
+    box-sizing: border-box;
+    color: #2c3e50;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+input:focus,
+textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid #304ffe;
+    outline-width: 0;
+}
+
+button:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    outline-width: 0;
+}
+
+a {
+    color: inherit;
+    cursor: pointer;
+}
+
+.btn-blue {
+    background-color: #1a237e;
+    width: 150px;
+    color: #fff;
+    border-radius: 2px;
+}
+
+.btn-blue:hover {
+    background-color: #000;
+    cursor: pointer;
+}
+
+.bg-blue {
+    color: #fff;
+    background-color: #1a237e;
+}
+
+@media screen and (max-width: 991px) {
+    .logo {
+        margin-left: 0px;
+    }
+    /* .image {
+        width: 300px;
+        height: 220px;
+    } */
+    .border-line {
+        border-right: none;
+    }
+    .card2 {
+        border-top: 1px solid #eeeeee !important;
+        margin: 0px 15px;
+    }
+}
