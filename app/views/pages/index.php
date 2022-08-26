@@ -61,7 +61,7 @@
 <div class="row row-cols-1 row-cols-md-3 g-4" style="margin-top:-60px; ">
     <div class="col text-center" id="nstuLogo">
         <div class="jumbo">
-            <img src="<?php echo URLROOT; ?>/img/mujib.png" alt="NSTU Logo" width="390" height="auto">
+            <img src="<?php echo URLROOT; ?>/img/pen.jpg" alt="NSTU Logo" width="300" height="auto">
         </div>
     </div>
     <div class="col text-center" style="height:89vh;">

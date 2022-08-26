@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark">
     <div class="container">
-        <a href="#" class="navbar-brand">Project Ovijog</a>
+        <a href="#" class="navbar-brand"><img src="<?php echo URLROOT; ?>/img/logo1.PNG" style="width:38px;border-radius:50%"> Project Ovijog</a>
         <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarcollapseCMS">
             <span class="navbar-toggler-icon"></span>
         </button>

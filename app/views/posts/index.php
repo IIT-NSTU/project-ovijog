@@ -1,14 +1,14 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <style>
+    #create-post-button {
+        height: 40px;
+    }
+
     #create-post-button-div {
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
         align-items: center;
-    }
-
-    #create-post-button {
-        height: 40px;
     }
 </style>
 <?php flash('post_message'); ?>

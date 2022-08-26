@@ -1,18 +1,18 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <style>
     .button-background-color {
-        /* background-color: #0752c1; */
-        background-color: #5c6f8c;
+        background-color: #293462;
         color: white;
     }
+
 
     .star-color {
         color: red;
     }
 
     .create-post-heading {
-        /* background-color: #c9d6e6; */
         background-color: #dae1e9;
+        margin-top: 25px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -20,12 +20,12 @@
     }
 </style>
 <div class="container ">
-
-    <div class="card mt-5 create-post-heading">
+    <div class="card create-post-heading">
         <div>
             <h3 class="text-center mb-0"><i class="fa-solid fa-pencil"></i> Create New Post</h2>
         </div>
     </div>
+
     <div class="card card-body mt-4 bg-light">
         <form action="<?php echo URLROOT; ?>/posts/add" method="post">
             <div class="row">
@@ -72,7 +72,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-lg-6 mt-3 mb-2">
                     <a href="Dashboard.php" class="btn w-100 button-background-color"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
                 </div>

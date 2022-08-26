@@ -3,11 +3,14 @@
     #register-image {
         width: 80%;
         margin-top: 80px;
-        /* margin-left: 10px */
+    }
+
+    .button-background-color {
+        background-color: #293462;
+        color: white;
     }
 </style>
 <div class="row no-gutters">
-
     <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-3 mx-auto">
         <form action="<?php echo URLROOT; ?>/users/register" method="post">
             <div class="card card0 border-0">
@@ -15,7 +18,6 @@
                     <div class="col-lg-5 text-center">
                         <img src="<?php echo URLROOT; ?>/img/signIn.png" id="register-image" class="img-fluid ">
                     </div>
-                    <!-- <div class="col-lg-1 bg-success"></div> -->
                     <div class="col-lg-6">
                         <div class="card2 card border-0 px-4 py-6">
                             <div class="row mb-4 px-3">
@@ -65,7 +67,7 @@
                                 <span class="invalid-feedback"><?php echo $data['confirm_password_err']; ?></span>
                             </div>
                             <div class="row mb-3 px-3">
-                                <input class="btn btn-success btn-block" name="signup" type="submit" value="Register"></input>
+                                <input class="btn btn-block button-background-color " name="signup" type="submit" value="Register"></input>
                             </div>
                             <div class="row px-3 ">
                                 <small class="font-weight-bold text-center mb-4">Already a member? <a href="<?php echo URLROOT; ?>/users/login" class="text-danger text-decoration-none">Sign in</a></small>

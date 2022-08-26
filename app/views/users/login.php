@@ -1,5 +1,10 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-
+<style>
+    .login-btn-color {
+        color: white;
+        background-color: #293462;
+    }
+</style>
 <form method="POST" action="<?php echo URLROOT; ?>/users/login">
     <div class="row no-gutters my-4">
         <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-3 mx-auto">
@@ -39,7 +44,7 @@
                                 <a href="#" class="text-decoration-none" style="color:blue ;">Forgot Password? </a>
                             </div>
                             <div class="row mb-2 px-3">
-                                <button type="submit" class="btn btn-success">Login</button>
+                                <button type="submit" class="btn login-btn-color">Login</button>
                             </div>
 
                             <div class="row mb-2 text-sm">
