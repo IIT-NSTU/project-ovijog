@@ -39,7 +39,7 @@
                                 <label class="mb-1" for="lname">
                                     <h6 class="mb-0 text-sm">Last Name<sup style="color:red;">*</sup></h6>
                                 </label>
-                                <input type="text" name="lname" placeholder="Enter username" class="form-control mb-4 <?php echo (!empty($data['lname_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['lname']; ?>">
+                                <input type="text" name="lname" placeholder="Enter last name" class="form-control mb-4 <?php echo (!empty($data['lname_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['lname']; ?>">
                                 <span class="invalid-feedback"><?php echo $data['lname_err']; ?></span>
 
                             </div>

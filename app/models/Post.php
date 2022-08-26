@@ -1,21 +1,23 @@
 <?php
 
-class Post {
+class Post
+{
 
     private $db;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->db = Database::getInstance();
     }
 
-    public function getPosts() {
-        $this->db->query('SELECT * 
-                                FROM posts NATURAL JOIN users
-                                ORDER BY posts.created_time DESC');
+    public function getPosts()
+    {
+        $this->db->query('SELECT * FROM posts NATURAL JOIN users ORDER BY posts.created_time DESC');
         return $this->db->resultSet();
     }
 
-    public function addPost($data) {
+    public function addPost($data)
+    {
         $this->db->query("insert into posts (title, user_id, body) values (:title, :user_id, :body)");
 
         $this->db->bind(':title', $data['title']);
@@ -29,7 +31,8 @@ class Post {
         }
     }
 
-    public function updatePost($data) {
+    public function updatePost($data)
+    {
         $this->db->query("update posts set title = :title, body = :body where id = :id");
 
         $this->db->bind(':id', $data['id']);
@@ -43,7 +46,8 @@ class Post {
         }
     }
 
-    public function deletePost($id){
+    public function deletePost($id)
+    {
         $this->db->query("delete from posts where id = :id");
 
         $this->db->bind(':id', $id);
@@ -55,9 +59,10 @@ class Post {
         }
     }
 
-    public function getPostById($id){
+    public function getPostById($id)
+    {
         $this->db->query('select * from posts where id = :id');
-        $this->db->bind(':id',$id);
+        $this->db->bind(':id', $id);
 
         return $this->db->single();
     }

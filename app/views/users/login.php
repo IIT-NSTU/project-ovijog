@@ -39,7 +39,7 @@
                                 <a href="#" class="text-decoration-none" style="color:blue ;">Forgot Password? </a>
                             </div>
                             <div class="row mb-2 px-3">
-                                <button type="submit" class="btn1">Login</button>
+                                <button type="submit" class="btn btn-success">Login</button>
                             </div>
 
                             <div class="row mb-2 text-sm">
