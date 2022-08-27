@@ -12,7 +12,7 @@
                 </li>
                 <?php if (isset($_SESSION['user_id'])) : ?>
                     <li class="nav-item">
-                        <a href="#" class="nav-link"><i class="fas fa-user"></i> My Profile</a>
+                        <a href="<?php echo URLROOT; ?>/pages/myProfile" class="nav-link"><i class="fas fa-user"></i> My Profile</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link"><i class="fa-solid fa-sim-card"></i> Posts</a>

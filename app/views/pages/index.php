@@ -1,20 +1,16 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
 <style>
-    body {
-        overflow-x: hidden;
-    }
-
     .jumbo {
-        height: 100vh;
+        height: 50vh;
         display: flex;
-        align-items: center;
         justify-content: center;
     }
 
     .jumbotron {
         text-align: center;
         letter-spacing: 2px;
+        margin-top: 65px;
     }
 
     .jumbotron p {
@@ -40,48 +36,23 @@
         background-color: #293462;
     }
 
-    #founten {
-        height: 89vh;
-    }
-
-    #nstuLogo {
-        height: 89vh;
-    }
-
     @media screen and (max-width: 500px) {
-        #founten {
-            padding-left: 10px !important;
-        }
-
-        #nstuLogo {
-            padding-right: 10px !important;
+        #homeId {
+            margin-top: -40px !important;
         }
     }
 </style>
-<div class="row row-cols-1 row-cols-md-3 g-4" style="margin-top:-60px; ">
-    <div class="col text-center" id="nstuLogo">
-        <div class="jumbo">
-            <img src="<?php echo URLROOT; ?>/img/pen.jpg" alt="NSTU Logo" width="300" height="auto">
-        </div>
-    </div>
-    <div class="col text-center" style="height:89vh;">
-        <div class="jumbo">
-            <div class="jumbotron" id="myContainer">
-                <h1 id="project-ovijog-text">Project Ovijog</h1>
-                <p id="slogan-text">Say the problem Solve the problem</p>
-                <button type="button" onclick="location.href='<?php echo URLROOT; ?>/users/login';" class="btn btn-lg btn-dark index-button" data-bs-target="#signupModal" data-bs-toggle="modal">Login</button>
-                <button type="button" onclick="location.href='<?php echo URLROOT; ?>/users/register';" class="btn btn-lg btn-dark index-button" data-bs-target="#signupModal" data-bs-toggle="modal">Sign up</button>
-            </div>
-        </div>
-    </div>
 
-    <div class="col text-center" id="founten">
-        <div class="jumbo">
-            <img src="<?php echo URLROOT; ?>/img/Bangladesh.jpg" alt="Founten Pen" width="300" height="auto">
-        </div>
+<div class="jumbo">
+    <div class="jumbotron ">
+        <h1 id="project-ovijog-text">Project Ovijog</h1>
+        <p id="slogan-text">Say the problem Solve the problem</p>
+        <button type="button" onclick="location.href='<?php echo URLROOT; ?>/users/login';" class="btn btn-lg btn-dark index-button" data-bs-target="#signupModal" data-bs-toggle="modal">Login</button>
+        <button type="button" onclick="location.href='<?php echo URLROOT; ?>/users/register';" class="btn btn-lg btn-dark index-button" data-bs-target="#signupModal" data-bs-toggle="modal">Sign up</button>
     </div>
 </div>
 
 <div class="row">
+    <img src="<?php echo URLROOT; ?>/img/bottomm.png" id="homeId" alt="Founten Pen" width="450" height="auto" style="margin-top:-95px">
     <?php require APPROOT . '/views/inc/footer.php'; ?>
 </div>
