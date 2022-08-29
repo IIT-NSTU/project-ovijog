@@ -24,4 +24,18 @@ class PagesController extends Controller {
         ];
         $this->view('/pages/about',$data);
     }
+
+    public function home(){
+        $data=[
+            'title'=>'this is home'
+        ];
+        $this->view('/pages/home',$data);
+    }
+
+    public function categories(){
+        $data=[
+            'title'=>'this is categories'
+        ];
+        $this->view('/pages/categories',$data);
+    }
 }

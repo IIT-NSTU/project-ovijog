@@ -8,17 +8,17 @@
         <div class="collapse navbar-collapse" id="navbarcollapseCMS">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a href="<?php echo URLROOT; ?>" class="nav-link"><i class="fas fa-house-user"></i> Home</a>
+                    <a href="<?php echo URLROOT; ?>/pages/home" class="nav-link"><i class="fas fa-house-user"></i> Home</a>
                 </li>
                 <?php if (isset($_SESSION['user_id'])) : ?>
                     <li class="nav-item">
-                        <a href="<?php echo URLROOT; ?>/pages/myProfile" class="nav-link"><i class="fas fa-user"></i> My Profile</a>
+                        <a href="<?php echo URLROOT; ?>/users/profile" class="nav-link"><i class="fas fa-user"></i> My Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link"><i class="fa-solid fa-sim-card"></i> Posts</a>
+                        <a href="<?php echo URLROOT; ?>/posts" class="nav-link"><i class="fa-solid fa-sim-card"></i> Posts</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Categories</a>
+                        <a href="<?php echo URLROOT; ?>/pages/categories" class="nav-link">Categories</a>
                     </li>
                 <?php else : ?>
                     <li class="nav-item">
@@ -32,7 +32,7 @@
                         <a class="nav-link" href="#"><?php echo $_SESSION['user_name']; ?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo URLROOT; ?>/users/logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+                        <a class="nav-link" href="<?php echo URLROOT; ?>/users/logout"><i class="fa-solid fa-right-from-bracket"> Logout</i></a>
                     </li>
                 <?php else : ?>
                     <li class="nav-item">

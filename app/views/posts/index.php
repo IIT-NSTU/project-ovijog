@@ -32,7 +32,7 @@
                 <!-- <?php echo $post->name; ?> on <?php echo $post->postTime; ?> -->
             </div>
             <p class="card-text"><?php echo $post->body; ?></p>
-            <a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->postId; ?>" class="btn btn-dark">More</a>
+            <a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->post_id; ?>" class="btn btn-dark">More</a>
         </div>
     <?php endforeach; ?>
 </div>

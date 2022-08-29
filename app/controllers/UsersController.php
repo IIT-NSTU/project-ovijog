@@ -8,6 +8,13 @@ class UsersController extends Controller {
         $this->userModel=$this->model("User");
     }
 
+    public function profile(){
+        $data=[
+            'title'=>'this is profile'
+        ];
+        $this->view('/users/profile',$data);
+    }
+
     public function register() {
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -147,7 +154,7 @@ class UsersController extends Controller {
         $_SESSION['user_id']=$user->user_id;
         $_SESSION['user_name']=$user->fname.' '.$user->lname;
         $_SESSION['user_email']=$user->edu_mail;
-        redirect('posts');
+        redirect('pages/home');
     }
 
     public function logout(){
