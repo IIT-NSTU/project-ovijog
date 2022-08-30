@@ -22,7 +22,7 @@
 <div class="container ">
     <div class="card create-post-heading">
         <div>
-            <h3 class="text-center mb-0"><i class="fa-solid fa-pencil"></i> Create New Post</h2>
+            <h3 class="text-center mb-0"><i class="fa-solid fa-pencil"></i> Create New Post</h3>
         </div>
     </div>
 
@@ -37,23 +37,18 @@
                     </div>
                     <div class="form-group mb-4">
                         <label for="exampleFormControlSelect1" class="mb-2"><b>Category:</b><sup class="star-color">*</sup></label>
-                        <select class="form-control" id="exampleFormControlSelect1">
-                            <option>Residence</option>
-                            <option>Transport</option>
-                            <option>Water</option>
-                            <option>Electricity</option>
-                            <option>Safety</option>
-                            <option>Eve Teasing</option>
-                            <option>Food</option>
-                            <option>Ragging</option>
-                            <option>Political</option>
+                        <select name="category" class="form-control" id="exampleFormControlSelect1">
+                            <?php foreach ($data['categories'] as $category) : ?>
+                                <option><?php echo $category->category; ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="title" class="mb-2"><b>Photo:</b></label>
+                        <!-- <label for="title" class="mb-2"><b>Photo:</b></label> -->
+                        <label for="formFileMultiple" class="form-label mb-2"><b>Photo:</b></label>
                         <div class="row">
                             <div class="col-9">
-                                <input type="file" name="image_file" data-input="false" data-classIcon="icon-plus" data-buttonText="Your label here." class="form-control">
+                                <input class="form-control" type="file" name="image_file">
                             </div>
                             <div class="col">
                                 <input type="submit" name="submit" class="btn button-background-color" value="Upload">
@@ -72,12 +67,13 @@
                 </div>
             </div>
 
-            <div class="row mb-3">
+            <div class="row mb-2">
                 <div class="col-lg-6 mt-3 mb-2">
-                    <a href="Dashboard.php" class="btn w-100 button-background-color"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+                    <a href="<?php echo URLROOT; ?>/posts" class="btn w-100 button-background-color"><i class="fas fa-arrow-left"></i> Back to Posts</a>
                 </div>
                 <div class="col-lg-6 mt-3 mb-2">
-                    <button type="button" name="Submit" class="btn button-background-color w-100"> <i class="fas fa-check"></i> Publish</button>
+                    <button type="submit" name="submit" class="btn button-background-color w-100"><i class="fas fa-check"></i> Publish
+                    </button>
                 </div>
             </div>
         </form>

@@ -27,12 +27,16 @@
     <?php foreach ($data['posts'] as $post) : ?>
         <div class="card card-body mb-3">
             <h4 class="card-title"><?php echo $post->title; ?></h4>
-            <div class="bg-light p-1 mb-3">
+            <!-- <div class="bg-light p-1 mb-3">
                 Written by
-                <!-- <?php echo $post->name; ?> on <?php echo $post->postTime; ?> -->
+                    <!-- <?php echo $post->name; ?> on <?php echo $post->postTime; ?>  -->
+            <!-- </div> -->
+            <div class="bg-light p-1 mb-3">
+                Written on
+                <!--code for time access -->
             </div>
             <p class="card-text"><?php echo $post->body; ?></p>
-            <a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->postId; ?>" class="btn btn-dark">More</a>
+            <a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->post_id; ?>" class="btn btn-dark">More</a>
         </div>
     <?php endforeach; ?>
 </div>

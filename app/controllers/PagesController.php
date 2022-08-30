@@ -1,27 +1,47 @@
 <?php
 
-class PagesController extends Controller {
+class PagesController extends Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
     }
 
-    public function index(){
+    public function index()
+    {
 
-        if(isLoggedIn()){
+        if (isLoggedIn()) {
             redirect('posts');
         }
 
-        $data=[
-            'title'=>SITENAME,
+        $data = [
+            'title' => SITENAME,
         ];
 
-        $this->view('/pages/index',$data);
+        $this->view('/pages/index', $data);
     }
 
-    public function about(){
-        $data=[
-            'title'=>'About us'
+    public function about()
+    {
+        $data = [
+            'title' => 'About us'
         ];
-        $this->view('/pages/about',$data);
+        $this->view('/pages/about', $data);
+    }
+
+    public function home()
+    {
+        $data = [
+            'title' => 'this is home'
+        ];
+        $this->view('/pages/home', $data);
+    }
+
+    public function categories()
+    {
+        $data = [
+            'title' => 'this is categories'
+        ];
+        $this->view('/pages/categories', $data);
     }
 }

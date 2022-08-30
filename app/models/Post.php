@@ -10,6 +10,13 @@ class Post
         $this->db = Database::getInstance();
     }
 
+
+    public function getCategories()
+    {
+        $this->db->query('SELECT * FROM post_categories');
+        return $this->db->resultSet();
+    }
+
     public function getPosts()
     {
         $this->db->query('SELECT * FROM posts NATURAL JOIN users ORDER BY posts.created_time DESC');
@@ -18,10 +25,11 @@ class Post
 
     public function addPost($data)
     {
-        $this->db->query("insert into posts (title, user_id, body) values (:title, :user_id, :body)");
+        $this->db->query("insert into posts (title, user_id, category, issolved, body) values (:title, :user_id, :category, false, :body)");
 
         $this->db->bind(':title', $data['title']);
         $this->db->bind(':user_id', $data['user_id']);
+        $this->db->bind(':category', $data['category']);
         $this->db->bind(':body', $data['body']);
 
         if ($this->db->execute()) {
@@ -61,7 +69,7 @@ class Post
 
     public function getPostById($id)
     {
-        $this->db->query('select * from posts where id = :id');
+        $this->db->query('select * from posts where post_id = :id');
         $this->db->bind(':id', $id);
 
         return $this->db->single();

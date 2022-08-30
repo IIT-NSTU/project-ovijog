@@ -1,11 +1,13 @@
 <?php
 
-class PostsController extends Controller {
+class PostsController extends Controller
+{
 
     private $postModel;
     private $userModel;
 
-    public function __construct() {
+    public function __construct()
+    {
         if (!isLoggedIn()) {
             redirect('users/login');
         }
@@ -14,7 +16,8 @@ class PostsController extends Controller {
         $this->userModel = $this->model('User');
     }
 
-    public function index() {
+    public function index()
+    {
 
         $posts = $this->postModel->getPosts();
 
@@ -25,27 +28,31 @@ class PostsController extends Controller {
         $this->view('posts/index', $data);
     }
 
-    public function show($id) {
+    public function show($id)
+    {
 
         $post = $this->postModel->getPostById($id);
-        $user = $this->userModel->getUserById($post->user_id);
 
         $data = [
             'post' => $post,
-            'user' => $user
         ];
 
         $this->view('posts/show', $data);
     }
 
-    public function add() {
+    public function add()
+    {
+
+        $categories = $this->postModel->getCategories();
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             $data = [
+                'categories' => $categories,
                 'title' => trim($_POST['title']),
+                'category' => trim($_POST['category']),
                 'body' => trim($_POST['body']),
                 'user_id' => $_SESSION['user_id'],
                 'title_err' => '',
@@ -70,8 +77,11 @@ class PostsController extends Controller {
 
             $this->view('posts/add', $data);
         } else {
+
             $data = [
+                'categories' => $categories,
                 'title' => '',
+                'category' => '',
                 'body' => ''
             ];
 
@@ -79,7 +89,8 @@ class PostsController extends Controller {
         }
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -129,8 +140,9 @@ class PostsController extends Controller {
         }
     }
 
-    public function delete($id){
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    public function delete($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $post = $this->postModel->getPostById($id);
 
@@ -138,18 +150,19 @@ class PostsController extends Controller {
                 redirect('posts');
             }
 
-            if($this->postModel->deletePost($id)){
-                flash('post_message','Post Removed');
+            if ($this->postModel->deletePost($id)) {
+                flash('post_message', 'Post Removed');
                 redirect('posts');
-            }else{
+            } else {
                 die('Something went wrong');
             }
-        }else{
+        } else {
             redirect('posts');
         }
     }
 
-    public function about($id) {
+    public function about($id)
+    {
         echo $id;
     }
 }
