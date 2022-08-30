@@ -1,3 +1,7 @@
+</head>
+
+<body>
+
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark">
     <div class="container">
         <a href="#" class="navbar-brand"><img src="<?php echo URLROOT; ?>/img/logo.PNG" style="width:38px;border-radius:50%"> Project Ovijog</a>

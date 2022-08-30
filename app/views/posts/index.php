@@ -1,4 +1,5 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
+
 <style>
     #create-post-button {
         height: 40px;
@@ -11,6 +12,9 @@
         align-items: center;
     }
 </style>
+
+<?php require_once APPROOT . '/views/inc/navbar.php'; ?>
+
 <?php flash('post_message'); ?>
 <div class="container">
     <div class="row mb-3 mt-3">
