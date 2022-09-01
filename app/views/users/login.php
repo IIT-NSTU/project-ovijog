@@ -5,6 +5,10 @@
         background-color: #293462;
     }
 </style>
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/Login.css">
+
+<?php require_once APPROOT . '/views/inc/navbar.php'; ?>
+
 <form method="POST" action="<?php echo URLROOT; ?>/users/login">
     <div class="row no-gutters my-4">
         <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-3 mx-auto">

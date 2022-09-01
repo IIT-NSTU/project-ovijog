@@ -19,6 +19,9 @@
         height: 55px;
     }
 </style>
+
+<?php require_once APPROOT . '/views/inc/navbar.php'; ?>
+
 <div class="container ">
     <div class="card create-post-heading">
         <div>

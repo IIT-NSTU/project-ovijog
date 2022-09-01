@@ -10,6 +10,9 @@
         color: white;
     }
 </style>
+
+<?php require_once APPROOT . '/views/inc/navbar.php'; ?>
+
 <div class="row no-gutters">
     <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-3 mx-auto">
         <form action="<?php echo URLROOT; ?>/users/register" method="post">

@@ -1,4 +1,5 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
+<?php require_once APPROOT . '/views/inc/navbar.php'; ?>
 
 <style>
     .jumbo {
@@ -36,6 +37,7 @@
         width: 110px;
         height: 50px;
         background-color: #293462;
+        color: white;
     }
 
     @media screen and (max-width: 500px) {
@@ -49,8 +51,8 @@
     <div class="jumbotron pt-lg-4">
         <h1 id="project-ovijog-text">Project Ovijog</h1>
         <p id="slogan-text">Say the problem, Solve the problem</p>
-        <button type="button" onclick="location.href='<?php echo URLROOT; ?>/users/login';" class="btn btn-lg btn-dark index-button" data-bs-target="#signupModal" data-bs-toggle="modal">Login</button>
-        <button type="button" onclick="location.href='<?php echo URLROOT; ?>/users/register';" class="btn btn-lg btn-dark index-button" data-bs-target="#signupModal" data-bs-toggle="modal">Sign up</button>
+        <button type="button" onclick="location.href='<?php echo URLROOT; ?>/users/login';" class="btn btn-lg index-button" data-bs-target="#signupModal" data-bs-toggle="modal">Login</button>
+        <button type="button" onclick="location.href='<?php echo URLROOT; ?>/users/register';" class="btn btn-lg index-button" data-bs-target="#signupModal" data-bs-toggle="modal">Sign up</button>
     </div>
 </div>
 

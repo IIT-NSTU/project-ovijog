@@ -5,6 +5,9 @@
         color: white;
     }
 </style>
+
+<?php require_once APPROOT . '/views/inc/navbar.php'; ?>
+
 <div class="container">
     <h1 style="margin-top: 1.4%;">Title : <?php echo $data['post']->title; ?></h1>
     <div class="card bg-secondary text-white p-2 mb-3">
