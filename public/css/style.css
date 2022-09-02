@@ -2,13 +2,38 @@ footer {
     margin-top: 10%;
 }
 
-<<<<<<< HEAD
 .gradient-black-white {
     background: rgb(222, 222, 233);
-    background: linear-gradient( 0deg, rgba(250, 250, 250, 1) 0%, rgba(222, 222, 233, 1) 11%, rgba(0, 0, 0, 1) 24%);
-=======
-.gradient-black-white{
-    background: rgb(222,222,233);
-    background: linear-gradient(0deg, rgba(250,250,250,1) 0%, rgba(222,222,233,1) 11%, rgba(0,0,0,1) 24%);
->>>>>>> e81b062a82df23ae75d83d24c2555fd128c844ab
+    background: linear-gradient(0deg, rgba(250, 250, 250, 1) 0%, rgba(222, 222, 233, 1) 11%, rgba(0, 0, 0, 1) 24%);
+}
+
+.main-body{
+    height : 100vh;
+}
+
+
+body{
+    background: url("../img/homePagePicture.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+/* STYLING SCROLLBAR */
+
+::-webkit-scrollbar {
+    width: 1vw; /* THIS WILL RESET THE DEFAULT SCORLLBAR STYLING */
+}
+
+/* TO STYLE THE SCROLLBAR TRACK */
+::-webkit-scrollbar-track {
+    background-color: #ffffff; /* THIS WILL SET THE COLOR OF THE SCROLLBAR TRACK */
+}
+
+/* TO STYLE THE SCROLLBAR THUMB */
+::-webkit-scrollbar-thumb {
+    background-color: #050505;
+    border: 0.3vw solid #ffffff;
+    border-radius: 5vw;
 }

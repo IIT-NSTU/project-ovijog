@@ -30,7 +30,7 @@
     </div>
 
     <?php foreach ($data['posts'] as $post) : ?>
-        <div class="card card-body mb-3">
+        <div class="card card-body shadow p-3 mb-5 bg-white rounded">
             <h4 class="card-title"><?php echo $post->title; ?></h4>
             <!-- <div class="bg-light p-1 mb-3">
                 Written by
