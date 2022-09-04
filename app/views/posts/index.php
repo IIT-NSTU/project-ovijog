@@ -1,50 +1,38 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<<<<<<< HEAD
 
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/post.css">
-=======
->>>>>>> 47d361dcf61801bd396ad3d0a37130b98c0e0d24
 
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/post.css">
+<style>
+    #create-post-button {
+        height: 40px;
+    }
 
-    <style>
-        #create-post-button {
-            height: 40px;
-        }
-
-        #create-post-button-div {
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-end;
-            align-items: center;
-        }
-
-    </style>
+    #create-post-button-div {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+    }
+</style>
 
 <?php require_once APPROOT . '/views/inc/navbar.php'; ?>
 
 
 <?php flash('post_message'); ?>
-    <div class="container">
-        <div class="row mb-3 mt-3">
-            <div class="col-md-6">
-                <h1>Posts</h1>
-            </div>
-            <div class="col-md-6" id="create-post-button-div">
-                <a href="<?php echo URLROOT; ?>/posts/add" id="create-post-button" class="btn btn-primary float-right">
-                    <i class="fa-solid fa-pencil"></i> Create New Post
-                </a>
-            </div>
+<div class="container">
+    <div class="row mb-3 mt-3">
+        <div class="col-md-6">
+            <h1>Posts</h1>
         </div>
+        <div class="col-md-6" id="create-post-button-div">
+            <a href="<?php echo URLROOT; ?>/posts/add" id="create-post-button" class="btn btn-primary float-right">
+                <i class="fa-solid fa-pencil"></i> Create New Post
+            </a>
+        </div>
+    </div>
 
 
-<<<<<<< HEAD
-    <!----------------->
-    <!-- <div class="container blog-page">
-=======
-<!----------------->
     <div class="container blog-page">
->>>>>>> 47d361dcf61801bd396ad3d0a37130b98c0e0d24
         <div class="row clearfix">
 
             <div class="col-lg-12 col-md-12">
@@ -111,21 +99,9 @@
                 </div>
             <?php endforeach; ?>
         </div>
-<<<<<<< HEAD
-    </div> -->
-    <!----------------->
-
-
-
-
-
-    <!-------->
-
-=======
     </div>
     <!----------------->
 
->>>>>>> 47d361dcf61801bd396ad3d0a37130b98c0e0d24
 </div>
 
 

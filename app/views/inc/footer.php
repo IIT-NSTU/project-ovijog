@@ -1,7 +1,7 @@
 </main>
 
 
-<footer class="text-center fixed-bottom text-lg-start bg-light text-muted">
+<footer class="text-center text-lg-start bg-light text-muted mt-0">
 
         <!--<section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
 
@@ -13,7 +13,7 @@
 
 
 
-        <div class="text-center p-4 bg-dark ">
+        <div class="text-center p-3 bg-dark ">
                 © 2022 Copyright:
                 <span class="text-reset fw-bold">Team Connector, IIT-NSTU</span>
         </div>
