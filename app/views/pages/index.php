@@ -10,7 +10,7 @@
     .jumbotron {
         text-align: center;
         letter-spacing: 2px;
-        margin-top: 130px;
+        margin-top: 120px;
         padding: 10%;
         /*background-color: rgba(194, 193, 193, 0.31);
             backdrop-filter: blur(5px);
@@ -39,13 +39,16 @@
     }
 
     @media screen and (max-width: 1000px) {
-        .home-footer {
-            margin-top: 105px !important;
-        }
+        /* .home-footer {
+            margin-top: 1400px !important;
+        } */
 
         .home-body {
-            margin-top: 70px;
-            font-size: 20px;
+            margin-top: 60px;
+        }
+
+        #slogan-text {
+            margin-bottom: -30px;
         }
     }
 </style>
@@ -55,7 +58,7 @@
 <div class="jumbo">
     <div class="jumbotron pt-lg-4 home-body">
         <p id="slogan-text"></p>
-        <div class="">
+        <div>
             <button type="button" onclick="location.href='<?php echo URLROOT; ?>/users/login';" class="btn btn-lg btn-outline-dark index-button" data-bs-target="#signupModal" data-bs-toggle="modal">Login</button>
             <button type="button" onclick="location.href='<?php echo URLROOT; ?>/users/register';" class="btn btn-lg btn-outline-dark index-button" data-bs-target="#signupModal" data-bs-toggle="modal">Sign up</button>
         </div>
@@ -88,6 +91,6 @@
         // .type("“Nothing strengthens authority <br> so much as silence.”<br> - <b>Leonardo Da Vinci</b>")
         .go();
 </script>
-<div class="home-footer sticky-bottom">
-    <?php require APPROOT . '/views/inc/footer.php'; ?>
-</div>
+<!-- <div class="fixed-bottom home-footer"> -->
+<?php require APPROOT . '/views/inc/footer.php'; ?>
+<!-- </div> -->

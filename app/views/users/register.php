@@ -2,9 +2,7 @@
 <style>
     #register-image {
         width: 80%;
-        /* margin-top: 80px; */
-        /* margin-top: 155px;
-        margin-left: 82px; */
+        margin-top: 80px;
     }
 
     .button-background-color {
@@ -21,19 +19,17 @@
         <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-3 mx-auto">
             <div class="card card0 border-0">
                 <div class="row ">
-                    <div class="col-lg-5" style="display: flex;
-  align-items: center;
-  justify-content: center;">
+                    <div class="col-lg-5 text-center">
                         <img src="<?php echo URLROOT; ?>/img/signIn.png" id="register-image" class="img-fluid ">
                     </div>
-                    <div class="col-lg-6" style="padding-left:0px;">
+                    <div class="col-lg-6">
                         <div class="card2 card border-0 px-4 py-6">
                             <div class="row mb-4 px-3">
                                 <h3 class="mb-0 mr-4 mt-4 text-center">Registration Now</h3>
                             </div>
                             <div class="row px-3 mb-4">
                                 <div class="line"></div>
-                                <small class="or text-center">***</small>
+                                <small class="or text-center">**</small>
                                 <div class="line"></div>
                             </div>
                             <div id="signupmessage"></div>
