@@ -2,7 +2,7 @@
 
 <div style="flex-grow:1"></div>
 
-<footer class="text-center text-lg-start bg-light text-muted mt-0">
+<footer class="text-center text-lg-start bg-light text-muted">
 
     <div class="text-center p-3 bg-dark ">
         © 2022 Copyright:
