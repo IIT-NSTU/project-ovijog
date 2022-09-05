@@ -76,7 +76,7 @@
             <div class="col-sm-7">
                 <div class="container mt-2 mb-2">
                     <div class="row d-flex align-items-center justify-content-center">
-                        <!-- user er kora post gula hobe ekhane -->
+
                         <?php foreach ($data['posts'] as $post) : ?>
                             <div class="col-md-7">
                                 <div class="card">

@@ -2,9 +2,11 @@
 
 class PagesController extends Controller
 {
+    private $postModel;
 
     public function __construct()
     {
+        $this->postModel = $this->model('Post');
     }
 
     public function index()
@@ -40,7 +42,8 @@ class PagesController extends Controller
     public function categories()
     {
         $data = [
-            'title' => 'this is categories'
+            'title' => 'this is categories',
+            'categories' => $this->postModel->getCategories()
         ];
         $this->view('/pages/categories', $data);
     }

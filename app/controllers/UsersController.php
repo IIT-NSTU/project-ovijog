@@ -1,33 +1,29 @@
 <?php
 
-class UsersController extends Controller
-{
+class UsersController extends Controller {
 
     private $userModel;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->userModel = $this->model("User");
     }
 
-    public function profile()
-    {
+    public function profile() {
         $data = [
-            'title' => 'this is profile'
+            'title' => 'this is profile',
+            'posts' => $this->userModel->getPosts()
         ];
         $this->view('/users/profile', $data);
     }
 
-    public function editProfile()
-    {
+    public function editProfile() {
         $data = [
             'title' => 'this is profile'
         ];
         $this->view('/users/editProfile', $data);
     }
 
-    public function register()
-    {
+    public function register() {
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -107,8 +103,7 @@ class UsersController extends Controller
         }
     }
 
-    public function login()
-    {
+    public function login() {
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -160,16 +155,14 @@ class UsersController extends Controller
         }
     }
 
-    public function createUserSession($user)
-    {
+    public function createUserSession($user) {
         $_SESSION['user_id'] = $user->user_id;
         $_SESSION['user_name'] = $user->fname . ' ' . $user->lname;
         $_SESSION['user_email'] = $user->edu_mail;
         redirect('pages/home');
     }
 
-    public function logout()
-    {
+    public function logout() {
         unset($_SESSION['user_id']);
         unset($_SESSION['user_name']);
         unset($_SESSION['user_email']);
