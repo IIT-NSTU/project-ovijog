@@ -67,17 +67,15 @@
                             <div class="row">
                                 <div class="col-sm-9"></div>
                                 <div class="col-sm-3 text-secondary">
-                                    <a href="<?php echo URLROOT; ?>/users/editProfile" class="btn w-80 button-background-color">Edit Profile</a>
+                                    <a href="<?php echo URLROOT; ?>/users/editProfile?id=<?php echo $_SESSION['user_id']; ?>" class="btn w-80 button-background-color">Edit Profile</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </body>
-
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

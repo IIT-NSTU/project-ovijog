@@ -23,7 +23,9 @@
                             <a href="<?php echo URLROOT; ?>/posts" class="nav-link"><i class="fa-solid fa-sim-card"></i> Posts</a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?php echo URLROOT; ?>/pages/categories" class="nav-link"><i class="fa-solid fa-layer-group"></i> Categories</a>
+                            <a href="<?php echo URLROOT; ?>/pages/categories" class="nav-link">
+                                <i class="fa-solid fa-filters"></i>
+                                <i class="fa-solid fa-layer-group"></i> Categories</a>
                         </li>
 
                         <div style="display:flex ;">

@@ -18,6 +18,14 @@ class UsersController extends Controller
         $this->view('/users/profile', $data);
     }
 
+    public function editProfile()
+    {
+        $data = [
+            'title' => 'this is profile'
+        ];
+        $this->view('/users/editProfile', $data);
+    }
+
     public function register()
     {
 

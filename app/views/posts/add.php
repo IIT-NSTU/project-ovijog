@@ -51,7 +51,7 @@
                         <!-- <label for="title" class="mb-2"><b>Photo:</b></label> -->
                         <label for="formFileMultiple" class="form-label mb-2"><b>Photo:</b></label>
                         <div class="row">
-                            <div class="col-9">
+                            <div>
                                 <input class="form-control" type="file" accept="image/png, image/jpeg" name="image" value="<?php echo $data['image']; ?>">
                             </div>
                         </div>
