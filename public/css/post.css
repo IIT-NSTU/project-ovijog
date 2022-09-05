@@ -3,6 +3,50 @@
     border: none;
 }
 
+.button-background-color {
+    background-color: #293462;
+    color: white;
+}
+
+#create-post-button {
+    height: 40px;
+}
+
+#create-post-button-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.create-post-heading {
+    background-color: #dae1e9;
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 55px;
+}
+
+.up-down-vote-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: stretch;
+}
+
+.body-text {
+    text-align: justify;
+}
+
+.icon-text {
+    font-size: 20px;
+}
+
+.star-color {
+    color: red;
+}
+
 .ellipsis {
     color: #a09c9c;
 }
