@@ -2,9 +2,9 @@
 
 <div style="flex-grow:1"></div>
 
-<footer class="text-center text-lg-start bg-light text-muted footer">
+<footer class="text-center text-lg-start bg-light text-muted mt-0">
 
-    <div class="text-center p-4 bg-dark ">
+    <div class="text-center p-3 bg-dark ">
         © 2022 Copyright:
         <span class="text-reset fw-bold">Team Connector, IIT-NSTU</span>
     </div>
@@ -23,4 +23,5 @@
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="<?php echo URLROOT; ?>/js/main.js"></script>
 </body>
+
 </html>

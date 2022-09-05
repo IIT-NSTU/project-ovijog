@@ -27,7 +27,7 @@
                             </div>
                             <div class="row px-3 mb-4">
                                 <div class="line"></div>
-                                <small class="or text-center">***</small>
+                                <small class="or text-center">**</small>
                                 <div class="line"></div>
                             </div>
 

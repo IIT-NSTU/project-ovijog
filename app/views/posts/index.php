@@ -1,39 +1,37 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/post.css">
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/post.css">
 
-    <style>
-        #create-post-button {
-            height: 40px;
-        }
+<style>
+    #create-post-button {
+        height: 40px;
+    }
 
-        #create-post-button-div {
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-end;
-            align-items: center;
-        }
-
-    </style>
+    #create-post-button-div {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+    }
+</style>
 
 <?php require_once APPROOT . '/views/inc/navbar.php'; ?>
 
 
 <?php flash('post_message'); ?>
-    <div class="container">
-        <div class="row mb-3 mt-3">
-            <div class="col-md-6">
-                <h1>Posts</h1>
-            </div>
-            <div class="col-md-6" id="create-post-button-div">
-                <a href="<?php echo URLROOT; ?>/posts/add" id="create-post-button" class="btn btn-primary float-right">
-                    <i class="fa-solid fa-pencil"></i> Create New Post
-                </a>
-            </div>
+<div class="container">
+    <div class="row mb-3 mt-3">
+        <div class="col-md-6">
+            <h1>Posts</h1>
         </div>
+        <div class="col-md-6" id="create-post-button-div">
+            <a href="<?php echo URLROOT; ?>/posts/add" id="create-post-button" class="btn btn-primary float-right">
+                <i class="fa-solid fa-pencil"></i> Create New Post
+            </a>
+        </div>
+    </div>
 
 
-<!----------------->
     <div class="container blog-page">
         <div class="row clearfix">
 
