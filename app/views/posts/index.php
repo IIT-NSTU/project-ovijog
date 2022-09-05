@@ -3,6 +3,11 @@
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/post.css">
 
 <style>
+    .button-background-color {
+        background-color: #293462;
+        color: white;
+    }
+
     #create-post-button {
         height: 40px;
     }
@@ -32,77 +37,55 @@
     </div>
 
 
-    <div class="container blog-page">
-        <div class="row clearfix">
-
-            <div class="col-lg-12 col-md-12">
-                <div class="card single_post shadow ">
-                    <div class="body bg-light">
-                        <h3 class="m-t-0 m-b-5"><a href="blog-details.html">Apple Introduces Search Ads Basic</a></h3>
-                        <ul class="meta">
-                            <li><a href="javascript:void(0);"><i class="zmdi zmdi-account col-blue"></i>Posted By: John Smith</a></li>
-                            <li><a href="javascript:void(0);"><i class="zmdi zmdi-label col-amber"></i>Technology</a></li>
-                            <li><a href="javascript:void(0);"><i class="zmdi zmdi-comment-text col-blue"></i>Comments: 3</a></li>
-                        </ul>
-                    </div>
-                    <div class="body">
-                        <div class="img-post text-center m-b-15">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="Awesome Image">
+    <div class="container mt-2 mb-2">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="d-flex justify-content-between p-2 px-3">
+                        <div class="d-flex flex-row align-items-center"> <img src="https://bootdey.com/img/Content/avatar/avatar7.png" width="40" class="rounded-circle">
+                            <div class="d-flex flex-column"> <span class="font-weight-bold">Water Problem in
+                                    Hall</span>
+                                <small class="text-primary">Category: Water</small>
+                            </div>
                         </div>
-                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal</p>
-                        <a href="blog-details.html" title="read more" class="btn btn-dark">Read More</a>
+                        <div class="d-flex flex-row mt-1 ellipsis"> <small class="mr-2">20 mins</small></div>
                     </div>
-                    <div class="card-footer">
-                        <a href="javascript:void(0)" class="d-inline-block text-muted">
-                            <strong>123</strong> Likes</small>
-                        </a>
-                        <a href="javascript:void(0)" class="d-inline-block text-muted ml-3">
-                            <strong>12</strong> Comments</small>
-                        </a>
-                        <a href="javascript:void(0)" class="d-inline-block text-muted ml-3">
-                            <small class="align-middle">Repost</small>
-                        </a>
+                    <div class="text-center">
+                        <img src="<?php echo URLROOT; ?>/img/pen.jpg" width="500" height="auto" class="img-fluid text-center">
+                    </div>
+                    <div class="p-2">
+                        <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <small>5</small>
+                                <i class="fa-solid fa-thumbs-up" style="font-size: 30px;"></i>
+                            </div>
+                            <div class="col-sm-4 text-center">
+                                <small>5</small>
+                                <i class="fa-solid fa-thumbs-down" style="font-size: 30px;"></i>
+                            </div>
+                            <div class="col-sm-4 ">
+                                <a href="#" class="btn button-background-color">More</a>
+                            </div>
+                        </div>
+
+                        <!-- <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex flex-row icons d-flex align-items-center"> <small>5</small>
+                                <i class="fa-solid fa-thumbs-up"></i>
+                                <small>10</small><i class="fa-solid fa-thumbs-down"></i>
+                            </div>
+                            <div class="d-flex flex-row muted-color"> <span>2 comments</span></div>
+                        </div> -->
+                        <hr>
+                        <div class="comment-input mb-3"> <input type="text" class="form-control" placeholder="Write Comment" style="font-size: 12px;">
+
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <?php foreach ($data['posts'] as $post) : ?>
-                <div class="col-lg-12 col-md-12">
-                    <div class="card single_post shadow ">
-                        <div class="body bg-light">
-                            <h3 class="m-t-0 m-b-5"><?php echo $post->title; ?></h3>
-                            <ul class="meta">
-                                <li><a href="javascript:void(0);"><i class="zmdi zmdi-account col-blue"></i>Posted By: John Smith</a></li>
-                                <li><a href="javascript:void(0);"><i class="zmdi zmdi-label col-amber"></i>Technology</a></li>
-                                <li><a href="javascript:void(0);"><i class="zmdi zmdi-comment-text col-blue"></i>Comments: 3</a></li>
-                            </ul>
-                        </div>
-                        <div class="body">
-                            <div class="img-post text-center m-b-15">
-                                <img src="">
-                            </div>
-                            <p><?php echo $post->body; ?></p>
-                            <a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->post_id; ?>" title="read more" class="btn btn-dark">Read More</a>
-                        </div>
-                        <div class="card-footer">
-                            <a href="javascript:void(0)" class="d-inline-block text-muted">
-                                <strong>123</strong> Likes</small>
-                            </a>
-                            <a href="javascript:void(0)" class="d-inline-block text-muted ml-3">
-                                <strong>12</strong> Comments</small>
-                            </a>
-                            <a href="javascript:void(0)" class="d-inline-block text-muted ml-3">
-                                <small class="align-middle">Report</small>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
         </div>
     </div>
-    <!----------------->
-
-</div>
 
 
-<?php require APPROOT . '/views/inc/footer.php'; ?>
+    <?php require APPROOT . '/views/inc/footer.php'; ?>

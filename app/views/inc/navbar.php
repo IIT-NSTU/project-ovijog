@@ -46,7 +46,7 @@
                 <ul class="navbar-nav ms-auto">
                     <?php if (isset($_SESSION['user_id'])) : ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo URLROOT; ?>/users/logout"><i class="fa-solid fa-right-from-bracket"> Logout</i></a>
+                            <a class="nav-link" href="<?php echo URLROOT; ?>/users/logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
                         </li>
                     <?php else : ?>
                         <li class="nav-item">
