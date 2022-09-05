@@ -2,12 +2,12 @@
 
 <?php require_once APPROOT . '/views/inc/navbar.php'; ?>
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/profile.css">
-<style>
+<!-- <style>
     .button-background-color {
         background-color: #293462;
         color: white;
     }
-</style>
+</style> -->
 
 <body>
     <!-- <div class=""> -->
