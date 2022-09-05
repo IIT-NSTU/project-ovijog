@@ -63,7 +63,7 @@
                                     <small class="text-primary">Category: <?php echo $post->category; ?></small>
                                 </div>
                             </div>
-                            <div class="d-flex flex-row mt-1 ellipsis"> <small class="mr-2">20 mins</small></div>
+                            <div class="d-flex flex-row mt-1 ellipsis"> <small class="mr-2"><?php echo $post->created_time;?></small></div>
                         </div>
                         <div class="text-center">
                             <!-- <img src="<?php echo URLROOT; ?>/img/pen.jpg" width="500" height="auto" class="img-fluid text-center py-3"> -->

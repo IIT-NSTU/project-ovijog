@@ -10,7 +10,7 @@ class UsersController extends Controller {
 
     public function profile() {
         $data = [
-            'title' => 'this is profile',
+            'user' => $this->userModel->getUserById($_SESSION['user_id']),
             'posts' => $this->userModel->getPosts()
         ];
         $this->view('/users/profile', $data);
