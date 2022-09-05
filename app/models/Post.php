@@ -17,7 +17,7 @@ class Post
         return $this->db->resultSet();
     }
 
-    public function getPosts()
+    public function getAllPosts()
     {
         $this->db->query('SELECT * FROM posts NATURAL JOIN users ORDER BY posts.created_time DESC');
         return $this->db->resultSet();

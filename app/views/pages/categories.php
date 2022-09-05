@@ -35,11 +35,11 @@
             <hr>
 
             <ul>
-                <!-- <?php foreach ($data['categories'] as $category) : ?>
+                 <?php foreach ($data['categories'] as $category) : ?>
                     <li><?php echo $category->category; ?></li>
-                <?php endforeach; ?> -->
+                <?php endforeach; ?>
 
-                <li class="pb-2">Residence</li>
+                <!--<li class="pb-2">Residence</li>
                 <li class="pb-2">Transport</li>
                 <li class="pb-2">Water</li>
                 <li class="pb-2">Electricity</li>
@@ -48,7 +48,7 @@
                 <li class="pb-2">Food</li>
                 <li class="pb-2">Ragging</li>
                 <li>Political</li>
-                <li>Acade</li>
+                <li>Acade</li>-->
             </ul>
         </div>
         <div class="col-sm-1"></div>

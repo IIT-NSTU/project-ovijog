@@ -19,7 +19,7 @@ class PostsController extends Controller
     public function index()
     {
 
-        $posts = $this->postModel->getPosts();
+        $posts = $this->postModel->getAllPosts();
 
         $data = [
             'posts' => $posts

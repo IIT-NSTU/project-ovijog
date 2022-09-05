@@ -23,7 +23,7 @@
                             <div class="d-flex flex-column align-items-center text-center mt-2 mb-2">
                                 <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
                                 <div class="mt-3">
-                                    <h4>Armanur Rashid</h4>
+                                    <h4><?php echo $data['user']->first_name.' '.$data['user']->last_name; ?></h4>
                                 </div>
                             </div>
                         </div>
@@ -33,7 +33,7 @@
                                 <h6 class="mb-0">First Name</h6>
                             </div>
                             <div class="col-sm-8 text-secondary">
-                                Armanur
+                                <?php echo $data['user']->first_name; ?>
                             </div>
                         </div>
                         <hr>
@@ -42,7 +42,7 @@
                                 <h6 class="mb-0">Last Name</h6>
                             </div>
                             <div class="col-sm-7 text-secondary">
-                                Rashid
+                                <?php echo $data['user']->last_name; ?>
                             </div>
                         </div>
                         <hr>
@@ -51,7 +51,7 @@
                                 <h6 class="mb-0">Email</h6>
                             </div>
                             <div class="col-sm-8 text-secondary">
-                                armanur2514@student.nstu.edu.bd
+                                <?php echo $data['user']->edu_mail; ?>
                             </div>
                         </div>
                         <hr>
@@ -60,7 +60,7 @@
                                 <h6 class="mb-0">Password</h6>
                             </div>
                             <div class="col-sm-8 text-secondary">
-                                0123456789
+                                <a href="">Change Password</a>
                             </div>
                         </div>
 
@@ -74,9 +74,14 @@
                 </div>
             </div>
             <div class="col-sm-7">
-                <div class="container mt-2 mb-2">
+
+                <div class="container mt-2 mb-2 overflow-auto" style="max-height: 70%">
                     <div class="row d-flex align-items-center justify-content-center">
-                        <!-- user er kora post gula hobe ekhane -->
+
+                        <?php if (count($data['posts'])==0): ?>
+                            <h4 class="border border-dark rounded p-4">You do not create any post yet</h4>
+                        <?php endif; ?>
+
                         <?php foreach ($data['posts'] as $post) : ?>
                             <div class="col-md-7">
                                 <div class="card">
@@ -86,7 +91,7 @@
                                                 <small class="text-primary">Category: <?php echo $post->category; ?></small>
                                             </div>
                                         </div>
-                                        <div class="d-flex flex-row mt-1 ellipsis"> <small class="mr-2">20 mins</small></div>
+                                        <div class="d-flex flex-row mt-1 ellipsis"> <small class="mr-2"><?php echo $post->created_time;?></small></div>
                                     </div>
                                     <div class="text-center">
                                         <!-- <img src="<?php echo URLROOT; ?>/img/pen.jpg" width="500" height="auto" class="img-fluid text-center py-3"> -->

@@ -35,7 +35,7 @@
                                 <label for="email" class="mb-1">
                                     <h6 class="mb-0 text-sm">Email Address<sup style="color:red;">*</sup></h6>
                                 </label>
-                                <input class="form-control mb-4 <?php echo (!empty($data['email_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['email']; ?>" type="email" name="email" placeholder="Enter your edu email address">
+                                <input class="form-control mb-1 <?php echo (!empty($data['email_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['email']; ?>" type="email" name="email" placeholder="Enter your edu email address">
                                 <span class="invalid-feedback"><?php echo $data['email_err']; ?></span>
                             </div>
                             <div class="row px-3 form-group">
