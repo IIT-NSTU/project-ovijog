@@ -55,7 +55,7 @@
         <div class="row d-flex align-items-center justify-content-center">
 
             <?php foreach ($data['posts'] as $post) : ?>
-                <div class="col-md-8">
+                <div class="col-md-8 mb-3">
                     <div class="card">
                         <div class="d-flex justify-content-between p-2 px-3">
                             <div class="d-flex flex-row align-items-center"> <img src="https://bootdey.com/img/Content/avatar/avatar7.png" width="40" class="rounded-circle">
@@ -73,9 +73,11 @@
                             <p class="body-text"><?php echo $post->body; ?></p>
                             <hr>
                             <div class="row ">
-                                <div class="col-sm up-down-vote-icon ">50 <i class="fa-solid fa-thumbs-up ps-2 icon-text"> </i></div>
-                                <div class="col-sm up-down-vote-icon"> 8 <i class="fa-solid fa-thumbs-down ps-2 pt-1 icon-text"> </i></div>
-                                <div class="col-sm text-center"><a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->post_id; ?>" class="btn btn-sm text-primary">More</a></div>
+                                <div class="col-sm up-down-vote-icon "><b>50</b> <button class="btn btn-sm btn-outline-success ms-2"><i class="fa-solid fa-arrow-up "></i></button></div>
+                                <div class="col-sm up-down-vote-icon"><b>12</b><button class="btn btn-sm btn-outline-danger ms-2"><i class="fa-solid fa-arrow-down"></i> </button></div>
+                                <div class="col-sm text-center"><a href="#" class="btn btn-sm text-danger"><b>Report</b></a></div>
+                                <div class="col-sm text-center"><a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->post_id; ?>" class="btn btn-sm text-primary"><b>More</b></a></div>
+
                             </div>
                         </div>
                     </div>

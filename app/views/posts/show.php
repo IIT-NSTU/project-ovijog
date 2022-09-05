@@ -1,4 +1,5 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
+<?php require_once APPROOT . '/views/inc/navbar.php'; ?>
 <style>
     .button-background-color {
         background-color: #293462;
@@ -6,33 +7,43 @@
     }
 </style>
 <div class="container">
-    <h1 style="margin-top: 1.4%;">Title : <?php echo $data['post']->title; ?></h1>
-    <div class="card bg-secondary text-white p-2 mb-3">
-        Written on <?php echo $data['post']->created_time; ?>
-    </div>
-    <div class="card bg-secondary text-white p-2 mb-3">
-        <!-- Categories: <?php echo $data['post']->created_time; ?> -->
-        Categories:
-    </div>
-    <textarea disabled name="body" class="form-control form-control-lg  <?php echo (!empty($data['body_err'])) ? 'is-invalid' : ''; ?>" rows="7">
-    <?php echo $data['post']->body; ?></textarea>
-    <span class="invalid-feedback"><?php echo $data['body_err']; ?></span>
-    <?php if ($data['post']->user_id == $_SESSION['user_id']) : ?>
-        <div class="row mb-3">
-            <div class="col-lg-4 mt-3 mb-2">
-                <a href="<?php echo URLROOT; ?>/posts" class="btn w-100 button-background-color"><i class="fa fa-backward"></i> Back to Posts</a>
+
+
+    <div class="container mt-2 mb-2">
+        <div class="row d-flex align-items-center justify-content-center">
+            <!-- jei post er more e click korse oi post ta ei page e ashbe -->
+            <!-- <?php foreach ($data['posts'] as $post) : ?> -->
+            <div class="col-md-8 mb-3">
+                <div class="card">
+                    <div class="d-flex justify-content-between p-2 px-3">
+                        <div class="d-flex flex-row align-items-center"> <img src="https://bootdey.com/img/Content/avatar/avatar7.png" width="40" class="rounded-circle">
+                            <div class="d-flex flex-column"> <span class="font-weight-bold"><?php echo $post->title; ?> Water Problem in Hall</span>
+                                <small class="text-primary">Category: <?php echo $post->category; ?></small>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row mt-1 ellipsis"> <small class="mr-2">20 mins</small></div>
+                    </div>
+                    <div class="text-center">
+                        <img src="<?php echo $post->img_link; ?>" width="50%" height="auto" class="img-fluid text-center py-3">
+                    </div>
+                    <div class="px-5 py-2">
+                        <p class="body-text"><?php echo $post->body; ?></p>
+                        <hr>
+                        <div class="row ">
+                            <div class="col-sm up-down-vote-icon "><b>50</b> <button class="btn btn-sm btn-outline-success ms-2"><i class="fa-solid fa-arrow-up "></i></button></div>
+                            <div class="col-sm up-down-vote-icon"><b>12</b><button class="btn btn-sm btn-outline-danger ms-2"><i class="fa-solid fa-arrow-down"></i> </button></div>
+                            <div class="col-sm text-center"><a href="#" class="btn btn-sm text-danger"><b>Report</b></a></div>
+
+
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-4 mt-3 mb-2">
-                <a href="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']->post_id; ?>" class="btn w-100 button-background-color"><i class="fa-solid fa-pen"></i> Edit Post</a>
-            </div>
-            <div class="col-lg-4 mt-3 mb-2">
-                <form class="float-right" action="<?php echo URLROOT; ?>/posts/delete/<?php echo $data['post']->post_id; ?>" method="post">
-                    <button type="submit" name="submit" class="btn button-background-color w-100"><i class="fa-solid fa-trash"></i> Delete Post
-                    </button>
-                </form>
-            </div>
+            <!-- <?php endforeach; ?> -->
+
         </div>
-    <?php endif; ?>
+    </div>
+
 </div>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>
