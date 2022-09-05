@@ -31,7 +31,7 @@
     </div>
 
     <div class="card card-body mt-4 bg-light">
-        <form action="<?php echo URLROOT; ?>/posts/add" method="post">
+        <form action="<?php echo URLROOT; ?>/posts/add" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col">
                     <div class="form-group mb-4">
@@ -52,10 +52,7 @@
                         <label for="formFileMultiple" class="form-label mb-2"><b>Photo:</b></label>
                         <div class="row">
                             <div class="col-9">
-                                <input class="form-control" type="file" name="image_file">
-                            </div>
-                            <div class="col">
-                                <input type="submit" name="submit" class="btn button-background-color" value="Upload">
+                                <input class="form-control" type="file" accept="image/png, image/jpeg" name="image" value="<?php echo $data['image']; ?>">
                             </div>
                         </div>
                     </div>

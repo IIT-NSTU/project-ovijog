@@ -25,12 +25,13 @@ class Post
 
     public function addPost($data)
     {
-        $this->db->query("insert into posts (title, user_id, category, issolved, body) values (:title, :user_id, :category, false, :body)");
+        $this->db->query("insert into posts (title, user_id, category, issolved, body, img_link) values (:title, :user_id, :category, false, :body, :img_link)");
 
         $this->db->bind(':title', $data['title']);
         $this->db->bind(':user_id', $data['user_id']);
         $this->db->bind(':category', $data['category']);
         $this->db->bind(':body', $data['body']);
+        $this->db->bind(':img_link', $data['image']);
 
         if ($this->db->execute()) {
             return true;

@@ -2,7 +2,7 @@
 
 <style>
     .jumbo {
-        height: 57vh;
+        height: 80vh;
         display: flex;
         justify-content: center;
     }
@@ -39,14 +39,10 @@
     }
 
     @media screen and (max-width: 1000px) {
+
         /* .home-footer {
             margin-top: 1400px !important;
         } */
-
-        .home-body {
-            margin-top: 60px;
-        }
-
         #slogan-text {
             margin-bottom: -30px;
         }
@@ -56,11 +52,13 @@
 <?php require_once APPROOT . '/views/inc/navbar.php'; ?>
 
 <div class="jumbo">
-    <div class="jumbotron pt-lg-4 home-body">
+    <div class="jumbotron pt-lg-4">
         <p id="slogan-text"></p>
         <div>
-            <button type="button" onclick="location.href='<?php echo URLROOT; ?>/users/login';" class="btn btn-lg btn-outline-dark index-button" data-bs-target="#signupModal" data-bs-toggle="modal">Login</button>
-            <button type="button" onclick="location.href='<?php echo URLROOT; ?>/users/register';" class="btn btn-lg btn-outline-dark index-button" data-bs-target="#signupModal" data-bs-toggle="modal">Sign up</button>
+            <button type="button" onclick="location.href='<?php echo URLROOT; ?>/users/login';" class="btn btn-lg btn-outline-dark index-button" data-bs-target="#signupModal" data-bs-toggle="modal">Login
+            </button>
+            <button type="button" onclick="location.href='<?php echo URLROOT; ?>/users/register';" class="btn btn-lg btn-outline-dark index-button" data-bs-target="#signupModal" data-bs-toggle="modal">Sign up
+            </button>
         </div>
     </div>
 </div>
@@ -68,9 +66,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.js"></script>
 <script src="https://unpkg.com/typeit@8.7.0/dist/index.umd.js"></script>
 <script>
-    new TypeIt("#slogan-text", {
-
-        })
+    new TypeIt("#slogan-text", {})
         .type("You is essential")
         .move(-13)
         .type("r voice ")
