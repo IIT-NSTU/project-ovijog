@@ -3,6 +3,11 @@
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/post.css">
 
 <style>
+    .button-background-color {
+        background-color: #293462;
+        color: white;
+    }
+
     #create-post-button {
         height: 40px;
     }
@@ -12,6 +17,21 @@
         flex-direction: row;
         justify-content: flex-end;
         align-items: center;
+    }
+
+    .up-down-vote-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-content: stretch;
+    }
+
+    .body-text {
+        text-align: justify;
+    }
+
+    .icon-text {
+        font-size: 20px;
     }
 </style>
 
@@ -31,78 +51,33 @@
         </div>
     </div>
 
-
-    <div class="container blog-page">
-        <div class="row clearfix">
-
-            <div class="col-lg-12 col-md-12">
-                <div class="card single_post shadow ">
-                    <div class="body bg-light">
-                        <h3 class="m-t-0 m-b-5"><a href="blog-details.html">Apple Introduces Search Ads Basic</a></h3>
-                        <ul class="meta">
-                            <li><a href="javascript:void(0);"><i class="zmdi zmdi-account col-blue"></i>Posted By: John Smith</a></li>
-                            <li><a href="javascript:void(0);"><i class="zmdi zmdi-label col-amber"></i>Technology</a></li>
-                            <li><a href="javascript:void(0);"><i class="zmdi zmdi-comment-text col-blue"></i>Comments: 3</a></li>
-                        </ul>
-                    </div>
-                    <div class="body">
-                        <div class="img-post text-center m-b-15">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="Awesome Image">
+    <div class="container mt-2 mb-2">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="d-flex justify-content-between p-2 px-3">
+                        <div class="d-flex flex-row align-items-center"> <img src="https://bootdey.com/img/Content/avatar/avatar7.png" width="40" class="rounded-circle">
+                            <div class="d-flex flex-column"> <span class="font-weight-bold"> Water Problem in Hall</span>
+                                <small class="text-primary">Category: Water</small>
+                            </div>
                         </div>
-                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal</p>
-                        <a href="blog-details.html" title="read more" class="btn btn-dark">Read More</a>
+                        <div class="d-flex flex-row mt-1 ellipsis"> <small class="mr-2">20 mins</small></div>
                     </div>
-                    <div class="card-footer">
-                        <a href="javascript:void(0)" class="d-inline-block text-muted">
-                            <strong>123</strong> Likes</small>
-                        </a>
-                        <a href="javascript:void(0)" class="d-inline-block text-muted ml-3">
-                            <strong>12</strong> Comments</small>
-                        </a>
-                        <a href="javascript:void(0)" class="d-inline-block text-muted ml-3">
-                            <small class="align-middle">Repost</small>
-                        </a>
+                    <div class="text-center">
+                        <img src="<?php echo URLROOT; ?>/img/pen.jpg" width="500" height="auto" class="img-fluid text-center py-3">
+                    </div>
+                    <div class="px-5 py-2">
+                        <p class="body-text">More than 1.8 million people in Bangladesh lack access to an improved water source and 36 million lack improved sanitation. In Bangladesh and around the world, millions are navigating the COVID-19 pandemic with the added challenge of living without access to safe water.</p>
+                        <hr>
+                        <div class="row ">
+                            <div class="col-sm up-down-vote-icon ">50 <i class="fa-solid fa-thumbs-up ps-2 icon-text"> </i></div>
+                            <div class="col-sm up-down-vote-icon"> 8 <i class="fa-solid fa-thumbs-down ps-2 pt-1 icon-text"> </i></div>
+                            <div class="col-sm text-center"><a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->post_id; ?>" class="btn btn-sm text-primary">More</a></div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <?php foreach ($data['posts'] as $post) : ?>
-                <div class="col-lg-12 col-md-12">
-                    <div class="card single_post shadow ">
-                        <div class="body bg-light">
-                            <h3 class="m-t-0 m-b-5"><?php echo $post->title; ?></h3>
-                            <ul class="meta">
-                                <li><a href="javascript:void(0);"><i class="zmdi zmdi-account col-blue"></i>Posted By: John Smith</a></li>
-                                <li><a href="javascript:void(0);"><i class="zmdi zmdi-label col-amber"></i>Technology</a></li>
-                                <li><a href="javascript:void(0);"><i class="zmdi zmdi-comment-text col-blue"></i>Comments: 3</a></li>
-                            </ul>
-                        </div>
-                        <div class="body">
-                            <div class="img-post text-center m-b-15">
-                                <img src="<?php echo $post->img_link; ?>" width="50%">
-                            </div>
-                            <p><?php echo $post->body; ?></p>
-                            <a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->post_id; ?>" title="read more" class="btn btn-dark">Read More</a>
-                        </div>
-                        <div class="card-footer">
-                            <a href="javascript:void(0)" class="d-inline-block text-muted">
-                                <strong>123</strong> Likes</small>
-                            </a>
-                            <a href="javascript:void(0)" class="d-inline-block text-muted ml-3">
-                                <strong>12</strong> Comments</small>
-                            </a>
-                            <a href="javascript:void(0)" class="d-inline-block text-muted ml-3">
-                                <small class="align-middle">Report</small>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
         </div>
     </div>
-    <!----------------->
-
 </div>
-
-
 <?php require APPROOT . '/views/inc/footer.php'; ?>
