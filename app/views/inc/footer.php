@@ -1,17 +1,8 @@
 </main>
 
+<div style="flex-grow:1"></div>
 
-<footer class="text-center text-lg-start bg-light text-muted">
-
-    <!--<section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-
-    </section>
-
-    <section class="">
-
-    </section>-->
-
-
+<footer class="text-center text-lg-start bg-light text-muted footer">
 
     <div class="text-center p-4 bg-dark ">
         © 2022 Copyright:

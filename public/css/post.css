@@ -6,7 +6,8 @@
 .blog-page .single_post .img-post {
     position: relative;
     overflow: hidden;
-    max-height: 500px
+    max-height: 500px;
+    /*max-height: 50%;*/
 }
 
 .blog-page .single_post .img-post>img {

@@ -81,7 +81,7 @@
                         </div>
                         <div class="body">
                             <div class="img-post text-center m-b-15">
-                                <img src="">
+                                <img src="<?php echo $post->img_link; ?>" width="50%">
                             </div>
                             <p><?php echo $post->body; ?></p>
                             <a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->post_id; ?>" title="read more" class="btn btn-dark">Read More</a>

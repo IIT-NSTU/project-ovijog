@@ -51,13 +51,35 @@ class PostsController extends Controller
 
             $data = [
                 'categories' => $categories,
+
                 'title' => trim($_POST['title']),
                 'category' => trim($_POST['category']),
                 'body' => trim($_POST['body']),
+                'image'=> $_FILES['image'],
                 'user_id' => $_SESSION['user_id'],
                 'title_err' => '',
                 'body_err' => ''
             ];
+
+            if(!empty($data['image']['name'])){
+                $prod=uniqid();
+
+                $filename=$data["image"]['name'];
+                $filename=explode(".",$filename);
+                $extension=end($filename);
+                $newfilename=$prod .".".$extension;
+
+                move_uploaded_file($data['image']['tmp_name'],dirname(APPROOT)."\public\dir\\".$newfilename);
+
+                $url=URLROOT.'/dir/'.$newfilename;
+                $data['image']=$url;
+            }else{
+                $data['image']="";
+            }
+
+
+            //die($data['image']);
+
 
             if (empty($data['title'])) {
                 $data['title_err'] = 'Please enter title';
@@ -80,9 +102,11 @@ class PostsController extends Controller
 
             $data = [
                 'categories' => $categories,
+
                 'title' => '',
                 'category' => '',
-                'body' => ''
+                'body' => '',
+                'image'=> ''
             ];
 
             $this->view('posts/add', $data);
