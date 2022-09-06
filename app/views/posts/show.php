@@ -33,13 +33,17 @@
                         </div>
                         <hr>
                         <div class="row">
-                            <h6>hello</h6>
+                            <div class="col-sm-10 mb-2 mt-2">
+                                <input type="text" class="form-control comment-text" placeholder="Write Comment">
+                            </div>
+                            <div class="col-sm-2">
+                                <button class="btn btn-sm btn-primary mb-2 mt-2" style="border-radius:10px;">Comment</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<?php require APPROOT . '/views/inc/footer.php'; ?>
+    <?php require APPROOT . '/views/inc/footer.php'; ?>
