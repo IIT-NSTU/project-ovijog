@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 23, 2022 at 02:37 PM
+-- Generation Time: Sep 05, 2022 at 03:09 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -48,8 +48,16 @@ CREATE TABLE `posts` (
   `category` varchar(255) DEFAULT NULL,
   `issolved` tinyint(1) DEFAULT NULL,
   `created_time` datetime DEFAULT current_timestamp(),
-  `user_id` int(11) DEFAULT NULL
+  `user_id` int(11) DEFAULT NULL,
+  `img_link` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`post_id`, `title`, `body`, `category`, `issolved`, `created_time`, `user_id`, `img_link`) VALUES
+(3, 'Its arnab', 'Hi, I am Arnab.', 'Political', 0, '2022-09-05 06:11:00', 1, 'http://localhost/ovijog/dir/63153e940a8a3.jpg');
 
 -- --------------------------------------------------------
 
@@ -60,6 +68,21 @@ CREATE TABLE `posts` (
 CREATE TABLE `post_categories` (
   `category` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `post_categories`
+--
+
+INSERT INTO `post_categories` (`category`) VALUES
+('Electricity'),
+('Eve Teasing'),
+('Food'),
+('Political'),
+('Ragging'),
+('Residence'),
+('Safety'),
+('Transport'),
+('Water');
 
 -- --------------------------------------------------------
 
@@ -217,7 +240,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `reports`
