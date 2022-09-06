@@ -1,46 +1,44 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require_once APPROOT . '/views/inc/navbar.php'; ?>
 
-<!-- <div class="container">
-    <h1><?php echo $data['title'] ?></h1>
-</div> -->
-<div class="container mt-5">
-    <!-- <h1><?php echo $data['title'] ?></h1> -->
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/home.css">
 
-
-    <div class="row">
-
-
-        <div class="col-sm-4">
-            <div class="form-group mb-4">
-                <label for="title" class="mb-2"><b>Title:</b> <sup class="star-color">*</sup></label>
-                <div class="card" style="width: 12rem;">
-                    <!-- <img src="..." class="card-img-top" alt="..."> -->
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title</p>
-
-                    </div>
+<body>
+    <div class="row gutters-sm">
+        <div class="col-md-2 mt-4 pe-5">
+            <div class="card card-body mb-4 mt-4 bg-secondary">
+                <div class="row d-flex flex-column align-items-center text-center card-font-color mb-1 mt-1">
+                    <h3>30</h3>
+                    <h5>Posts</h5>
                 </div>
             </div>
-            <div class="form-group mb-4">
-                <label for="exampleFormControlSelect1" class="mb-2"><b>Category:</b><sup class="star-color">*</sup></label>
-
+            <div class="card card-body mb-4 bg-success">
+                <div class="row d-flex flex-column align-items-center text-center card-font-color mb-1 mt-1">
+                    <h3>11</h3>
+                    <h5>Solved</h5>
+                </div>
             </div>
-            <div class="form-group mb-3">
-                <!-- <label for="title" class="mb-2"><b>Photo:</b></label> -->
-                <label for="formFileMultiple" class="form-label mb-2"><b>Photo:</b></label>
-
+            <div class="card card-body bg-danger">
+                <div class="row d-flex flex-column align-items-center text-center card-font-color mb-1 mt-1">
+                    <h3>19</h3>
+                    <h5>Unsolved</h5>
+                </div>
             </div>
         </div>
-        <div class="col-sm-8">
-            <div class="form-group">
-                <label for="body" class="mb-2"><b>Body:</b> <sup class="star-color">*</sup></label>
-
+        <div class="col-md-10 mt-5 p-2 bg-light">
+            <h2 class="text-center" style="font-family: Penna; color:#6f42c1;"><b><i>Trending Board</i></b></h2>
+            <hr>
+            <div class="row text-center">
+                <div class="col-sm trending-heading">No</div>
+                <div class="col-sm trending-heading">Title</div>
+                <div class="col-sm trending-heading">Category</a></div>
+                <div class="col-sm trending-heading">Upvote</a></div>
+                <div class="col-sm trending-heading">Downvote</a></div>
+                <div class="col-sm trending-heading">See Post</a></div>
             </div>
+            <hr>
         </div>
     </div>
-
-</div>
+</body>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>
