@@ -3,36 +3,7 @@
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/post.css">
 
 <style>
-    .button-background-color {
-        background-color: #293462;
-        color: white;
-    }
 
-    #create-post-button {
-        height: 40px;
-    }
-
-    #create-post-button-div {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        align-items: center;
-    }
-
-    .up-down-vote-icon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        align-content: stretch;
-    }
-
-    .body-text {
-        text-align: justify;
-    }
-
-    .icon-text {
-        font-size: 20px;
-    }
 </style>
 
 <?php require_once APPROOT . '/views/inc/navbar.php'; ?>
@@ -59,14 +30,16 @@
                     <div class="card">
                         <div class="d-flex justify-content-between p-2 px-3">
                             <div class="d-flex flex-row align-items-center"> <img src="https://bootdey.com/img/Content/avatar/avatar7.png" width="40" class="rounded-circle">
-                                <div class="d-flex flex-column"> <span class="font-weight-bold"><?php echo $post->title; ?> Water Problem in Hall</span>
+                                <div class="d-flex flex-column"> <span class="font-weight-bold"><?php echo $post->title; ?> </span>
                                     <small class="text-primary">Category: <?php echo $post->category; ?></small>
                                 </div>
                             </div>
-                            <div class="d-flex flex-row mt-1 ellipsis"> <small class="mr-2"><?php echo $post->created_time;?></small></div>
+                            <div>
+                                <div class="d-flex flex-row mt-1 ellipsis"> <small class="mr-2"><?php echo $post->created_time; ?></small></div>
+                                <div class="text-muted"><small><i class="fa-solid fa-eye"></i> 67 views</small></div>
+                            </div>
                         </div>
                         <div class="text-center">
-                            <!-- <img src="<?php echo URLROOT; ?>/img/pen.jpg" width="500" height="auto" class="img-fluid text-center py-3"> -->
                             <img src="<?php echo $post->img_link; ?>" width="50%" height="auto" class="img-fluid text-center py-3">
                         </div>
                         <div class="px-5 py-2">
