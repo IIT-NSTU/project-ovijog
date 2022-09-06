@@ -39,6 +39,8 @@ class PostsController extends Controller
         $upCount=[];
         $downCount=[];
 
+        $viewCount=[];
+
         foreach ($posts as $post){
             if($this->postModel->isVoted($post->post_id)){
                 if($this->postModel->getVote($post->post_id)==1){
@@ -50,6 +52,7 @@ class PostsController extends Controller
 
             $upCount[$post->post_id]=$this->postModel->getUpVotes($post->post_id);
             $downCount[$post->post_id]=$this->postModel->getdownVotes($post->post_id);
+            $viewCount[$post->post_id]=$this->postModel->getViewCount($post->post_id);
         }
 
         $data = [
@@ -57,7 +60,8 @@ class PostsController extends Controller
             'up-votes'=>$upVotes,
             'down-votes'=>$downVotes,
             'up-count'=>$upCount,
-            'down-count'=>$downCount
+            'down-count'=>$downCount,
+            'view-count'=>$viewCount
         ];
 
         $this->view('posts/index', $data);
@@ -65,6 +69,7 @@ class PostsController extends Controller
 
     public function show($id)
     {
+        $this->postModel->addView($id);
 
         $post = $this->postModel->getPostById($id);
 

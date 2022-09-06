@@ -10,6 +10,28 @@ class Post
         $this->db = Database::getInstance();
     }
 
+    public function getViewCount($post_id){
+        $this->db->query("select * from views where post_id = :post_id");
+        $this->db->bind(':post_id',$post_id);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
+    public function addView($post_id){
+        $this->db->query("insert into views (user_id,post_id) values (:user_id,:post_id)");
+        $this->db->bind(':user_id',$_SESSION['user_id']);
+        $this->db->bind(':post_id',$post_id);
+
+        try{
+            $this->db->execute();
+        }catch (PDOException $e){
+            //ignoring multiple views from a single user
+        }
+
+    }
+
     public function getUpVotes($post_id){
         $this->db->query("select * from votes where isagree = 1 and post_id = :post_id");
         $this->db->bind(':post_id',$post_id);
