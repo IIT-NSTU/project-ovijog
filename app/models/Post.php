@@ -10,6 +10,94 @@ class Post
         $this->db = Database::getInstance();
     }
 
+    public function getUpVotes($post_id){
+        $this->db->query("select * from votes where isagree = 1 and post_id = :post_id");
+        $this->db->bind(':post_id',$post_id);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
+    public function getDownVotes($post_id){
+        $this->db->query("select * from votes where isagree = 0 and post_id = :post_id");
+        $this->db->bind(':post_id',$post_id);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
+    public function vote($post_id,$isagree){
+        if($this->isVoted($post_id)!=null){
+
+            //die('vote:'.$this->getVote($post_id));
+
+            if($this->getVote($post_id)==$isagree){
+                //die('delete');
+
+                //die('id:'.$_SESSION['user_id'].' p_id:'.$post_id);
+
+                $this->db->query("delete from votes where user_id = :user_id and post_id = :post_id");
+                $this->db->bind(':user_id',$_SESSION['user_id']);
+                $this->db->bind(':post_id',$post_id);
+
+                if($this->db->execute()){
+                    //die("del sus");
+                }else{
+                    //die('not sus');
+                }
+
+            }else{
+                //die('update');
+                $this->db->query("update votes set isagree=:isagree where user_id = :user_id and post_id = :post_id");
+                $this->db->bind(':user_id',$_SESSION['user_id']);
+                $this->db->bind(':post_id',$post_id);
+                $this->db->bind(':isagree',$isagree);
+
+                if($this->db->execute()){
+                    //die("update sus");
+                }else{
+                    //die('not sus');
+                }
+            }
+
+        }else{
+            //die('new');
+            $this->db->query("insert into votes (user_id,post_id,isagree) values (:user_id,:post_id,:isagree)");
+            $this->db->bind(':user_id',$_SESSION['user_id']);
+            $this->db->bind(':post_id',$post_id);
+            $this->db->bind(':isagree',$isagree);
+
+            if($this->db->execute()){
+                //die("new sus");
+            }else{
+                //die('not sus');
+            }
+        }
+    }
+
+    public function isVoted($post_id){
+        $this->db->query("select * from votes where user_id = :user_id and post_id = :post_id");
+        $this->db->bind(':user_id',$_SESSION['user_id']);
+        $this->db->bind(':post_id',$post_id);
+
+        $this->db->execute();
+
+        $count=$this->db->rowCount();
+
+        //die('c:'.$count);
+
+        return $count!=0;
+    }
+
+    public function getVote($post_id){
+        $this->db->query("select * from votes where user_id = :user_id and post_id = :post_id");
+        $this->db->bind(':user_id',$_SESSION['user_id']);
+        $this->db->bind(':post_id',$post_id);
+
+        return $this->db->single()->isagree;
+    }
 
     public function getCategories()
     {

@@ -16,13 +16,48 @@ class PostsController extends Controller
         $this->userModel = $this->model('User');
     }
 
+    public function vote($params0,$params1){
+
+        $this->postModel->vote($params0,$params1);
+
+        $data=[
+            'upCount'=>$this->postModel->getUpVotes($params0),
+            'downCount'=>$this->postModel->getDownVotes($params0)
+        ];
+
+        echo json_encode($data);
+    }
+
     public function index()
     {
 
         $posts = $this->postModel->getAllPosts();
 
+        $upVotes=[];
+        $downVotes=[];
+
+        $upCount=[];
+        $downCount=[];
+
+        foreach ($posts as $post){
+            if($this->postModel->isVoted($post->post_id)){
+                if($this->postModel->getVote($post->post_id)==1){
+                    $upVotes[$post->post_id]=1;
+                }else{
+                    $downVotes[$post->post_id]=1;
+                }
+            }
+
+            $upCount[$post->post_id]=$this->postModel->getUpVotes($post->post_id);
+            $downCount[$post->post_id]=$this->postModel->getdownVotes($post->post_id);
+        }
+
         $data = [
-            'posts' => $posts
+            'posts' => $posts,
+            'up-votes'=>$upVotes,
+            'down-votes'=>$downVotes,
+            'up-count'=>$upCount,
+            'down-count'=>$downCount
         ];
 
         $this->view('posts/index', $data);

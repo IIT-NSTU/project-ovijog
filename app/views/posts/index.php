@@ -73,8 +73,9 @@
                             <p class="body-text"><?php echo $post->body; ?></p>
                             <hr>
                             <div class="row ">
-                                <div class="col-sm up-down-vote-icon "><b>50</b> <button class="btn btn-sm btn-outline-success ms-2"><i class="fa-solid fa-arrow-up "></i></button></div>
-                                <div class="col-sm up-down-vote-icon"><b>12</b><button class="btn btn-sm btn-outline-danger ms-2"><i class="fa-solid fa-arrow-down"></i> </button></div>
+
+                                <div class="col-sm up-down-vote-icon "><b id="up-count"><?php echo $data['up-count'][$post->post_id]; ?></b><a id="up" onclick="like(this.parentNode.parentNode,<?php echo $post->post_id; ?>)"  class="btn btn-sm <?php echo (empty($data['up-votes'][$post->post_id])) ? 'btn-outline-success' : 'btn-success'; ?> ms-2"><i class="fa-solid fa-arrow-up "></i></a></div>
+                                <div class="col-sm up-down-vote-icon"><b id="down-count"><?php echo $data['down-count'][$post->post_id]; ?></b><a id="down" onclick="dislike(this.parentNode.parentNode,<?php echo $post->post_id; ?>)" class="btn btn-sm <?php echo (empty($data['down-votes'][$post->post_id])) ? 'btn-outline-danger' : 'btn-danger'; ?> ms-2"><i class="fa-solid fa-arrow-down"></i> </a></div>
                                 <div class="col-sm text-center"><a href="#" class="btn btn-sm text-danger"><b>Report</b></a></div>
                                 <div class="col-sm text-center"><a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->post_id; ?>" class="btn btn-sm text-primary"><b>More</b></a></div>
 
@@ -88,4 +89,60 @@
     </div>
 
 </div>
+    <script>
+        function like(d,id) {
+
+            console.log(d.querySelector('#up'));
+            console.log(id);
+
+            if(d.querySelector('#up').classList.contains('btn-success')){
+                d.querySelector('#up').classList.replace('btn-success','btn-outline-success');
+            }else{
+                d.querySelector('#up').classList.replace('btn-outline-success','btn-success');
+            }
+
+            d.querySelector('#down').classList.value="btn btn-sm btn-outline-danger ms-2";
+
+
+            $.ajax({
+                url : '<?php echo URLROOT; ?>/posts/vote/'+id+'/1',
+                type : 'post',
+                dataType : 'json',
+                success : function (s) {
+                    console.log(s);
+                    d.querySelector('#up-count').innerText=s.upCount;
+                    d.querySelector('#down-count').innerText=s.downCount;
+                },
+                error : function (err) {
+                    console.log(err);
+                }
+            });
+        }
+
+        function dislike(d,id) {
+            d.querySelector('#up').classList.value="btn btn-sm btn-outline-success ms-2";
+
+            if(d.querySelector('#down').classList.contains('btn-danger')){
+                d.querySelector('#down').classList.replace('btn-danger','btn-outline-danger');
+            }else{
+                d.querySelector('#down').classList.replace('btn-outline-danger','btn-danger');
+            }
+
+            $.ajax({
+                url : '<?php echo URLROOT; ?>/posts/vote/'+id+'/0',
+                type : 'post',
+                dataType : 'json',
+                success : function (s) {
+                    console.log(s);
+                    d.querySelector('#up-count').innerText=s.upCount;
+                    d.querySelector('#down-count').innerText=s.downCount;
+                },
+                error : function (err) {
+                    console.log(err);
+                }
+            });
+        }
+    </script>
+
+
 <?php require APPROOT . '/views/inc/footer.php'; ?>
