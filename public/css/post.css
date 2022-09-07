@@ -53,8 +53,8 @@
 
 hr {
     color: #a09c9c;
-    margin-top: 4px;
-    margin-bottom: 8px;
+    margin-top: 3px;
+    margin-bottom: 3px;
 }
 
 .muted-color {
@@ -65,19 +65,6 @@ hr {
 .ellipsis i {
     margin-top: 3px;
     cursor: pointer;
-}
-
-.icons i {
-    font-size: 25px;
-}
-
-.icons .fa-heart {
-    color: red;
-}
-
-.icons .fa-smile-o {
-    color: yellow;
-    font-size: 29px;
 }
 
 .rounded-image {
@@ -100,10 +87,6 @@ hr {
 
 .form-control {
     border-radius: 26px;
-}
-
-.comment-input {
-    position: relative;
 }
 
 .fonts {
