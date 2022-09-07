@@ -10,6 +10,22 @@ class Post
         $this->db = Database::getInstance();
     }
 
+    public function totalSolvedCount(){
+        $this->db->query("select * from posts where issolved = true");
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
+    public function totalPostCount(){
+        $this->db->query("select * from posts");
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
     public function getViewCount($post_id){
         $this->db->query("select * from views where post_id = :post_id");
         $this->db->bind(':post_id',$post_id);
@@ -152,11 +168,23 @@ class Post
 
     public function updatePost($data)
     {
-        $this->db->query("update posts set title = :title, body = :body where id = :id");
+        if(empty($data['image'])){
+            $this->db->query("update posts set title = :title, body = :body, category = :category where post_id = :post_id");
 
-        $this->db->bind(':id', $data['id']);
-        $this->db->bind(':title', $data['title']);
-        $this->db->bind(':body', $data['body']);
+            $this->db->bind(':title', $data['title']);
+            $this->db->bind(':post_id', $data['post_id']);
+            $this->db->bind(':category', $data['category']);
+            $this->db->bind(':body', $data['body']);
+        }else{
+            $this->db->query("update posts set title = :title, body = :body, category = :category, img_link = :img_link where post_id = :post_id");
+
+            $this->db->bind(':title', $data['title']);
+            $this->db->bind(':post_id', $data['post_id']);
+            $this->db->bind(':category', $data['category']);
+            $this->db->bind(':body', $data['body']);
+            $this->db->bind(':img_link', $data['image']);
+        }
+
 
         if ($this->db->execute()) {
             return true;

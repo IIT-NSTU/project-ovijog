@@ -33,8 +33,15 @@ class PagesController extends Controller
 
     public function home()
     {
+
+        $totalPost=$this->postModel->totalPostCount();
+        $totalSolved=$this->postModel->totalSolvedCount();
+
         $data = [
-            'title' => 'this is home'
+            'title' => 'this is home',
+            'total_post'=>$totalPost,
+            'total_solved'=>$totalSolved,
+            'total_unsolved'=>($totalPost-$totalSolved)
         ];
         $this->view('/pages/home', $data);
     }
@@ -47,4 +54,5 @@ class PagesController extends Controller
         ];
         $this->view('/pages/categories', $data);
     }
+
 }

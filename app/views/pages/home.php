@@ -8,19 +8,19 @@
         <div class="col-md-2 mt-4 pe-5">
             <div class="card card-body mb-4 mt-4 bg-secondary">
                 <div class="row d-flex flex-column align-items-center text-center card-font-color mb-1 mt-1">
-                    <h3>30</h3>
+                    <h3><?php echo $data['total_post']; ?></h3>
                     <h5>Posts</h5>
                 </div>
             </div>
             <div class="card card-body mb-4 bg-success">
                 <div class="row d-flex flex-column align-items-center text-center card-font-color mb-1 mt-1">
-                    <h3>11</h3>
+                    <h3><?php echo $data['total_solved']; ?></h3>
                     <h5>Solved</h5>
                 </div>
             </div>
             <div class="card card-body bg-danger">
                 <div class="row d-flex flex-column align-items-center text-center card-font-color mb-1 mt-1">
-                    <h3>19</h3>
+                    <h3><?php echo $data['total_unsolved']; ?></h3>
                     <h5>Unsolved</h5>
                 </div>
             </div>

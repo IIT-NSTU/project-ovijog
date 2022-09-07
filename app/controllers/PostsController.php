@@ -117,10 +117,6 @@ class PostsController extends Controller
                 $data['image'] = "";
             }
 
-
-            //die($data['image']);
-
-
             if (empty($data['title'])) {
                 $data['title_err'] = 'Please enter title';
             }
@@ -155,19 +151,39 @@ class PostsController extends Controller
 
     public function edit($id)
     {
+        $categories = $this->postModel->getCategories();
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             $data = [
-                'id' => $id,
+                'categories' => $categories,
+
                 'title' => trim($_POST['title']),
+                'category' => trim($_POST['category']),
                 'body' => trim($_POST['body']),
+                'image' => $_FILES['image'],
                 'user_id' => $_SESSION['user_id'],
                 'title_err' => '',
                 'body_err' => ''
             ];
+
+            if (!empty($data['image']['name'])) {
+                $prod = uniqid();
+
+                $filename = $data["image"]['name'];
+                $filename = explode(".", $filename);
+                $extension = end($filename);
+                $newfilename = $prod . "." . $extension;
+
+                move_uploaded_file($data['image']['tmp_name'], dirname(APPROOT) . "\public\dir\\" . $newfilename);
+
+                $url = URLROOT . '/dir/' . $newfilename;
+                $data['image'] = $url;
+            } else {
+                $data['image'] = "";
+            }
 
             if (empty($data['title'])) {
                 $data['title_err'] = 'Please enter title';
@@ -195,8 +211,10 @@ class PostsController extends Controller
             }
 
             $data = [
-                'id' => $id,
+                'categories' => $categories,
+
                 'title' => $post->title,
+                'category' => $post->category,
                 'body' => $post->body
             ];
 

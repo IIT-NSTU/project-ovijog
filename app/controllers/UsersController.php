@@ -4,18 +4,33 @@ class UsersController extends Controller
 {
 
     private $userModel;
+    private $postModel;
 
     public function __construct()
     {
         $this->userModel = $this->model("User");
+        $this->postModel = $this->model("Post");
     }
 
     public function profile()
     {
+        $posts = $this->userModel->getPosts();
+
+        $upCount=[];
+        $downCount=[];
+
+        foreach ($posts as $post){
+            $upCount[$post->post_id]=$this->postModel->getUpVotes($post->post_id);
+            $downCount[$post->post_id]=$this->postModel->getdownVotes($post->post_id);
+        }
+
         $data = [
             'user' => $this->userModel->getUserById($_SESSION['user_id']),
-            'posts' => $this->userModel->getPosts()
+            'posts' => $this->userModel->getPosts(),
+            'up-count'=>$upCount,
+            'down-count'=>$downCount
         ];
+
         $this->view('/users/profile', $data);
     }
 

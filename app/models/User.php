@@ -69,7 +69,7 @@ class User
     public function getPosts(){
         $user_id=$_SESSION['user_id'];
 
-        $this->db->query("select * from posts where user_id = :user_id");
+        $this->db->query("select * from posts where user_id = :user_id ORDER BY created_time DESC");
         $this->db->bind(':user_id',$user_id);
         return $this->db->resultSet();
     }

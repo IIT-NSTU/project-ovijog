@@ -25,7 +25,7 @@
                             <div class="col-sm up-down-vote-icon"><b>12</b><button class="btn btn-sm btn-outline-danger ms-2"><i class="fa-solid fa-arrow-down"></i> </button></div>
 
                             <?php if ($data['post']->user_id == $_SESSION['user_id']) : ?>
-                                <div class="col-sm text-center"><a href="#" class="btn btn-sm text-primary"><b>Edit</b></a></div>
+                                <div class="col-sm text-center"><a href="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']->post_id; ?>" class="btn btn-sm text-primary"><b>Edit</b></a></div>
                                 <div class="col-sm text-center"><a href="#" class="btn btn-sm text-danger"><b>Remove</b></a></div>
                             <?php else : ?>
                                 <div class="col-sm text-center"><a href="#" class="btn btn-sm text-danger"><b>Report</b></a></div>

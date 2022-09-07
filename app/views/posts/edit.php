@@ -38,7 +38,7 @@
                     </div>
                     <div class="form-group mb-4">
                         <label for="exampleFormControlSelect1" class="mb-2"><b>Category:</b><sup class="star-color">*</sup></label>
-                        <select name="category" class="form-control" id="exampleFormControlSelect1">
+                        <select name="category" class="form-control" id="categorySelect">
                             <?php foreach ($data['categories'] as $category) : ?>
                                 <option><?php echo $category->category; ?></option>
                             <?php endforeach; ?>
@@ -49,9 +49,6 @@
                         <div class="row">
                             <div class="col-9">
                                 <input class="form-control" type="file" name="image_file">
-                            </div>
-                            <div class="col">
-                                <input type="submit" name="submit" class="btn button-background-color" value="Upload">
                             </div>
                         </div>
                     </div>
@@ -77,5 +74,9 @@
         </form>
     </div>
 </div>
+
+    <script>
+        $('#categorySelect').val('<?php echo $data['category']; ?>');
+    </script>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>
