@@ -1,87 +1,103 @@
 <?php
 
-class PostsController extends Controller
-{
+class PostsController extends Controller {
 
     private $postModel;
     private $userModel;
+    private $commentModel;
 
-    public function __construct()
-    {
+    public function __construct() {
         if (!isLoggedIn()) {
             redirect('users/login');
         }
 
         $this->postModel = $this->model('Post');
         $this->userModel = $this->model('User');
+        $this->commentModel = $this->model('Comment');
     }
 
-    public function vote($params0,$params1){
+    public function comment($id) {
 
-        $this->postModel->vote($params0,$params1);
+        $commentMsg = $_POST['comment'];
 
-        $data=[
-            'upCount'=>$this->postModel->getUpVotes($params0),
-            'downCount'=>$this->postModel->getDownVotes($params0)
+        $comment_id = $this->commentModel->addComment($id, $commentMsg);
+
+        $comment = $this->commentModel->getComment($comment_id);
+
+        $data = [
+            'comment' => $comment->comment,
+            'user_id' => $_SESSION['user_id'],
+            'comment_id' => $comment_id,
+            'created_time' => $comment->created_time
         ];
 
         echo json_encode($data);
     }
 
-    public function index()
-    {
+    public function vote($params0, $params1) {
+
+        $this->postModel->vote($params0, $params1);
+
+        $data = [
+            'upCount' => $this->postModel->getUpVotes($params0),
+            'downCount' => $this->postModel->getDownVotes($params0)
+        ];
+
+        echo json_encode($data);
+    }
+
+    public function index() {
 
         $posts = $this->postModel->getAllPosts();
 
-        $upVotes=[];
-        $downVotes=[];
+        $upVotes = [];
+        $downVotes = [];
 
-        $upCount=[];
-        $downCount=[];
+        $upCount = [];
+        $downCount = [];
 
-        $viewCount=[];
+        $viewCount = [];
 
-        foreach ($posts as $post){
-            if($this->postModel->isVoted($post->post_id)){
-                if($this->postModel->getVote($post->post_id)==1){
-                    $upVotes[$post->post_id]=1;
-                }else{
-                    $downVotes[$post->post_id]=1;
+        foreach ($posts as $post) {
+            if ($this->postModel->isVoted($post->post_id)) {
+                if ($this->postModel->getVote($post->post_id) == 1) {
+                    $upVotes[$post->post_id] = 1;
+                } else {
+                    $downVotes[$post->post_id] = 1;
                 }
             }
 
-            $upCount[$post->post_id]=$this->postModel->getUpVotes($post->post_id);
-            $downCount[$post->post_id]=$this->postModel->getdownVotes($post->post_id);
-            $viewCount[$post->post_id]=$this->postModel->getViewCount($post->post_id);
+            $upCount[$post->post_id] = $this->postModel->getUpVotes($post->post_id);
+            $downCount[$post->post_id] = $this->postModel->getdownVotes($post->post_id);
+            $viewCount[$post->post_id] = $this->postModel->getViewCount($post->post_id);
         }
 
         $data = [
             'posts' => $posts,
-            'up-votes'=>$upVotes,
-            'down-votes'=>$downVotes,
-            'up-count'=>$upCount,
-            'down-count'=>$downCount,
-            'view-count'=>$viewCount
+            'up-votes' => $upVotes,
+            'down-votes' => $downVotes,
+            'up-count' => $upCount,
+            'down-count' => $downCount,
+            'view-count' => $viewCount
         ];
 
         $this->view('posts/index', $data);
     }
 
-    public function show($id)
-    {
+    public function show($id) {
         $this->postModel->addView($id);
 
         $post = $this->postModel->getPostById($id);
 
         $data = [
             'post' => $post,
+            'comments' => $this->commentModel->getPostComment($id)
         ];
 
         $this->view('posts/show', $data);
     }
 
-    public function add()
-    {
+    public function add() {
 
         $categories = $this->postModel->getCategories();
 
@@ -149,8 +165,7 @@ class PostsController extends Controller
         }
     }
 
-    public function edit($id)
-    {
+    public function edit($id) {
         $categories = $this->postModel->getCategories();
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -222,8 +237,7 @@ class PostsController extends Controller
         }
     }
 
-    public function delete($id)
-    {
+    public function delete($id) {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $post = $this->postModel->getPostById($id);
@@ -243,8 +257,7 @@ class PostsController extends Controller
         }
     }
 
-    public function about($id)
-    {
+    public function about($id) {
         echo $id;
     }
 }
