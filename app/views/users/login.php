@@ -8,8 +8,6 @@
 </style>
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/Login.css">
 
-<?php require_once APPROOT . '/views/inc/navbar.php'; ?>
-
 <form method="POST" action="<?php echo URLROOT; ?>/users/login">
 
     <div class="row no-gutters my-4">
