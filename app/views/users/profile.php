@@ -52,11 +52,11 @@
             </div>
         </div>
         <div class="col-sm-7">
-            <div class="mt-2 mb-2 overflow" style="max-height: 40%; overflow-x: hidden;">
+            <div class="mt-2 mb-2 overflow" style="max-height: 70%; overflow-x: hidden;">
                 <div class="row d-flex align-items-center justify-content-center">
 
                     <?php if (count($data['posts']) == 0) : ?>
-                        <h4 class="border border-dark rounded p-4 text-center">You do not create any post yet</h4>
+                        <h4 class="border border-dark rounded p-4 text-center mt-5">You do not create any post yet</h4>
                     <?php endif; ?>
 
                     <?php foreach ($data['posts'] as $post) : ?>

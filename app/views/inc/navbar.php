@@ -64,4 +64,4 @@
             </div>
         </nav>
 
-        <div class="container" id="post-container">
+        <div class="container" id="content-wrap">
