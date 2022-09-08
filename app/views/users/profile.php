@@ -63,7 +63,7 @@
                         <?php endif; ?>
 
                         <?php foreach ($data['posts'] as $post) : ?>
-                            <div class="col-md-7">
+                            <div class="col-md-7 mb-3">
                                 <div class="card">
                                     <div class="d-flex justify-content-between p-2 px-3">
                                         <div class="d-flex flex-row align-items-center"> <img src="https://bootdey.com/img/Content/avatar/avatar7.png" width="40" class="rounded-circle">
