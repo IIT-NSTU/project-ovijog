@@ -89,8 +89,8 @@ class PostsController extends Controller {
 
         $post = $this->postModel->getPostById($id);
 
-        $upVoted=0;
-        $downVoted=0;
+        $upVoted = 0;
+        $downVoted = 0;
 
         if ($this->postModel->isVoted($post->post_id)) {
             if ($this->postModel->getVote($post->post_id) == 1) {
@@ -260,22 +260,18 @@ class PostsController extends Controller {
     }
 
     public function delete($id) {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $post = $this->postModel->getPostById($id);
 
-            $post = $this->postModel->getPostById($id);
-
-            if ($post->user_id != $_SESSION['user_id']) {
-                redirect('posts');
-            }
-
-            if ($this->postModel->deletePost($id)) {
-                flash('post_message', 'Post Removed');
-                redirect('posts');
-            } else {
-                die('Something went wrong');
-            }
-        } else {
+        if ($post->user_id != $_SESSION['user_id']) {
             redirect('posts');
+        }
+
+        if ($this->postModel->deletePost($id)) {
+            //die('del');
+            flash('post_message', 'Post Removed');
+            redirect('posts');
+        } else {
+            die('Something went wrong');
         }
     }
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 05, 2022 at 03:09 AM
+-- Generation Time: Sep 08, 2022 at 08:43 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `comments` (
   `comment_id` int(11) NOT NULL,
-  `body` longtext DEFAULT NULL,
+  `comment` longtext DEFAULT NULL,
   `created_time` datetime DEFAULT current_timestamp(),
   `user_id` int(11) DEFAULT NULL,
   `post_id` int(11) DEFAULT NULL
@@ -141,7 +141,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `edu_mail`, `pass_hash`, `isverified`, `isadmin`) VALUES
-(1, 'Arnab', 'Dey', 'arnab2514@student.nstu.edu.bd', '$2y$10$eaq0wLZk67AFIzZ2mUrTyeaJZ23tKkk0jO68nrU.MBAG7R7NPxbfa', 0, 0);
+(1, 'Arnab', 'Dey', 'arnab2514@student.nstu.edu.bd', '$2y$10$eaq0wLZk67AFIzZ2mUrTyeaJZ23tKkk0jO68nrU.MBAG7R7NPxbfa', 0, 0),
+(2, 'Arman', 'Blogger', 'armanur2514@student.nstu.edu.bd', '$2y$10$yCKKTyzQIiv8pD4Ou1KuxeQndm2EKsYgttCGf6I8MrqItjJME0X.G', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -154,6 +155,14 @@ CREATE TABLE `views` (
   `post_id` int(11) NOT NULL,
   `time` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `views`
+--
+
+INSERT INTO `views` (`user_id`, `post_id`, `time`) VALUES
+(1, 3, '2022-09-06 11:21:29'),
+(2, 3, '2022-09-06 11:20:53');
 
 -- --------------------------------------------------------
 
@@ -169,6 +178,14 @@ CREATE TABLE `votes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data for table `votes`
+--
+
+INSERT INTO `votes` (`user_id`, `post_id`, `isagree`, `time`) VALUES
+(1, 3, 0, '2022-09-06 10:51:36'),
+(2, 3, 0, '2022-09-06 10:54:06');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -176,7 +193,8 @@ CREATE TABLE `votes` (
 -- Indexes for table `comments`
 --
 ALTER TABLE `comments`
-  ADD PRIMARY KEY (`comment_id`);
+  ADD PRIMARY KEY (`comment_id`),
+  ADD KEY `post_id` (`post_id`);
 
 --
 -- Indexes for table `posts`
@@ -194,7 +212,8 @@ ALTER TABLE `post_categories`
 -- Indexes for table `reports`
 --
 ALTER TABLE `reports`
-  ADD PRIMARY KEY (`report_id`);
+  ADD PRIMARY KEY (`report_id`),
+  ADD KEY `post_id` (`post_id`);
 
 --
 -- Indexes for table `report_categories`
@@ -218,13 +237,15 @@ ALTER TABLE `users`
 -- Indexes for table `views`
 --
 ALTER TABLE `views`
-  ADD PRIMARY KEY (`user_id`,`post_id`);
+  ADD PRIMARY KEY (`user_id`,`post_id`),
+  ADD KEY `post_id` (`post_id`);
 
 --
 -- Indexes for table `votes`
 --
 ALTER TABLE `votes`
-  ADD PRIMARY KEY (`user_id`,`post_id`);
+  ADD PRIMARY KEY (`user_id`,`post_id`),
+  ADD KEY `post_id` (`post_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -234,13 +255,13 @@ ALTER TABLE `votes`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `reports`
@@ -252,7 +273,41 @@ ALTER TABLE `reports`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `comments`
+--
+ALTER TABLE `comments`
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`post_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `reports`
+--
+ALTER TABLE `reports`
+  ADD CONSTRAINT `reports_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`post_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `tags`
+--
+ALTER TABLE `tags`
+  ADD CONSTRAINT `tags_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`post_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `views`
+--
+ALTER TABLE `views`
+  ADD CONSTRAINT `views_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`post_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `votes`
+--
+ALTER TABLE `votes`
+  ADD CONSTRAINT `votes_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`post_id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

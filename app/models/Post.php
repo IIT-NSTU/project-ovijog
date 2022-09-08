@@ -188,7 +188,7 @@ class Post {
     }
 
     public function deletePost($id) {
-        $this->db->query("delete from posts where id = :id");
+        $this->db->query("delete from posts where post_id = :id");
 
         $this->db->bind(':id', $id);
 
