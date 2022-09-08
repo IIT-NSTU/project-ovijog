@@ -14,12 +14,19 @@
         <div class="col-md-8 mb-3">
             <div class="card">
                 <div class="d-flex justify-content-between p-2 px-3">
-                    <div class="d-flex flex-row align-items-center"><img src="https://bootdey.com/img/Content/avatar/avatar7.png" width="40" class="rounded-circle">
+                    <div class="d-flex flex-row align-items-center">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" width="40" class="rounded-circle">
                         <div class="d-flex flex-column"><span class="font-weight-bold"><?php echo $data['post']->title; ?></span>
                             <small class="text-primary">Category: <?php echo $data['post']->category; ?></small>
                         </div>
                     </div>
-                    <div class="d-flex flex-row mt-1 ellipsis"><small class="mr-2"><?php echo $data['post']->created_time; ?></small></div>
+                    <div id="time-solved">
+                        <div class="d-flex flex-row mt-1 ellipsis"><small class="mr-2"><?php echo $data['post']->created_time; ?></small></div>
+                        <?php if ($data['post']->issolved) : ?>
+                            <div id="solved" class="text-success"><i class="fa-solid fa-circle-check"></i> Solved</div>
+                        <?php endif; ?>
+                    </div>
+
                 </div>
                 <div class="text-center">
                     <img src="<?php echo $data['post']->img_link; ?>" width="50%" height="auto" class="img-fluid text-center py-3">
@@ -40,7 +47,7 @@
 
                         <?php if ($data['post']->user_id == $_SESSION['user_id']) : ?>
                             <div class="col-sm text-center">
-                                <a href="#" class="btn btn-sm text-success"><b>Solved</b></a>
+                                <a onclick="solved(this,<?php echo $data['post']->post_id; ?>)" class="btn btn-sm text-success"><b>Solved</b></a>
                             </div>
                             <div class="col-sm text-center"><a href="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']->post_id; ?>" class="btn btn-sm text-primary"><b>Edit</b></a>
                             </div>
@@ -87,6 +94,30 @@
 </div>
 
 <script>
+
+    function solved(d,post_id) {
+
+        var data = {};
+
+        data['post_id'] = post_id;
+
+        $.ajax({
+            url: '<?php echo URLROOT; ?>/posts/markSolved',
+            type: 'post',
+            data: data,
+            dataType: 'json',
+            success: function(s) {
+                console.log(s);
+                $('#time-solved').append('<div class="text-success"><i class="fa-solid fa-circle-check"></i> Solved</div>');
+                $('#solved').slideDown("slow");
+
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+    }
+
     function comment(d, post_id) {
 
         var commentText = d.querySelector("#comment-text").value;

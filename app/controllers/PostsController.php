@@ -16,6 +16,13 @@ class PostsController extends Controller {
         $this->commentModel = $this->model('Comment');
     }
 
+    public function markSolved(){
+
+        $post_id=$_POST['post_id'];
+
+        echo $this->postModel->markSolved($post_id);
+    }
+
     public function comment($id) {
 
         $commentMsg = $_POST['comment'];

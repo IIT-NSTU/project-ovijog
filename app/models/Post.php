@@ -8,6 +8,13 @@ class Post {
         $this->db = Database::getInstance();
     }
 
+    public function markSolved($post_id){
+        $this->db->query("update posts set issolved = true where post_id = :post_id");
+        $this->db->bind(':post_id',$post_id);
+
+        return $this->db->execute();
+    }
+
     public function totalSolvedCount() {
         $this->db->query("select * from posts where issolved = true");
 
