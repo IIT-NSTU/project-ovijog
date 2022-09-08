@@ -32,10 +32,12 @@
                             <div class="col-sm up-down-vote-icon"><b id="down-count"><?php echo $data['down-count']; ?></b><a id="down" onclick="dislike(this.parentNode.parentNode,<?php echo $data['post']->post_id; ?>)" class="btn btn-sm <?php echo (!$data['down-voted']) ? 'btn-outline-danger' : 'btn-danger'; ?> ms-2"><i class="fa-solid fa-arrow-down"></i> </a></div>
 
                             <?php if ($data['post']->user_id == $_SESSION['user_id']) : ?>
-                                <div class="col-sm text-center"><a
-                                            href="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']->post_id; ?>"
-                                            class="btn btn-sm text-primary"><b>Edit</b></a></div>
-                                <div class="col-sm text-center"><a href="#" class="btn btn-sm text-danger"><b>Remove</b></a>
+                                <div class="col-sm text-center">
+                                    <a href="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']->post_id; ?>"
+                                            class="btn btn-sm text-primary"><b>Edit</b></a>
+                                </div>
+                                <div class="col-sm text-center">
+                                    <a href="<?php echo URLROOT; ?>/posts/delete/<?php echo $data['post']->post_id; ?>" class="btn btn-sm text-danger"><b>Remove</b></a>
                                 </div>
                             <?php else : ?>
                                 <div class="col-sm text-center"><a href="#" class="btn btn-sm text-danger"><b>Report</b></a>
