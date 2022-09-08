@@ -27,14 +27,9 @@
                         <p class="body-text"><?php echo $data['post']->body; ?></p>
                         <hr>
                         <div class="row py-1">
-                            <div class="col-sm up-down-vote-icon "><b>50</b>
-                                <button class="btn btn-sm btn-outline-success ms-2"><i
-                                            class="fa-solid fa-arrow-up "></i></button>
-                            </div>
-                            <div class="col-sm up-down-vote-icon"><b>12</b>
-                                <button class="btn btn-sm btn-outline-danger ms-2"><i
-                                            class="fa-solid fa-arrow-down"></i></button>
-                            </div>
+
+                            <div class="col-sm up-down-vote-icon "><b id="up-count"><?php echo $data['up-count']; ?></b><a id="up" onclick="like(this.parentNode.parentNode,<?php echo $data['post']->post_id; ?>)"  class="btn btn-sm <?php echo (!$data['up-voted']) ? 'btn-outline-success' : 'btn-success'; ?> ms-2"><i class="fa-solid fa-arrow-up "></i></a></div>
+                            <div class="col-sm up-down-vote-icon"><b id="down-count"><?php echo $data['down-count']; ?></b><a id="down" onclick="dislike(this.parentNode.parentNode,<?php echo $data['post']->post_id; ?>)" class="btn btn-sm <?php echo (!$data['down-voted']) ? 'btn-outline-danger' : 'btn-danger'; ?> ms-2"><i class="fa-solid fa-arrow-down"></i> </a></div>
 
                             <?php if ($data['post']->user_id == $_SESSION['user_id']) : ?>
                                 <div class="col-sm text-center"><a
@@ -126,6 +121,59 @@
             }
 
 
+        }
+
+        function like(d,id) {
+
+            console.log(d.querySelector('#up'));
+            console.log(id);
+
+            if(d.querySelector('#up').classList.contains('btn-success')){
+                d.querySelector('#up').classList.replace('btn-success','btn-outline-success');
+            }else{
+                d.querySelector('#up').classList.replace('btn-outline-success','btn-success');
+            }
+
+            d.querySelector('#down').classList.value="btn btn-sm btn-outline-danger ms-2";
+
+
+            $.ajax({
+                url : '<?php echo URLROOT; ?>/posts/vote/'+id+'/1',
+                type : 'post',
+                dataType : 'json',
+                success : function (s) {
+                    console.log(s);
+                    d.querySelector('#up-count').innerText=s.upCount;
+                    d.querySelector('#down-count').innerText=s.downCount;
+                },
+                error : function (err) {
+                    console.log(err);
+                }
+            });
+        }
+
+        function dislike(d,id) {
+            d.querySelector('#up').classList.value="btn btn-sm btn-outline-success ms-2";
+
+            if(d.querySelector('#down').classList.contains('btn-danger')){
+                d.querySelector('#down').classList.replace('btn-danger','btn-outline-danger');
+            }else{
+                d.querySelector('#down').classList.replace('btn-outline-danger','btn-danger');
+            }
+
+            $.ajax({
+                url : '<?php echo URLROOT; ?>/posts/vote/'+id+'/0',
+                type : 'post',
+                dataType : 'json',
+                success : function (s) {
+                    console.log(s);
+                    d.querySelector('#up-count').innerText=s.upCount;
+                    d.querySelector('#down-count').innerText=s.downCount;
+                },
+                error : function (err) {
+                    console.log(err);
+                }
+            });
         }
     </script>
 

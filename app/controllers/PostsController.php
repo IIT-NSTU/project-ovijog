@@ -89,10 +89,32 @@ class PostsController extends Controller {
 
         $post = $this->postModel->getPostById($id);
 
+        $upVoted=0;
+        $downVoted=0;
+
+        if ($this->postModel->isVoted($post->post_id)) {
+            if ($this->postModel->getVote($post->post_id) == 1) {
+                //die('up');
+                $upVoted = 1;
+            } else {
+                //die('down');
+                $downVoted = 1;
+            }
+        }
+
+        //die('up:'.$upVoted.' down:'.$downVoted);
+
         $data = [
             'post' => $post,
-            'comments' => $this->commentModel->getPostComment($id)
+            'comments' => $this->commentModel->getPostComment($id),
+            'up-voted' => $upVoted,
+            'down-voted' => $downVoted,
+            'up-count' => $this->postModel->getUpVotes($id),
+            'down-count' => $this->postModel->getdownVotes($id)
         ];
+
+
+        //die(($data['up-voted']==1) ? 'btn-outline-success' : 'btn-success');
 
         $this->view('posts/show', $data);
     }
