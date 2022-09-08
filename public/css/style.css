@@ -7,23 +7,26 @@
     background: linear-gradient( 0deg, rgba(250, 250, 250, 1) 0%, rgba(222, 222, 233, 1) 11%, rgba(0, 0, 0, 1) 24%);
 }
 
+
 /*footer solution*/
+
 #page-container {
     position: relative;
     min-height: 100vh;
 }
 
 #content-wrap {
-    padding-bottom: 2.5rem;    /* Footer height */
+    padding-bottom: 2.5rem;
+    /* Footer height */
 }
 
 #footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 2.5rem;            /* Footer height */
+    height: 2.5rem;
+    /* Footer height */
 }
-
 
 body {
     background: url("../img/homePagePicture.png") no-repeat center center fixed;

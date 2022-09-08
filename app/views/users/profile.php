@@ -2,7 +2,6 @@
 <?php require_once APPROOT . '/views/inc/navbar.php'; ?>
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/profile.css">
 
-
 <div class="main-body">
     <div class="row">
         <div class="col-md-5" style="margin-top:60px;">
@@ -75,7 +74,7 @@
                                     <img src="<?php echo $post->img_link; ?>" width="50%" height="auto" class="img-fluid text-center py-3">
                                 </div>
                                 <div class="px-5 py-2">
-                                    <p class="body-text"><?php echo $post->body; ?></p>
+                                    <p style="text-align: justify;"><?php echo $post->body; ?></p>
                                     <hr>
                                     <div class="row ">
                                         <div class="col-sm up-down-vote-icon "> <?php echo $data['up-count'][$post->post_id]; ?> <i class="fa-solid fa-arrow-up "></i></div>
