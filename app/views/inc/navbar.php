@@ -2,6 +2,7 @@
 
 <body>
 
+<div id="page-container">
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark">
         <div class="container">
             <a href="#" class="navbar-brand"><img src="<?php echo URLROOT; ?>/img/logo.png" style="width:38px;border-radius:50%"> Project Ovijog</a>
@@ -63,4 +64,4 @@
         </div>
     </nav>
 
-    <main class="main-body container">
+    <div class="main-body container" id="content-wrap">

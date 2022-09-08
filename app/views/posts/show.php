@@ -1,7 +1,7 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require_once APPROOT . '/views/inc/navbar.php'; ?>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/post.css">
-    <div class="container">
+
     <div class="container mt-2 mb-2">
         <div class="row d-flex align-items-center justify-content-center">
 
@@ -107,11 +107,11 @@
                             '<div class="card"> ' +
                             '<div class="card-header d-flex justify-content-between p-2 px-3"> ' +
                             '<div class="d-flex flex-row mt-1 ellipsis"> ' +
-                            '<small class="mr-2">'+s.created_time+'</small>' +
+                            '<small class="mr-2">' + s.created_time + '</small>' +
                             '</div>' +
                             '</div>' +
                             '<div class="px-5 py-2"> ' +
-                            '<p class="body-text">'+s.comment+'</p> </div> </div> </div>');
+                            '<p class="body-text">' + s.comment + '</p> </div> </div> </div>');
                         $('.comment').first().hide();
                         $('.comment').first().show('slow');
 
