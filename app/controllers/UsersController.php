@@ -122,6 +122,24 @@ class UsersController extends Controller
         }
     }
 
+    public function verify(){
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            $user_id=$_GET['id'];
+            $key=$_GET['key'];
+
+            if($this->userModel->verify($user_id,$key)){
+                flash('register_success', 'verification successful you can log in now');
+                redirect('users/login');
+            }else{
+                die('BAD REQUEST');
+            }
+
+
+        }else{
+            die('BAD REQUEST');
+        }
+    }
+
     public function login()
     {
 
@@ -191,4 +209,6 @@ class UsersController extends Controller
         session_destroy();
         redirect('users/login');
     }
+
+
 }

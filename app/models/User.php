@@ -1,16 +1,13 @@
 <?php
 
-class User
-{
+class User {
     private $db;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->db = Database::getInstance();
     }
 
-    public function findUserByEmail($email)
-    {
+    public function findUserByEmail($email) {
         $this->db->query("Select * from users where edu_mail = :email");
         $this->db->bind(":email", $email);
 
@@ -23,16 +20,14 @@ class User
         }
     }
 
-    public function getUserById($id)
-    {
+    public function getUserById($id) {
         $this->db->query("Select * from users where user_id = :id");
         $this->db->bind(":id", $id);
 
         return $this->db->single();
     }
 
-    public function register($data)
-    {
+    public function register($data) {
         $this->db->query("insert into users (first_name,last_name,edu_mail,pass_hash,isverified,isadmin)
                                 values (:fname,:lname,:edu_email,:password,false,false)");
 
@@ -42,14 +37,52 @@ class User
         $this->db->bind(':password', $data['password']);
 
         if ($this->db->execute()) {
+            $this->sendVerifyMail($data['edu_email']);
             return true;
         } else {
             return false;
         }
     }
 
-    public function login($email, $password)
-    {
+    public function verify($user_id,$key){
+        $this->db->query("select * from verify_keys where user_id = :user_id and v_key = :v_key");
+        $this->db->bind(':user_id',$user_id);
+        $this->db->bind(':v_key',$key);
+        $this->db->execute();
+
+        if($this->db->rowCount()==0){
+            return false;
+        }else{
+            $this->db->query("update users set isverified = true where user_id = :user_id");
+            $this->db->bind(':user_id',$user_id);
+            $this->db->execute();
+            return true;
+        }
+    }
+
+    public function sendVerifyMail($mail){
+        $user_id=$this->db->lastInsertId();
+
+        $key=bin2hex($user_id).bin2hex(random_bytes(16));
+
+        try{
+            $this->db->query("insert into verify_keys (user_id, v_key) values (:user_id, :v_key)");
+            $this->db->bind(':user_id',$user_id);
+            $this->db->bind(':v_key',$key);
+            $this->db->execute();
+        }catch (PDOException $e){
+            $this->db->query("update verify_keys set v_key = :v_key where user_id = :user_id");
+            $this->db->bind(':user_id',$user_id);
+            $this->db->bind(':v_key',$key);
+            $this->db->execute();
+        }
+
+        $link=URLROOT.'/users/verify?id='.$user_id.'&key='.$key;
+
+        sendMail($mail,$link);
+    }
+
+    public function login($email, $password) {
         $this->db->query('select * from users where edu_mail = :email');
         $this->db->bind(':email', $email);
 
@@ -66,11 +99,11 @@ class User
         }
     }
 
-    public function getPosts(){
-        $user_id=$_SESSION['user_id'];
+    public function getPosts() {
+        $user_id = $_SESSION['user_id'];
 
         $this->db->query("select * from posts where user_id = :user_id ORDER BY created_time DESC");
-        $this->db->bind(':user_id',$user_id);
+        $this->db->bind(':user_id', $user_id);
         return $this->db->resultSet();
     }
 }
