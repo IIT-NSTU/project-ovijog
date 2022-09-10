@@ -33,6 +33,8 @@ class PostsController extends Controller
 
         $viewCount = [];
 
+        $tags=[];
+
         foreach ($posts as $post) {
             if ($this->postModel->isVoted($post->post_id)) {
                 if ($this->postModel->getVote($post->post_id) == 1) {
@@ -45,6 +47,8 @@ class PostsController extends Controller
             $upCount[$post->post_id] = $this->postModel->getUpVotes($post->post_id);
             $downCount[$post->post_id] = $this->postModel->getdownVotes($post->post_id);
             $viewCount[$post->post_id] = $this->postModel->getViewCount($post->post_id);
+
+            $tags[$post->post_id]= $this->postModel->getTags($post->post_id);
         }
 
         $data = [
@@ -53,7 +57,8 @@ class PostsController extends Controller
             'down-votes' => $downVotes,
             'up-count' => $upCount,
             'down-count' => $downCount,
-            'view-count' => $viewCount
+            'view-count' => $viewCount,
+            'tags' => $tags
         ];
 
 
@@ -113,6 +118,8 @@ class PostsController extends Controller
 
         $viewCount = [];
 
+        $tags=[];
+
         foreach ($posts as $post) {
             if ($this->postModel->isVoted($post->post_id)) {
                 if ($this->postModel->getVote($post->post_id) == 1) {
@@ -125,7 +132,11 @@ class PostsController extends Controller
             $upCount[$post->post_id] = $this->postModel->getUpVotes($post->post_id);
             $downCount[$post->post_id] = $this->postModel->getdownVotes($post->post_id);
             $viewCount[$post->post_id] = $this->postModel->getViewCount($post->post_id);
+
+            $tags[$post->post_id]= $this->postModel->getTags($post->post_id);
         }
+
+        //die(print_r($tags[21][1]->tag));
 
         $data = [
             'posts' => $posts,
@@ -133,7 +144,8 @@ class PostsController extends Controller
             'down-votes' => $downVotes,
             'up-count' => $upCount,
             'down-count' => $downCount,
-            'view-count' => $viewCount
+            'view-count' => $viewCount,
+            'tags' => $tags
         ];
 
         $this->view('posts/index', $data);
@@ -209,6 +221,7 @@ class PostsController extends Controller
                 'category' => trim($_POST['category']),
                 'body' => trim($_POST['body']),
                 'image' => $_FILES['image'],
+                'tags'  => trim($_POST['tags']),
                 'user_id' => $_SESSION['user_id'],
                 'title_err' => '',
                 'body_err' => ''
@@ -238,6 +251,7 @@ class PostsController extends Controller
             }
 
             if (empty($data['title_err']) && empty($data['body_err'])) {
+                $data['tags']=explode(',',$data['tags']);
                 if ($this->postModel->addPost($data)) {
                     flash('post_message', 'Post Added');
                     redirect('posts');
@@ -255,6 +269,7 @@ class PostsController extends Controller
                 'title' => '',
                 'category' => '',
                 'body' => '',
+                'tags' => '',
                 'image' => ''
             ];
 

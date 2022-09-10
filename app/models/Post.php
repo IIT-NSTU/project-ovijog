@@ -8,6 +8,13 @@ class Post {
         $this->db = Database::getInstance();
     }
 
+    public function getTags($post_id){
+        $this->db->query("select tag from tags where post_id = :post_id");
+        $this->db->bind(':post_id',$post_id);
+
+        return $this->db->resultSet();
+    }
+
     public function getPostsWithLimit($page){
         $limit=4;
         $row=($page-1)*$limit;
@@ -173,6 +180,13 @@ class Post {
         $this->db->bind(':img_link', $data['image']);
 
         if ($this->db->execute()) {
+            $post_id=$this->db->lastInsertId();
+            foreach ($data['tags'] as $tag){
+                $this->db->query("insert into tags (post_id, tag) values (:post_id, :tag)");
+                $this->db->bind(':post_id',$post_id);
+                $this->db->bind(':tag',$tag);
+                $this->db->execute();
+            }
             return true;
         } else {
             return false;
