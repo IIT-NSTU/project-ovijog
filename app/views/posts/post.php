@@ -37,7 +37,7 @@ include("report.php");
 
                 <?php if ($post->user_id != $_SESSION['user_id']) : ?>
                     <div class="col-sm text-center">
-                        <button class="btn btn-sm text-danger" onclick="run()" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><b>Report</b>
+                        <button class="btn btn-sm text-danger" onclick="report()" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><b>Report</b>
                         </button>
                     </div>
                 <?php endif; ?>
@@ -50,7 +50,7 @@ include("report.php");
 </div>
 
 <script>
-    function run() {
+    function report() {
         document.getElementById("staticBackdrop").style.display = block;
     }
 </script>

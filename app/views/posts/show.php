@@ -1,3 +1,6 @@
+<?php
+include("report.php");
+?>
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require_once APPROOT . '/views/inc/navbar.php'; ?>
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/post.css">
@@ -56,7 +59,9 @@
                             </div>
 
                         <?php else : ?>
-                            <div class="col-sm text-center"><a href="#" class="btn btn-sm text-danger"><b>Report</b></a>
+                            <div class="col-sm text-center">
+                                <button class="btn btn-sm text-danger" onclick="report()" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><b>Report</b>
+                                </button>
                             </div>
                         <?php endif; ?>
                     </div>
@@ -213,6 +218,10 @@
                 console.log(err);
             }
         });
+    }
+
+    function report() {
+        document.getElementById("staticBackdrop").style.display = block;
     }
 </script>
 
