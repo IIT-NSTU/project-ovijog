@@ -20,7 +20,7 @@
 }
 
 .create-post-heading {
-    background-color: #dae1e9;
+    /* background-color: #dae1e9; */
     margin-top: 25px;
     display: flex;
     justify-content: center;
@@ -47,9 +47,10 @@
     color: red;
 }
 
-.ellipsis {
+
+/* .ellipsis {
     color: #a09c9c;
-}
+} */
 
 hr {
     color: #a09c9c;
@@ -62,35 +63,41 @@ hr {
     font-size: 13px;
 }
 
-.ellipsis i {
-    margin-top: 3px;
-    cursor: pointer;
-}
-
 .comment-text {
     font-size: 12px;
 }
 
+
+/* 
 .status small {
     margin-right: 10px;
     color: blue;
-}
+} */
 
-.form-control {
-    border-radius: 26px;
-}
 
+/* .form-control { */
+
+
+/* border-radius: 26px; */
+
+
+/* } */
+
+
+/* 
 .fonts {
     position: absolute;
     right: 13px;
     top: 8px;
-    color: #a09c9c;
+    color: #a09c9c; */
+
+
 }
 
-.form-control:focus {
+/* .form-control:focus {
     color: #495057;
     background-color: #fff;
     border-color: #8bbafe;
     outline: 0;
     box-shadow: none;
-}
+} */
