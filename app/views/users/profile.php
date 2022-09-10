@@ -47,7 +47,7 @@
                         <h6>Password</h6>
                     </div>
                     <div class="col-sm-8 text-secondary">
-                        <a href="#" id="change-password">Change Password</a>
+                        <a href="<?php echo URLROOT; ?>/users/changePassword/<?php echo $data['user']->user_id; ?>" id="change-password">Change Password</a>
                     </div>
                 </div>
             </div>

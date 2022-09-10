@@ -133,6 +133,16 @@ class PostsController extends Controller {
         $this->view('posts/index', $data);
     }
 
+    public function report($id) {
+
+        $data = [
+
+        ];
+
+
+        $this->view('posts/report', $data);
+    }
+
     public function show($id) {
         $this->postModel->addView($id);
 
