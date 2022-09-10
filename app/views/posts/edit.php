@@ -28,7 +28,7 @@
     </div>
 
     <div class="card card-body mt-4 bg-light">
-        <form action="<?php echo URLROOT; ?>/posts/add" method="post">
+        <form action="<?php echo URLROOT; ?>/posts/edit" method="post">
             <div class="row">
                 <div class="col">
                     <div class="form-group mb-4">
