@@ -196,5 +196,19 @@ class UsersController extends Controller {
         redirect('users/login');
     }
 
+    public function forgetPassword(){
+
+        $data=[];
+
+        $this->view('/users/forgetpassword', $data);
+    }
+
+    public function changePassword(){
+
+        $data=[];
+
+        $this->view('/users/changepassword', $data);
+    }
+
 
 }

@@ -45,7 +45,7 @@
                             </div>
 
                             <div class="text-end mb-3 text-sm ">
-                                <a href="#" class="text-decoration-none" style="color:blue ;">Forgot Password? </a>
+                                <a href="<?php echo URLROOT; ?>/users/forgetPassword/" class="text-decoration-none" style="color:blue ;">Forgot Password? </a>
                             </div>
                             <div class="row mb-2 px-3">
                                 <button type="submit" class="btn login-btn-color">Login</button>
