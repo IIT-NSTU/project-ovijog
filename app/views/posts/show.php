@@ -1,5 +1,6 @@
 <?php
 include("report.php");
+include("deletePost.php");
 ?>
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require_once APPROOT . '/views/inc/navbar.php'; ?>
@@ -55,7 +56,9 @@ include("report.php");
                             </div>
                             <div class="col-sm text-center"><a href="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']->post_id; ?>" class="btn btn-sm text-primary"><b>Edit</b></a>
                             </div>
-                            <div class="col-sm text-center"><a href="<?php echo URLROOT; ?>/posts/delete/<?php echo $data['post']->post_id; ?>" class="btn btn-sm text-danger"><b>Remove</b></a>
+                            <div class="col-sm text-center">
+                                <button class="btn btn-sm text-danger" onclick="delete_func()" data-bs-toggle="modal" data-bs-target="#staticBackdrop1"><b>Detete</b>
+                                </button>
                             </div>
 
                         <?php else : ?>
@@ -222,6 +225,10 @@ include("report.php");
 
     function report() {
         document.getElementById("staticBackdrop").style.display = block;
+    }
+
+    function delete_func() {
+        document.getElementById("staticBackdrop1").style.display = block;
     }
 </script>
 
