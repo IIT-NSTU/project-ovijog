@@ -4,7 +4,8 @@
 
 <div class="main-body">
     <div class="row">
-        <div class="col-md-5" style="margin-top:60px;">
+
+        <div class="col-md-5 d-flex flex-row" style="position: fixed;">
             <div class="card card-body mb-1">
                 <div class="row">
                     <div class="d-flex flex-column align-items-center text-center mt-2 mb-2">
@@ -51,9 +52,11 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-7">
-            <div class="mt-2 mb-2 overflow" style="max-height: 70%; overflow-x: hidden;">
-                <div class="row d-flex align-items-center justify-content-center">
+
+        <div class="col-sm-7 d-flex" style="margin-left: 35%">
+
+            <div class="mt-2 mb-2">
+                <div class="row d-flex align-items-center justify-content-end">
 
                     <?php if (count($data['posts']) == 0) : ?>
                         <h4 class="border border-dark rounded p-4 text-center mt-5">You do not create any post yet</h4>
@@ -88,6 +91,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 

@@ -8,6 +8,24 @@ class Post {
         $this->db = Database::getInstance();
     }
 
+    public function getPostsWithLimit($page){
+        $limit=4;
+        $row=($page-1)*$limit;
+
+        $this->db->query("select * from posts ORDER BY created_time DESC limit :row, :limit");
+        $this->db->bind(':row',$row);
+        $this->db->bind(':limit',$limit);
+
+        return $this->db->resultSet();
+    }
+
+    public function markSolved($post_id){
+        $this->db->query("update posts set issolved = true where post_id = :post_id");
+        $this->db->bind(':post_id',$post_id);
+
+        return $this->db->execute();
+    }
+
     public function totalSolvedCount() {
         $this->db->query("select * from posts where issolved = true");
 

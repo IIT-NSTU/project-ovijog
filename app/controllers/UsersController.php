@@ -1,48 +1,37 @@
 <?php
 
-class UsersController extends Controller
-{
+class UsersController extends Controller {
 
     private $userModel;
     private $postModel;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->userModel = $this->model("User");
         $this->postModel = $this->model("Post");
     }
 
-    public function profile()
-    {
+    public function profile() {
         $posts = $this->userModel->getPosts();
 
-        $upCount=[];
-        $downCount=[];
+        $upCount = [];
+        $downCount = [];
 
-        foreach ($posts as $post){
-            $upCount[$post->post_id]=$this->postModel->getUpVotes($post->post_id);
-            $downCount[$post->post_id]=$this->postModel->getdownVotes($post->post_id);
+        foreach ($posts as $post) {
+            $upCount[$post->post_id] = $this->postModel->getUpVotes($post->post_id);
+            $downCount[$post->post_id] = $this->postModel->getdownVotes($post->post_id);
         }
 
         $data = [
             'user' => $this->userModel->getUserById($_SESSION['user_id']),
             'posts' => $this->userModel->getPosts(),
-            'up-count'=>$upCount,
-            'down-count'=>$downCount
+            'up-count' => $upCount,
+            'down-count' => $downCount
         ];
 
         $this->view('/users/profile', $data);
     }
 
-    // public function editProfile() {
-    //     $data = [
-    //         'title' => 'this is profile'
-    //     ];
-    //     $this->view('/users/editProfile', $data);
-    // }
-
-    public function register()
-    {
+    public function register() {
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -122,8 +111,25 @@ class UsersController extends Controller
         }
     }
 
-    public function login()
-    {
+    public function verify() {
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            $user_id = $_GET['id'];
+            $key = $_GET['key'];
+
+            if ($this->userModel->verify($user_id, $key)) {
+                flash('register_success', 'verification successful you can log in now');
+                redirect('users/login');
+            } else {
+                die('BAD REQUEST');
+            }
+
+
+        } else {
+            die('BAD REQUEST');
+        }
+    }
+
+    public function login() {
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -175,20 +181,20 @@ class UsersController extends Controller
         }
     }
 
-    public function createUserSession($user)
-    {
+    public function createUserSession($user) {
         $_SESSION['user_id'] = $user->user_id;
         $_SESSION['user_name'] = $user->fname . ' ' . $user->lname;
         $_SESSION['user_email'] = $user->edu_mail;
         redirect('pages/home');
     }
 
-    public function logout()
-    {
+    public function logout() {
         unset($_SESSION['user_id']);
         unset($_SESSION['user_name']);
         unset($_SESSION['user_email']);
         session_destroy();
         redirect('users/login');
     }
+
+
 }

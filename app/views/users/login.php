@@ -50,12 +50,6 @@
                             <div class="row mb-2 px-3">
                                 <button type="submit" class="btn login-btn-color">Login</button>
                             </div>
-
-                            <div class="row mb-2 text-sm">
-                                <label class="form-check-label" for="rememberme">
-                                    <input class="form-check-input align-middle" type="checkbox" value="" id="rememberme" name="rememberme"> Remember Me
-                                </label>
-                            </div>
                             <div class="row px-1 ">
                                 <small class="font-weight-bold">Don't have an account? <a href="<?php echo URLROOT; ?>/users/register" class="text-danger text-decoration-none"> Register Now</a></small>
                             </div>

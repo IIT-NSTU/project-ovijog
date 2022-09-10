@@ -16,6 +16,55 @@ class PostsController extends Controller {
         $this->commentModel = $this->model('Comment');
     }
 
+    public function load($page=1){
+        sleep(1);
+        //$page=$_POST['page']??1;
+
+        $posts=$this->postModel->getPostsWithLimit($page);
+
+        $upVotes = [];
+        $downVotes = [];
+
+        $upCount = [];
+        $downCount = [];
+
+        $viewCount = [];
+
+        foreach ($posts as $post) {
+            if ($this->postModel->isVoted($post->post_id)) {
+                if ($this->postModel->getVote($post->post_id) == 1) {
+                    $upVotes[$post->post_id] = 1;
+                } else {
+                    $downVotes[$post->post_id] = 1;
+                }
+            }
+
+            $upCount[$post->post_id] = $this->postModel->getUpVotes($post->post_id);
+            $downCount[$post->post_id] = $this->postModel->getdownVotes($post->post_id);
+            $viewCount[$post->post_id] = $this->postModel->getViewCount($post->post_id);
+        }
+
+        $data = [
+            'posts' => $posts,
+            'up-votes' => $upVotes,
+            'down-votes' => $downVotes,
+            'up-count' => $upCount,
+            'down-count' => $downCount,
+            'view-count' => $viewCount
+        ];
+
+
+        $this->view('posts/list', $data);
+
+    }
+
+    public function markSolved(){
+
+        $post_id=$_POST['post_id'];
+
+        echo $this->postModel->markSolved($post_id);
+    }
+
     public function comment($id) {
 
         $commentMsg = $_POST['comment'];
