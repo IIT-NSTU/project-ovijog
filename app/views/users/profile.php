@@ -63,8 +63,8 @@
                         <div class="col-sm-9 mb-3">
                             <div class="card">
                                 <div class="d-flex justify-content-between p-2 px-3">
-                                    <div class="d-flex flex-row align-items-center"> <img src="https://bootdey.com/img/Content/avatar/avatar7.png" width="40" class="rounded-circle">
-                                        <div class="d-flex flex-column"> <span class="font-weight-bold"><?php echo $post->title; ?></span>
+                                    <div class="d-flex flex-row align-items-center">
+                                        <div class="d-flex flex-column"> <span class="font-weight-bold">Title: <?php echo $post->title; ?></span>
                                             <small class="text-primary">Category: <?php echo $post->category; ?></small>
                                         </div>
                                     </div>
@@ -90,6 +90,5 @@
         </div>
     </div>
 </div>
-
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

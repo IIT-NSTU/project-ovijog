@@ -1,0 +1,42 @@
+.img {
+    width: 33px;
+    max-width: 100%;
+    margin: auto;
+    vertical-align: middle;
+}
+
+.mainsection {
+    padding-left: 12.6rem;
+}
+
+.sidebar {
+    position: fixed;
+    background: #1736e5;
+    /* background: #6470b6; */
+    width: 200px;
+    height: 100%;
+    top: 11%;
+    left: 0;
+    z-index: 1;
+}
+
+.sidebar h2 {
+    text-align: center;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: Black;
+    background: rgb(209, 186, 186);
+    padding: 20px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.sidebar ul li {
+    margin: 12px;
+}
+
+.sidebar ul li a {
+    color: white;
+    padding: 0 10px 0 5px;
+    text-decoration: none;
+}
