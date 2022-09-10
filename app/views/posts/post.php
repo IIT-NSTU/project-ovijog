@@ -1,3 +1,6 @@
+<?php
+include("report.php");
+?>
 <div class="col-md-8 mb-3">
     <div class="card">
         <div class="d-flex justify-content-between p-2 px-3">
@@ -33,7 +36,10 @@
                 </div>
 
                 <?php if ($post->user_id != $_SESSION['user_id']) : ?>
-                    <div class="col-sm text-center"><a href="<?php echo URLROOT; ?>/posts/report/<?php echo $post->post_id; ?>" class="btn btn-sm text-danger"><b>Report</b></a></div>
+                    <div class="col-sm text-center">
+                        <button class="btn btn-sm text-danger" onclick="run()" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><b>Report</b>
+                        </button>
+                    </div>
                 <?php endif; ?>
 
                 <div class="col-sm text-center"><a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->post_id; ?>" class="btn btn-sm text-primary"><b>More</b></a></div>
@@ -42,3 +48,9 @@
         </div>
     </div>
 </div>
+
+<script>
+    function run() {
+        document.getElementById("staticBackdrop").style.display = block;
+    }
+</script>
