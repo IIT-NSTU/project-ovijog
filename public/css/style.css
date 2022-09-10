@@ -8,6 +8,48 @@
 }
 
 
+.chip {
+    display: inline-block;
+    padding: 0 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    background-color: #f1f1f1;
+}
+
+
+/*  search bar   */
+
+.search-click {
+    border: 1px solid #ccc;
+    outline: none;
+    background-size: 22px;
+    background-position: 13px;
+    border-radius: 10px;
+    width: 80px;
+    height: 25px;
+    padding: 15px;
+    transition: all 0.5s;
+}
+.search-click:focus {
+    width: 300px;
+    padding-left: 50px;
+}
+.search-click {
+    position: relative;
+    overflow: hidden;
+    height: 25px;
+}
+.search-click input {
+    background: transparent;
+    border: 1px solid #ccc;
+    outline: none;
+    position: absolute;
+    width: 300px;
+    height: 25px;
+    left: 0%;
+}
+
+
 /*footer solution*/
 
 #page-container {

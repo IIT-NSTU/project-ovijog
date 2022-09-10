@@ -23,6 +23,11 @@ include("report.php");
         </div>
         <div class="px-5 py-2">
             <p class="body-text"><?php echo $post->body; ?></p>
+            <div>
+                <?php foreach ($data['tags'][$post->post_id] as $tag) : ?>
+                    <div class="chip"><?php echo $tag->tag; ?></div>
+                <?php endforeach; ?>
+            </div>
             <hr>
             <div class="row ">
 

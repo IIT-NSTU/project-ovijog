@@ -31,7 +31,7 @@
 
                             <div style="display:flex ;">
                                 <li style="margin-top: 5px;">
-                                    <input class="form-control form-control-sm bg-light" type="search" placeholder="Search" aria-label="Search" style="border-radius: 26px;">
+                                    <input type="text" class="search-click" name="" placeholder="search here..." />
                                 </li>
                                 <li style=" margin-top: 7px;">
                                     <button class="btn btn-outline-light search-icon" type="submit" style="height: 32px;display:flex;align-items: flex-end;margin-left: 8px;"><i class="fa-solid fa-magnifying-glass"></i></button>
