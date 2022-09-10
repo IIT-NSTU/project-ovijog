@@ -15,15 +15,16 @@
             <div class="card">
                 <div class="d-flex justify-content-between p-2 px-3">
                     <div class="d-flex flex-row align-items-center">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" width="40" class="rounded-circle">
-                        <div class="d-flex flex-column"><span class="font-weight-bold"><?php echo $data['post']->title; ?></span>
+
+                        <div class="d-flex flex-column"><span class="font-weight-bold">Title: <?php echo $data['post']->title; ?></span>
                             <small class="text-primary">Category: <?php echo $data['post']->category; ?></small>
                         </div>
                     </div>
                     <div id="time-solved">
                         <div class="d-flex flex-row mt-1 ellipsis"><small class="mr-2"><?php echo $data['post']->created_time; ?></small></div>
+                        <div class="text-muted"><small><i class="fa-solid fa-eye"></i> views</small></div>
                         <?php if ($data['post']->issolved) : ?>
-                            <div id="solved" class="text-success"><i class="fa-solid fa-circle-check"></i> Solved</div>
+                            <div id="solved" class="text-success"><small><i class="fa-solid fa-circle-check"></i> Solved </small></div>
                         <?php endif; ?>
                     </div>
 
@@ -65,7 +66,7 @@
                             <input id="comment-text" type="text" class="form-control comment-text" placeholder="Write Comment">
                         </div>
                         <div class="col-sm-2">
-                            <a onclick="comment(this.parentNode.parentNode,<?php echo $data['post']->post_id; ?>)" class="btn btn-sm btn-primary mb-2 mt-2" style="border-radius:10px;">Comment</a>
+                            <a onclick="comment(this.parentNode.parentNode,<?php echo $data['post']->post_id; ?>)" class="btn btn-sm btn-primary mb-2 mt-2">Comment</a>
                         </div>
                     </div>
                 </div>
@@ -94,8 +95,7 @@
 </div>
 
 <script>
-
-    function solved(d,post_id) {
+    function solved(d, post_id) {
 
         var data = {};
 

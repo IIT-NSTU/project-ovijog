@@ -67,15 +67,6 @@ hr {
     cursor: pointer;
 }
 
-.rounded-image {
-    border-radius: 50% !important;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 30px;
-    width: 30px;
-}
-
 .comment-text {
     font-size: 12px;
 }
