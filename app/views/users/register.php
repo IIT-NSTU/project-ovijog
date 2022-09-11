@@ -74,7 +74,7 @@
                                 <input class="btn btn-block button-background-color " name="signup" type="submit" value="Register">
                             </div>
                             <div class="row px-3 ">
-                                <small class="font-weight-bold text-center mb-4">Already a member? <a href="<?php echo URLROOT; ?>/users/login" class="text-danger text-decoration-none">Sign in</a></small>
+                                <small class="font-weight-bold text-center mb-4">Already a member? <a href="<?php echo URLROOT; ?>/users/login" class="text-primary text-decoration-none"><b>Sign in</b></a></small>
                             </div>
                         </div>
                     </div>

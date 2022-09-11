@@ -13,12 +13,12 @@
             <div class="modal-body">
                 <form method="POST" action="#" class="needs-validation" novalidate="" autocomplete="off">
                     <div class="mb-3">
-                        <label class="mb-2 text-muted" for="password">New Password</label>
+                        <label class="mb-2 text-muted" for="password">Old Password</label>
                         <input id="password" type="password" class="form-control" name="password" value="" required autofocus>
                     </div>
 
                     <div class="mb-3">
-                        <label class="mb-2 text-muted" for="password-confirm">Confirm Password</label>
+                        <label class="mb-2 text-muted" for="password-confirm">New Password</label>
                         <input id="password-confirm" type="password" class="form-control" name="password_confirm" required>
                     </div>
                 </form>

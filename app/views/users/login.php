@@ -8,6 +8,61 @@
 </style>
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/Login.css">
 
+<!-----------------Forgot Password modal start------------------------->
+<div class="modal fade" id="forgotPassword" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center" id="staticBackdropLabel">Change Password</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="#" class="needs-validation" novalidate="" autocomplete="off">
+                    <div class="mb-3">
+                        <label class="mb-2 text-muted" for="email">Enter your email</label>
+                        <input id="email" type="email" class="form-control" name="email" value="" required autofocus>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-sm" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#changePassword" style="background-color: #293462; color:white;">Done</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-----------------Forgot Password modal end------------------------->
+
+<!-----------------Change Password modal start------------------------->
+<div class="modal fade" id="changePassword" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center" id="staticBackdropLabel">Change Password</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="#" class="needs-validation" novalidate="" autocomplete="off">
+                    <div class="mb-3">
+                        <label class="mb-2 text-muted" for="password">New Password</label>
+                        <input id="password" type="password" class="form-control" name="password" value="" required autofocus>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="mb-2 text-muted" for="password-confirm">Confirm Password</label>
+                        <input id="password-confirm" type="password" class="form-control" name="password_confirm" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-sm" style="background-color: #293462; color:white;">Change Password</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-----------------Change Password modal end------------------------->
+
 <form method="POST" action="<?php echo URLROOT; ?>/users/login">
 
     <div class="row no-gutters my-4">
@@ -45,13 +100,14 @@
                             </div>
 
                             <div class="text-end mb-3 text-sm ">
-                                <a href="<?php echo URLROOT; ?>/users/forgetPassword/" class="text-decoration-none" style="color:blue ;">Forgot Password? </a>
+                                <!-- <a href="<?php echo URLROOT; ?>/users/forgetPassword/" class="text-decoration-none" style="color:blue ;">Forgot Password? </a> -->
+                                <button class="btn btn-sm text-primary ps-0" data-bs-toggle="modal" data-bs-target="#forgotPassword">Forgot password</button>
                             </div>
                             <div class="row mb-2 px-3">
                                 <button type="submit" class="btn login-btn-color">Login</button>
                             </div>
                             <div class="row px-1 ">
-                                <small class="font-weight-bold">Don't have an account? <a href="<?php echo URLROOT; ?>/users/register" class="text-danger text-decoration-none"> Register Now</a></small>
+                                <small class="font-weight-bold">Don't have an account? <a href="<?php echo URLROOT; ?>/users/register" class="text-primary text-decoration-none"><b> Register Now</b></a></small>
                             </div>
                         </div>
                     </div>
