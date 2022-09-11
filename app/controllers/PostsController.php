@@ -1,12 +1,14 @@
 <?php
 
-class PostsController extends Controller {
+class PostsController extends Controller
+{
 
     private $postModel;
     private $userModel;
     private $commentModel;
 
-    public function __construct() {
+    public function __construct()
+    {
         if (!isLoggedIn()) {
             redirect('users/login');
         }
@@ -16,11 +18,12 @@ class PostsController extends Controller {
         $this->commentModel = $this->model('Comment');
     }
 
-    public function load($page=1){
+    public function load($page = 1)
+    {
         sleep(1);
         //$page=$_POST['page']??1;
 
-        $posts=$this->postModel->getPostsWithLimit($page);
+        $posts = $this->postModel->getPostsWithLimit($page);
 
         $upVotes = [];
         $downVotes = [];
@@ -60,17 +63,18 @@ class PostsController extends Controller {
 
 
         $this->view('posts/list', $data);
-
     }
 
-    public function markSolved(){
+    public function markSolved()
+    {
 
-        $post_id=$_POST['post_id'];
+        $post_id = $_POST['post_id'];
 
         echo $this->postModel->markSolved($post_id);
     }
 
-    public function comment($id) {
+    public function comment($id)
+    {
 
         $commentMsg = $_POST['comment'];
 
@@ -88,7 +92,8 @@ class PostsController extends Controller {
         echo json_encode($data);
     }
 
-    public function vote($params0, $params1) {
+    public function vote($params0, $params1)
+    {
 
         $this->postModel->vote($params0, $params1);
 
@@ -100,7 +105,8 @@ class PostsController extends Controller {
         echo json_encode($data);
     }
 
-    public function index() {
+    public function index()
+    {
 
         $posts = $this->postModel->getAllPosts();
 
@@ -145,14 +151,28 @@ class PostsController extends Controller {
         $this->view('posts/index', $data);
     }
 
-    public function report($id) {
+    public function report($id)
+    {
 
         $data = [];
+
+
+
         $this->view('posts/report', $data);
     }
 
+    public function deletePost($id)
+    {
 
-    public function show($id) {
+        $data = [];
+
+
+        $this->view('posts/deletePost', $data);
+    }
+
+    public function show($id)
+    {
+
         $this->postModel->addView($id);
 
         $post = $this->postModel->getPostById($id);
@@ -181,7 +201,8 @@ class PostsController extends Controller {
         $this->view('posts/show', $data);
     }
 
-    public function add() {
+    public function add()
+    {
 
         $categories = $this->postModel->getCategories();
 
@@ -252,7 +273,8 @@ class PostsController extends Controller {
         }
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
         $categories = $this->postModel->getCategories();
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -324,7 +346,8 @@ class PostsController extends Controller {
         }
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $post = $this->postModel->getPostById($id);
 
         if ($post->user_id != $_SESSION['user_id']) {
@@ -340,7 +363,8 @@ class PostsController extends Controller {
         }
     }
 
-    public function about($id) {
+    public function about($id)
+    {
         echo $id;
     }
 }
