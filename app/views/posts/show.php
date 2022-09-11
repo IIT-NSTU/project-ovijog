@@ -1,9 +1,5 @@
-<?php
-include("report.php");
-include("deletePost.php");
-?>
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<?php require_once APPROOT . '/views/inc/navbar.php'; ?>
+
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/post.css">
     <style>
         .btn-hover :hover {
@@ -12,6 +8,53 @@ include("deletePost.php");
             color: white;
         }
     </style>
+
+<?php require_once APPROOT . '/views/inc/navbar.php'; ?>
+
+
+    <!-----------------Delete modal start------------------------->
+    <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="staticBackdropLabel">Confirmation</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete the post?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="<?php echo URLROOT; ?>/posts/delete/<?php echo $data['post']->post_id; ?>" class="btn btn-sm text-danger"><b>Confirm</b></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-----------------Delete modal end------------------------->
+
+    <!-----------------Report modal start------------------------->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="staticBackdropLabel">Confirmation</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-sm btn-danger">Confirm</button>
+                    <!-- <a href="<?php echo URLROOT; ?>/posts/delete/<?php echo $data['post']->post_id; ?>" class="btn btn-sm text-danger"><b>Confirm</b></a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-----------------Report modal end------------------------->
+
+
+
     <div class="container mt-2 mb-2">
         <div class="row d-flex align-items-center justify-content-center">
 

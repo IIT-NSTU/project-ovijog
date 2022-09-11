@@ -156,18 +156,7 @@ class PostsController extends Controller
 
         $data = [];
 
-
-
         $this->view('posts/report', $data);
-    }
-
-    public function deletePost($id)
-    {
-
-        $data = [];
-
-
-        $this->view('posts/deletePost', $data);
     }
 
     public function show($id)
