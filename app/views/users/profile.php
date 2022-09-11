@@ -1,6 +1,7 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require_once APPROOT . '/views/inc/navbar.php'; ?>
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/profile.css">
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/post.css">
 
 <!-----------------Change Password modal start------------------------->
 <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -117,8 +118,14 @@
                                     <p style="text-align: justify;"><?php echo $post->body; ?></p>
                                     <hr>
                                     <div class="row ">
-                                        <div class="col-sm up-down-vote-icon "> <?php echo $data['up-count'][$post->post_id]; ?> <i class="fa-solid fa-arrow-up "></i></div>
-                                        <div class="col-sm up-down-vote-icon"> <?php echo $data['down-count'][$post->post_id]; ?> <i class="fa-solid fa-arrow-down "></i></div>
+                                        <div class="col-sm up-down-vote-icon py-1">
+                                            <b id="up-count"><?php echo $data['up-count'][$post->post_id]; ?></b><a id="up" onclick="like(this.parentNode.parentNode,<?php echo $post->post_id; ?>)" class="btn btn-sm <?php echo (empty($data['up-votes'][$post->post_id])) ? 'btn-outline-success' : 'btn-success'; ?> ms-2"><i class="fa-solid fa-arrow-up "></i></a>
+                                        </div>
+                                        <div class="col-sm up-down-vote-icon">
+                                            <b id="down-count"><?php echo $data['down-count'][$post->post_id]; ?></b>
+                                            <a id="down" onclick="dislike(this.parentNode.parentNode,<?php echo $post->post_id; ?>)" class="btn btn-sm <?php echo (empty($data['down-votes'][$post->post_id])) ? 'btn-outline-danger' : 'btn-danger'; ?> ms-2"><i class="fa-solid fa-arrow-down"></i>
+                                            </a>
+                                        </div>
                                         <div class="col-sm text-center"><a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->post_id; ?>" class="btn btn-sm text-primary">More</a></div>
                                     </div>
                                 </div>

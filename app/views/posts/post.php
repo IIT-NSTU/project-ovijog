@@ -55,7 +55,7 @@
             <hr>
             <div class="row ">
 
-                <div class="col-sm up-down-vote-icon ">
+                <div class="col-sm up-down-vote-icon py-1">
                     <b id="up-count"><?php echo $data['up-count'][$post->post_id]; ?></b><a id="up" onclick="like(this.parentNode.parentNode,<?php echo $post->post_id; ?>)" class="btn btn-sm <?php echo (empty($data['up-votes'][$post->post_id])) ? 'btn-outline-success' : 'btn-success'; ?> ms-2"><i class="fa-solid fa-arrow-up "></i></a>
                 </div>
                 <div class="col-sm up-down-vote-icon">

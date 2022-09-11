@@ -33,16 +33,16 @@
                 <hr>
                 <div class="ps-3">
                     <div class="pb-2">
-                        <input type="checkbox"> ASH</br>
+                        <input type="checkbox"> Bhasha Shohid Abdus Salam Hall</br>
                     </div>
                     <div class="pb-2">
-                        <input type="checkbox"> AMU</br>
+                        <input type="checkbox"> Abdul Malek Ukil Hall</br>
                     </div>
                     <div class="pb-2">
-                        <input type="checkbox"> BKH</br>
+                        <input type="checkbox"> Hazrat Bibi Khadija Hall</br>
                     </div>
                     <div class="pb-2">
-                        <input class="pb-2" type="checkbox"> FMH</br>
+                        <input class="pb-2" type="checkbox"> Bangamata Sheikh Fazilunnesa Mujib Hall</br>
                     </div>
                     <div class="pb-2">
                         <input class="pb-2" type="checkbox"> Jatir Pita Bangabandhu Sheikh Mujibur Rahman Hall</br>
