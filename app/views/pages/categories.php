@@ -3,44 +3,88 @@
 <?php require_once APPROOT . '/views/inc/navbar.php'; ?>
 
 <div class="container">
-    <div class="row py-5">
-        <div class="col-sm-3">
-            <h6 class="text-center">Building</h6>
-            <hr>
-            <ul>
-                <li class="pb-2">Administrative Building</li>
-                <li class="pb-2">Academic Building 1</li>
-                <li class="pb-2">Academic Building 2</li>
-                <li class="pb-2">Library Building</li>
-                <li class="pb-2">Auditorium Building</li>
-                <li>Medical Center</li>
-            </ul>
-        </div>
-        <div class="col-sm-1"></div>
-        <div class="col-sm-3">
-            <h6 class="text-center">Hall</h6>
-            <hr>
-            <ul>
-                <li class="pb-2">Abdus Salam Hall</li>
-                <li class="pb-2">Abdul Malek Ukil Hall</li>
-                <li class="pb-2">Bibi Khadija Hall</li>
-                <li>Bangabondhu Hall</li>
+    <div class="card card-body my-4">
+        <div class="row py-5 px-2">
+            <div class="card card-body col-sm-3">
+                <h5 class="text-center" style="color:#375c91;">Building</h5>
+                <hr>
+                <div class="ps-3">
+                    <div class="pb-2">
+                        <input type="checkbox"> Administrative Building</br>
+                    </div>
+                    <div class="pb-2">
+                        <input type="checkbox"> Academic Building 1</br>
+                    </div>
+                    <div class="pb-2">
+                        <input type="checkbox"> Academic Building 2</br>
+                    </div>
+                    <div class="pb-2">
+                        <input class="pb-2" type="checkbox"> Library Building</br>
+                    </div>
+                    <div class="pb-2">
+                        <input class="pb-2" type="checkbox"> Auditorium Building</br>
+                    </div>
+                </div>
 
-            </ul>
-        </div>
-        <div class="col-sm-1"></div>
-        <div class="col-sm-3">
-            <h6 class="text-center">Category</h6>
-            <hr>
+            </div>
+            <!-- <div class="col-sm-1"></div> -->
+            <div class="col-sm-3 card card-body">
+                <h5 class="text-center" style="color:#375c91;">Hall</h5>
+                <hr>
+                <div class="ps-3">
+                    <div class="pb-2">
+                        <input type="checkbox"> ASH</br>
+                    </div>
+                    <div class="pb-2">
+                        <input type="checkbox"> AMU</br>
+                    </div>
+                    <div class="pb-2">
+                        <input type="checkbox"> BKH</br>
+                    </div>
+                    <div class="pb-2">
+                        <input class="pb-2" type="checkbox"> FMH</br>
+                    </div>
+                    <div class="pb-2">
+                        <input class="pb-2" type="checkbox"> Jatir Pita Bangabandhu Sheikh Mujibur Rahman Hall</br>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-sm-1"></div> -->
+            <div class="col-sm-3 card card-body">
+                <h5 class="text-center" style="color:#375c91;">Category</h5>
+                <hr>
+                <div class="ps-3">
+                    <?php foreach ($data['categories'] as $category) : ?>
+                        <div class="pb-2">
+                            <input type="checkbox"> <?php echo $category->category; ?></br>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
 
-            <ul>
-                <?php foreach ($data['categories'] as $category) : ?>
-                    <li><?php echo $category->category; ?></li>
-                <?php endforeach; ?>
-            </ul>
+
+            </div>
+            <!-- <div class="col-sm-1"></div> -->
+            <div class="col-sm-3 card card-body">
+                <h5 class="text-center" style="color:#375c91;">Others</h5>
+                <hr>
+                <div class="ps-3">
+                    <div class="pb-2">
+                        <input type="checkbox"> Cafeteria</br>
+                    </div>
+                    <div class="pb-2">
+                        <input type="checkbox"> Medical Center</br>
+                    </div>
+                    <div class="pb-2">
+                        <input type="checkbox"> Mosque</br>
+                    </div>
+                    <div class="pb-2">
+                        <input type="checkbox"> Temple</br>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-sm-1"></div>
     </div>
+
 </div>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

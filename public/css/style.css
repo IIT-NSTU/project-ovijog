@@ -7,7 +7,6 @@
     background: linear-gradient( 0deg, rgba(250, 250, 250, 1) 0%, rgba(222, 222, 233, 1) 11%, rgba(0, 0, 0, 1) 24%);
 }
 
-
 .chip {
     display: inline-block;
     padding: 0 10px;
@@ -30,15 +29,18 @@
     padding: 15px;
     transition: all 0.5s;
 }
+
 .search-click:focus {
     width: 300px;
     padding-left: 50px;
 }
+
 .search-click {
     position: relative;
     overflow: hidden;
     height: 25px;
 }
+
 .search-click input {
     background: transparent;
     border: 1px solid #ccc;
@@ -76,7 +78,8 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    background-color: #e2e8f0;
+    /* background-color: #e2e8f0; */
+    background-color: #b0bec5;
 }
 
 
