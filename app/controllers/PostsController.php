@@ -156,21 +156,12 @@ class PostsController extends Controller
 
         $data = [];
 
-
         $this->view('posts/report', $data);
-    }
-
-    public function deletePost($id)
-    {
-
-        $data = [];
-
-
-        $this->view('posts/deletePost', $data);
     }
 
     public function show($id)
     {
+
         $this->postModel->addView($id);
 
         $post = $this->postModel->getPostById($id);
@@ -180,15 +171,11 @@ class PostsController extends Controller
 
         if ($this->postModel->isVoted($post->post_id)) {
             if ($this->postModel->getVote($post->post_id) == 1) {
-                //die('up');
                 $upVoted = 1;
             } else {
-                //die('down');
                 $downVoted = 1;
             }
         }
-
-        //die('up:'.$upVoted.' down:'.$downVoted);
 
         $data = [
             'post' => $post,
@@ -196,11 +183,9 @@ class PostsController extends Controller
             'up-voted' => $upVoted,
             'down-voted' => $downVoted,
             'up-count' => $this->postModel->getUpVotes($id),
-            'down-count' => $this->postModel->getdownVotes($id)
+            'down-count' => $this->postModel->getdownVotes($id),
+            'tags' => $this->postModel->getTags($post->post_id)
         ];
-
-
-        //die(($data['up-voted']==1) ? 'btn-outline-success' : 'btn-success');
 
         $this->view('posts/show', $data);
     }

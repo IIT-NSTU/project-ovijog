@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -15,3 +16,5 @@
         </div>
     </div>
 </div>
+=======
+>>>>>>> 882ada82e535b387a762085cb6b3485fdba192c4
