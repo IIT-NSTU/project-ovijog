@@ -2,6 +2,35 @@
 <?php require_once APPROOT . '/views/inc/navbar.php'; ?>
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/profile.css">
 
+<!-----------------Change Password modal start------------------------->
+<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center" id="staticBackdropLabel">Change Password</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="#" class="needs-validation" novalidate="" autocomplete="off">
+                    <div class="mb-3">
+                        <label class="mb-2 text-muted" for="password">New Password</label>
+                        <input id="password" type="password" class="form-control" name="password" value="" required autofocus>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="mb-2 text-muted" for="password-confirm">Confirm Password</label>
+                        <input id="password-confirm" type="password" class="form-control" name="password_confirm" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-sm" style="background-color: #293462; color:white;">Change Password</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-----------------Change Password modal end------------------------->
 <div class="main-body">
     <div class="row">
 
@@ -47,13 +76,14 @@
                         <h6>Password</h6>
                     </div>
                     <div class="col-sm-8 text-secondary">
-                        <a href="<?php echo URLROOT; ?>/users/changePassword/<?php echo $data['user']->user_id; ?>" id="change-password">Change Password</a>
+                        <!-- <a href="<?php echo URLROOT; ?>/users/changePassword/<?php echo $data['user']->user_id; ?>" id="change-password">Change Password</a> -->
+                        <button class="btn btn-sm text-primary ps-0" data-bs-toggle="modal" data-bs-target="#staticBackdrop2"><b>Change Password</b>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-sm-7 d-flex" style="margin-left: 35%">
+        <div class=" col-sm-7 d-flex" style="margin-left: 35%">
 
             <div class="mt-2 mb-2">
                 <div class="row d-flex align-items-center justify-content-end">

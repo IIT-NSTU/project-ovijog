@@ -18,10 +18,10 @@
                                 <a href="<?php echo URLROOT; ?>/pages/home" class="nav-link"><i class="fas fa-house-user"></i> Home</a>
                             </li>
                             <li class="nav-item">
-                                <a href="<?php echo URLROOT; ?>/users/profile" class="nav-link"><i class="fas fa-user"></i> My Profile</a>
+                                <a href="<?php echo URLROOT; ?>/posts" class="nav-link"><i class="fa-solid fa-sim-card"></i> Posts</a>
                             </li>
                             <li class="nav-item">
-                                <a href="<?php echo URLROOT; ?>/posts" class="nav-link"><i class="fa-solid fa-sim-card"></i> Posts</a>
+                                <a href="<?php echo URLROOT; ?>/users/profile" class="nav-link"><i class="fas fa-user"></i> My Profile</a>
                             </li>
                             <li class="nav-item">
                                 <a href="<?php echo URLROOT; ?>/pages/categories" class="nav-link">

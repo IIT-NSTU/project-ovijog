@@ -111,13 +111,13 @@
                             <div class="col-sm text-center"><a href="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']->post_id; ?>" class="btn btn-sm text-primary"><b>Edit</b></a>
                             </div>
                             <div class="col-sm text-center">
-                                <button class="btn btn-sm text-danger" onclick="delete_func()" data-bs-toggle="modal" data-bs-target="#staticBackdrop1"><b>Detete</b>
+                                <button class="btn btn-sm text-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop1"><b>Detete</b>
                                 </button>
                             </div>
 
                         <?php else : ?>
                             <div class="col-sm text-center">
-                                <button class="btn btn-sm text-danger" onclick="report()" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><b>Report</b>
+                                <button class="btn btn-sm text-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><b>Report</b>
                                 </button>
                             </div>
                         <?php endif; ?>
@@ -275,14 +275,6 @@
                 console.log(err);
             }
         });
-    }
-
-    function report() {
-        document.getElementById("staticBackdrop").style.display = block;
-    }
-
-    function delete_func() {
-        document.getElementById("staticBackdrop1").style.display = block;
     }
 </script>
 

@@ -66,7 +66,7 @@
 
                 <?php if ($post->user_id != $_SESSION['user_id']) : ?>
                     <div class="col-sm text-center">
-                        <button class="btn btn-sm text-danger" onclick="report()" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><b>Report</b>
+                        <button class="btn btn-sm text-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><b>Report</b>
                         </button>
                     </div>
                 <?php endif; ?>
@@ -77,9 +77,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    function report() {
-        document.getElementById("staticBackdrop").style.display = block;
-    }
-</script>
