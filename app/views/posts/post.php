@@ -1,6 +1,30 @@
-<?php
-include("report.php");
-?>
+<!-----------------Report modal start------------------------->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Report Confirmation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h6 class="text-muted">Choose Reason: </h6>
+                <div>
+                    <input type="radio" name="reportCategory" value="Fake Post"> Fake Post</br>
+                    <input type="radio" name="reportCategory" value="Others"> Bad Language</br>
+                    <input type="radio" name="reportCategory" value="Others"> Other</br>
+                </div><br>
+                <h6 class="text-muted">Write about the post</h6>
+                <textarea class="form-control col-xs-12"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-sm btn-danger">Report</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-----------------Report modal end------------------------->
+
 <div class="col-md-8 mb-3">
     <div class="card">
         <div class="d-flex justify-content-between p-2 px-3">
