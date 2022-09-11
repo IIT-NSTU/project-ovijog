@@ -1,228 +1,223 @@
-<?php
-include("report.php");
-?>
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require_once APPROOT . '/views/inc/navbar.php'; ?>
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/post.css">
-<style>
-    .btn-hover :hover {
-        padding: 0px;
-        background-color: green;
-        color: white;
-    }
-</style>
-<div class="container mt-2 mb-2">
-    <div class="row d-flex align-items-center justify-content-center">
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/post.css">
+    <style>
+        .btn-hover :hover {
+            padding: 0px;
+            background-color: green;
+            color: white;
+        }
+    </style>
+    <div class="container mt-2 mb-2">
+        <div class="row d-flex align-items-center justify-content-center">
 
-        <div class="col-md-8 mb-3">
-            <div class="card">
-                <div class="d-flex justify-content-between p-2 px-3">
-                    <div class="d-flex flex-row align-items-center">
-
-                        <div class="d-flex flex-column"><span class="font-weight-bold">Title: <?php echo $data['post']->title; ?></span>
-                            <small class="text-primary">Category: <?php echo $data['post']->category; ?></small>
+            <div class="col-md-8 mb-3">
+                <div class="card">
+                    <div class="d-flex justify-content-between p-2 px-3">
+                        <div class="d-flex flex-row align-items-center">
+                            <div class="d-flex flex-column"><span class="font-weight-bold"><?php echo $data['post']->title; ?></span>
+                                <small class="text-primary">Category: <?php echo $data['post']->category; ?></small>
+                            </div>
                         </div>
+                        <div id="time-solved">
+                            <div class="d-flex flex-row mt-1 ellipsis"><small class="mr-2"><?php echo $data['post']->created_time; ?></small></div>
+                            <?php if ($data['post']->issolved) : ?>
+                                <div id="solved" class="text-success"><i class="fa-solid fa-circle-check"></i> Solved</div>
+                            <?php endif; ?>
+                        </div>
+
                     </div>
-                    <div id="time-solved">
-                        <div class="d-flex flex-row mt-1 ellipsis"><small class="mr-2"><?php echo $data['post']->created_time; ?></small></div>
-                        <div class="text-muted"><small><i class="fa-solid fa-eye"></i> views</small></div>
-                        <?php if ($data['post']->issolved) : ?>
-                            <div id="solved" class="text-success"><small><i class="fa-solid fa-circle-check"></i> Solved </small></div>
-                        <?php endif; ?>
+                    <div class="text-center">
+                        <img src="<?php echo $data['post']->img_link; ?>" width="50%" height="auto" class="img-fluid text-center py-3">
                     </div>
-
-                </div>
-                <div class="text-center">
-                    <img src="<?php echo $data['post']->img_link; ?>" width="50%" height="auto" class="img-fluid text-center py-3">
-                </div>
-                <div class="px-5 py-2">
-                    <p class="body-text"><?php echo $data['post']->body; ?></p>
-                    <hr>
-                    <div class="row py-1">
-
-                        <div class="col-sm up-down-vote-icon ">
-                            <b id="up-count"><?php echo $data['up-count']; ?></b>
-                            <a id="up" onclick="like(this.parentNode.parentNode,<?php echo $data['post']->post_id; ?>)" class="btn btn-sm <?php echo (!$data['up-voted']) ? 'btn-outline-success' : 'btn-success'; ?> ms-2"><i class="fa-solid fa-arrow-up "></i></a>
+                    <div class="px-5 py-2">
+                        <p class="body-text"><?php echo $data['post']->body; ?></p>
+                        <div>
+                            <?php foreach ($data['tags'] as $tag) : ?>
+                                <div class="chip"><?php echo $tag->tag; ?></div>
+                            <?php endforeach; ?>
                         </div>
-                        <div class="col-sm up-down-vote-icon">
-                            <b id="down-count"><?php echo $data['down-count']; ?></b>
-                            <a id="down" onclick="dislike(this.parentNode.parentNode,<?php echo $data['post']->post_id; ?>)" class="btn btn-sm <?php echo (!$data['down-voted']) ? 'btn-outline-danger' : 'btn-danger'; ?> ms-2"><i class="fa-solid fa-arrow-down"></i></a>
-                        </div>
+                        <hr>
+                        <div class="row py-1">
 
-                        <?php if ($data['post']->user_id == $_SESSION['user_id']) : ?>
-                            <div class="col-sm text-center">
-                                <a onclick="solved(this,<?php echo $data['post']->post_id; ?>)" class="btn btn-sm text-success"><b>Solved</b></a>
+                            <div class="col-sm up-down-vote-icon ">
+                                <b id="up-count"><?php echo $data['up-count']; ?></b>
+                                <a id="up" onclick="like(this.parentNode.parentNode,<?php echo $data['post']->post_id; ?>)" class="btn btn-sm <?php echo (!$data['up-voted']) ? 'btn-outline-success' : 'btn-success'; ?> ms-2"><i class="fa-solid fa-arrow-up "></i></a>
                             </div>
-                            <div class="col-sm text-center"><a href="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']->post_id; ?>" class="btn btn-sm text-primary"><b>Edit</b></a>
-                            </div>
-                            <div class="col-sm text-center"><a href="<?php echo URLROOT; ?>/posts/delete/<?php echo $data['post']->post_id; ?>" class="btn btn-sm text-danger"><b>Remove</b></a>
+                            <div class="col-sm up-down-vote-icon">
+                                <b id="down-count"><?php echo $data['down-count']; ?></b>
+                                <a id="down" onclick="dislike(this.parentNode.parentNode,<?php echo $data['post']->post_id; ?>)" class="btn btn-sm <?php echo (!$data['down-voted']) ? 'btn-outline-danger' : 'btn-danger'; ?> ms-2"><i class="fa-solid fa-arrow-down"></i></a>
                             </div>
 
-                        <?php else : ?>
-                            <div class="col-sm text-center">
-                                <button class="btn btn-sm text-danger" onclick="report()" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><b>Report</b>
-                                </button>
-                            </div>
-                        <?php endif; ?>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-10 mb-2 mt-2">
-                            <input id="comment-text" type="text" class="form-control comment-text" placeholder="Write Comment">
+                            <?php if ($data['post']->user_id == $_SESSION['user_id']) : ?>
+                                <div class="col-sm text-center">
+                                    <a onclick="solved(this,<?php echo $data['post']->post_id; ?>)" class="btn btn-sm text-success"><b>Solved</b></a>
+                                </div>
+                                <div class="col-sm text-center"><a href="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']->post_id; ?>" class="btn btn-sm text-primary"><b>Edit</b></a>
+                                </div>
+                                <div class="col-sm text-center"><a href="<?php echo URLROOT; ?>/posts/delete/<?php echo $data['post']->post_id; ?>" class="btn btn-sm text-danger"><b>Remove</b></a>
+                                </div>
+
+                            <?php else : ?>
+                                <div class="col-sm text-center"><a href="#" class="btn btn-sm text-danger"><b>Report</b></a>
+                                </div>
+                            <?php endif; ?>
                         </div>
-                        <div class="col-sm-2">
-                            <a onclick="comment(this.parentNode.parentNode,<?php echo $data['post']->post_id; ?>)" class="btn btn-sm btn-primary mb-2 mt-2">Comment</a>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-10 mb-2 mt-2">
+                                <input id="comment-text" type="text" class="form-control comment-text" placeholder="Write Comment">
+                            </div>
+                            <div class="col-sm-2">
+                                <a onclick="comment(this.parentNode.parentNode,<?php echo $data['post']->post_id; ?>)" class="btn btn-sm btn-primary mb-2 mt-2" style="border-radius:10px;">Comment</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!--comments-->
-        <div id="comments" class="row d-flex align-items-center justify-content-center">
-            <?php foreach ($data['comments'] as $comment) : ?>
-                <div class="col-md-8 mb-3">
-                    <div class="card">
-                        <div class="card-header d-flex justify-content-between p-2 px-3">
-                            <div class="d-flex flex-row mt-1 ellipsis">
-                                <small class="mr-2"><?php echo $comment->created_time; ?></small>
+            <!--comments-->
+            <div id="comments" class="row d-flex align-items-center justify-content-center">
+                <?php foreach ($data['comments'] as $comment) : ?>
+                    <div class="col-md-8 mb-3">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between p-2 px-3">
+                                <div class="d-flex flex-row mt-1 ellipsis">
+                                    <small class="mr-2"><?php echo $comment->created_time; ?></small>
+                                </div>
+                            </div>
+                            <div class="px-5 py-2">
+                                <p class="body-text"><?php echo $comment->comment; ?></p>
                             </div>
                         </div>
-                        <div class="px-5 py-2">
-                            <p class="body-text"><?php echo $comment->comment; ?></p>
-                        </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+            </div>
+
         </div>
-
     </div>
-</div>
 
-<script>
-    function solved(d, post_id) {
+    <script>
 
-        var data = {};
-
-        data['post_id'] = post_id;
-
-        $.ajax({
-            url: '<?php echo URLROOT; ?>/posts/markSolved',
-            type: 'post',
-            data: data,
-            dataType: 'json',
-            success: function(s) {
-                console.log(s);
-                $('#time-solved').append('<div class="text-success"><i class="fa-solid fa-circle-check"></i> Solved</div>');
-                $('#solved').slideDown("slow");
-
-            },
-            error: function(err) {
-                console.log(err);
-            }
-        });
-    }
-
-    function comment(d, post_id) {
-
-        var commentText = d.querySelector("#comment-text").value;
-
-        if (commentText !== "") {
+        function solved(d,post_id) {
 
             var data = {};
 
-            data['comment'] = commentText;
+            data['post_id'] = post_id;
 
             $.ajax({
-                url: '<?php echo URLROOT; ?>/posts/comment/' + post_id,
+                url: '<?php echo URLROOT; ?>/posts/markSolved',
                 type: 'post',
                 data: data,
                 dataType: 'json',
                 success: function(s) {
-                    d.querySelector("#comment-text").value = "";
                     console.log(s);
-
-                    $('#comments').prepend('<div class="col-md-8 mb-3 comment"> ' +
-                        '<div class="card"> ' +
-                        '<div class="card-header d-flex justify-content-between p-2 px-3"> ' +
-                        '<div class="d-flex flex-row mt-1 ellipsis"> ' +
-                        '<small class="mr-2">' + s.created_time + '</small>' +
-                        '</div>' +
-                        '</div>' +
-                        '<div class="px-5 py-2"> ' +
-                        '<p class="body-text">' + s.comment + '</p> </div> </div> </div>');
-                    $('.comment').first().hide();
-                    $('.comment').first().show('slow');
+                    $('#time-solved').append('<div class="text-success"><i class="fa-solid fa-circle-check"></i> Solved</div>');
+                    $('#solved').slideDown("slow");
 
                 },
                 error: function(err) {
                     console.log(err);
                 }
             });
-
-        } else {
-
         }
 
+        function comment(d, post_id) {
 
-    }
+            var commentText = d.querySelector("#comment-text").value;
 
-    function like(d, id) {
+            if (commentText !== "") {
 
-        console.log(d.querySelector('#up'));
-        console.log(id);
+                var data = {};
 
-        if (d.querySelector('#up').classList.contains('btn-success')) {
-            d.querySelector('#up').classList.replace('btn-success', 'btn-outline-success');
-        } else {
-            d.querySelector('#up').classList.replace('btn-outline-success', 'btn-success');
-        }
+                data['comment'] = commentText;
 
-        d.querySelector('#down').classList.value = "btn btn-sm btn-outline-danger ms-2";
+                $.ajax({
+                    url: '<?php echo URLROOT; ?>/posts/comment/' + post_id,
+                    type: 'post',
+                    data: data,
+                    dataType: 'json',
+                    success: function(s) {
+                        d.querySelector("#comment-text").value = "";
+                        console.log(s);
 
+                        $('#comments').prepend('<div class="col-md-8 mb-3 comment"> ' +
+                            '<div class="card"> ' +
+                            '<div class="card-header d-flex justify-content-between p-2 px-3"> ' +
+                            '<div class="d-flex flex-row mt-1 ellipsis"> ' +
+                            '<small class="mr-2">' + s.created_time + '</small>' +
+                            '</div>' +
+                            '</div>' +
+                            '<div class="px-5 py-2"> ' +
+                            '<p class="body-text">' + s.comment + '</p> </div> </div> </div>');
+                        $('.comment').first().hide();
+                        $('.comment').first().show('slow');
 
-        $.ajax({
-            url: '<?php echo URLROOT; ?>/posts/vote/' + id + '/1',
-            type: 'post',
-            dataType: 'json',
-            success: function(s) {
-                console.log(s);
-                d.querySelector('#up-count').innerText = s.upCount;
-                d.querySelector('#down-count').innerText = s.downCount;
-            },
-            error: function(err) {
-                console.log(err);
+                    },
+                    error: function(err) {
+                        console.log(err);
+                    }
+                });
+
+            } else {
+
             }
-        });
-    }
 
-    function dislike(d, id) {
-        d.querySelector('#up').classList.value = "btn btn-sm btn-outline-success ms-2";
 
-        if (d.querySelector('#down').classList.contains('btn-danger')) {
-            d.querySelector('#down').classList.replace('btn-danger', 'btn-outline-danger');
-        } else {
-            d.querySelector('#down').classList.replace('btn-outline-danger', 'btn-danger');
         }
 
-        $.ajax({
-            url: '<?php echo URLROOT; ?>/posts/vote/' + id + '/0',
-            type: 'post',
-            dataType: 'json',
-            success: function(s) {
-                console.log(s);
-                d.querySelector('#up-count').innerText = s.upCount;
-                d.querySelector('#down-count').innerText = s.downCount;
-            },
-            error: function(err) {
-                console.log(err);
-            }
-        });
-    }
+        function like(d, id) {
 
-    function report() {
-        document.getElementById("staticBackdrop").style.display = block;
-    }
-</script>
+            console.log(d.querySelector('#up'));
+            console.log(id);
+
+            if (d.querySelector('#up').classList.contains('btn-success')) {
+                d.querySelector('#up').classList.replace('btn-success', 'btn-outline-success');
+            } else {
+                d.querySelector('#up').classList.replace('btn-outline-success', 'btn-success');
+            }
+
+            d.querySelector('#down').classList.value = "btn btn-sm btn-outline-danger ms-2";
+
+
+            $.ajax({
+                url: '<?php echo URLROOT; ?>/posts/vote/' + id + '/1',
+                type: 'post',
+                dataType: 'json',
+                success: function(s) {
+                    console.log(s);
+                    d.querySelector('#up-count').innerText = s.upCount;
+                    d.querySelector('#down-count').innerText = s.downCount;
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+        }
+
+        function dislike(d, id) {
+            d.querySelector('#up').classList.value = "btn btn-sm btn-outline-success ms-2";
+
+            if (d.querySelector('#down').classList.contains('btn-danger')) {
+                d.querySelector('#down').classList.replace('btn-danger', 'btn-outline-danger');
+            } else {
+                d.querySelector('#down').classList.replace('btn-outline-danger', 'btn-danger');
+            }
+
+            $.ajax({
+                url: '<?php echo URLROOT; ?>/posts/vote/' + id + '/0',
+                type: 'post',
+                dataType: 'json',
+                success: function(s) {
+                    console.log(s);
+                    d.querySelector('#up-count').innerText = s.upCount;
+                    d.querySelector('#down-count').innerText = s.downCount;
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+        }
+    </script>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>
