@@ -70,46 +70,52 @@
             <div class="card card0 border-0">
                 <div class="row ">
                     <div class="col-lg-5 text-center">
-                        <img src="<?php echo URLROOT; ?>/img/signIn.png" class="img-fluid" id="login-img">
+                        <div style="display: flex; justify-content: flex-end;">
+                            <img src="<?php echo URLROOT; ?>/img/signIn.png" class="img-fluid" id="login-img">
+                        </div>
+
                     </div>
-                    <div class="col-lg-6">
-                        <div class="card2 card border-0 px-4 py-5">
-                            <?php flash('register_success'); ?>
-                            <div class="row mb-4 px-3">
-                                <h3 class="mb-0 mr-4 mt-2 text-center">Login</h3>
-                            </div>
-                            <div class="row px-3 mb-4">
-                                <div class="line"></div>
-                                <small class="or text-center">**</small>
-                                <div class="line"></div>
-                            </div>
+                    <div class="col-lg-7">
+                        <div class="container">
+                            <div class="card2 card border-0 px-4 py-5">
+                                <?php flash('register_success'); ?>
+                                <div class="row mb-4 px-3">
+                                    <h3 class="mb-0 mr-4 mt-2 text-center">Login</h3>
+                                </div>
+                                <div class="row px-3 mb-4">
+                                    <div class="line"></div>
+                                    <small class="or text-center">**</small>
+                                    <div class="line"></div>
+                                </div>
 
-                            <div class="row px-3 form-group">
-                                <label for="email" class="mb-1">
-                                    <h6 class="mb-0 text-sm">Email Address<sup style="color:red;">*</sup></h6>
-                                </label>
-                                <input class="form-control mb-1 <?php echo (!empty($data['email_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['email']; ?>" type="email" name="email" placeholder="Enter your edu email address">
-                                <span class="invalid-feedback"><?php echo $data['email_err']; ?></span>
-                            </div>
-                            <div class="row px-3 form-group">
-                                <label for="password" class="mb-1">
-                                    <h6 class="mb-0 text-sm">Password<sup style="color:red;">*</sup></h6>
-                                </label>
-                                <input class="form-control mb-1.5 <?php echo (!empty($data['password_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['password']; ?>" type="password" name="password" placeholder="Enter password">
-                                <span class="invalid-feedback"><?php echo $data['password_err']; ?></span>
-                            </div>
+                                <div class="row px-3 form-group">
+                                    <label for="email" class="mb-1">
+                                        <h6 class="mb-0 text-sm">Email Address<sup style="color:red;">*</sup></h6>
+                                    </label>
+                                    <input class="form-control mb-1 <?php echo (!empty($data['email_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['email']; ?>" type="email" name="email" placeholder="Enter your edu email address">
+                                    <span class="invalid-feedback"><?php echo $data['email_err']; ?></span>
+                                </div>
+                                <div class="row px-3 form-group">
+                                    <label for="password" class="mb-1">
+                                        <h6 class="mb-0 text-sm">Password<sup style="color:red;">*</sup></h6>
+                                    </label>
+                                    <input class="form-control mb-1.5 <?php echo (!empty($data['password_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['password']; ?>" type="password" name="password" placeholder="Enter password">
+                                    <span class="invalid-feedback"><?php echo $data['password_err']; ?></span>
+                                </div>
 
-                            <div class="text-end mb-3 text-sm ">
-                                <!-- <a href="<?php echo URLROOT; ?>/users/forgetPassword/" class="text-decoration-none" style="color:blue ;">Forgot Password? </a> -->
-                                <button class="btn btn-sm text-primary ps-0" data-bs-toggle="modal" data-bs-target="#forgotPassword">Forgot password</button>
-                            </div>
-                            <div class="row mb-2 px-3">
-                                <button type="submit" class="btn login-btn-color">Login</button>
-                            </div>
-                            <div class="row px-1 ">
-                                <small class="font-weight-bold">Don't have an account? <a href="<?php echo URLROOT; ?>/users/register" class="text-primary text-decoration-none"><b> Register Now</b></a></small>
+                                <div class="text-end mb-3 text-sm ">
+                                    <!-- <a href="<?php echo URLROOT; ?>/users/forgetPassword/" class="text-decoration-none" style="color:blue ;">Forgot Password? </a> -->
+                                    <button class="btn btn-sm text-primary ps-0" data-bs-toggle="modal" data-bs-target="#forgotPassword">Forgot password</button>
+                                </div>
+                                <div class="row mb-2 px-3">
+                                    <button type="submit" class="btn login-btn-color">Login</button>
+                                </div>
+                                <div class="row px-1 ">
+                                    <small class="font-weight-bold">Don't have an account? <a href="<?php echo URLROOT; ?>/users/register" class="text-primary text-decoration-none"><b> Register Now</b></a></small>
+                                </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>

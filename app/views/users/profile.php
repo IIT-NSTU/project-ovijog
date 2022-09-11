@@ -1,7 +1,7 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require_once APPROOT . '/views/inc/navbar.php'; ?>
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/profile.css">
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/post.css">
+
 
 <!-----------------Change Password modal start------------------------->
 <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -86,7 +86,7 @@
 
         <div class=" col-sm-7 d-flex" style="margin-left: 35%">
 
-            <div class="mt-2 mb-2">
+            <div class=" mb-2">
                 <div class="row d-flex align-items-center justify-content-end">
 
                     <?php if (count($data['posts']) == 0) : ?>
@@ -118,7 +118,7 @@
                                     <p style="text-align: justify;"><?php echo $post->body; ?></p>
                                     <hr>
                                     <div class="row ">
-                                        <div class="col-sm up-down-vote-icon py-1">
+                                        <div class="col-sm up-down-vote-icon">
                                             <b id="up-count"><?php echo $data['up-count'][$post->post_id]; ?></b><a id="up" onclick="like(this.parentNode.parentNode,<?php echo $post->post_id; ?>)" class="btn btn-sm <?php echo (empty($data['up-votes'][$post->post_id])) ? 'btn-outline-success' : 'btn-success'; ?> ms-2"><i class="fa-solid fa-arrow-up "></i></a>
                                         </div>
                                         <div class="col-sm up-down-vote-icon">

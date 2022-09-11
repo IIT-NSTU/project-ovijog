@@ -29,6 +29,13 @@
     padding: 1rem;
 }
 
+.up-down-vote-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: stretch;
+}
+
 #change-password {
     text-decoration: none;
 }
