@@ -75,7 +75,7 @@
                     </div>
                     <div id="time-solved">
                         <div class="d-flex flex-row mt-1 ellipsis"><small class="mr-2"><?php echo $data['post']->created_time; ?></small></div>
-                        <div class="text-muted"><small><i class="fa-solid fa-eye"></i> views</small></div>
+                        <div class="text-muted"><small><i class="fa-solid fa-eye"></i> <?php echo $data['view-count']; ?> views</small></div>
                         <?php if ($data['post']->issolved) : ?>
                             <div id="solved" class="text-success"><small><i class="fa-solid fa-circle-check"></i> Solved </small></div>
                         <?php endif; ?>
@@ -87,6 +87,11 @@
                 </div>
                 <div class="px-5 py-2">
                     <p class="body-text"><?php echo $data['post']->body; ?></p>
+                    <div>
+                        <?php foreach ($data['tags'] as $tag) : ?>
+                            <div class="chip"><?php echo $tag->tag; ?></div>
+                        <?php endforeach; ?>
+                    </div>
                     <hr>
                     <div class="row py-1">
 

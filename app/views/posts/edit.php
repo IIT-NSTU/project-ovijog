@@ -28,7 +28,7 @@
     </div>
 
     <div class="card card-body mt-4 bg-light">
-        <form action="<?php echo URLROOT; ?>/posts/edit" method="post">
+        <form action="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post_id']; ?>" method="post">
             <div class="row">
                 <div class="col">
                     <div class="form-group mb-4">
@@ -48,7 +48,7 @@
                         <label for="formFileMultiple" class="form-label mb-2"><b>Photo:</b></label>
                         <div class="row">
                             <div class="col-9">
-                                <input class="form-control" type="file" name="image_file">
+                                <input class="form-control" type="file" name="image_file" value="https://play-lh.googleusercontent.com/mLvvgUXJVZeu-GbqWZfr8ug74V7d8Od9yU2AOvUUptiki9wIH-BJHataFTJI_J0TlQ">
                             </div>
                         </div>
                     </div>

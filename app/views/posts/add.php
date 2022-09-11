@@ -70,12 +70,27 @@
     var inputElm = document.querySelector('input[name=tags]');
     var whitelist = ['POLITICAL', 'ACADEMICAL'];
 
-
     // initialize Tagify on the above input node reference
     var tagify = new Tagify(inputElm, {
         originalInputValueFormat: valuesArr => valuesArr.map(item => item.value).join(','),
         whitelist: whitelist // Array of values
     })
+
+    $.ajax({
+        url: '<?php echo URLROOT; ?>/posts/getAllTags',
+        type: 'post',
+        dataType: 'json',
+        success: function(s) {
+            for (const sElement of s) {
+                console.log(sElement['tag']);
+                whitelist.push(sElement['tag']);
+                tagify.whitelist.push(sElement['tag']);
+            }
+        },
+        error: function(err) {
+            console.log(err);
+        }
+    });
 </script>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

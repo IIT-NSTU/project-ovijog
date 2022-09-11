@@ -6,6 +6,7 @@ class PostsController extends Controller
     private $postModel;
     private $userModel;
     private $commentModel;
+    private $tagModel;
 
     public function __construct()
     {
@@ -16,6 +17,15 @@ class PostsController extends Controller
         $this->postModel = $this->model('Post');
         $this->userModel = $this->model('User');
         $this->commentModel = $this->model('Comment');
+        $this->tagModel = $this->model('Tag');
+    }
+
+    public function getAllTags(){
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $data=$this->tagModel->getAllTags();
+            echo json_encode($data);
+        }
     }
 
     public function load($page = 1)
@@ -48,7 +58,7 @@ class PostsController extends Controller
             $downCount[$post->post_id] = $this->postModel->getdownVotes($post->post_id);
             $viewCount[$post->post_id] = $this->postModel->getViewCount($post->post_id);
 
-            $tags[$post->post_id] = $this->postModel->getTags($post->post_id);
+            $tags[$post->post_id] = $this->tagModel->getTags($post->post_id);
         }
 
         $data = [
@@ -133,10 +143,9 @@ class PostsController extends Controller
             $downCount[$post->post_id] = $this->postModel->getdownVotes($post->post_id);
             $viewCount[$post->post_id] = $this->postModel->getViewCount($post->post_id);
 
-            $tags[$post->post_id] = $this->postModel->getTags($post->post_id);
+            $tags[$post->post_id] = $this->tagModel->getTags($post->post_id);
         }
 
-        //die(print_r($tags[21][1]->tag));
 
         $data = [
             'posts' => $posts,
@@ -184,7 +193,8 @@ class PostsController extends Controller
             'down-voted' => $downVoted,
             'up-count' => $this->postModel->getUpVotes($id),
             'down-count' => $this->postModel->getdownVotes($id),
-            'tags' => $this->postModel->getTags($post->post_id)
+            'view-count'=>$this->postModel->getViewCount($post->post_id),
+            'tags' => $this->tagModel->getTags($post->post_id)
         ];
 
         $this->view('posts/show', $data);
@@ -273,6 +283,7 @@ class PostsController extends Controller
             $data = [
                 'categories' => $categories,
 
+                'post_id' => $id,
                 'title' => trim($_POST['title']),
                 'category' => trim($_POST['category']),
                 'body' => trim($_POST['body']),
@@ -326,6 +337,7 @@ class PostsController extends Controller
             $data = [
                 'categories' => $categories,
 
+                'post_id' => $id,
                 'title' => $post->title,
                 'category' => $post->category,
                 'body' => $post->body
@@ -344,7 +356,6 @@ class PostsController extends Controller
         }
 
         if ($this->postModel->deletePost($id)) {
-            //die('del');
             flash('post_message', 'Post Removed');
             redirect('posts');
         } else {
@@ -352,8 +363,4 @@ class PostsController extends Controller
         }
     }
 
-    public function about($id)
-    {
-        echo $id;
-    }
 }

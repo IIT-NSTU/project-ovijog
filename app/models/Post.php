@@ -8,13 +8,6 @@ class Post {
         $this->db = Database::getInstance();
     }
 
-    public function getTags($post_id){
-        $this->db->query("select tag from tags where post_id = :post_id");
-        $this->db->bind(':post_id',$post_id);
-
-        return $this->db->resultSet();
-    }
-
     public function getPostsWithLimit($page){
         $limit=4;
         $row=($page-1)*$limit;

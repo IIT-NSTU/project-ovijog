@@ -73,9 +73,6 @@
                                     </div>
                                     <div>
                                         <div class="d-flex flex-row mt-1 ellipsis"> <small class="mr-2 text-muted"><?php echo $post->created_time; ?></small></div>
-                                        <div class="text-muted"><small><i class="fa-solid fa-eye"></i>
-                                                <!-- <?php echo $data['view-count'][$post->post_id]; ?>  -->
-                                                views</small></div>
                                         <?php if ($post->issolved) : ?>
                                             <div class="text-success"><small><i class="fa-solid fa-circle-check"></i> Solved
                                                 </small></div>
