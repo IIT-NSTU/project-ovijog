@@ -19,4 +19,5 @@ require_once 'controllers/ControllerFactory.php';
 require_once 'controllers/PagesController.php';
 require_once 'controllers/PostsController.php';
 require_once 'controllers/UsersController.php';
+require_once 'controllers/ErrorsController.php';
 
