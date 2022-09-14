@@ -20,4 +20,5 @@ require_once 'controllers/PagesController.php';
 require_once 'controllers/PostsController.php';
 require_once 'controllers/UsersController.php';
 require_once 'controllers/ErrorsController.php';
+require_once 'controllers/AdminsController.php';
 
