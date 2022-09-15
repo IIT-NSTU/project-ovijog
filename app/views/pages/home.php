@@ -85,15 +85,13 @@
         <div class="col-sm-1"></div>
     </div>
 
-    <!-- Top Popular Posts -->
-    <!-- Online design  -->
 
-    <!-- Online Design  -->
+
+    <!-- Top Popular Posts Start-->
     <div class="row " style="display: flex;justify-content: space-around; margin-top:-24px">
 
         <div class="col-md-10 mt-5 p-2">
             <h2 class="text-center" style="font-family: Penna;"><b>Top Popular Posts</b></h2>
-            <!-- <hr> -->
         </div>
         <div class="row px-3 mb-4">
             <div class="line"></div>
@@ -230,7 +228,150 @@
             </div>
         </div>
     </div>
+    <!-- Top popular Post End -->
 
+    <!-- Top Unsolved Posts Start-->
+    <div class="row " style="display: flex;justify-content: space-around; margin-top:-24px">
+
+        <div class="col-md-10 mt-5 p-2">
+            <h2 class="text-center" style="font-family: Penna;"><b>Top Unsolved Posts</b></h2>
+        </div>
+        <div class="row px-3 mb-4">
+            <div class="line"></div>
+            <small class="or text-center">***</small>
+            <div class="line"></div>
+        </div>
+    </div>
+    <div class="row mt-3" style="display: flex;justify-content: space-between;">
+        <div>
+            <div>
+                <div class="row">
+                    <div class="col-sm-4 pb-4">
+                        <div class="card">
+                            <div class="card-body py-0 card-effect">
+                                <h6 class="mb-0 mt-2">Water problem in ASH hall</h6>
+                                <div class="d-flex" style="justify-content: space-between;">
+                                    <p class="text-muted mb-0"><small>Category: Water</small></p>
+                                    <p class="mb-0"> <small class="text-muted">2022-09-15</small></p>
+                                </div>
+                                <hr class="mb-2">
+                                <p> <small>More than 1.8 million people in Bangladesh lack access to an improved water source in Bangladesh lack access to...</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 pb-4">
+                        <div class="card">
+                            <div class="card-body py-0 card-effect">
+                                <h6 class="mb-0 mt-2">Water problem in ASH hall</h6>
+                                <div class="d-flex" style="justify-content: space-between;">
+                                    <p class="text-muted mb-0"><small>Category: Water</small></p>
+                                    <p class="mb-0"> <small class="text-muted">2022-09-15</small></p>
+                                </div>
+                                <hr class="mb-2">
+                                <p> <small>More than 1.8 million people in Bangladesh lack access to an improved water source in Bangladesh lack access to...</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 pb-4">
+                        <div class="card">
+                            <div class="card-body py-0 card-effect">
+                                <h6 class="mb-0 mt-2">Water problem in ASH hall</h6>
+                                <div class="d-flex" style="justify-content: space-between;">
+                                    <p class="text-muted mb-0"><small>Category: Water</small></p>
+                                    <p class="mb-0"> <small class="text-muted">2022-09-15</small></p>
+                                </div>
+                                <hr class="mb-2">
+                                <p> <small>More than 1.8 million people in Bangladesh lack access to an improved water source in Bangladesh lack access to...</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 pb-4">
+                        <div class="card">
+                            <div class="card-body py-0 card-effect">
+                                <h6 class="mb-0 mt-2">Water problem in ASH hall</h6>
+                                <div class="d-flex" style="justify-content: space-between;">
+                                    <p class="text-muted mb-0"><small>Category: Water</small></p>
+                                    <p class="mb-0"> <small class="text-muted">2022-09-15</small></p>
+                                </div>
+                                <hr class="mb-2">
+                                <p> <small>More than 1.8 million people in Bangladesh lack access to an improved water source in Bangladesh lack access to...</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 pb-4">
+                        <div class="card">
+                            <div class="card-body py-0 card-effect">
+                                <h6 class="mb-0 mt-2">Water problem in ASH hall</h6>
+                                <div class="d-flex" style="justify-content: space-between;">
+                                    <p class="text-muted mb-0"><small>Category: Water</small></p>
+                                    <p class="mb-0"> <small class="text-muted">2022-09-15</small></p>
+                                </div>
+                                <hr class="mb-2">
+                                <p> <small>More than 1.8 million people in Bangladesh lack access to an improved water source in Bangladesh lack access to...</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 pb-4">
+                        <div class="card">
+                            <div class="card-body py-0 card-effect">
+                                <h6 class="mb-0 mt-2">Water problem in ASH hall</h6>
+                                <div class="d-flex" style="justify-content: space-between;">
+                                    <p class="text-muted mb-0"><small>Category: Water</small></p>
+                                    <p class="mb-0"> <small class="text-muted">2022-09-15</small></p>
+                                </div>
+                                <hr class="mb-2">
+                                <p> <small>More than 1.8 million people in Bangladesh lack access to an improved water source in Bangladesh lack access to...</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 pb-4">
+                        <div class="card">
+                            <div class="card-body py-0 card-effect">
+                                <h6 class="mb-0 mt-2">Water problem in ASH hall</h6>
+                                <div class="d-flex" style="justify-content: space-between;">
+                                    <p class="text-muted mb-0"><small>Category: Water</small></p>
+                                    <p class="mb-0"> <small class="text-muted">2022-09-15</small></p>
+                                </div>
+                                <hr class="mb-2">
+                                <p> <small>More than 1.8 million people in Bangladesh lack access to an improved water source in Bangladesh lack access to...</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 pb-4">
+                        <div class="card">
+                            <div class="card-body py-0 card-effect">
+                                <h6 class="mb-0 mt-2">Water problem in ASH hall</h6>
+                                <div class="d-flex" style="justify-content: space-between;">
+                                    <p class="text-muted mb-0"><small>Category: Water</small></p>
+                                    <p class="mb-0"> <small class="text-muted">2022-09-15</small></p>
+                                </div>
+                                <hr class="mb-2">
+                                <p> <small>More than 1.8 million people in Bangladesh lack access to an improved water source in Bangladesh lack access to...</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 pb-4">
+                        <div class="card">
+                            <div class="card-body py-0 card-effect">
+                                <h6 class="mb-0 mt-2">Water problem in ASH hall</h6>
+                                <div class="d-flex" style="justify-content: space-between;">
+                                    <p class="text-muted mb-0"><small>Category: Water</small></p>
+                                    <p class="mb-0"> <small class="text-muted">2022-09-15</small></p>
+                                </div>
+                                <hr class="mb-2">
+                                <p> <small>More than 1.8 million people in Bangladesh lack access to an improved water source in Bangladesh lack access to...</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Top unsolved Post End -->
 </body>
 <script>
     $('.count').each(function() {
