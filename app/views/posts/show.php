@@ -11,6 +11,26 @@
 
 <?php require_once APPROOT . '/views/inc/navbar.php'; ?>
 
+<!-----------------Solved modal start------------------------->
+<div class="modal fade" id="solvedModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="staticBackdropLabel">Solve Confirmation</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure your problem is solved?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button onclick="solved(this,<?php echo $data['post']->post_id; ?>)" data-bs-dismiss="modal" class="btn btn-sm btn-success">Solved</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-----------------Solved modal end------------------------->
 
 <!-----------------Delete modal start------------------------->
 <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -32,34 +52,34 @@
 </div>
 <!-----------------Delete modal end------------------------->
 
-    <!-----------------Report modal start------------------------->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Report Confirmation</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form target="_self" action="<?php echo URLROOT; ?>/posts/report/<?php echo $data['post']->post_id?>" method="post">
-                    <div class="modal-body">
-                        <h6 class="text-muted">Choose Reason: </h6>
-                        <div>
-                            <input type="radio" name="reportCategory" value="Fake Post"> Fake Post</br>
-                            <input type="radio" name="reportCategory" value="Bad Language"> Bad Language</br>
-                            <input type="radio" name="reportCategory" value="Others"> Others </br>
-                        </div><br>
-                        <h6 class="text-muted">Write about the post</h6>
-                        <textarea name="feedback" class="form-control col-xs-12"></textarea>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <input type="submit" name="submit" value="Report" class="btn btn-sm btn-danger">
-                    </div>
-                </form>
+<!-----------------Report modal start------------------------->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Report Confirmation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <form target="_self" action="<?php echo URLROOT; ?>/posts/report/<?php echo $data['post']->post_id ?>" method="post">
+                <div class="modal-body">
+                    <h6 class="text-muted">Choose Reason: </h6>
+                    <div>
+                        <input type="radio" name="reportCategory" value="Fake Post"> Fake Post</br>
+                        <input type="radio" name="reportCategory" value="Bad Language"> Bad Language</br>
+                        <input type="radio" name="reportCategory" value="Others"> Others </br>
+                    </div><br>
+                    <h6 class="text-muted">Write about the post</h6>
+                    <textarea name="feedback" class="form-control col-xs-12"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <input type="submit" name="submit" value="Report" class="btn btn-sm btn-danger">
+                </div>
+            </form>
         </div>
     </div>
-    <!-----------------Report modal end------------------------->
+</div>
+<!-----------------Report modal end------------------------->
 
 
 
@@ -108,7 +128,10 @@
 
                         <?php if ($data['post']->user_id == $_SESSION['user_id']) : ?>
                             <div class="col-sm text-center">
-                                <a onclick="solved(this,<?php echo $data['post']->post_id; ?>)" class="btn btn-sm text-success"><b>Solved</b></a>
+                                <!-- <a class="btn btn-sm text-success" ><b>Solved</b></a> -->
+
+                                <button class="btn btn-sm text-success" data-bs-toggle="modal" data-bs-target="#solvedModal"><b>Solved</b>
+                                </button>
                             </div>
                             <div class="col-sm text-center"><a href="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']->post_id; ?>" class="btn btn-sm text-primary"><b>Edit</b></a>
                             </div>
@@ -159,16 +182,15 @@
 </div>
 
 <script>
-
-    var isSolved=<?php if($data['post']->issolved){
-        echo 'true';
-    } else{
-        echo 'false';
-    } ?>;
+    var isSolved = <?php if ($data['post']->issolved) {
+                        echo 'true';
+                    } else {
+                        echo 'false';
+                    } ?>;
 
     function solved(d, post_id) {
 
-        if(isSolved)return;
+        if (isSolved) return;
 
         var data = {};
 
@@ -190,7 +212,7 @@
             }
         });
 
-        isSolved=true;
+        isSolved = true;
     }
 
     function comment(d, post_id) {
