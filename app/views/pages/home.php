@@ -33,9 +33,6 @@
         background-color: #f1fafe;
     }
 
-    .card-effect {
-        /* background-color: #bacad9; */
-    }
 
     h6 {
         color: #386fa7;
