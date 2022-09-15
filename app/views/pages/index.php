@@ -59,9 +59,10 @@
 <script src="https://unpkg.com/typeit@8.7.0/dist/index.umd.js"></script>
 <script>
     new TypeIt("#slogan-text", {})
-        .type("You is essential")
-        .move(-13)
-        .type("r voice ")
+        .type("You are essential")
+        .move(-10)
+        .delete(4)
+        .type("r voice is ")
         .move(null, {
             to: "END"
         })
