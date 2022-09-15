@@ -159,7 +159,16 @@
 </div>
 
 <script>
+
+    var isSolved=<?php if($data['post']->issolved){
+        echo 'true';
+    } else{
+        echo 'false';
+    } ?>;
+
     function solved(d, post_id) {
+
+        if(isSolved)return;
 
         var data = {};
 
@@ -180,6 +189,8 @@
                 console.log(err);
             }
         });
+
+        isSolved=true;
     }
 
     function comment(d, post_id) {
