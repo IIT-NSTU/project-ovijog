@@ -185,7 +185,14 @@ class UsersController extends Controller {
         $_SESSION['user_id'] = $user->user_id;
         $_SESSION['user_name'] = $user->fname . ' ' . $user->lname;
         $_SESSION['user_email'] = $user->edu_mail;
-        redirect('pages/home');
+        $_SESSION['is_admin'] = $user->isadmin;
+
+        if($user->isadmin){
+            redirect('/admins');
+        }else{
+            redirect('pages/home');
+        }
+
     }
 
     public function logout() {
