@@ -1,219 +1,208 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require_once APPROOT . '/views/inc/navbar.php'; ?>
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/profile.css">
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/profile.css">
 
 
-    <!-----------------Change Password modal start------------------------->
-    <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-         aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title text-center" id="staticBackdropLabel">Change Password</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="alert alert-danger" role="alert"></div>
-                    <form action="">
-                        <div class="mb-3">
-                            <label class="mb-2 text-muted" for="password">Old Password</label>
-                            <input id="old-password" type="password" class="form-control" name="password" value="" required>
-                            <span id="old-password-err" class="invalid-feedback"></span>
-                        </div>
+<!-----------------Change Password modal start------------------------->
+<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center" id="staticBackdropLabel">Change Password</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger" role="alert"></div>
+                <form action="">
+                    <div class="mb-3">
+                        <label class="mb-2 text-muted" for="password">Old Password</label>
+                        <input id="old-password" type="password" class="form-control" name="password" value="" required>
+                        <span id="old-password-err" class="invalid-feedback"></span>
+                    </div>
 
-                        <div class="mb-3">
-                            <label class="mb-2 text-muted" for="password-confirm">New Password</label>
-                            <input id="new-password" type="password" class="form-control" name="password_confirm" required>
-                            <span id="new-password-err" class="invalid-feedback"></span>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button onclick="changePassword()" type="button" class="btn btn-sm" style="background-color: #293462; color:white;">
-                        Change
-                        Password
-                    </button>
-                </div>
+                    <div class="mb-3">
+                        <label class="mb-2 text-muted" for="password-confirm">New Password</label>
+                        <input id="new-password" type="password" class="form-control" name="password_confirm" required>
+                        <span id="new-password-err" class="invalid-feedback"></span>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button onclick="changePassword()" type="button" class="btn btn-sm" style="background-color: #293462; color:white;">
+                    Change
+                    Password
+                </button>
             </div>
         </div>
     </div>
-    <!-----------------Change Password modal end------------------------->
+</div>
+<!-----------------Change Password modal end------------------------->
 
-    <div class="main-body">
-        <div class="row">
+<div class="main-body">
+    <div class="row">
 
-            <div class="col-md-5 d-flex flex-row" style="position: fixed;">
-                <div class="card card-body mb-1">
-                    <div class="row">
-                        <div class="d-flex flex-column align-items-center text-center mt-2 mb-2">
-                            <div class="mt-3">
-                                <h4><?php echo $data['user']->first_name . ' ' . $data['user']->last_name; ?></h4>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h6>First Name</h6>
-                        </div>
-                        <div class="col-sm-8 text-secondary">
-                            <?php echo $data['user']->first_name; ?>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h6>Last Name</h6>
-                        </div>
-                        <div class="col-sm-7 text-secondary">
-                            <?php echo $data['user']->last_name; ?>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h6>Email</h6>
-                        </div>
-                        <div class="col-sm-8 text-secondary">
-                            <?php echo $data['user']->edu_mail; ?>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h6>Password</h6>
-                        </div>
-                        <div class="col-sm-8 text-secondary">
-                            <!-- <a href="<?php echo URLROOT; ?>/users/changePassword/<?php echo $data['user']->user_id; ?>" id="change-password">Change Password</a> -->
-                            <button class="btn btn-sm text-primary ps-0" data-bs-toggle="modal"
-                                    data-bs-target="#staticBackdrop2"><b>Change Password</b>
+        <div class="col-md-5 d-flex flex-row" style="position: fixed;">
+            <div class="card card-body mb-1">
+                <div class="row">
+                    <div class="d-flex flex-column align-items-center text-center mt-2 mb-2">
+                        <div class="mt-3">
+                            <h4><?php echo $data['user']->first_name . ' ' . $data['user']->last_name; ?></h4>
                         </div>
                     </div>
                 </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h6>First Name</h6>
+                    </div>
+                    <div class="col-sm-8 text-secondary">
+                        <?php echo $data['user']->first_name; ?>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h6>Last Name</h6>
+                    </div>
+                    <div class="col-sm-7 text-secondary">
+                        <?php echo $data['user']->last_name; ?>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h6>Email</h6>
+                    </div>
+                    <div class="col-sm-8 text-secondary">
+                        <?php echo $data['user']->edu_mail; ?>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h6>Password</h6>
+                    </div>
+                    <div class="col-sm-8 text-secondary">
+                        <!-- <a href="<?php echo URLROOT; ?>/users/changePassword/<?php echo $data['user']->user_id; ?>" id="change-password">Change Password</a> -->
+                        <button class="btn btn-sm text-primary ps-0" data-bs-toggle="modal" data-bs-target="#staticBackdrop2"><b>Change Password</b>
+                    </div>
+                </div>
             </div>
+        </div>
 
-            <div class=" col-sm-7 d-flex" style="margin-left: 35%">
+        <div class=" col-sm-7 d-flex" style="margin-left: 35%">
 
-                <div class=" mb-2">
-                    <div class="row d-flex align-items-center justify-content-end">
+            <div class=" mb-2">
+                <div class="row d-flex align-items-center justify-content-end">
 
-                        <?php if (count($data['posts']) == 0) : ?>
-                            <h4 class="border border-dark rounded p-4 text-center mt-5">You do not create any post
-                                yet</h4>
-                        <?php endif; ?>
+                    <?php if (count($data['posts']) == 0) : ?>
+                        <h4 class="border border-dark rounded p-4 text-center mt-5">You do not create any post
+                            yet</h4>
+                    <?php endif; ?>
 
-                        <?php foreach ($data['posts'] as $post) : ?>
-                            <div class="col-sm-9 mb-3">
-                                <div class="card">
-                                    <div class="d-flex justify-content-between p-2 px-3">
-                                        <div class="d-flex flex-row align-items-center">
-                                            <div class="d-flex flex-column"><span
-                                                        class="font-weight-bold">Title: <?php echo $post->title; ?></span>
-                                                <small class="text-primary">Category: <?php echo $post->category; ?></small>
-                                            </div>
+                    <?php foreach ($data['posts'] as $post) : ?>
+                        <div class="col-sm-9 mb-3">
+                            <div class="card">
+                                <div class="d-flex justify-content-between p-2 px-3">
+                                    <div class="d-flex flex-row align-items-center">
+                                        <div class="d-flex flex-column"><span class="font-weight-bold">Title: <?php echo $post->title; ?></span>
+                                            <small class="text-primary">Category: <?php echo $post->category; ?></small>
                                         </div>
-                                        <div>
-                                            <div class="d-flex flex-row mt-1 ellipsis"><small
-                                                        class="mr-2 text-muted"><?php echo $post->created_time; ?></small>
-                                            </div>
-                                            <?php if ($post->issolved) : ?>
-                                                <div class="text-success"><small><i
-                                                                class="fa-solid fa-circle-check"></i> Solved
-                                                    </small></div>
-                                            <?php endif; ?>
+                                    </div>
+                                    <div>
+                                        <div class="d-flex flex-row mt-1 ellipsis"><small class="mr-2 text-muted"><?php echo $post->created_time; ?></small>
                                         </div>
+                                        <?php if ($post->issolved) : ?>
+                                            <div class="text-success"><small><i class="fa-solid fa-circle-check"></i> Solved
+                                                </small></div>
+                                        <?php endif; ?>
+                                    </div>
 
-                                    </div>
-                                    <div class="text-center">
-                                        <img src="<?php echo $post->img_link; ?>" width="50%" height="auto"
-                                             class="img-fluid text-center py-3">
-                                    </div>
-                                    <div class="px-5 py-2">
-                                        <p style="text-align: justify;"><?php echo $post->body; ?></p>
-                                        <hr>
-                                        <div class="row ">
-                                            <div class="col-sm up-down-vote-icon">
-                                                <b id="up-count"><?php echo $data['up-count'][$post->post_id]; ?></b><span
-                                                        id="up" class="btn btn-sm ms-2"><i
-                                                            class="fa-solid fa-arrow-up "></i></span>
-                                            </div>
-                                            <div class="col-sm up-down-vote-icon">
-                                                <b id="down-count"><?php echo $data['down-count'][$post->post_id]; ?></b>
-                                                <span id="down" class="btn btn-sm ms-2"><i
-                                                            class="fa-solid fa-arrow-down"></i>
+                                </div>
+                                <div class="text-center">
+                                    <img src="<?php echo $post->img_link; ?>" width="50%" height="auto" class="img-fluid text-center py-3">
+                                </div>
+                                <div class="px-5 py-2">
+                                    <p style="text-align: justify;"><?php echo $post->body; ?></p>
+                                    <hr class="my-0">
+                                    <div class="row ">
+                                        <div class="col-sm up-down-vote-icon">
+                                            <b id="up-count"><?php echo $data['up-count'][$post->post_id]; ?></b><span id="up" class="btn btn-sm ms-2"><i class="fa-solid fa-arrow-up "></i></span>
+                                        </div>
+                                        <div class="col-sm up-down-vote-icon">
+                                            <b id="down-count"><?php echo $data['down-count'][$post->post_id]; ?></b>
+                                            <span id="down" class="btn btn-sm ms-2"><i class="fa-solid fa-arrow-down"></i>
                                             </span>
-                                            </div>
-                                            <div class="col-sm text-center">
-                                                <a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->post_id; ?>"
-                                                   class="btn btn-sm text-primary" style="padding-top: 12px;">More</a>
-                                            </div>
+                                        </div>
+                                        <div class="col-sm text-center">
+                                            <a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->post_id; ?>" class="btn btn-sm text-primary" style="padding-top: 6px;">More</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        <?php endforeach; ?>
-                    </div>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
-
         </div>
+
     </div>
+</div>
 
-    <script>
+<script>
+    $('.alert').hide();
 
+    $('#old-password').on('input', function() {
+        $('#old-password-err').hide();
         $('.alert').hide();
+    });
 
-        $('#old-password').on('input',function () {
-            $('#old-password-err').hide();
-            $('.alert').hide();
-        });
+    $('#new-password').on('input', function() {
+        $('#new-password-err').hide();
+        $('.alert').hide();
+    });
 
-        $('#new-password').on('input',function () {
-            $('#new-password-err').hide();
-            $('.alert').hide();
-        });
+    function changePassword() {
+        var oldPassword = $('#old-password').val();
+        var newPassword = $('#new-password').val();
 
-        function changePassword() {
-            var oldPassword=$('#old-password').val();
-            var newPassword=$('#new-password').val();
+        if (oldPassword === "") {
+            $('#old-password-err').html("Please enter old password");
+            $('#old-password-err').show();
+        } else if (newPassword === "") {
+            $('#new-password-err').html("Please enter new password");
+            $('#new-password-err').show();
+        } else if (newPassword.length < 6) {
+            $('#new-password-err').html("Password must be at least 6 character");
+            $('#new-password-err').show();
+        } else if (newPassword === oldPassword) {
+            $('#new-password-err').html("Old and new password are same");
+            $('#new-password-err').show();
+        } else {
 
-            if(oldPassword===""){
-                $('#old-password-err').html("Please enter old password");
-                $('#old-password-err').show();
-            }else if(newPassword===""){
-                $('#new-password-err').html("Please enter new password");
-                $('#new-password-err').show();
-            }else if(newPassword.length<6){
-                $('#new-password-err').html("Password must be at least 6 character");
-                $('#new-password-err').show();
-            }else if(newPassword===oldPassword){
-                $('#new-password-err').html("Old and new password are same");
-                $('#new-password-err').show();
-            }else {
+            var data = {};
 
-                var data={};
+            data['old-password'] = oldPassword;
+            data['new-password'] = newPassword;
 
-                data['old-password']=oldPassword;
-                data['new-password']=newPassword;
-
-                $.ajax({
-                    url: '<?php echo URLROOT; ?>/users/changePassword/',
-                    type: 'post',
-                    data: data,
-                    dataType: 'json',
-                    success: function(s) {
-                        console.log(s);
-                        $('.modal').modal('toggle');
-                    },
-                    error: function(err) {
-                        console.log('failed');
-                        $('.alert').html(err.responseText);
-                        $('.alert').show();
-                    }
-                });
-            }
+            $.ajax({
+                url: '<?php echo URLROOT; ?>/users/changePassword/',
+                type: 'post',
+                data: data,
+                dataType: 'json',
+                success: function(s) {
+                    console.log(s);
+                    $('.modal').modal('toggle');
+                },
+                error: function(err) {
+                    console.log('failed');
+                    $('.alert').html(err.responseText);
+                    $('.alert').show();
+                }
+            });
         }
-    </script>
+    }
+</script>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

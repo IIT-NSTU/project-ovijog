@@ -58,22 +58,22 @@
                                     <label class="mb-1" for="edu_email">
                                         <h6 class="mb-0 text-sm">NSTU Email<sup style="color:red;">*</sup></h6>
                                     </label>
-                                    <input type="email" name="edu_email" placeholder="Enter your edu email address" class="form-control mb-4 <?php echo (!empty($data['edu_email_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['edu_email']; ?>">
+                                    <input type="email" name="edu_email" placeholder="Enter your edu email address" class="form-control mb-1 <?php echo (!empty($data['edu_email_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['edu_email']; ?>">
                                     <span class="invalid-feedback"><?php echo $data['edu_email_err']; ?></span>
                                 </div>
                                 <div class="row px-3 form-group">
                                     <label class="mb-1" for="password">
                                         <h6 class="mb-0 text-sm">Password<sup style="color:red;">*</sup></h6>
                                     </label>
-                                    <input type="password" name="password" placeholder="Enter Password" class="form-control mb-4 <?php echo (!empty($data['password_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['password']; ?>">
+                                    <input type="password" name="password" placeholder="Enter Password" class="form-control mb-1 <?php echo (!empty($data['password_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['password']; ?>">
                                     <span class="invalid-feedback"><?php echo $data['password_err']; ?></span>
                                 </div>
                                 <div class="row px-3 form-group">
                                     <label class="mb-1" for="confirm_password">
                                         <h6 class="mb-0 text-sm">Confirm Password<sup style="color:red;">*</sup></h6>
                                     </label>
-                                    <input type="password" name="confirm_password" placeholder="Confirm Password " class="form-control mb-4 <?php echo (!empty($data['confirm_password_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['confirm_password']; ?>">
-                                    <span class="invalid-feedback"><?php echo $data['confirm_password_err']; ?></span>
+                                    <input type="password" name="confirm_password" placeholder="Confirm Password " class="form-control mb-1 <?php echo (!empty($data['confirm_password_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['confirm_password']; ?>">
+                                    <span class="invalid-feedback mb-1"><?php echo $data['confirm_password_err']; ?></span>
                                 </div>
                                 <div class="row mb-3 px-3">
                                     <input class="btn btn-block button-background-color " name="signup" type="submit" value="Register">
