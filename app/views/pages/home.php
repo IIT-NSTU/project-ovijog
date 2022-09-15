@@ -6,9 +6,10 @@
 <body>
     <div class="row mt-3" style="display: flex;justify-content: space-between;">
         <!-- <div class=""> -->
-        <div class="col-sm-3">
-            <div class="card">
-                <div class="card-body">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-2">
+            <div class="card ">
+                <div class="card-body py-0">
                     <h1 class="text-center text-primary" style="font-size:500% ;"><?php echo $data['total_post']; ?></h1>
                     <h3 class="text-center">Posts</h3>
                     <hr>
@@ -16,24 +17,25 @@
             </div>
         </div>
 
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body py-0">
                     <h1 class="text-center text-success" style="font-size:500% ;"><?php echo $data['total_solved']; ?></h1>
                     <h3 class="text-center">Solved</h3>
                     <hr>
                 </div>
             </div>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body py-0">
                     <h1 class="text-center text-danger" style="font-size:500% ;"><?php echo $data['total_unsolved']; ?></h1>
                     <h3 class="text-center">Unsolved</h>
                         <hr>
                 </div>
             </div>
         </div>
+        <div class="col-sm-1"></div>
         <!-- </div> -->
     </div>
     <div class="row gutters-sm">
