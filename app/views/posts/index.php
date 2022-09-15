@@ -10,35 +10,43 @@
 </style>
 
 <?php flash('post_message'); ?>
-<div>
-    <div class="my-2" style="position: fixed;">
-        <div class="row">
-            <div class="col ">
-                <div class="mb-3" id="create-post-button-div">
-                    <a href="<?php echo URLROOT; ?>/posts/add" id="create-post-button" class="btn button-background-color mt-2">
-                        <i class="fa-solid fa-pencil"></i> Create New Post
-                    </a>
-                </div>
-                <!-- <div class=" d-flex">
-                    <input type="text" class="search-click" name="" placeholder="Search" />
-                    <button class="btn btn-outline-dark search-icon" type="submit" style="height: 32px;display:flex;align-items: flex-end;margin-left: 8px;"><i class="fa-solid fa-magnifying-glass"></i></button>
-                </div> -->
-            </div>
 
-        </div>
-        <div class="row mt-3">
-            hello
+<div style="position: fixed;">
+    <div class="row">
+        <div class="col">
+            <div class="mb-3" id="create-post-button-div">
+                <a href="<?php echo URLROOT; ?>/posts/add" id="create-post-button" class="btn button-background-color mt-2">
+                    <i class="fa-solid fa-pencil"></i> Create New Post
+                </a>
+            </div>
         </div>
     </div>
+    <div class="row mt-1">
+        <div class="col">
+            <div class="card overflow" style="max-height: 80%; overflow-x: hidden;">
+                <div class="card-body">
+                    <h6 class="text-center">Category</h6>
+                    <hr>
+                    <div>
+                        <?php foreach ($data['categories'] as $category) : ?>
+                            <div class="pb-2">
+                                <input type="checkbox"> <?php echo $category->category; ?></br>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
 </div>
+
 <div class="row">
-    <!-- <div class="col-sm-2" style=" position margin-top:50% ;">
-        hello
-    </div> -->
     <div class="col"></div>
     <div style='float:right; width: 180px;'>
 
-        <div class="col-sm-2 overflow mt-2" style="position:fixed ;max-height: 80%; overflow-x: hidden;">
+        <div class="col-sm-2 overflow mt-2" style="position:fixed ;max-height: 76%; overflow-x: hidden;">
             <div class="card shadow-sm rounded bg-white ">
                 <div class="card-body pb-1 ">
                     <h6 class="m-0 pb-1 text-center">Notification</h6>

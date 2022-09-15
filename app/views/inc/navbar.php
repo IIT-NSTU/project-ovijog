@@ -23,12 +23,12 @@
                             <li class="nav-item">
                                 <a href="<?php echo URLROOT; ?>/users/profile" class="nav-link"><i class="fas fa-user"></i> My Profile</a>
                             </li>
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <a href="<?php echo URLROOT; ?>/pages/categories" class="nav-link">
 
                                     <i class="fa-solid fa-layer-group"></i> Categories
                                 </a>
-                            </li>
+                            </li> -->
 
                             <div style="display:flex ;">
                                 <li style="margin-top: 5px;">

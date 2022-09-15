@@ -3,6 +3,15 @@
     border: none;
 }
 
+.crop-text {
+    width: 100%;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
 .button-background-color {
     background-color: #293462;
     color: white;
