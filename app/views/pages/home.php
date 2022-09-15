@@ -4,11 +4,11 @@
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/home.css">
 <style>
     .post-hover:hover {
-        background-color: #85aeea;
+        background-color: #a6b4c9;
     }
 
     .solved-hover:hover {
-        background-color: #89dcb6;
+        background-color: #9bdac7;
     }
 
     .unsolved-hover:hover {
