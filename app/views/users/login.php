@@ -34,19 +34,19 @@
                 <form method="POST" action="#" class="needs-validation" novalidate="" autocomplete="off">
                     <div class="mb-3">
                         <label class="mb-2 text-muted" for="email">Enter your email</label>
-                        <input id="email" type="email" class="form-control" name="email" value="" required autofocus>
+                        <input id="forget-email" type="email" class="form-control" value="" required autofocus>
+                        <span id="forget-email-err" class="invalid-feedback"></span>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button class="btn btn-sm" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#Notify" style="background-color: #293462; color:white;">Done</button>
+                <button onclick="forgetPassword()" class="btn btn-sm" data-bs-toggle="modal" style="background-color: #293462; color:white;">Done</button>
             </div>
         </div>
     </div>
 </div>
 <!-----------------Forgot Password modal end------------------------->
-
 
 <form method="POST" action="<?php echo URLROOT; ?>/users/login">
 
@@ -90,7 +90,7 @@
 
                                 <div class="text-end mb-3 text-sm ">
                                     <!-- <a href="<?php echo URLROOT; ?>/users/forgetPassword/" class="text-decoration-none" style="color:blue ;">Forgot Password? </a> -->
-                                    <button class="btn btn-sm text-primary ps-0" data-bs-toggle="modal" data-bs-target="#forgotPassword">Forgot password</button>
+                                    <a class="btn btn-sm text-primary ps-0" data-bs-toggle="modal" data-bs-target="#forgotPassword">Forgot password</a>
                                 </div>
                                 <div class="row mb-2 px-3">
                                     <button type="submit" class="btn login-btn-color">Login</button>
@@ -107,5 +107,41 @@
         </div>
     </div>
 </form>
+
+<script>
+    $('#forget-email').on('input', function() {
+        $('#forget-email-err').hide();
+    });
+
+    function forgetPassword() {
+        var email = $('#forget-email').val();
+
+        if (email === "") {
+            $('#forget-email-err').html("Please enter email");
+            $('#forget-email-err').show();
+        } else {
+
+            var data = {};
+
+            data['email'] = email;
+
+            $.ajax({
+                url: '<?php echo URLROOT; ?>/users/sendChangePasswordRequest/',
+                type: 'post',
+                data: data,
+                dataType: 'json',
+                success: function(s) {
+                    console.log(s);
+                    $('#forgotPassword').modal('toggle');
+                },
+                error: function(err) {
+                    console.log('failed');
+                    $('#forget-email-err').html(err.responseText);
+                    $('#forget-email-err').show();
+                }
+            });
+        }
+    }
+</script>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

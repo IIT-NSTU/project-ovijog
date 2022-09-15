@@ -60,17 +60,15 @@ function sendMail($edu_mail, $link){
     $mail->Subject = 'Verify your Project Ovijog account';
 
 // Mail body content
-    $bodyContent = '<h1>To verify your newly created <a href="http://localhost/ovijog">Project Ovijog</a> account please click on the below link:</h1>';
+    $bodyContent = '<h1>To verify your <a href="http://localhost/ovijog">Project Ovijog</a> account please click on the below link:</h1>';
     $bodyContent .= '<a href='.$link.'>Click Here</a>';
-    $bodyContent .='<h3>If you do not send a request for an account please ignore this email.</h3>';
+    $bodyContent .='<h3>If you do not send a request please ignore this email.</h3>';
     $bodyContent .='<h3>Thank you</h3>';
     $mail->Body    = $bodyContent;
 
 // Send email
     if(!$mail->send()) {
         echo 'Message could not be sent. Mailer Error: '.$mail->ErrorInfo;
-    } else {
-        echo 'Message has been sent.';
     }
 }
 

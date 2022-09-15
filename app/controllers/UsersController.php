@@ -52,9 +52,9 @@ class UsersController extends Controller {
 
             if (empty($data['edu_email'])) {
                 $data['edu_email_err'] = 'Please enter email';
-            } elseif (!preg_match('/^[a-zA-Z0-9+_.-]+@*[a-zA-Z.]*.nstu.edu.bd/',$data['edu_email'])){
+            } elseif (!preg_match('/^[a-zA-Z0-9+_.-]+@*[a-zA-Z.]*.nstu.edu.bd/', $data['edu_email'])) {
                 $data['edu_email_err'] = 'Please enter a valid nstu edu email';
-            }else {
+            } else {
                 if ($this->userModel->findUserByEmail($data['edu_email'])) {
                     $data['edu_email_err'] = 'This email is already taken';
                 }
@@ -189,9 +189,9 @@ class UsersController extends Controller {
         $_SESSION['user_email'] = $user->edu_mail;
         $_SESSION['is_admin'] = $user->isadmin;
 
-        if($user->isadmin){
+        if ($user->isadmin) {
             redirect('/admins');
-        }else{
+        } else {
             redirect('pages/home');
         }
 
@@ -205,27 +205,72 @@ class UsersController extends Controller {
         redirect('users/login');
     }
 
-    public function forgetPassword(){
-
-        $data=[];
-
-        $this->view('/users/forgetpassword', $data);
+    public function sendChangePasswordRequest() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $res = $this->userModel->findUserByEmail($_POST['email']);
+            if ($res) {
+                $this->userModel->sendChangePasswordMail($res->user_id, $_POST['email']);
+                $data = ['res' => 'ok'];
+                echo json_encode($data);
+            } else {
+                echo "No account exist with provided email";
+            }
+        }
     }
 
-    public function changePassword(){
+    public function forgetPassword() {
+
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+
+            if ($this->userModel->verify($_GET['id'], $_GET['key'])) {
+
+                $data = [
+                    'user_id' => $_GET['id'],
+                ];
+
+                $this->view('/users/forgetpassword', $data);
+            } else {
+                echo "BAD REQUEST";
+            }
+
+        } else {
+            echo "BAD REQUEST";
+        }
+
+    }
+
+    public function changePasswordForForget() {
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //echo json_encode($_POST);
-            $data=[];
-            if($this->userModel->verifyPassword($_POST['old-password'])){
-                $hashed=password_hash($_POST['new-password'], PASSWORD_DEFAULT);
-                if($this->userModel->updatePassword($hashed)){
-                    $data['res']='ok';
+            $data = [];
+
+            $hashed = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            if ($this->userModel->updatePassword($hashed,$_POST['user_id'])) {
+                $data['res'] = 'ok';
+                flash('register_success', 'Your password changed');
+                echo json_encode($data);
+            } else {
+                echo 'Some thing went wrong, try aging';
+            }
+        }
+
+    }
+
+    public function changePassword() {
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            //echo json_encode($_POST);
+            $data = [];
+            if ($this->userModel->verifyPassword($_POST['old-password'])) {
+                $hashed = password_hash($_POST['new-password'], PASSWORD_DEFAULT);
+                if ($this->userModel->updatePassword($hashed)) {
+                    $data['res'] = 'ok';
                     echo json_encode($data);
-                }else{
+                } else {
                     echo 'Some thing went wrong, try aging';
                 }
-            }else{
+            } else {
                 echo 'Old password do not match';
             }
         }
