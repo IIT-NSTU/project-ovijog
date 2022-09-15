@@ -99,6 +99,34 @@ class User {
         }
     }
 
+    public function verifyPassword($password) {
+        $this->db->query('select * from users where user_id = :user_id');
+        $this->db->bind(':user_id', $_SESSION['user_id']);
+
+        $row = $this->db->single();
+
+        $hashed_password = $row->pass_hash;
+
+        if (password_verify($password, $hashed_password)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function updatePassword($hashedPassword){
+        $this->db->query('update users set pass_hash = :pass_hash where user_id = :user_id');
+        $this->db->bind(':pass_hash', $hashedPassword);
+        $this->db->bind(':user_id', $_SESSION['user_id']);
+
+        if ($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
     public function getPosts() {
         $user_id = $_SESSION['user_id'];
 

@@ -212,9 +212,22 @@ class UsersController extends Controller {
 
     public function changePassword(){
 
-        $data=[];
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            //echo json_encode($_POST);
+            $data=[];
+            if($this->userModel->verifyPassword($_POST['old-password'])){
+                $hashed=password_hash($_POST['new-password'], PASSWORD_DEFAULT);
+                if($this->userModel->updatePassword($hashed)){
+                    $data['res']='ok';
+                    echo json_encode($data);
+                }else{
+                    echo 'Some thing went wrong, try aging';
+                }
+            }else{
+                echo 'Old password do not match';
+            }
+        }
 
-        $this->view('/users/changepassword', $data);
     }
 
 
