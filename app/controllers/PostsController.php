@@ -301,6 +301,7 @@ class PostsController extends Controller
                 'body' => trim($_POST['body']),
                 'image' => $_FILES['image'],
                 'user_id' => $_SESSION['user_id'],
+                'tags'  => trim($_POST['tags']),
                 'title_err' => '',
                 'body_err' => ''
             ];
@@ -346,13 +347,22 @@ class PostsController extends Controller
                 redirect('posts');
             }
 
+            $tags=$this->tagModel->getTags($id);
+            $tagText='';
+            foreach ($tags as $tag){
+                $tagText.=$tag->tag.', ';
+            }
+
             $data = [
                 'categories' => $categories,
 
                 'post_id' => $id,
                 'title' => $post->title,
                 'category' => $post->category,
-                'body' => $post->body
+                'body' => $post->body,
+                'tags' => $tagText,
+                'title_err' => '',
+                'body_err' => ''
             ];
 
             $this->view('posts/edit', $data);
