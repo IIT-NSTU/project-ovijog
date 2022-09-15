@@ -23,7 +23,7 @@
     </div>
     <div class="row mt-1">
         <div class="col">
-            <div class="card overflow" style="max-height: 80%; overflow-x: hidden;">
+            <div class="card overflow" style="max-height: 79.2%; overflow-x: hidden;">
                 <div class="card-body">
                     <h6 class="text-center">Category</h6>
                     <hr>
@@ -46,7 +46,7 @@
     <div class="col"></div>
     <div style='float:right; width: 180px;'>
 
-        <div class="col-sm-2 overflow mt-2" style="position:fixed ;max-height: 76%; overflow-x: hidden;">
+        <div class="col-sm-2 overflow mt-2" style="position:fixed ;max-height: 75.2%; overflow-x: hidden;">
             <div class="card shadow-sm rounded bg-white ">
                 <div class="card-body pb-1 ">
                     <h6 class="m-0 pb-1 text-center">Notification</h6>

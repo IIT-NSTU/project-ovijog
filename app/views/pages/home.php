@@ -4,6 +4,38 @@
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/home.css">
 
 <body>
+    <div class="row mt-3" style="display: flex;justify-content: space-between;">
+        <!-- <div class=""> -->
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="text-center text-primary" style="font-size:500% ;"><?php echo $data['total_post']; ?></h1>
+                    <h3 class="text-center">Posts</h3>
+                    <hr>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="text-center text-success" style="font-size:500% ;"><?php echo $data['total_solved']; ?></h1>
+                    <h3 class="text-center">Solved</h3>
+                    <hr>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="text-center text-danger" style="font-size:500% ;"><?php echo $data['total_unsolved']; ?></h1>
+                    <h3 class="text-center">Unsolved</h>
+                        <hr>
+                </div>
+            </div>
+        </div>
+        <!-- </div> -->
+    </div>
     <div class="row gutters-sm">
         <div class="col-md-2 mt-4 pe-5">
             <div class="card card-body mb-4 mt-4 bg-secondary">
