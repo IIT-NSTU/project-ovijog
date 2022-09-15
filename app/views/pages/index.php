@@ -12,9 +12,6 @@
         letter-spacing: 2px;
         margin-top: 120px;
         padding: 10%;
-        /*background-color: rgba(194, 193, 193, 0.31);
-            backdrop-filter: blur(5px);
-            border-radius: 10%;*/
     }
 
     .jumbotron p {
@@ -35,14 +32,9 @@
     .index-button {
         width: 110px;
         height: 50px;
-        /*background-color: #050505;*/
     }
 
     @media screen and (max-width: 1000px) {
-
-        /* .home-footer {
-            margin-top: 1400px !important;
-        } */
         #slogan-text {
             margin-bottom: -30px;
         }
@@ -53,7 +45,7 @@
 
 <div class="jumbo">
     <div class="jumbotron pt-lg-4">
-        <p id="slogan-text"></p>
+        <p id="slogan-text" class="fw-bolder"></p>
         <div>
             <button type="button" onclick="location.href='<?php echo URLROOT; ?>/users/login';" class="btn btn-lg btn-outline-dark index-button" data-bs-target="#signupModal" data-bs-toggle="modal">Login
             </button>

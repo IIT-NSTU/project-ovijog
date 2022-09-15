@@ -126,7 +126,9 @@
                                             <a id="down" onclick="dislike(this.parentNode.parentNode,<?php echo $post->post_id; ?>)" class="btn btn-sm <?php echo (empty($data['down-votes'][$post->post_id])) ? 'btn-outline-danger' : 'btn-danger'; ?> ms-2"><i class="fa-solid fa-arrow-down"></i>
                                             </a>
                                         </div>
-                                        <div class="col-sm text-center"><a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->post_id; ?>" class="btn btn-sm text-primary">More</a></div>
+                                        <div class="col-sm text-center">
+                                            <a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->post_id; ?>" class="btn btn-sm text-primary" style="padding-top: 12px;">More</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
