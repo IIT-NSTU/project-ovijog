@@ -9,5 +9,24 @@
         <p>Version: <strong><?php echo APPVIRSION ?></strong></p>
     </div>
 </div>
+<div>
+  <div class="col-4">
+    <div class="card">
+        <img src="/img/Arman.png" alt="Armanm" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">Arman</h5>
+             <p>
+                One of the developer
+             </p>
+
+
+        </div>
+        
+    </div>
+
+  </div>
+
+</div>
+
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>
