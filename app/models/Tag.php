@@ -18,8 +18,7 @@ class Tag
         return $this->db->resultSet();
     }
 
-    public function getAllTags()
-    {
+    public function getAllTags(){
         $this->db->query("select distinct tag from tags");
 
         return $this->db->resultSet();
