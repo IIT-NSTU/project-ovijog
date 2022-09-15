@@ -47,9 +47,6 @@
 </div>
 <!-----------------Forgot Password modal end------------------------->
 
-<!-----------------Change Password modal start------------------------->
-
-<!-----------------Change Password modal end------------------------->
 
 <form method="POST" action="<?php echo URLROOT; ?>/users/login">
 
