@@ -14,7 +14,7 @@ class User {
         $res = $this->db->single();
 
         if ($this->db->rowCount() > 0) {
-            return true;
+            return $res;
         } else {
             return false;
         }
@@ -82,6 +82,28 @@ class User {
         sendMail($mail,$link);
     }
 
+
+    public function sendChangePasswordMail($user_id,$mail){
+
+        $key=bin2hex($user_id).bin2hex(random_bytes(16));
+
+        try{
+            $this->db->query("insert into verify_keys (user_id, v_key) values (:user_id, :v_key)");
+            $this->db->bind(':user_id',$user_id);
+            $this->db->bind(':v_key',$key);
+            $this->db->execute();
+        }catch (PDOException $e){
+            $this->db->query("update verify_keys set v_key = :v_key where user_id = :user_id");
+            $this->db->bind(':user_id',$user_id);
+            $this->db->bind(':v_key',$key);
+            $this->db->execute();
+        }
+
+        $link=URLROOT.'/users/forgetPassword?id='.$user_id.'&key='.$key;
+
+        sendMail($mail,$link);
+    }
+
     public function login($email, $password) {
         $this->db->query('select * from users where edu_mail = :email');
         $this->db->bind(':email', $email);
@@ -114,10 +136,14 @@ class User {
         }
     }
 
-    public function updatePassword($hashedPassword){
+    public function updatePassword($hashedPassword, $id=-1){
         $this->db->query('update users set pass_hash = :pass_hash where user_id = :user_id');
         $this->db->bind(':pass_hash', $hashedPassword);
-        $this->db->bind(':user_id', $_SESSION['user_id']);
+        if($id==-1){
+            $this->db->bind(':user_id', $_SESSION['user_id']);
+        }else{
+            $this->db->bind(':user_id', $id);
+        }
 
         if ($this->db->execute()){
             return true;
