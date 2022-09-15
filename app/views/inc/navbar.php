@@ -30,18 +30,18 @@
                                 </a>
                             </li>
 
-                            <!-- <div style="display:flex ;">
+                            <div style="display:flex ;">
                                 <li style="margin-top: 5px;">
-                                    <input type="text" class="search-click" name="" placeholder="search here..." />
+                                    <input type="text" class="search-click" name="" placeholder="search" />
                                 </li>
                                 <li style=" margin-top: 7px;">
                                     <button class="btn btn-outline-light search-icon" type="submit" style="height: 32px;display:flex;align-items: flex-end;margin-left: 8px;"><i class="fa-solid fa-magnifying-glass"></i></button>
                                 </li>
 
-                            </div> -->
-                            <li class="nav-item">
+                            </div>
+                            <!-- <li class="nav-item">
                                 <a href="" class="nav-link"><i class="fa-solid fa-bell"></i></a>
-                            </li>
+                            </li> -->
                         <?php else : ?>
                             <li class="nav-item">
                                 <a href="<?php echo URLROOT; ?>/pages/index" class="nav-link"><i class="fas fa-house-user"></i> Home</a>
