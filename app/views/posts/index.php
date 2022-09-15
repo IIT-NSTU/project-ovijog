@@ -3,8 +3,15 @@
 
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/post.css">
 
+<style>
+    .card-hover:hover {
+        background-color: #b4c3d1;
+    }
+</style>
+
 <?php flash('post_message'); ?>
-<div class="container">
+<!-- <div class="container"> -->
+<div>
     <div class="my-3" style="position: fixed;">
         <div class="mb-3" id="create-post-button-div">
             <a href="<?php echo URLROOT; ?>/posts/add" id="create-post-button" class="btn button-background-color">
@@ -16,15 +23,89 @@
             <button class="btn btn-outline-light search-icon" type="submit" style="height: 32px;display:flex;align-items: flex-end;margin-left: 8px;"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
     </div>
-    <div class="container mt-2 mb-2">
-        <div id="data" class="row d-flex align-items-center justify-content-center">
 
-            <!-- All post here ----->
+    <!-- Notification start -->
+    <!-- <div class="my-3 d-flex justify-content-end ms-auto" style="position:fixed;">
+        <div class="mb-3" id="create-post-button-div">
+            <a href="<?php echo URLROOT; ?>/posts/add" id="create-post-button" class="btn button-background-color">
+                <i class="fa-solid fa-pencil"></i> Create New Post
+            </a>
+        </div>
+    </div> -->
+    <!-- Notification End -->
+</div>
+<div class="row">
 
+    <div class="col-sm-10"></div>
+    <div class=" " style='float:right; width: 180px;'>
+        <div class="col-sm-2 overflow mt-2" style="position:fixed ;max-height: 80%; overflow-x: hidden;">
+            <div class="card shadow-sm rounded bg-white ">
+                <div class="card-body pb-1 ">
+                    <h6 class="m-0 pb-1 text-center">Notification</h6>
+                    <hr>
+
+                    <div class="px-1 card-hover">
+                        <small>A new comment on your post <b>Post Title</b></small>
+                        <hr>
+                    </div>
+                    <div class="px-1 card-hover">
+                        <small>New vote on your post <b>Post Title</b></small>
+                        <hr>
+                    </div>
+                    <div class="px-1 card-hover">
+                        <small>A new comment on your post <b>Post Title</b></small>
+                        <hr>
+                    </div>
+                    <div class="px-1 card-hover">
+                        <small>A new comment on your post <b>Post Title</b></small>
+                        <hr>
+                    </div>
+                    <div class="px-1 card-hover">
+                        <small>A new comment on your post <b>Post Title</b></small>
+                        <hr>
+                    </div>
+                    <div class="px-1 card-hover">
+                        <small>A new comment on your post <b>Post Title</b></small>
+                        <hr>
+                    </div>
+                    <div class="px-1 card-hover">
+                        <small>A new comment on your post <b>Post Title</b></small>
+                        <hr>
+                    </div>
+                    <div class="px-1 card-hover">
+                        <small>New vote on your post <b>Post Title</b></small>
+                        <hr>
+                    </div>
+                    <div class="px-1 card-hover">
+                        <small>New vote on your post <b>Post Title</b></small>
+                        <hr>
+                    </div>
+                    <div class="px-1 card-hover">
+                        <small>A new comment on your post <b>Post Title</b></small>
+                        <hr>
+                    </div>
+                    <div class="px-1 card-hover">
+                        <small>A new comment on your post <b>Post Title</b></small>
+                        <hr>
+                    </div>
+                    <div class="px-1 card-hover">
+                        <small>A new comment on your post <b>Post Title</b></small>
+                        <hr>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
 </div>
+<div class="container mt-2 mb-2">
+    <div id="data" class="row d-flex align-items-center justify-content-center">
+
+        <!-- All post here ----->
+
+    </div>
+</div>
+
+<!-- </div> -->
 
 <!-------spinner------->
 <div class="d-flex justify-content-center">
