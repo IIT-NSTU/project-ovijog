@@ -27,7 +27,7 @@
         </div>
     </div>
 
-    <div class="card card-body mt-4 bg-light">
+    <div class="card card-body mt-4 mb-4 bg-light">
         <form action="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post_id']; ?>" method="post">
             <div class="row">
                 <div class="col">
@@ -46,37 +46,40 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="formFileMultiple" class="form-label mb-2"><b>Photo:</b></label>
-                        <div class="row">
-                            <div class="col-9">
-                                <input class="form-control" type="file" name="image_file" value="https://play-lh.googleusercontent.com/mLvvgUXJVZeu-GbqWZfr8ug74V7d8Od9yU2AOvUUptiki9wIH-BJHataFTJI_J0TlQ">
-                            </div>
-                        </div>
+                        <!-- <div class="row"> -->
+                        <!-- <div class="col-12"> -->
+                        <input class="form-control" type="file" name="image_file" value="">
+                        <!-- </div> -->
+                        <!-- </div> -->
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="tags" class="mb-2"><b>Tags:</b></label>
+                        <input class="form-control form-control" name="tags" value="" placeholder=''>
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
                         <label for="body" class="mb-2"><b>Body:</b> <sup class="star-color">*</sup></label>
-                        <textarea name="body" class="form-control form-control-lg  <?php echo (!empty($data['body_err'])) ? 'is-invalid' : ''; ?>" rows="7"><?php echo $data['body']; ?></textarea>
+                        <textarea name="body" class="form-control form-control-lg  <?php echo (!empty($data['body_err'])) ? 'is-invalid' : ''; ?>" rows="10"><?php echo $data['body']; ?></textarea>
                         <span class="invalid-feedback"><?php echo $data['body_err']; ?></span>
                     </div>
                 </div>
             </div>
 
-            <div class="row mb-2">
-                <div class="col-lg-6 mt-3 mb-2">
-                    <a href="<?php echo URLROOT; ?>/posts" class="btn w-100 button-background-color"><i class="fas fa-arrow-left"></i> Back to Posts</a>
+            <div class="row mb-2 d-flex" style="justify-content: space-between;">
+                <div class="col-lg-1 mt-1">
+                    <a href="<?php echo URLROOT; ?>/posts" class="btn button-background-color">Back</a>
                 </div>
-                <div class="col-lg-6 mt-3 mb-2">
-                    <button type="submit" name="submit" class="btn button-background-color w-100"><i class="fas fa-check"></i> Publish
-                    </button>
+                <div class="col-lg-1 mt-1">
+                    <button type="submit" name="submit" class="btn button-background-color">Post</button>
                 </div>
             </div>
         </form>
     </div>
 </div>
 
-    <script>
-        $('#categorySelect').val('<?php echo $data['category']; ?>');
-    </script>
+<script>
+    $('#categorySelect').val('<?php echo $data['category']; ?>');
+</script>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

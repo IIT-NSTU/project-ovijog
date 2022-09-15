@@ -140,40 +140,6 @@
         <div class="col-sm-1"></div>
     </div>
 
-    <!-- flip card start -->
-    <div class="flip-main">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-4 p-0">
-                    <div class="flip-card p-0">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front" style="border-radius: 10px;">
-
-                                <div class="text pt-2 ps-2 pe-2 pb-2 bg-white">
-                                    <h6 class="mb-0">Water problem in ASH hall</h6>
-                                    <div class="d-flex" style="justify-content: space-between;">
-                                        <p class="text-muted mb-0"><small>Category: Water</small></p>
-                                        <p class="mb-0"> <small class="text-muted">2022-09-15</small></p>
-                                    </div>
-                                    <hr class="mb-2">
-                                    <p> <small>More than 1.8 million people in Bangladesh lack access to an improved water source in Bangladesh lack access to...</small></p>
-                                </div>
-                            </div>
-                            <div class="flip-card-back">
-                                <div class="text">
-                                    <a href="#" style="text-decoration:none; color:White; font-size:1.5rem;">See Post</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <!-- </div> -->
-    </div>
-
-
     <!-- Top Popular Posts Start-->
     <div class="row " style="display: flex;justify-content: space-around; margin-top:-24px">
 
