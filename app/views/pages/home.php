@@ -41,10 +41,65 @@
         color: #386fa7;
     }
 
-    /* hr {
-        margin-top: 5px;
-        margin-bottom: 5px;
-    } */
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .flip-main .flip-card {
+        flex: 0 0 calc(33.33% - 30px);
+        /* margin: 0 15px 30px; */
+        perspective: 1000px;
+        /*remove this if you dont want the 3d effect*/
+    }
+
+    .flip-main .flip-card-inner {
+        /* box-shadow: 0 0 10px #a9b3d6; */
+        position: relative;
+        transform-style: preserve-3d;
+        transition: all 1s ease;
+    }
+
+    .flip-main .flip-card-front img {
+        width: 100%;
+    }
+
+    .flip-main .flip-card-front,
+    .flip-main .flip-card-back {
+        backface-visibility: hidden;
+    }
+
+    .flip-main .flip-card-back {
+        background-color: #6e0ec5;
+        position: absolute;
+        left: 0;
+        top: 0;
+        padding: 15px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        transform: rotateY(180deg);
+    }
+
+    .flip-main .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+    }
+
+    /*responsive*/
+    @media(max-width: 991px) {
+        .flip-main .flip-card {
+            flex: 0 0 calc(50% - 30px);
+        }
+    }
+
+    @media(max-width: 767px) {
+        .flip-main .flip-card {
+            flex: 0 0 calc(100% - 30px);
+        }
+    }
 </style>
 
 <body>
@@ -85,6 +140,38 @@
         <div class="col-sm-1"></div>
     </div>
 
+    <!-- flip card start -->
+    <div class="flip-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 p-0">
+                    <div class="flip-card p-0">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front" style="border-radius: 10px;">
+
+                                <div class="text pt-2 ps-2 pe-2 pb-2 bg-white">
+                                    <h6 class="mb-0">Water problem in ASH hall</h6>
+                                    <div class="d-flex" style="justify-content: space-between;">
+                                        <p class="text-muted mb-0"><small>Category: Water</small></p>
+                                        <p class="mb-0"> <small class="text-muted">2022-09-15</small></p>
+                                    </div>
+                                    <hr class="mb-2">
+                                    <p> <small>More than 1.8 million people in Bangladesh lack access to an improved water source in Bangladesh lack access to...</small></p>
+                                </div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="text">
+                                    <a href="#" style="text-decoration:none; color:White; font-size:1.5rem;">See Post</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- </div> -->
+    </div>
 
 
     <!-- Top Popular Posts Start-->
