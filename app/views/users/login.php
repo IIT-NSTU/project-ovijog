@@ -8,12 +8,25 @@
 </style>
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/Login.css">
 
+<!-- Notify Modal start -->
+<div class="modal fade" id="Notify" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title text-center" id="staticBackdropLabel">Please Check your email</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Notify Modal End  -->
+
 <!-----------------Forgot Password modal start------------------------->
 <div class="modal fade" id="forgotPassword" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title text-center" id="staticBackdropLabel">Change Password</h5>
+                <h5 class="modal-title text-center" id="staticBackdropLabel">Email Verification</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -26,7 +39,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button class="btn btn-sm" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#changePassword" style="background-color: #293462; color:white;">Done</button>
+                <button class="btn btn-sm" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#Notify" style="background-color: #293462; color:white;">Done</button>
             </div>
         </div>
     </div>
