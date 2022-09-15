@@ -14,14 +14,14 @@
 <div style="position: fixed;">
     <div class="row">
         <div class="col">
-            <div class="mb-3" id="create-post-button-div">
-                <a href="<?php echo URLROOT; ?>/posts/add" id="create-post-button" class="btn button-background-color mt-2">
-                    <i class="fa-solid fa-pencil"></i> Create New Post
+            <div class="mb-3" id="create-post-button-div" style="margin-left:-50px ;">
+                <a href="<?php echo URLROOT; ?>/posts/add" id="create-post-button" class="btn btn-light mt-2" style="width:206px">
+                    <b><i class="fa-solid fa-pencil"></i> Create New Post</b>
                 </a>
             </div>
         </div>
     </div>
-    <div class="row mt-1">
+    <div class="row mt-1" style="margin-left:-65px ;">
         <div class="col">
             <div class="card overflow" style="max-height: 79.2%; overflow-x: hidden;">
                 <div class="card-body">
@@ -49,8 +49,6 @@
             <div class="card shadow-sm rounded bg-light ">
                 <div class="card-body pb-1 pt-0">
                     <a class="btn px-0 btn-light" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1" style="position: fixed;width:16.65%; margin-left:-16px;"><b>Notification</b></a>
-                    <!-- <h6 class="m-0 pb-1 text-center">Notification</h6> -->
-                    <!-- <hr> -->
                     <div class="collapse card" id="multiCollapseExample1" style="margin-top: 30%;">
 
                         <div class="px-1 card-hover">
