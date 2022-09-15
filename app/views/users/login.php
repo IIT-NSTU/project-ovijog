@@ -34,33 +34,7 @@
 <!-----------------Forgot Password modal end------------------------->
 
 <!-----------------Change Password modal start------------------------->
-<div class="modal fade" id="changePassword" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-center" id="staticBackdropLabel">Change Password</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form method="POST" action="#" class="needs-validation" novalidate="" autocomplete="off">
-                    <div class="mb-3">
-                        <label class="mb-2 text-muted" for="password">New Password</label>
-                        <input id="password" type="password" class="form-control" name="password" value="" required autofocus>
-                    </div>
 
-                    <div class="mb-3">
-                        <label class="mb-2 text-muted" for="password-confirm">Confirm Password</label>
-                        <input id="password-confirm" type="password" class="form-control" name="password_confirm" required>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-sm" style="background-color: #293462; color:white;">Change Password</button>
-            </div>
-        </div>
-    </div>
-</div>
 <!-----------------Change Password modal end------------------------->
 
 <form method="POST" action="<?php echo URLROOT; ?>/users/login">
