@@ -8,6 +8,16 @@ class Post {
         $this->db = Database::getInstance();
     }
 
+    public function report($data){
+        $this->db->query("insert into reports (user_id,post_id,category,feedback) values (:user_id,:post_id,:category,:feedback)");
+        $this->db->bind(':user_id', $_SESSION['user_id']);
+        $this->db->bind(':post_id', $data['post_id']);
+        $this->db->bind(':category', $data['category']);
+        $this->db->bind(':feedback', $data['feedback']);
+
+        $this->db->execute();
+    }
+
     public function getPostsWithLimit($page){
         $limit=4;
         $row=($page-1)*$limit;

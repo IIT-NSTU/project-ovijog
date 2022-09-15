@@ -162,10 +162,20 @@ class PostsController extends Controller
 
     public function report($id)
     {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        $data = [];
+            $data = [
+                'category'=>$_POST['reportCategory'],
+                'feedback'=>$_POST['feedback'],
+                'post_id'=>$id
+            ];
 
-        $this->view('posts/report', $data);
+            $this->postModel->report($data);
+
+            unset($_POST);
+
+            $this->view('posts/report', $data);
+        }
     }
 
     public function show($id)

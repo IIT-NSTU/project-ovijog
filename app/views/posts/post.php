@@ -6,20 +6,22 @@
                 <h5 class="modal-title" id="staticBackdropLabel">Report Confirmation</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <h6 class="text-muted">Choose Reason: </h6>
-                <div>
-                    <input type="radio" name="reportCategory" value="Fake Post"> Fake Post</br>
-                    <input type="radio" name="reportCategory" value="Others"> Bad Language</br>
-                    <input type="radio" name="reportCategory" value="Others"> Other</br>
-                </div><br>
-                <h6 class="text-muted">Write about the post</h6>
-                <textarea class="form-control col-xs-12"></textarea>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-sm btn-danger">Report</button>
-            </div>
+            <form target="_self" action="<?php echo URLROOT; ?>/posts/report/<?php echo $post->post_id?>" method="post">
+                <div class="modal-body">
+                    <h6 class="text-muted">Choose Reason: </h6>
+                    <div>
+                        <input type="radio" name="reportCategory" value="Fake Post"> Fake Post</br>
+                        <input type="radio" name="reportCategory" value="Bad Language"> Bad Language</br>
+                        <input type="radio" name="reportCategory" value="Others"> Others </br>
+                    </div><br>
+                    <h6 class="text-muted">Write about the post</h6>
+                    <textarea name="feedback" class="form-control col-xs-12"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <input type="submit" name="submit" value="Report" class="btn btn-sm btn-danger">
+                </div>
+            </form>
         </div>
     </div>
 </div>
