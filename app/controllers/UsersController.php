@@ -52,7 +52,9 @@ class UsersController extends Controller {
 
             if (empty($data['edu_email'])) {
                 $data['edu_email_err'] = 'Please enter email';
-            } else {
+            } elseif (!preg_match('/^[a-zA-Z0-9+_.-]+@*[a-zA-Z.]*.nstu.edu.bd/',$data['edu_email'])){
+                $data['edu_email_err'] = 'Please enter a valid nstu edu email';
+            }else {
                 if ($this->userModel->findUserByEmail($data['edu_email'])) {
                     $data['edu_email_err'] = 'This email is already taken';
                 }
