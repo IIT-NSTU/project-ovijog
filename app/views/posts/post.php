@@ -30,12 +30,12 @@
 <div class="col-md-8 mb-3">
     <div class="card">
         <div class="d-flex justify-content-between p-2 px-3">
-            <div class="d-flex flex-row align-items-center">
+            <div class="d-flex flex-row">
                 <div class="d-flex flex-column"> <span class="font-weight-bold">Title: <?php echo $post->title; ?> </span>
                     <small class="text-primary">Category: <?php echo $post->category; ?></small>
                 </div>
             </div>
-            <div class="pt-3">
+            <div>
                 <div class="d-flex flex-row mt-1 ellipsis"> <small class="mr-2"><?php echo $post->created_time; ?></small></div>
                 <div class="text-muted"><small><i class="fa-solid fa-eye"></i> <?php echo $data['view-count'][$post->post_id]; ?> views</small></div>
                 <?php if ($post->issolved) : ?>
