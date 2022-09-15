@@ -88,7 +88,7 @@
                                     <div class="line"></div>
                                 </div>
 
-                                <div class="row px-3 form-group">
+                                <div class="row px-3 pb-2 form-group">
                                     <label for="email" class="mb-1">
                                         <h6 class="mb-0 text-sm">Email Address<sup style="color:red;">*</sup></h6>
                                     </label>
@@ -111,7 +111,7 @@
                                     <button type="submit" class="btn login-btn-color">Login</button>
                                 </div>
                                 <div class="row px-1 ">
-                                    <small class="font-weight-bold">Don't have an account? <a href="<?php echo URLROOT; ?>/users/register" class="text-primary text-decoration-none"><b> Register Now</b></a></small>
+                                    <small>Don't have an account? <a href="<?php echo URLROOT; ?>/users/register" class="text-primary text-decoration-none fw-bolder">Register Now</a></small>
                                 </div>
                             </div>
                         </div>

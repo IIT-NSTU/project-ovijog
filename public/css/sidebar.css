@@ -1,0 +1,24 @@
+.mainsection {
+    padding-left: 12.6rem;
+}
+
+.sidebar {
+    position: fixed;
+    background: #212529;
+    width: 200px;
+    height: 100%;
+    top: 10.5%;
+    left: 0;
+    z-index: 1;
+}
+
+.sidebar ul li {
+    margin: 12px;
+}
+
+.sidebar ul li a {
+    /* color: white; */
+    color: #c7c8c9;
+    padding: 0 10px 0 5px;
+    text-decoration: none;
+}

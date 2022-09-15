@@ -33,7 +33,7 @@
                     <small class="text-primary">Category: <?php echo $post->category; ?></small>
                 </div>
             </div>
-            <div>
+            <div class="pt-3">
                 <div class="d-flex flex-row mt-1 ellipsis"> <small class="mr-2"><?php echo $post->created_time; ?></small></div>
                 <div class="text-muted"><small><i class="fa-solid fa-eye"></i> <?php echo $data['view-count'][$post->post_id]; ?> views</small></div>
                 <?php if ($post->issolved) : ?>
@@ -66,12 +66,12 @@
 
                 <?php if ($post->user_id != $_SESSION['user_id']) : ?>
                     <div class="col-sm text-center">
-                        <button class="btn btn-sm text-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><b>Report</b>
+                        <button class="btn btn-sm text-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="padding-top:8px;"><b>Report</b>
                         </button>
                     </div>
                 <?php endif; ?>
 
-                <div class="col-sm text-center"><a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->post_id; ?>" class="btn btn-sm text-primary"><b>More</b></a></div>
+                <div class="col-sm text-center"><a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->post_id; ?>" class="btn btn-sm text-primary" style="padding-top:8px;"><b>More</b></a></div>
 
             </div>
         </div>
