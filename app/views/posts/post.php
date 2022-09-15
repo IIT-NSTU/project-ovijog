@@ -6,7 +6,7 @@
                 <h5 class="modal-title" id="staticBackdropLabel">Report Confirmation</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form target="_self" action="<?php echo URLROOT; ?>/posts/report/<?php echo $post->post_id?>" method="post">
+            <form target="_self" action="<?php echo URLROOT; ?>/posts/report/<?php echo $post->post_id ?>" method="post">
                 <div class="modal-body">
                     <h6 class="text-muted">Choose Reason: </h6>
                     <div>
@@ -48,7 +48,10 @@
             <img src="<?php echo $post->img_link; ?>" width="50%" height="auto" class="img-fluid text-center py-3">
         </div>
         <div class="px-5 py-2">
-            <p class="body-text"><?php echo $post->body; ?></p>
+            <div class="">
+                <p class="body-text crop-text "><?php echo $post->body; ?></p>
+            </div>
+
             <div>
                 <?php foreach ($data['tags'][$post->post_id] as $tag) : ?>
                     <div class="chip"><?php echo $tag->tag; ?></div>

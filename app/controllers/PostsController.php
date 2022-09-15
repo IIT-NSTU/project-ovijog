@@ -20,10 +20,11 @@ class PostsController extends Controller
         $this->tagModel = $this->model('Tag');
     }
 
-    public function getAllTags(){
+    public function getAllTags()
+    {
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $data=$this->tagModel->getAllTags();
+            $data = $this->tagModel->getAllTags();
             echo json_encode($data);
         }
     }
@@ -154,7 +155,8 @@ class PostsController extends Controller
             'up-count' => $upCount,
             'down-count' => $downCount,
             'view-count' => $viewCount,
-            'tags' => $tags
+            'tags' => $tags,
+            'categories' => $this->postModel->getCategories()
         ];
 
         $this->view('posts/index', $data);
@@ -165,9 +167,9 @@ class PostsController extends Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $data = [
-                'category'=>$_POST['reportCategory'],
-                'feedback'=>$_POST['feedback'],
-                'post_id'=>$id
+                'category' => $_POST['reportCategory'],
+                'feedback' => $_POST['feedback'],
+                'post_id' => $id
             ];
 
             $this->postModel->report($data);
@@ -203,7 +205,7 @@ class PostsController extends Controller
             'down-voted' => $downVoted,
             'up-count' => $this->postModel->getUpVotes($id),
             'down-count' => $this->postModel->getdownVotes($id),
-            'view-count'=>$this->postModel->getViewCount($post->post_id),
+            'view-count' => $this->postModel->getViewCount($post->post_id),
             'tags' => $this->tagModel->getTags($post->post_id)
         ];
 
@@ -372,5 +374,4 @@ class PostsController extends Controller
             die('Something went wrong');
         }
     }
-
 }
