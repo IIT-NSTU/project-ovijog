@@ -30,7 +30,7 @@
                                 </a>
                             </li>
 
-                            <div style="display:flex ;">
+                            <!-- <div style="display:flex ;">
                                 <li style="margin-top: 5px;">
                                     <input type="text" class="search-click" name="" placeholder="search here..." />
                                 </li>
@@ -38,7 +38,7 @@
                                     <button class="btn btn-outline-light search-icon" type="submit" style="height: 32px;display:flex;align-items: flex-end;margin-left: 8px;"><i class="fa-solid fa-magnifying-glass"></i></button>
                                 </li>
 
-                            </div>
+                            </div> -->
                             <li class="nav-item">
                                 <a href="" class="nav-link"><i class="fa-solid fa-bell"></i></a>
                             </li>

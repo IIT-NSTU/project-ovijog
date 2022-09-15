@@ -5,17 +5,17 @@
 
 <?php flash('post_message'); ?>
 <div class="container">
-    <div class="row mb-3 mt-3">
-        <div class="col-md-6">
-            <h1>Posts</h1>
-        </div>
-        <div class="col-md-6" id="create-post-button-div">
-            <a href="<?php echo URLROOT; ?>/posts/add" id="create-post-button" class="btn button-background-color float-right">
+    <div class="my-3" style="position: fixed;">
+        <div class="mb-3" id="create-post-button-div">
+            <a href="<?php echo URLROOT; ?>/posts/add" id="create-post-button" class="btn button-background-color">
                 <i class="fa-solid fa-pencil"></i> Create New Post
             </a>
         </div>
+        <div class=" d-flex justify-content-center">
+            <input type="text" class="search-click" name="" placeholder="Search" />
+            <button class="btn btn-outline-light search-icon" type="submit" style="height: 32px;display:flex;align-items: flex-end;margin-left: 8px;"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
     </div>
-
     <div class="container mt-2 mb-2">
         <div id="data" class="row d-flex align-items-center justify-content-center">
 
