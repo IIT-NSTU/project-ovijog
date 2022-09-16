@@ -1,15 +1,14 @@
 <?php
 
-class PostsController extends Controller
-{
+class PostsController extends Controller {
 
     private $postModel;
     private $userModel;
     private $commentModel;
+    private $notificationModel;
     private $tagModel;
 
-    public function __construct()
-    {
+    public function __construct() {
         if (!isLoggedIn()) {
             redirect('users/login');
         }
@@ -18,10 +17,10 @@ class PostsController extends Controller
         $this->userModel = $this->model('User');
         $this->commentModel = $this->model('Comment');
         $this->tagModel = $this->model('Tag');
+        $this->notificationModel = $this->model('Notification');
     }
 
-    public function getAllTags()
-    {
+    public function getAllTags() {
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $data = $this->tagModel->getAllTags();
@@ -29,8 +28,7 @@ class PostsController extends Controller
         }
     }
 
-    public function load($page = 1)
-    {
+    public function load($page = 1) {
         sleep(1);
         //$page=$_POST['page']??1;
 
@@ -76,16 +74,24 @@ class PostsController extends Controller
         $this->view('posts/list', $data);
     }
 
-    public function markSolved()
-    {
+    public function markSolved() {
 
         $post_id = $_POST['post_id'];
 
         echo $this->postModel->markSolved($post_id);
+
+        $commentedUsers=$this->postModel->commentedUsers($post_id);
+        foreach ($commentedUsers as $commentedUser){
+            $this->addSolvedNotification($commentedUser->user_id,$post_id);
+        }
+
+        $votedUsers=$this->postModel->votedUsers($post_id);
+        foreach ($votedUsers as $votedUser){
+            $this->addSolvedNotification($votedUser->user_id,$post_id);
+        }
     }
 
-    public function comment($id)
-    {
+    public function comment($id) {
 
         $commentMsg = $_POST['comment'];
 
@@ -100,13 +106,16 @@ class PostsController extends Controller
             'created_time' => $comment->created_time
         ];
 
+        $this->addCommentNotification($id);
+
         echo json_encode($data);
     }
 
-    public function vote($params0, $params1)
-    {
+    public function vote($params0, $params1) {
 
         $this->postModel->vote($params0, $params1);
+
+        $this->addVoteNotification($params0);
 
         $data = [
             'upCount' => $this->postModel->getUpVotes($params0),
@@ -116,10 +125,11 @@ class PostsController extends Controller
         echo json_encode($data);
     }
 
-    public function index()
-    {
+    public function index() {
 
         $posts = $this->postModel->getAllPosts();
+
+        $notifications = $this->notificationModel->getAllNotification();
 
         $upVotes = [];
         $downVotes = [];
@@ -156,14 +166,14 @@ class PostsController extends Controller
             'down-count' => $downCount,
             'view-count' => $viewCount,
             'tags' => $tags,
-            'categories' => $this->postModel->getCategories()
+            'categories' => $this->postModel->getCategories(),
+            'notifications'=>$notifications
         ];
 
         $this->view('posts/index', $data);
     }
 
-    public function report($id)
-    {
+    public function report($id) {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $data = [
@@ -180,8 +190,7 @@ class PostsController extends Controller
         }
     }
 
-    public function show($id)
-    {
+    public function show($id) {
 
         $this->postModel->addView($id);
 
@@ -212,8 +221,7 @@ class PostsController extends Controller
         $this->view('posts/show', $data);
     }
 
-    public function add()
-    {
+    public function add() {
 
         $categories = $this->postModel->getCategories();
 
@@ -228,7 +236,7 @@ class PostsController extends Controller
                 'category' => trim($_POST['category']),
                 'body' => trim($_POST['body']),
                 'image' => $_FILES['image'],
-                'tags'  => trim($_POST['tags']),
+                'tags' => trim($_POST['tags']),
                 'user_id' => $_SESSION['user_id'],
                 'title_err' => '',
                 'body_err' => ''
@@ -284,8 +292,7 @@ class PostsController extends Controller
         }
     }
 
-    public function edit($id)
-    {
+    public function edit($id) {
         $categories = $this->postModel->getCategories();
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -301,7 +308,7 @@ class PostsController extends Controller
                 'body' => trim($_POST['body']),
                 'image' => $_FILES['image'],
                 'user_id' => $_SESSION['user_id'],
-                'tags'  => trim($_POST['tags']),
+                'tags' => trim($_POST['tags']),
                 'title_err' => '',
                 'body_err' => ''
             ];
@@ -347,10 +354,10 @@ class PostsController extends Controller
                 redirect('posts');
             }
 
-            $tags=$this->tagModel->getTags($id);
-            $tagText='';
-            foreach ($tags as $tag){
-                $tagText.=$tag->tag.', ';
+            $tags = $this->tagModel->getTags($id);
+            $tagText = '';
+            foreach ($tags as $tag) {
+                $tagText .= $tag->tag . ', ';
             }
 
             $data = [
@@ -369,8 +376,7 @@ class PostsController extends Controller
         }
     }
 
-    public function delete($id)
-    {
+    public function delete($id) {
         $post = $this->postModel->getPostById($id);
 
         if ($post->user_id != $_SESSION['user_id']) {
@@ -383,5 +389,29 @@ class PostsController extends Controller
         } else {
             die('Something went wrong');
         }
+    }
+
+    public function addVoteNotification($post_id) {
+        $post = $this->postModel->getPostById($post_id);
+        $user_id=$post->user_id;
+        $text = '<p>You have a new vote on your post <a href="' . URLROOT . '/posts/show/' . $post_id . '">' . $post->title . '</a><p>';
+
+        $this->notificationModel->addNotification($user_id,$post_id,$text);
+    }
+
+    public function addCommentNotification($post_id) {
+        $post = $this->postModel->getPostById($post_id);
+        $user_id=$post->user_id;
+        $text = '<p>You have a new comment on your post <a href="' . URLROOT . '/posts/show/' . $post_id . '">' . $post->title . '</a><p>';
+
+        $this->notificationModel->addNotification($user_id,$post_id,$text);
+    }
+
+    public function addSolvedNotification($user_id, $post_id) {
+        $post = $this->postModel->getPostById($post_id);
+        //$user_id=$post->user_id;
+        $text = '<p>Post <a href="' . URLROOT . '/posts/show/' . $post_id . '">' . $post->title . '</a> is now solved!<p>';
+
+        $this->notificationModel->addNotification($user_id,$post_id,$text);
     }
 }

@@ -8,6 +8,18 @@ class Post {
         $this->db = Database::getInstance();
     }
 
+    public function commentedUsers($post_id){
+        $this->db->query("select distinct user_id from comments where post_id=:post_id");
+        $this->db->bind(':post_id', $post_id);
+        return $this->db->resultSet();
+    }
+
+    public function votedUsers($post_id){
+        $this->db->query("select distinct user_id from votes where post_id=:post_id");
+        $this->db->bind(':post_id', $post_id);
+        return $this->db->resultSet();
+    }
+
     public function report($data){
         $this->db->query("insert into reports (user_id,post_id,category,feedback) values (:user_id,:post_id,:category,:feedback)");
         $this->db->bind(':user_id', $_SESSION['user_id']);

@@ -51,54 +51,12 @@
                     <a class="btn px-0 btn-light" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1" style="position: fixed;width:16.65%; margin-left:-16px;"><b>Notification</b></a>
                     <div class="collapse card" id="multiCollapseExample1" style="margin-top: 30%;">
 
+                        <?php foreach ($data['notifications'] as $notification): ?>
                         <div class="px-1 card-hover">
-                            <small>A new comment on your post <b>Post Title</b></small>
+                            <small><?php echo $notification->text; ?></small>
                             <hr>
                         </div>
-                        <div class="px-1 card-hover">
-                            <small>New vote on your post <b>Post Title</b></small>
-                            <hr>
-                        </div>
-                        <div class="px-1 card-hover">
-                            <small>A new comment on your post <b>Post Title</b></small>
-                            <hr>
-                        </div>
-                        <div class="px-1 card-hover">
-                            <small>A new comment on your post <b>Post Title</b></small>
-                            <hr>
-                        </div>
-                        <div class="px-1 card-hover">
-                            <small>A new comment on your post <b>Post Title</b></small>
-                            <hr>
-                        </div>
-                        <div class="px-1 card-hover">
-                            <small>A new comment on your post <b>Post Title</b></small>
-                            <hr>
-                        </div>
-                        <div class="px-1 card-hover">
-                            <small>A new comment on your post <b>Post Title</b></small>
-                            <hr>
-                        </div>
-                        <div class="px-1 card-hover">
-                            <small>New vote on your post <b>Post Title</b></small>
-                            <hr>
-                        </div>
-                        <div class="px-1 card-hover">
-                            <small>New vote on your post <b>Post Title</b></small>
-                            <hr>
-                        </div>
-                        <div class="px-1 card-hover">
-                            <small>A new comment on your post <b>Post Title</b></small>
-                            <hr>
-                        </div>
-                        <div class="px-1 card-hover">
-                            <small>A new comment on your post <b>Post Title</b></small>
-                            <hr>
-                        </div>
-                        <div class="px-1 card-hover">
-                            <small>A new comment on your post <b>Post Title</b></small>
-                            <hr>
-                        </div>
+                        <?php endforeach; ?>
 
                     </div>
                 </div>
