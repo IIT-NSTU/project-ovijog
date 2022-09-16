@@ -30,7 +30,7 @@
                     <div>
                         <?php foreach ($data['categories'] as $category) : ?>
                             <div class="pb-2">
-                                <input type="checkbox"> <?php echo $category->category; ?><br>
+                                <input type="checkbox" class="category" value="<?php echo $category->category; ?>"> <?php echo $category->category; ?><br>
                             </div>
                         <?php endforeach; ?>
                     </div>
@@ -82,6 +82,7 @@
 <!-------spinner end------->
 
 <script>
+
     function like(d, id) {
 
         console.log(d.querySelector('#up'));
@@ -140,6 +141,17 @@
     var halt = false;
     showMore();
 
+    $('.category').click(function () {
+        /*var categories=Array.from(document.querySelectorAll('.category:checked')).map((c)=>c.value).toString();
+        console.log(categories);*/
+        $('#data').html("");
+        $(window).scrollTop(0);
+        page_no = 1;
+        isrunning = false;
+        halt = false;
+        showMore();
+    });
+
     $(window).scroll(function() {
         if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
             if (!isrunning && !halt) {
@@ -152,7 +164,8 @@
         isrunning = true;
         $('#loading').show();
         $.post('<?php echo URLROOT; ?>/posts/load/' + page_no, {
-            page: page_no
+            page: page_no,
+            categories: Array.from(document.querySelectorAll('.category:checked')).map((c)=>"'"+c.value+"'").toString()
         }, (response) => {
             if (response === "") {
                 halt = true;

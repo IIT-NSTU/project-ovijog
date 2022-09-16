@@ -30,15 +30,27 @@ class Post {
         $this->db->execute();
     }
 
-    public function getPostsWithLimit($page){
+    public function getPostsWithLimit($page,$categories=''){
         $limit=4;
         $row=($page-1)*$limit;
 
-        $this->db->query("select * from posts ORDER BY created_time DESC limit :row, :limit");
-        $this->db->bind(':row',$row);
-        $this->db->bind(':limit',$limit);
+        if($categories){
+            $this->db->query("select * 
+                                    from posts
+                                    where category IN (".$categories.")
+                                    ORDER BY created_time DESC limit :row, :limit");
 
-        return $this->db->resultSet();
+            $this->db->bind(':row',$row);
+            $this->db->bind(':limit',$limit);
+
+            return $this->db->resultSet();
+        }else{
+            $this->db->query("select * from posts ORDER BY created_time DESC limit :row, :limit");
+            $this->db->bind(':row',$row);
+            $this->db->bind(':limit',$limit);
+
+            return $this->db->resultSet();
+        }
     }
 
     public function markSolved($post_id){
