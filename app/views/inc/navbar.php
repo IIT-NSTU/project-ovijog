@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/theme.css">
+
 </head>
 
 <body>
@@ -59,5 +61,4 @@
                 </div>
             </div>
         </nav>
-
         <div class="container" id="content-wrap">
