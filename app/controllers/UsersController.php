@@ -4,28 +4,57 @@ class UsersController extends Controller {
 
     private $userModel;
     private $postModel;
+    private $tagModel;
 
     public function __construct() {
         $this->userModel = $this->model("User");
         $this->postModel = $this->model("Post");
+        $this->tagModel = $this->model("Tag");
     }
 
-    public function profile() {
-        $posts = $this->userModel->getPosts();
+    public function loadPosts($type='created',$page = 1) {
+        sleep(1);
+
+        if($type=='created'){
+            $posts = $this->userModel->getCreatedPosts($page);
+        }else if($type=='voted'){
+            $posts = $this->userModel->getVotedPosts($page);
+        } else{
+            $posts = $this->userModel->getCommentedPosts($page);
+        }
+
 
         $upCount = [];
         $downCount = [];
 
+        $viewCount = [];
+
+        $tags = [];
+
         foreach ($posts as $post) {
             $upCount[$post->post_id] = $this->postModel->getUpVotes($post->post_id);
             $downCount[$post->post_id] = $this->postModel->getdownVotes($post->post_id);
+            $viewCount[$post->post_id] = $this->postModel->getViewCount($post->post_id);
+
+            $tags[$post->post_id] = $this->tagModel->getTags($post->post_id);
         }
 
         $data = [
-            'user' => $this->userModel->getUserById($_SESSION['user_id']),
-            'posts' => $this->userModel->getPosts(),
+            'posts' => $posts,
             'up-count' => $upCount,
-            'down-count' => $downCount
+            'down-count' => $downCount,
+            'view-count' => $viewCount,
+            'tags' => $tags
+        ];
+
+
+        $this->view('users/profilePostList', $data);
+    }
+
+    public function profile() {
+
+        $data = [
+            'user' => $this->userModel->getUserById($_SESSION['user_id']),
         ];
 
         $this->view('/users/profile', $data);

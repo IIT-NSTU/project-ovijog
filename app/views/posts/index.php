@@ -30,7 +30,7 @@
                     <div>
                         <?php foreach ($data['categories'] as $category) : ?>
                             <div class="pb-2">
-                                <input type="checkbox"> <?php echo $category->category; ?></br>
+                                <input type="checkbox"> <?php echo $category->category; ?><br>
                             </div>
                         <?php endforeach; ?>
                     </div>
