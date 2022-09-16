@@ -1,6 +1,7 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require_once APPROOT . '/views/inc/navbar.php'; ?>
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/profile.css">
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/toTopButton.css">
 
 
 <!-----------------Change Password modal start------------------------->
@@ -40,7 +41,7 @@
 <!-----------------Change Password modal end------------------------->
 
 <div class="main-body">
-    <div class="row">
+    <div class="row" style="margin-left: -27px;">
 
         <div class="col-md-5 d-flex flex-row" style="position: fixed;">
             <div class="card card-body mb-1">
@@ -84,59 +85,64 @@
                         <h6>Password</h6>
                     </div>
                     <div class="col-sm-8 text-secondary">
-                        <!-- <a href="<?php echo URLROOT; ?>/users/changePassword/<?php echo $data['user']->user_id; ?>" id="change-password">Change Password</a> -->
                         <button class="btn btn-sm text-primary ps-0" data-bs-toggle="modal" data-bs-target="#staticBackdrop2"><b>Change Password</b>
                     </div>
                 </div>
             </div>
         </div>
-
-
-        <div class="col-md-5 d-flex flex-row" style="position: fixed;margin-top: 25%">
+    </div>
+    <div class="row" style="margin-left: -27px;">
+        <div class="col-md-5 d-flex flex-row" style="position: fixed;margin-top: 28.5%">
             <div class="card card-body mb-1">
                 <div class="row">
-                    <div class="d-flex flex-column align-items-center text-center mt-2 mb-2">
-                        <div class="mt-3">
-                            <h6>Select Types of post</h6>
+                    <div class=" align-items-center text-center mt-2">
+                        <div>
+                            <h6>Select Types of Post</h6>
                         </div>
                     </div>
                 </div>
                 <hr>
-                <div>
-                    <input class="post-type-radio" type="radio" name="postType" value="created" checked> Created Post
-                    <input class="post-type-radio" type="radio" name="postType" value="voted"> Voted Post
-                    <input class="post-type-radio" type="radio" name="postType" value="commented"> Commented Post
-                </div>
-
-            </div>
-        </div>
-
-        <div class="col-sm-7 d-flex" style="margin-left: 35%">
-
-            <div class="mb-2">
-                <div id="data" class="row d-flex align-items-center justify-content-end">
-
-                    <!-- All post here ----->
-
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <input class="post-type-radio" type="radio" name="postType" value="created" checked><small> Created Post</small>
+                    </div>
+                    <div>
+                        <input class="post-type-radio" type="radio" name="postType" value="voted"> <small> Voted Post</small>
+                    </div>
+                    <div>
+                        <input class="post-type-radio" type="radio" name="postType" value="commented"><small> Commented Post</small>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- <div class="col-sm-6"></div> -->
+    <div class="col-sm-8 d-flex" style="margin-left: 35%">
+
+        <div class="mb-2">
+            <div id="data" class="row d-flex align-items-center justify-content-end">
+
+                <!-- All post here ----->
+
+            </div>
+        </div>
+    </div>
+    <!-- </div> -->
 </div>
 
 
-    <!-------spinner------->
-    <div class="d-flex justify-content-center">
-        <div id="loading" class="spinner-border m-5" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
+<!-------spinner------->
+<div class="d-flex justify-content-center">
+    <div id="loading" class="spinner-border m-5" role="status">
+        <span class="visually-hidden">Loading...</span>
     </div>
-    <!-------spinner end------->
+</div>
+<!-------spinner end------->
 
+<a href="#" class="to-top">
+    <i class="fas fa-chevron-up"></i>
+</a>
 <script>
-
-
-
     $('.alert').hide();
 
     $('#old-password').on('input', function() {
@@ -195,7 +201,7 @@
     var halt = false;
     showMore();
 
-    $(".post-type-radio").click(function () {
+    $(".post-type-radio").click(function() {
         if (!isrunning) {
             $('#data').html("");
             $(window).scrollTop(0);
@@ -216,7 +222,7 @@
     function showMore() {
         isrunning = true;
         $('#loading').show();
-        $.post('<?php echo URLROOT; ?>/users/loadPosts/'+$('.post-type-radio:checked').val()+'/' + page_no, {
+        $.post('<?php echo URLROOT; ?>/users/loadPosts/' + $('.post-type-radio:checked').val() + '/' + page_no, {
             page: page_no
         }, (response) => {
             if (response === "") {
@@ -228,6 +234,16 @@
             page_no++;
         });
     }
+
+    const toTop = document.querySelector(".to-top");
+
+    window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 100) {
+            toTop.classList.add("active");
+        } else {
+            toTop.classList.remove("active");
+        }
+    })
 </script>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

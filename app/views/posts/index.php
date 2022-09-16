@@ -2,6 +2,7 @@
 <?php require_once APPROOT . '/views/inc/navbar.php'; ?>
 
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/post.css">
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/toTopButton.css">
 
 <style>
     .card-hover:hover {
@@ -51,11 +52,11 @@
                     <a class="btn px-0 btn-light" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1" style="position: fixed;width:16.65%; margin-left:-16px;"><b>Notification</b></a>
                     <div class="collapse card" id="multiCollapseExample1" style="margin-top: 30%;">
 
-                        <?php foreach ($data['notifications'] as $notification): ?>
-                        <div class="px-1 card-hover">
-                            <small><?php echo $notification->text; ?></small>
-                            <hr>
-                        </div>
+                        <?php foreach ($data['notifications'] as $notification) : ?>
+                            <div class="px-1 card-hover">
+                                <small><?php echo $notification->text; ?></small>
+                                <hr>
+                            </div>
                         <?php endforeach; ?>
 
                     </div>
@@ -81,8 +82,11 @@
 </div>
 <!-------spinner end------->
 
-<script>
+<a href="#" class="to-top">
+    <i class="fas fa-chevron-up"></i>
+</a>
 
+<script>
     $('#search-bar').toggleClass('invisible');
 
 
@@ -145,9 +149,9 @@
     showMore();
 
 
-    $('#search-btn').click(function () {
-        var key=$('#search-text').val();
-        if(key!==""){
+    $('#search-btn').click(function() {
+        var key = $('#search-text').val();
+        if (key !== "") {
             if (!isrunning) {
                 $('#data').html("");
                 $(window).scrollTop(0);
@@ -158,7 +162,7 @@
         }
     });
 
-    $('.category').click(function () {
+    $('.category').click(function() {
         if (!isrunning) {
             $('#data').html("");
             $(window).scrollTop(0);
@@ -181,7 +185,7 @@
         $('#loading').show();
         $.post('<?php echo URLROOT; ?>/posts/load/' + page_no, {
             page: page_no,
-            categories: Array.from(document.querySelectorAll('.category:checked')).map((c)=>"'"+c.value+"'").toString(),
+            categories: Array.from(document.querySelectorAll('.category:checked')).map((c) => "'" + c.value + "'").toString(),
             key: $('#search-text').val()
         }, (response) => {
             if (response === "") {
@@ -193,6 +197,17 @@
             page_no++;
         });
     }
+
+    // <!-----------------To Top------------------------->
+    const toTop = document.querySelector(".to-top");
+
+    window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 100) {
+            toTop.classList.add("active");
+        } else {
+            toTop.classList.remove("active");
+        }
+    })
 </script>
 
 

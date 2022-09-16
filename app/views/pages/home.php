@@ -2,6 +2,7 @@
 <?php require_once APPROOT . '/views/inc/navbar.php'; ?>
 
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/home.css">
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/toTopButton.css">
 <style>
     .post-hover:hover {
         background-color: #a6b4c9;
@@ -422,6 +423,10 @@
         </div>
     </div>
     <!-- Top unsolved Post End -->
+
+    <a href="#" class="to-top">
+        <i class="fas fa-chevron-up"></i>
+    </a>
 </body>
 <script>
     $('.count').each(function() {
@@ -435,5 +440,15 @@
             }
         });
     });
+
+    const toTop = document.querySelector(".to-top");
+
+    window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 100) {
+            toTop.classList.add("active");
+        } else {
+            toTop.classList.remove("active");
+        }
+    })
 </script>
 <?php require APPROOT . '/views/inc/footer.php'; ?>
