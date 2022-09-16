@@ -183,7 +183,7 @@ class User {
         $limit=4;
         $row=($page-1)*$limit;
 
-        $this->db->query("SELECT posts.post_id,title,body,category,issolved,posts.created_time,img_link
+        $this->db->query("SELECT distinct posts.post_id,title,body,category,issolved,posts.created_time,img_link
                                 FROM users NATURAL JOIN comments JOIN posts ON posts.post_id=comments.post_id
                                 WHERE users.user_id=:user_id
                                 ORDER BY posts.created_time DESC limit :row, :limit");

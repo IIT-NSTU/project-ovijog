@@ -83,6 +83,9 @@
 
 <script>
 
+    $('#search-bar').toggleClass('invisible');
+
+
     function like(d, id) {
 
         console.log(d.querySelector('#up'));
@@ -141,15 +144,28 @@
     var halt = false;
     showMore();
 
+
+    $('#search-btn').click(function () {
+        var key=$('#search-text').val();
+        if(key!==""){
+            if (!isrunning) {
+                $('#data').html("");
+                $(window).scrollTop(0);
+                page_no = 1;
+                halt = false;
+                showMore();
+            }
+        }
+    });
+
     $('.category').click(function () {
-        /*var categories=Array.from(document.querySelectorAll('.category:checked')).map((c)=>c.value).toString();
-        console.log(categories);*/
-        $('#data').html("");
-        $(window).scrollTop(0);
-        page_no = 1;
-        isrunning = false;
-        halt = false;
-        showMore();
+        if (!isrunning) {
+            $('#data').html("");
+            $(window).scrollTop(0);
+            page_no = 1;
+            halt = false;
+            showMore();
+        }
     });
 
     $(window).scroll(function() {
@@ -165,7 +181,8 @@
         $('#loading').show();
         $.post('<?php echo URLROOT; ?>/posts/load/' + page_no, {
             page: page_no,
-            categories: Array.from(document.querySelectorAll('.category:checked')).map((c)=>"'"+c.value+"'").toString()
+            categories: Array.from(document.querySelectorAll('.category:checked')).map((c)=>"'"+c.value+"'").toString(),
+            key: $('#search-text').val()
         }, (response) => {
             if (response === "") {
                 halt = true;

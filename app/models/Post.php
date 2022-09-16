@@ -8,19 +8,19 @@ class Post {
         $this->db = Database::getInstance();
     }
 
-    public function commentedUsers($post_id){
+    public function commentedUsers($post_id) {
         $this->db->query("select distinct user_id from comments where post_id=:post_id");
         $this->db->bind(':post_id', $post_id);
         return $this->db->resultSet();
     }
 
-    public function votedUsers($post_id){
+    public function votedUsers($post_id) {
         $this->db->query("select distinct user_id from votes where post_id=:post_id");
         $this->db->bind(':post_id', $post_id);
         return $this->db->resultSet();
     }
 
-    public function report($data){
+    public function report($data) {
         $this->db->query("insert into reports (user_id,post_id,category,feedback) values (:user_id,:post_id,:category,:feedback)");
         $this->db->bind(':user_id', $_SESSION['user_id']);
         $this->db->bind(':post_id', $data['post_id']);
@@ -30,32 +30,45 @@ class Post {
         $this->db->execute();
     }
 
-    public function getPostsWithLimit($page,$categories=''){
-        $limit=4;
-        $row=($page-1)*$limit;
+    public function getPostsWithLimit($page, $categories = '', $key = '') {
+        $limit = 4;
+        $row = ($page - 1) * $limit;
 
-        if($categories){
-            $this->db->query("select * 
-                                    from posts
-                                    where category IN (".$categories.")
+        if ($key) {
+            $key = '%' . $key . '%';
+
+            $this->db->query("select distinct posts.post_id,title,body,category,issolved,created_time,user_id,img_link
+                                    from posts LEFT JOIN tags on posts.post_id=tags.post_id
+                                    where title LIKE :key OR body LIKE :key OR category LIKE :key OR tag LIKE :key OR created_time LIKE :key
                                     ORDER BY created_time DESC limit :row, :limit");
 
-            $this->db->bind(':row',$row);
-            $this->db->bind(':limit',$limit);
+            $this->db->bind(':key', $key);
+            $this->db->bind(':row', $row);
+            $this->db->bind(':limit', $limit);
 
             return $this->db->resultSet();
-        }else{
+        } elseif ($categories) {
+            $this->db->query("select * 
+                                    from posts
+                                    where category IN (" . $categories . ")
+                                    ORDER BY created_time DESC limit :row, :limit");
+
+            $this->db->bind(':row', $row);
+            $this->db->bind(':limit', $limit);
+
+            return $this->db->resultSet();
+        } else {
             $this->db->query("select * from posts ORDER BY created_time DESC limit :row, :limit");
-            $this->db->bind(':row',$row);
-            $this->db->bind(':limit',$limit);
+            $this->db->bind(':row', $row);
+            $this->db->bind(':limit', $limit);
 
             return $this->db->resultSet();
         }
     }
 
-    public function markSolved($post_id){
+    public function markSolved($post_id) {
         $this->db->query("update posts set issolved = true where post_id = :post_id");
-        $this->db->bind(':post_id',$post_id);
+        $this->db->bind(':post_id', $post_id);
 
         return $this->db->execute();
     }
@@ -207,11 +220,11 @@ class Post {
         $this->db->bind(':img_link', $data['image']);
 
         if ($this->db->execute()) {
-            $post_id=$this->db->lastInsertId();
-            foreach ($data['tags'] as $tag){
+            $post_id = $this->db->lastInsertId();
+            foreach ($data['tags'] as $tag) {
                 $this->db->query("insert into tags (post_id, tag) values (:post_id, :tag)");
-                $this->db->bind(':post_id',$post_id);
-                $this->db->bind(':tag',$tag);
+                $this->db->bind(':post_id', $post_id);
+                $this->db->bind(':tag', $tag);
                 $this->db->execute();
             }
             return true;

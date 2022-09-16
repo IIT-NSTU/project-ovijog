@@ -30,12 +30,12 @@
                                 </a>
                             </li> -->
 
-                            <div style="display:flex ;">
+                            <div id="search-bar" class="invisible" style="display:flex ;">
                                 <li style="margin-top: 5px;">
-                                    <input type="text" class="search-click" name="" placeholder="search" />
+                                    <input id="search-text" type="text" class="search-click" name="" placeholder="search">
                                 </li>
                                 <li style=" margin-top: 7px;">
-                                    <button class="btn btn-outline-light search-icon" type="submit" style="height: 32px;display:flex;align-items: flex-end;margin-left: 8px;"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                    <button id="search-btn" class="btn btn-outline-light search-icon" style="height: 32px;display:flex;align-items: flex-end;margin-left: 8px;"><i class="fa-solid fa-magnifying-glass"></i></button>
                                 </li>
 
                             </div>

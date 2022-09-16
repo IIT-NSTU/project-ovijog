@@ -196,12 +196,13 @@
     showMore();
 
     $(".post-type-radio").click(function () {
-        $('#data').html("");
-        $(window).scrollTop(0);
-        page_no = 1;
-        isrunning = false;
-        halt = false;
-        showMore();
+        if (!isrunning) {
+            $('#data').html("");
+            $(window).scrollTop(0);
+            page_no = 1;
+            halt = false;
+            showMore();
+        }
     });
 
     $(window).scroll(function() {

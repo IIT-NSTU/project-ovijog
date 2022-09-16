@@ -32,8 +32,9 @@ class PostsController extends Controller {
         sleep(1);
 
         $categories=$_POST['categories'];
+        $key=$_POST['key'];
 
-        $posts = $this->postModel->getPostsWithLimit($page,$categories);
+        $posts = $this->postModel->getPostsWithLimit($page,$categories,$key);
 
         $upVotes = [];
         $downVotes = [];
