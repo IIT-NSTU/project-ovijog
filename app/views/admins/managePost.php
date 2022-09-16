@@ -13,9 +13,6 @@
                         <i class="fas fa-table me-1"></i>
                         <span class="table-head">Manage post</span>
                     </div>
-                    <!-- <div class="col col-md-6" align="right">
-                            <a href="author.php?action=add" class="btn btn-success btn-sm">Add</a>
-                        </div> -->
                 </div>
             </div>
             <div class="card-body">
