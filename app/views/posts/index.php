@@ -8,6 +8,10 @@
     .card-hover:hover {
         background-color: #b4c3d1;
     }
+
+    .category_hover:hover {
+        color: blue;
+    }
 </style>
 
 <?php flash('post_message'); ?>
@@ -30,8 +34,8 @@
                     <hr>
                     <div>
                         <?php foreach ($data['categories'] as $category) : ?>
-                            <div class="pb-2">
-                                <input type="checkbox" class="category" value="<?php echo $category->category; ?>"> <?php echo $category->category; ?><br>
+                            <div class="pb-2 category_hover">
+                                <input type="checkbox" class="category category_hover" value="<?php echo $category->category; ?>"> <?php echo $category->category; ?><br>
                             </div>
                         <?php endforeach; ?>
                     </div>
@@ -50,7 +54,7 @@
             <div class="card shadow-sm rounded bg-light ">
                 <div class="card-body pb-1 pt-0">
                     <a class="btn px-0 btn-light" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1" style="position: fixed;width:16.65%; margin-left:-16px;"><b>Notification</b></a>
-                    <div class="collapse card" id="multiCollapseExample1" style="margin-top: 30%;">
+                    <div class="collapse card " id="multiCollapseExample1" style="margin-top: 30%;">
 
                         <?php foreach ($data['notifications'] as $notification) : ?>
                             <div class="px-1 card-hover">
