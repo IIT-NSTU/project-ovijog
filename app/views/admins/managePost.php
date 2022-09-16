@@ -4,10 +4,83 @@
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/sidebar.css">
 
 <body>
-
-    <div class="main" style="margin-left:173px;">
-        <h2>Manage Post</h2>
-
+    <div class="main py-5" style="margin-left:173px;">
+        <!-- <div class=""> -->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col col-md-6">
+                        <i class="fas fa-table me-1"></i> Manage post
+                    </div>
+                    <!-- <div class="col col-md-6" align="right">
+                            <a href="author.php?action=add" class="btn btn-success btn-sm">Add</a>
+                        </div> -->
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered my-4">
+                    <thead>
+                        <tr class="text-center">
+                            <th style="width: 6%;">#</th>
+                            <th style="width:10%">User_id</th>
+                            <th style="width:10%">Post_id</th>
+                            <th style="width:17%">Title</th>
+                            <th style="width:15%;">Category</th>
+                            <th style="width:25%;">Body</th>
+                            <th style="width:17%">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="text-center">
+                            <td>1</td>
+                            <td>10</td>
+                            <td>13</td>
+                            <td>Food</td>
+                            <td>Clark</td>
+                            <td>Kent</td>
+                            <td class="d-flex justify-content-around"><button class="btn btn-sm btn-primary me-1">See Post</button><button class="btn btn-sm btn-danger">Delete</button></td>
+                        </tr>
+                        <tr class="text-center">
+                            <td>2</td>
+                            <td>13</td>
+                            <td>12</td>
+                            <td>Transport</td>
+                            <td>Clark</td>
+                            <td>Kent</td>
+                            <td class="d-flex justify-content-around"><button class="btn btn-sm btn-primary me-1">See Post</button><button class="btn btn-sm btn-danger">Delete</button></td>
+                        </tr>
+                        <tr class="text-center">
+                            <td>3</td>
+                            <td>9</td>
+                            <td>15</td>
+                            <td>Ragging</td>
+                            <td>Clark</td>
+                            <td>Kent</td>
+                            <td class="d-flex justify-content-around"><button class="btn btn-sm btn-primary me-1">See Post</button><button class="btn btn-sm btn-danger">Delete</button></td>
+                        </tr>
+                        <tr class="text-center">
+                            <td>4</td>
+                            <td>2</td>
+                            <td>5</td>
+                            <td>political</td>
+                            <td>Clark</td>
+                            <td>Kent</td>
+                            <td class="d-flex justify-content-around"><button class="btn btn-sm btn-primary me-1">See Post</button><button class="btn btn-sm btn-danger">Delete</button></td>
+                        </tr>
+                        <tr class="text-center">
+                            <td>5</td>
+                            <td>21</td>
+                            <td>7</td>
+                            <td>Water</td>
+                            <td>Clark</td>
+                            <td>Kent</td>
+                            <td class="d-flex justify-content-around"><button class="btn btn-sm btn-primary me-1">See Post</button><button class="btn btn-sm btn-danger">Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- </div> -->
     </div>
 </body>
 
