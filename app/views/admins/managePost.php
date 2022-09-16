@@ -39,7 +39,7 @@
                             <td>Food</td>
                             <td>Clark</td>
                             <td>Kent</td>
-                            <td class="d-flex justify-content-around"><button class="btn btn-sm btn-primary me-1">See Post</button><button class="btn btn-sm btn-danger">Delete</button></td>
+                            <td class="d-flex justify-content-around"><button title="See Post" class="btn btn-sm text-primary me-1" style="font-size: 15px;"><i class="fa-solid fa-eye"></i></button><button title="Delete Post" class="btn btn-sm text-danger" style="font-size: 15px;"><b>X</b></button>
                         </tr>
                         <tr class="text-center">
                             <td>2</td>
@@ -48,7 +48,7 @@
                             <td>Transport</td>
                             <td>Clark</td>
                             <td>Kent</td>
-                            <td class="d-flex justify-content-around"><button class="btn btn-sm btn-primary me-1">See Post</button><button class="btn btn-sm btn-danger">Delete</button></td>
+                            <td class="d-flex justify-content-around"><button title="See Post" class="btn btn-sm text-primary me-1" style="font-size: 15px;"><i class="fa-solid fa-eye"></i></button><button title="Delete Post" class="btn btn-sm text-danger" style="font-size: 15px;"><b>X</b></button>
                         </tr>
                         <tr class="text-center">
                             <td>3</td>
@@ -57,7 +57,7 @@
                             <td>Ragging</td>
                             <td>Clark</td>
                             <td>Kent</td>
-                            <td class="d-flex justify-content-around"><button class="btn btn-sm btn-primary me-1">See Post</button><button class="btn btn-sm btn-danger">Delete</button></td>
+                            <td class="d-flex justify-content-around"><button title="See Post" class="btn btn-sm text-primary me-1" style="font-size: 15px;"><i class="fa-solid fa-eye"></i></button><button title="Delete Post" class="btn btn-sm text-danger" style="font-size: 15px;"><b>X</b></button>
                         </tr>
                         <tr class="text-center">
                             <td>4</td>
@@ -66,7 +66,7 @@
                             <td>political</td>
                             <td>Clark</td>
                             <td>Kent</td>
-                            <td class="d-flex justify-content-around"><button class="btn btn-sm btn-primary me-1">See Post</button><button class="btn btn-sm btn-danger">Delete</button></td>
+                            <td class="d-flex justify-content-around"><button title="See Post" class="btn btn-sm text-primary me-1" style="font-size: 15px;"><i class="fa-solid fa-eye"></i></button><button title="Delete Post" class="btn btn-sm text-danger" style="font-size: 15px;"><b>X</b></button>
                         </tr>
                         <tr class="text-center">
                             <td>5</td>
@@ -75,7 +75,7 @@
                             <td>Water</td>
                             <td>Clark</td>
                             <td>Kent</td>
-                            <td class="d-flex justify-content-around"><button class="btn btn-sm btn-primary me-1">See Post</button><button class="btn btn-sm btn-danger">Delete</button></td>
+                            <td class="d-flex justify-content-around"><button title="See Post" class="btn btn-sm text-primary me-1" style="font-size: 15px;"><i class="fa-solid fa-eye"></i></button><button title="Delete Post" class="btn btn-sm text-danger" style="font-size: 15px;"><b>X</b></button>
                         </tr>
                     </tbody>
                 </table>

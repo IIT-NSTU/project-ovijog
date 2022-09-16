@@ -27,14 +27,14 @@
 
 <body>
     <div class="main py-5" style="margin-left:173px;">
-        <div class="card" style="width: 65%; margin-left:19%;">
+        <div class="card" style="width: 100%;">
             <div class="card-header">
                 <div class="row">
                     <div class="col col-md-6">
                         <i class="fas fa-table me-1"></i> <span class="table-head">Manage Category</span>
                     </div>
                     <div class="col col-md-6" align="right">
-                        <button class="btn btn-sm text-primary" data-bs-toggle="modal" data-bs-target="#addCategoryModal"><b>Add Category</b>
+                        <button class="btn btn-sm text-primary" data-bs-toggle="modal" data-bs-target="#addCategoryModal"><b><i class="fa-solid fa-plus"></i> Add Category</b>
                         </button>
                     </div>
                 </div>
@@ -44,7 +44,8 @@
                     <thead>
                         <tr class="text-center">
                             <th>#</th>
-                            <th>Category</th>
+                            <th>Category Name</th>
+                            <th>Added By</th>
                             <th style="width: 20%;">Action</th>
                         </tr>
                     </thead>
@@ -52,27 +53,32 @@
                         <tr class="text-center">
                             <td>1</td>
                             <td>Water</td>
-                            <td class="d-flex justify-content-around"><button class="btn btn-sm btn-danger">Delete</button></td>
+                            <td>Admin Name</td>
+                            <td class="d-flex justify-content-around"><button title="Delete Post" class="btn btn-sm text-danger" style="font-size: 15px;"><b>X</b></button></td>
                         </tr>
                         <tr class="text-center">
                             <td>2</td>
                             <td>Food</td>
-                            <td class="d-flex justify-content-around"><button class="btn btn-sm btn-danger">Delete</button></td>
+                            <td>Admin Name</td>
+                            <td class="d-flex justify-content-around"><button title="Delete Post" class="btn btn-sm text-danger" style="font-size: 15px;"><b>X</b></button></td>
                         </tr>
                         <tr class="text-center">
                             <td>3</td>
                             <td>Transport</td>
-                            <td class="d-flex justify-content-around"><button class="btn btn-sm btn-danger">Delete</button></td>
+                            <td>Admin Name</td>
+                            <td class="d-flex justify-content-around"><button title="Delete Post" class="btn btn-sm text-danger" style="font-size: 15px;"><b>X</b></button></td>
                         </tr>
                         <tr class="text-center">
                             <td>4</td>
                             <td>Security</td>
-                            <td class="d-flex justify-content-around"><button class="btn btn-sm btn-danger">Delete</button></td>
+                            <td>Admin Name</td>
+                            <td class="d-flex justify-content-around"><button title="Delete Post" class="btn btn-sm text-danger" style="font-size: 15px;"><b>X</b></button></td>
                         </tr>
                         <tr class="text-center">
                             <td>5</td>
                             <td>Residence</td>
-                            <td class="d-flex justify-content-around"><button class="btn btn-sm btn-danger">Delete</button></td>
+                            <td>Admin Name</td>
+                            <td class="d-flex justify-content-around"><button title="Delete Post" class="btn btn-sm text-danger" style="font-size: 15px;"><b>X</b></button></td>
                         </tr>
                     </tbody>
                 </table>
