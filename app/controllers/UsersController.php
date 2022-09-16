@@ -63,6 +63,10 @@ class UsersController extends Controller {
 
     public function register() {
 
+        if (isLoggedIn()) {
+            redirect('posts');
+        }
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -163,6 +167,10 @@ class UsersController extends Controller {
 
     public function login() {
 
+        if (isLoggedIn()) {
+            redirect('posts');
+        }
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -219,6 +227,8 @@ class UsersController extends Controller {
         $_SESSION['user_email'] = $user->edu_mail;
         $_SESSION['is_admin'] = $user->isadmin;
 
+        setcookie('project-ovijog-session-data',json_encode($_SESSION),time()+2592000);
+
         if ($user->isadmin) {
             redirect('/admins');
         } else {
@@ -232,6 +242,7 @@ class UsersController extends Controller {
         unset($_SESSION['user_name']);
         unset($_SESSION['user_email']);
         session_destroy();
+        setcookie('project-ovijog-session-data','',time()-2592000);
         redirect('users/login');
     }
 
