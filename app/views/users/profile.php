@@ -91,66 +91,52 @@
             </div>
         </div>
 
-        <div class=" col-sm-7 d-flex" style="margin-left: 35%">
 
-            <div class=" mb-2">
-                <div class="row d-flex align-items-center justify-content-end">
-
-                    <?php if (count($data['posts']) == 0) : ?>
-                        <h4 class="border border-dark rounded p-4 text-center mt-5">You do not create any post
-                            yet</h4>
-                    <?php endif; ?>
-
-                    <?php foreach ($data['posts'] as $post) : ?>
-                        <div class="col-sm-9 mb-3">
-                            <div class="card">
-                                <div class="d-flex justify-content-between p-2 px-3">
-                                    <div class="d-flex flex-row align-items-center">
-                                        <div class="d-flex flex-column"><span class="font-weight-bold">Title: <?php echo $post->title; ?></span>
-                                            <small class="text-primary">Category: <?php echo $post->category; ?></small>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="d-flex flex-row mt-1 ellipsis"><small class="mr-2 text-muted"><?php echo $post->created_time; ?></small>
-                                        </div>
-                                        <?php if ($post->issolved) : ?>
-                                            <div class="text-success"><small><i class="fa-solid fa-circle-check"></i> Solved
-                                                </small></div>
-                                        <?php endif; ?>
-                                    </div>
-
-                                </div>
-                                <div class="text-center">
-                                    <img src="<?php echo $post->img_link; ?>" width="50%" height="auto" class="img-fluid text-center py-3">
-                                </div>
-                                <div class="px-5 py-2">
-                                    <p style="text-align: justify;"><?php echo $post->body; ?></p>
-                                    <hr class="my-0">
-                                    <div class="row ">
-                                        <div class="col-sm up-down-vote-icon">
-                                            <b id="up-count"><?php echo $data['up-count'][$post->post_id]; ?></b><span id="up" class="btn btn-sm ms-2"><i class="fa-solid fa-arrow-up "></i></span>
-                                        </div>
-                                        <div class="col-sm up-down-vote-icon">
-                                            <b id="down-count"><?php echo $data['down-count'][$post->post_id]; ?></b>
-                                            <span id="down" class="btn btn-sm ms-2"><i class="fa-solid fa-arrow-down"></i>
-                                            </span>
-                                        </div>
-                                        <div class="col-sm text-center">
-                                            <a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->post_id; ?>" class="btn btn-sm text-primary" style="padding-top: 6px;">More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+        <div class="col-md-5 d-flex flex-row" style="position: fixed;margin-top: 25%">
+            <div class="card card-body mb-1">
+                <div class="row">
+                    <div class="d-flex flex-column align-items-center text-center mt-2 mb-2">
+                        <div class="mt-3">
+                            <h6>Select Types of post</h6>
                         </div>
-                    <?php endforeach; ?>
+                    </div>
                 </div>
+                <hr>
+                <div>
+                    <input class="post-type-radio" type="radio" name="postType" value="created" checked> Created Post
+                    <input class="post-type-radio" type="radio" name="postType" value="voted"> Voted Post
+                    <input class="post-type-radio" type="radio" name="postType" value="commented"> Commented Post
+                </div>
+
             </div>
         </div>
 
+        <div class="col-sm-7 d-flex" style="margin-left: 35%">
+
+            <div class="mb-2">
+                <div id="data" class="row d-flex align-items-center justify-content-end">
+
+                    <!-- All post here ----->
+
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
+
+    <!-------spinner------->
+    <div class="d-flex justify-content-center">
+        <div id="loading" class="spinner-border m-5" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <!-------spinner end------->
+
 <script>
+
+
+
     $('.alert').hide();
 
     $('#old-password').on('input', function() {
@@ -202,6 +188,44 @@
                 }
             });
         }
+    }
+
+    var page_no = 1;
+    var isrunning = false;
+    var halt = false;
+    showMore();
+
+    $(".post-type-radio").click(function () {
+        $('#data').html("");
+        $(window).scrollTop(0);
+        page_no = 1;
+        isrunning = false;
+        halt = false;
+        showMore();
+    });
+
+    $(window).scroll(function() {
+        if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+            if (!isrunning && !halt) {
+                showMore();
+            }
+        }
+    });
+
+    function showMore() {
+        isrunning = true;
+        $('#loading').show();
+        $.post('<?php echo URLROOT; ?>/users/loadPosts/'+$('.post-type-radio:checked').val()+'/' + page_no, {
+            page: page_no
+        }, (response) => {
+            if (response === "") {
+                halt = true;
+            }
+            $('#data').append(response);
+            $('#loading').hide();
+            isrunning = false;
+            page_no++;
+        });
     }
 </script>
 

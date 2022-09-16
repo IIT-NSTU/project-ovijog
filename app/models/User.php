@@ -160,4 +160,55 @@ class User {
         $this->db->bind(':user_id', $user_id);
         return $this->db->resultSet();
     }
+
+    public function getVotedPosts($page){
+        $user_id = $_SESSION['user_id'];
+        $limit=4;
+        $row=($page-1)*$limit;
+
+        $this->db->query("SELECT * 
+                                FROM users NATURAL JOIN votes JOIN posts ON posts.post_id=votes.post_id
+                                WHERE users.user_id=:user_id
+                                ORDER BY created_time DESC limit :row, :limit");
+
+        $this->db->bind(':user_id', $user_id);
+        $this->db->bind(':row',$row);
+        $this->db->bind(':limit',$limit);
+
+        return $this->db->resultSet();
+    }
+
+    public function getCommentedPosts($page){
+        $user_id = $_SESSION['user_id'];
+        $limit=4;
+        $row=($page-1)*$limit;
+
+        $this->db->query("SELECT posts.post_id,title,body,category,issolved,posts.created_time,img_link
+                                FROM users NATURAL JOIN comments JOIN posts ON posts.post_id=comments.post_id
+                                WHERE users.user_id=:user_id
+                                ORDER BY posts.created_time DESC limit :row, :limit");
+
+        $this->db->bind(':user_id', $user_id);
+        $this->db->bind(':row',$row);
+        $this->db->bind(':limit',$limit);
+
+        return $this->db->resultSet();
+    }
+
+    public function getCreatedPosts($page){
+        $user_id = $_SESSION['user_id'];
+        $limit=4;
+        $row=($page-1)*$limit;
+
+        $this->db->query("SELECT * 
+                                FROM posts
+                                WHERE user_id=:user_id
+                                ORDER BY created_time DESC limit :row, :limit");
+
+        $this->db->bind(':user_id', $user_id);
+        $this->db->bind(':row',$row);
+        $this->db->bind(':limit',$limit);
+
+        return $this->db->resultSet();
+    }
 }
