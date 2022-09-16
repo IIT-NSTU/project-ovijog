@@ -18,7 +18,7 @@
 <div class="row " style="display: flex;justify-content: space-around; margin-top:-24px">
 
   <div class="col-md-10 mt-5 p-2">
-    <h2 class="text-center" style="font-family: Penna;"><b>About Project Ovijog</b></h2>
+    <h2 class="text-center" style="font-family: Penna;"><b>Project Ovijog</b></h2>
   </div>
   <div class="row px-3 mb-4">
     <div class="line"></div>
