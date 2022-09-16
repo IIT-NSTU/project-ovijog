@@ -68,4 +68,14 @@ class AdminsController extends Controller
 
         $this->view('/admins/manageAdmin', $data);
     }
+
+    public function addCategory()
+    {
+
+        $data = [
+            'title' => SITENAME,
+        ];
+
+        $this->view('/admins/addCategory', $data);
+    }
 }

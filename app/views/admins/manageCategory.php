@@ -4,6 +4,27 @@
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/sidebar.css">
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/admin.css">
 
+<!-----------------Add Category Modal start------------------------->
+<div class="modal fade" id="addCategoryModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="staticBackdropLabel">Add New Category</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Enter new category name:
+                <input class="form-control mb-1 mt-2" value="" type="text" name="text">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-sm btn-success" data-bs-dismiss="modal">Add</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-----------------Add category Modal end------------------------->
+
 <body>
     <div class="main py-5" style="margin-left:173px;">
         <div class="card" style="width: 65%; margin-left:19%;">
@@ -13,7 +34,8 @@
                         <i class="fas fa-table me-1"></i> <span class="table-head">Manage Category</span>
                     </div>
                     <div class="col col-md-6" align="right">
-                        <a href="author.php?action=add" class="btn btn-success btn-sm">Add Category</a>
+                        <button class="btn btn-sm text-primary" data-bs-toggle="modal" data-bs-target="#addCategoryModal"><b>Add Category</b>
+                        </button>
                     </div>
                 </div>
             </div>
