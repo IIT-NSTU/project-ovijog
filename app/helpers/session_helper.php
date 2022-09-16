@@ -20,6 +20,18 @@ function flash($name = '', $message = '', $class = 'alert alert-success') {
     }
 }
 
+function restoreSessionIfAvailable(){
+    if(!isset($_SESSION['user_id'])){
+        if(isset($_COOKIE['project-ovijog-session-data'])){
+            $data=json_decode($_COOKIE['project-ovijog-session-data']);
+            $_SESSION['user_id']=$data->user_id;
+            $_SESSION['user_name'] = $data->user_name;
+            $_SESSION['user_email'] = $data->user_email;
+            $_SESSION['is_admin'] = $data->is_admin;
+        }
+    }
+}
+
 function isLoggedIn() {
     if (isset($_SESSION['user_id'])) {
         return true;

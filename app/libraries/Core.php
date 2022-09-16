@@ -13,6 +13,8 @@ class Core {
 
     public function __construct() {
 
+        restoreSessionIfAvailable();
+
         //by default
         $this->currentController=ControllerFactory::getInstance("pages");
         $this->currentMethod="index";
