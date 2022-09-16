@@ -28,6 +28,7 @@ class PagesController extends Controller {
     }
 
     public function home() {
+        security();
 
         $totalPost = $this->postModel->totalPostCount();
         $totalSolved = $this->postModel->totalSolvedCount();
@@ -39,14 +40,6 @@ class PagesController extends Controller {
             'total_unsolved' => ($totalPost - $totalSolved)
         ];
         $this->view('/pages/home', $data);
-    }
-
-    public function categories() {
-        $data = [
-            'title' => 'this is categories',
-            'categories' => $this->postModel->getCategories()
-        ];
-        $this->view('/pages/categories', $data);
     }
 
 }

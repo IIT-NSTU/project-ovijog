@@ -28,6 +28,12 @@ function isLoggedIn() {
     }
 }
 
+function security(){
+    if (!isLoggedIn()) {
+        redirect('users/login');
+    }
+}
+
 function sendMail($edu_mail, $link){
 
 // Create an instance; Pass `true` to enable exceptions

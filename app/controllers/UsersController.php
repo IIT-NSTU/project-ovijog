@@ -52,6 +52,7 @@ class UsersController extends Controller {
     }
 
     public function profile() {
+        security();
 
         $data = [
             'user' => $this->userModel->getUserById($_SESSION['user_id']),
