@@ -9,9 +9,7 @@ class PostsController extends Controller {
     private $tagModel;
 
     public function __construct() {
-        if (!isLoggedIn()) {
-            redirect('users/login');
-        }
+        security();
 
         $this->postModel = $this->model('Post');
         $this->userModel = $this->model('User');
