@@ -1,0 +1,11 @@
+td:hover {
+    color: blue;
+}
+
+th:hover {
+    background-color: #7f8891;
+}
+
+.table-head:hover {
+    font-weight: bold;
+}

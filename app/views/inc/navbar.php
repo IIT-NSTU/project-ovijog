@@ -23,12 +23,7 @@
                             <li class="nav-item">
                                 <a href="<?php echo URLROOT; ?>/users/profile" class="nav-link"><i class="fas fa-user"></i> My Profile</a>
                             </li>
-                            <!-- <li class="nav-item">
-                                <a href="<?php echo URLROOT; ?>/pages/categories" class="nav-link">
 
-                                    <i class="fa-solid fa-layer-group"></i> Categories
-                                </a>
-                            </li> -->
 
                             <div id="search-bar" class="invisible" style="display:flex ;">
                                 <li style="margin-top: 5px;">
@@ -37,11 +32,7 @@
                                 <li style=" margin-top: 7px;">
                                     <button id="search-btn" class="btn btn-outline-light search-icon" style="height: 32px;display:flex;align-items: flex-end;margin-left: 8px;"><i class="fa-solid fa-magnifying-glass"></i></button>
                                 </li>
-
                             </div>
-                            <!-- <li class="nav-item">
-                                <a href="" class="nav-link"><i class="fa-solid fa-bell"></i></a>
-                            </li> -->
                         <?php else : ?>
                             <li class="nav-item">
                                 <a href="<?php echo URLROOT; ?>/pages/index" class="nav-link"><i class="fas fa-house-user"></i> Home</a>

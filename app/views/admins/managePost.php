@@ -2,15 +2,16 @@
 <?php require_once APPROOT . '/views/inc/navbar.php'; ?>
 <?php require_once APPROOT . '/views/inc/sidebar.php'; ?>
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/sidebar.css">
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/admin.css">
 
 <body>
     <div class="main py-5" style="margin-left:173px;">
-        <!-- <div class=""> -->
         <div class="card">
             <div class="card-header">
                 <div class="row">
                     <div class="col col-md-6">
-                        <i class="fas fa-table me-1"></i> Manage post
+                        <i class="fas fa-table me-1"></i>
+                        <span class="table-head">Manage post</span>
                     </div>
                     <!-- <div class="col col-md-6" align="right">
                             <a href="author.php?action=add" class="btn btn-success btn-sm">Add</a>
@@ -38,7 +39,7 @@
                             <td>Food</td>
                             <td>Clark</td>
                             <td>Kent</td>
-                            <td class="d-flex justify-content-around"><button class="btn btn-sm btn-primary me-1">See Post</button><button class="btn btn-sm btn-danger">Delete</button></td>
+                            <td class="d-flex justify-content-around"><button title="See Post" class="btn btn-sm text-primary me-1" style="font-size: 15px;"><i class="fa-solid fa-eye"></i></button><button title="Delete Post" class="btn btn-sm text-danger" style="font-size: 15px;"><b>X</b></button>
                         </tr>
                         <tr class="text-center">
                             <td>2</td>
@@ -47,7 +48,7 @@
                             <td>Transport</td>
                             <td>Clark</td>
                             <td>Kent</td>
-                            <td class="d-flex justify-content-around"><button class="btn btn-sm btn-primary me-1">See Post</button><button class="btn btn-sm btn-danger">Delete</button></td>
+                            <td class="d-flex justify-content-around"><button title="See Post" class="btn btn-sm text-primary me-1" style="font-size: 15px;"><i class="fa-solid fa-eye"></i></button><button title="Delete Post" class="btn btn-sm text-danger" style="font-size: 15px;"><b>X</b></button>
                         </tr>
                         <tr class="text-center">
                             <td>3</td>
@@ -56,7 +57,7 @@
                             <td>Ragging</td>
                             <td>Clark</td>
                             <td>Kent</td>
-                            <td class="d-flex justify-content-around"><button class="btn btn-sm btn-primary me-1">See Post</button><button class="btn btn-sm btn-danger">Delete</button></td>
+                            <td class="d-flex justify-content-around"><button title="See Post" class="btn btn-sm text-primary me-1" style="font-size: 15px;"><i class="fa-solid fa-eye"></i></button><button title="Delete Post" class="btn btn-sm text-danger" style="font-size: 15px;"><b>X</b></button>
                         </tr>
                         <tr class="text-center">
                             <td>4</td>
@@ -65,7 +66,7 @@
                             <td>political</td>
                             <td>Clark</td>
                             <td>Kent</td>
-                            <td class="d-flex justify-content-around"><button class="btn btn-sm btn-primary me-1">See Post</button><button class="btn btn-sm btn-danger">Delete</button></td>
+                            <td class="d-flex justify-content-around"><button title="See Post" class="btn btn-sm text-primary me-1" style="font-size: 15px;"><i class="fa-solid fa-eye"></i></button><button title="Delete Post" class="btn btn-sm text-danger" style="font-size: 15px;"><b>X</b></button>
                         </tr>
                         <tr class="text-center">
                             <td>5</td>
@@ -74,13 +75,12 @@
                             <td>Water</td>
                             <td>Clark</td>
                             <td>Kent</td>
-                            <td class="d-flex justify-content-around"><button class="btn btn-sm btn-primary me-1">See Post</button><button class="btn btn-sm btn-danger">Delete</button></td>
+                            <td class="d-flex justify-content-around"><button title="See Post" class="btn btn-sm text-primary me-1" style="font-size: 15px;"><i class="fa-solid fa-eye"></i></button><button title="Delete Post" class="btn btn-sm text-danger" style="font-size: 15px;"><b>X</b></button>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-        <!-- </div> -->
     </div>
 </body>
 
