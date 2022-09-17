@@ -230,7 +230,7 @@ class UsersController extends Controller {
         setcookie('project-ovijog-session-data',json_encode($_SESSION),time()+2592000);
 
         if ($user->isadmin) {
-            redirect('/admins');
+            redirect('admins');
         } else {
             redirect('pages/home');
         }

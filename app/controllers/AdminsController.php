@@ -3,6 +3,8 @@
 class AdminsController extends Controller
 {
 
+    private $postModel;
+    private $userModel;
 
     public function __construct()
     {
@@ -10,6 +12,9 @@ class AdminsController extends Controller
         if(!$_SESSION['is_admin']){
             redirect('errors');
         }
+
+        $this->postModel = $this->model('Post');
+        $this->userModel = $this->model('User');
     }
 
 
@@ -27,7 +32,7 @@ class AdminsController extends Controller
     {
 
         $data = [
-            'title' => SITENAME,
+            'posts' => $this->postModel->getAllPosts()
         ];
 
         $this->view('/admins/managePost', $data);
@@ -71,5 +76,15 @@ class AdminsController extends Controller
         ];
 
         $this->view('/admins/manageAdmin', $data);
+    }
+
+    public function deletePost($id) {
+
+        if ($this->postModel->deletePost($id)) {
+            flash('admin', 'Post Removed');
+            redirect('admins/managePost');
+        } else {
+            die('Something went wrong');
+        }
     }
 }
