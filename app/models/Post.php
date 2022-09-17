@@ -277,4 +277,78 @@ class Post {
 
         return $this->db->single();
     }
+
+    public function getTopUnsolved(){
+        $this->db->query("
+            with solvedpost as (
+                SELECT *
+                FROM posts
+                WHERE issolved=0
+            ), upvotes as (
+                SELECT *
+                FROM votes
+                WHERE isagree=1
+            ), downvotes as (
+                SELECT *
+                FROM votes
+                WHERE isagree=0
+            ), upcounts as (
+                SELECT solvedpost.post_id,count(isagree) as upcount
+                FROM solvedpost LEFT JOIN upvotes ON solvedpost.post_id=upvotes.post_id
+                GROUP BY solvedpost.post_id
+            ), downcounts as (
+                SELECT solvedpost.post_id,count(isagree) as downcount
+                FROM solvedpost LEFT JOIN downvotes ON solvedpost.post_id=downvotes.post_id
+                GROUP BY solvedpost.post_id
+            ), viewcounts as (
+                SELECT solvedpost.post_id,count(views.post_id) as viewcount
+                FROM solvedpost LEFT JOIN views ON solvedpost.post_id=views.post_id
+                GROUP BY solvedpost.post_id
+            )
+            
+            SELECT *,((upcount-downcount+viewcount)/(upcount+downcount+viewcount+1)) as ratio
+            FROM upcounts NATURAL JOIN downcounts NATURAL JOIN viewcounts
+            ORDER BY ratio DESC
+            LIMIT 5
+        ");
+
+        return $this->db->resultSet();
+    }
+
+    public function getTopSolved(){
+        $this->db->query("
+            with solvedpost as (
+                SELECT *
+                FROM posts
+                WHERE issolved=1
+            ), upvotes as (
+                SELECT *
+                FROM votes
+                WHERE isagree=1
+            ), downvotes as (
+                SELECT *
+                FROM votes
+                WHERE isagree=0
+            ), upcounts as (
+                SELECT solvedpost.post_id,count(isagree) as upcount
+                FROM solvedpost LEFT JOIN upvotes ON solvedpost.post_id=upvotes.post_id
+                GROUP BY solvedpost.post_id
+            ), downcounts as (
+                SELECT solvedpost.post_id,count(isagree) as downcount
+                FROM solvedpost LEFT JOIN downvotes ON solvedpost.post_id=downvotes.post_id
+                GROUP BY solvedpost.post_id
+            ), viewcounts as (
+                SELECT solvedpost.post_id,count(views.post_id) as viewcount
+                FROM solvedpost LEFT JOIN views ON solvedpost.post_id=views.post_id
+                GROUP BY solvedpost.post_id
+            )
+            
+            SELECT *,((upcount-downcount+viewcount)/(upcount+downcount+viewcount+1)) as ratio
+            FROM upcounts NATURAL JOIN downcounts NATURAL JOIN viewcounts
+            ORDER BY ratio DESC
+            LIMIT 5
+        ");
+
+        return $this->db->resultSet();
+    }
 }

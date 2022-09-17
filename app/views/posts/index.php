@@ -194,6 +194,9 @@
         }, (response) => {
             if (response === "") {
                 halt = true;
+                if($('#data').html()===""){
+                    $('#data').html('<div class="col-md-8 mb-3"><div class="card"><div class="d-flex justify-content-between p-2 px-3"><h3> NO RESULT FOUND </h3></div></div></div>');
+                }
             }
             $('#data').append(response);
             $('#loading').hide();
@@ -201,6 +204,8 @@
             page_no++;
         });
     }
+
+
 
     // <!-----------------To Top------------------------->
     const toTop = document.querySelector(".to-top");
