@@ -42,7 +42,7 @@ class AdminsController extends Controller
     {
 
         $data = [
-            'title' => SITENAME,
+            'reports' => $this->postModel->getAllReports(),
         ];
 
         $this->view('/admins/manageReport', $data);
