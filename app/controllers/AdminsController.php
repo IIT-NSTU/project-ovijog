@@ -7,6 +7,9 @@ class AdminsController extends Controller
     public function __construct()
     {
         security();
+        if(!$_SESSION['is_admin']){
+            redirect('errors');
+        }
     }
 
 
