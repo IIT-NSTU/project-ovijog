@@ -23,7 +23,7 @@
             <div class="col-sm-3 pb-2">
                 <div class="card">
                     <div class="card-body py-0 post-hover">
-                        <h1 class="count text-center text-primary" style="font-size:500% ;">41</h1>
+                        <h1 class="count text-center text-success" style="font-size:500% ;">41</h1>
                         <hr class="mt-0 mb-1">
                         <h4 class="text-center">Users</h4>
 
@@ -44,7 +44,7 @@
             <div class="col-sm-3 pb-2">
                 <div class="card counter">
                     <div class="card-body py-0 unsolved-hover">
-                        <h1 class="count text-center text-danger" style="font-size:500% ;">52</h1>
+                        <h1 class="count text-center text-success" style="font-size:500% ;">52</h1>
                         <hr class="mt-0 mb-1">
                         <h4 class="text-center">Solved</h4>
 
@@ -60,7 +60,7 @@
             <div class="col-sm-3 pb-2">
                 <div class="card">
                     <div class="card-body py-0 post-hover">
-                        <h1 class="count text-center text-primary" style="font-size:500% ;">23</h1>
+                        <h1 class="count text-center text-danger" style="font-size:500% ;">23</h1>
                         <hr class="mt-0 mb-1">
                         <h4 class="text-center">Unsolved</h4>
 
@@ -71,7 +71,7 @@
             <div class="col-sm-3 pb-2">
                 <div class="card counter">
                     <div class="card-body py-0 solved-hover">
-                        <h1 class="count text-center text-success" style="font-size:500% ;">21</h1>
+                        <h1 class="count text-center text-danger" style="font-size:500% ;">21</h1>
                         <hr class="mt-0 mb-1">
                         <h4 class="text-center">Report</h4>
 

@@ -1,10 +1,10 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/post.css">
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/post.css">
 
-    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+<script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
 
 <?php require_once APPROOT . '/views/inc/navbar.php'; ?>
 
