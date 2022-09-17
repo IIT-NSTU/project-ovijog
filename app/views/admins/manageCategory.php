@@ -8,25 +8,28 @@
 <div class="modal fade" id="addCategoryModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h6 class="modal-title" id="staticBackdropLabel">Add New Category</h6>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Enter new category name:
-                <input class="form-control mb-1 mt-2" value="" type="text" name="text">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button class="btn btn-sm btn-success" data-bs-dismiss="modal">Add</button>
-            </div>
+            <form action="<?php echo URLROOT; ?>/admins/addCategory/" method="post">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="staticBackdropLabel">Add New Category</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Enter new category name:
+                    <input class="form-control mb-1 mt-2" value="" type="text" name="category" required>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <input type="submit" class="btn btn-sm btn-success" data-bs-dismiss="modal" value="Add">
+                </div>
+            </form>
         </div>
     </div>
 </div>
 <!-----------------Add category Modal end------------------------->
 
-<body>
+
     <div class="main py-5" style="margin-left:173px;">
+        <?php flash('admin'); ?>
         <div class="card" style="width: 100%;">
             <div class="card-header">
                 <div class="row">
@@ -40,51 +43,34 @@
                 </div>
             </div>
             <div class="card-body">
-                <table class="table table-bordered my-4">
+                <table class="table table-bordered my-4 cell-border">
                     <thead>
                         <tr class="text-center">
-                            <th>#</th>
                             <th>Category Name</th>
-                            <th>Added By</th>
                             <th style="width: 20%;">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="text-center">
-                            <td>1</td>
-                            <td>Water</td>
-                            <td>Admin Name</td>
-                            <td class="d-flex justify-content-around"><button title="Delete Post" class="btn btn-sm text-danger" style="font-size: 15px;"><b>X</b></button></td>
-                        </tr>
-                        <tr class="text-center">
-                            <td>2</td>
-                            <td>Food</td>
-                            <td>Admin Name</td>
-                            <td class="d-flex justify-content-around"><button title="Delete Post" class="btn btn-sm text-danger" style="font-size: 15px;"><b>X</b></button></td>
-                        </tr>
-                        <tr class="text-center">
-                            <td>3</td>
-                            <td>Transport</td>
-                            <td>Admin Name</td>
-                            <td class="d-flex justify-content-around"><button title="Delete Post" class="btn btn-sm text-danger" style="font-size: 15px;"><b>X</b></button></td>
-                        </tr>
-                        <tr class="text-center">
-                            <td>4</td>
-                            <td>Security</td>
-                            <td>Admin Name</td>
-                            <td class="d-flex justify-content-around"><button title="Delete Post" class="btn btn-sm text-danger" style="font-size: 15px;"><b>X</b></button></td>
-                        </tr>
-                        <tr class="text-center">
-                            <td>5</td>
-                            <td>Residence</td>
-                            <td>Admin Name</td>
-                            <td class="d-flex justify-content-around"><button title="Delete Post" class="btn btn-sm text-danger" style="font-size: 15px;"><b>X</b></button></td>
-                        </tr>
+                        <?php foreach ($data['categories'] as $category): ?>
+                            <tr class="text-center">
+                                <td><?php echo $category->category; ?></td>
+                                <td class="d-flex justify-content-around">
+                                    <a href="<?php echo URLROOT; ?>/admins/removeCategory/<?php echo $category->category; ?>" title="Delete Post" class="btn btn-sm text-danger" style="font-size: 15px;">
+                                        <b>X</b>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-</body>
+
+    <script>
+        $(document).ready( function () {
+            $('.table').DataTable();
+        } );
+    </script>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

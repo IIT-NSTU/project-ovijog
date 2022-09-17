@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/sidebar.css">
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/admin.css">
 
-<body>
+
     <div class="main py-5" style="margin-left:173px;">
         <?php flash('admin'); ?>
         <div class="card" style="width: 100%;">
@@ -52,6 +52,11 @@
             </div>
         </div>
     </div>
-</body>
+
+    <script>
+        $(document).ready( function () {
+            $('.table').DataTable();
+        } );
+    </script>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

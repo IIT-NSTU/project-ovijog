@@ -3,6 +3,7 @@
 class AdminsController extends Controller
 {
 
+    private $adminModel;
     private $postModel;
     private $userModel;
 
@@ -13,6 +14,7 @@ class AdminsController extends Controller
             redirect('errors');
         }
 
+        $this->adminModel = $this->model('Admin');
         $this->postModel = $this->model('Post');
         $this->userModel = $this->model('User');
     }
@@ -42,7 +44,7 @@ class AdminsController extends Controller
     {
 
         $data = [
-            'reports' => $this->postModel->getAllReports(),
+            'reports' => $this->adminModel->getAllReports(),
         ];
 
         $this->view('/admins/manageReport', $data);
@@ -50,12 +52,33 @@ class AdminsController extends Controller
 
     public function manageCategory()
     {
+        $categories = $this->postModel->getCategories();
 
         $data = [
-            'title' => SITENAME,
+            'categories' => $categories,
         ];
 
         $this->view('/admins/manageCategory', $data);
+    }
+
+    public function addCategory(){
+        $category=$_POST['category'];
+
+        if($this->adminModel->addCategory($category)){
+            flash('admin', 'Category Added');
+        }else{
+            flash('admin', 'Category Already Exist','alert alert-danger');
+        }
+
+
+        redirect('admins/manageCategory');
+    }
+
+    public function removeCategory($category){
+        $this->adminModel->removeCategory($category);
+
+        flash('admin', 'Category Removed');
+        redirect('admins/manageCategory');
     }
 
     public function manageUsers()

@@ -30,12 +30,6 @@ class Post {
         $this->db->execute();
     }
 
-    public function getAllReports(){
-        $this->db->query('select * from reports');
-
-        return $this->db->resultSet();
-    }
-
     public function getPostsWithLimit($page, $categories = '', $key = '') {
         $limit = 4;
         $row = ($page - 1) * $limit;
