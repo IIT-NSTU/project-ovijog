@@ -1,0 +1,1 @@
+$('#msg-flash').delay(2000).fadeOut('slow');

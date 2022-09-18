@@ -4,8 +4,9 @@
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/sidebar.css">
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/admin.css">
 
-<body>
+
     <div class="main py-5" style="margin-left:173px;">
+        <?php flash('admin'); ?>
         <div class="card" style="width: 100%;">
             <div class="card-header">
                 <div class="row">
@@ -15,63 +16,47 @@
                 </div>
             </div>
             <div class="card-body">
-                <table class="table table-bordered my-4">
+                <table class="table table-bordered my-4 cell-border">
                     <thead>
                         <tr class="text-center">
                             <th>#</th>
                             <th>Reporter ID</th>
-                            <th style="width:30% ;">poster ID</th>
-                            <th>Post ID</th>
-                            <th>Title</th>
+                            <th style="width:30% ;">Post ID</th>
+                            <th>Category</th>
+                            <th>Feedback</th>
+                            <th>Time</th>
                             <th style="width: 10%;">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="text-center">
-                            <td>1</td>
-                            <td>Id</td>
-                            <td>Id</td>
-                            <td>Id</td>
-                            <td>Post Title</td>
-                            <td class="d-flex justify-content-around"><button title="See Post" class="btn btn-sm text-primary me-1" style="font-size: 15px;"><i class="fa-solid fa-eye"></i></button><button title="Delete Post" class="btn btn-sm text-danger" style="font-size: 15px;"><b>X</b></button>
-                        </tr>
-                        <tr class="text-center">
-                            <td>2</td>
-                            <td>Id</td>
-                            <td>Id</td>
-                            <td>Id</td>
-                            <td>Post Title</td>
-                            <td class="d-flex justify-content-around"><button title="See Post" class="btn btn-sm text-primary me-1" style="font-size: 15px;"><i class="fa-solid fa-eye"></i></button><button title="Delete Post" class="btn btn-sm text-danger" style="font-size: 15px;"><b>X</b></button>
-                        </tr>
-                        <tr class="text-center">
-                            <td>3</td>
-                            <td>Id</td>
-                            <td>Id</td>
-                            <td>Id</td>
-                            <td>Post Title</td>
-                            <td class="d-flex justify-content-around"><button title="See Post" class="btn btn-sm text-primary me-1" style="font-size: 15px;"><i class="fa-solid fa-eye"></i></button><button title="Delete Post" class="btn btn-sm text-danger" style="font-size: 15px;"><b>X</b></button>
-                        </tr>
-                        <tr class="text-center">
-                            <td>4</td>
-                            <td>Id</td>
-                            <td>Id</td>
-                            <td>Id</td>
-                            <td>Post Title</td>
-                            <td class="d-flex justify-content-around"><button title="See Post" class="btn btn-sm text-primary me-1" style="font-size: 15px;"><i class="fa-solid fa-eye"></i></button><button title="Delete Post" class="btn btn-sm text-danger" style="font-size: 15px;"><b>X</b></button>
-                        </tr>
-                        <tr class="text-center">
-                            <td>5</td>
-                            <td>Id</td>
-                            <td>Id</td>
-                            <td>Id</td>
-                            <td>>Post Title</td>
-                            <td class="d-flex justify-content-around"><button title="See Post" class="btn btn-sm text-primary me-1" style="font-size: 15px;"><i class="fa-solid fa-eye"></i></button><button title="Delete Post" class="btn btn-sm text-danger" style="font-size: 15px;"><b>X</b></button>
-                        </tr>
+                        <?php foreach ($data['reports'] as $report): ?>
+                            <tr class="text-center">
+                                <td><?php echo $report->report_id; ?></td>
+                                <td><?php echo $report->user_id; ?></td>
+                                <td><?php echo $report->post_id; ?></td>
+                                <td><?php echo $report->category; ?></td>
+                                <td><?php echo $report->feedback; ?></td>
+                                <td><?php echo $report->created_time; ?></td>
+                                <td class="d-flex justify-content-around">
+                                    <a href="<?php echo URLROOT; ?>/posts/show/<?php echo $report->post_id; ?>" title="See Post" class="btn btn-sm text-primary me-1" style="font-size: 15px;">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
+                                    <a href="<?php echo URLROOT; ?>/admins/deletePost/<?php echo $report->post_id; ?>" title="Delete Post" class="btn btn-sm text-danger" style="font-size: 15px;">
+                                        <b>X</b>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-</body>
+
+    <script>
+        $(document).ready( function () {
+            $('.table').DataTable();
+        } );
+    </script>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>
