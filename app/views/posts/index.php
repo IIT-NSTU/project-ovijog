@@ -159,10 +159,12 @@
         var halt = false;
         showMore();
 
-
-        $('#search-btn').click(function() {
-            var key = $('#search-text').val();
-            if (key !== "") {
+        var search_timer;
+        $("#search-text").keyup(function (){
+            clearTimeout(search_timer);
+            search_timer = setTimeout(function(){
+                // callback_function();
+                console.log("user stopped");
                 if (!isrunning) {
                     $('#data').html("");
                     $(window).scrollTop(0);
@@ -170,17 +172,23 @@
                     halt = false;
                     showMore();
                 }
-            }
+            }, 1000);
         });
 
-        $('.category').click(function() {
-            if (!isrunning) {
-                $('#data').html("");
-                $(window).scrollTop(0);
-                page_no = 1;
-                halt = false;
-                showMore();
-            }
+        var category_timer;
+        $(".category").click(function (){
+            clearTimeout(category_timer);
+            category_timer = setTimeout(function(){
+                // callback_function();
+                console.log("user stopped");
+                if (!isrunning) {
+                    $('#data').html("");
+                    $(window).scrollTop(0);
+                    page_no = 1;
+                    halt = false;
+                    showMore();
+                }
+            }, 1000);
         });
 
         $(window).scroll(function() {
