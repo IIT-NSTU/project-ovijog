@@ -83,9 +83,8 @@ class AdminsController extends Controller
 
     public function manageUsers()
     {
-
         $data = [
-            'title' => SITENAME,
+            'users' => $this->adminModel->getAllUsers()
         ];
 
         $this->view('/admins/manageUsers', $data);
@@ -106,6 +105,16 @@ class AdminsController extends Controller
         if ($this->postModel->deletePost($id)) {
             flash('admin', 'Post Removed');
             redirect('admins/managePost');
+        } else {
+            die('Something went wrong');
+        }
+    }
+
+    public function deleteUser($id){
+
+        if ($this->adminModel->deleteUser($id)) {
+            flash('admin', 'User Removed');
+            redirect('admins/manageUsers');
         } else {
             die('Something went wrong');
         }

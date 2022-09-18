@@ -32,4 +32,16 @@ class Admin {
         $this->db->execute();
     }
 
+    public function getAllUsers(){
+        $this->db->query("select * from users");
+
+        return $this->db->resultSet();
+    }
+
+    public function deleteUser($id){
+        $this->db->query("delete from users where user_id = :user_id");
+        $this->db->bind(':user_id',$id);
+        return $this->db->execute();
+    }
+
 }

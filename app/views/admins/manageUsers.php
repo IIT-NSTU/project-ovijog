@@ -10,8 +10,9 @@
     }
 </style>
 
-<body>
+
     <div class="main py-5" style="margin-left:173px;">
+        <?php flash('admin'); ?>
         <div class="card" style="width: 100%;">
             <div class="card-header">
                 <div class="row">
@@ -21,58 +22,32 @@
                 </div>
             </div>
             <div class="card-body">
-                <table class="table table-bordered my-4">
+                <table class="table my-4 cell-border">
                     <thead>
                         <tr class="text-center">
-                            <th>#</th>
                             <th>User ID</th>
-                            <th>User Name</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
                             <th>User email</th>
-                            <th>Report Number</th>
+                            <th>Verified</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="text-center">
-                            <td>1</td>
-                            <td>3</td>
-                            <td>Armanur Rashid</td>
-                            <td>armanur2514@student.nstu.edu.bd</td>
-                            <td>0</td>
-                            <td class="d-flex justify-content-around"><button title="Disable Account" class="btn btn-sm btn-outline-danger" onclick="disableUser()" id="disable-button"><b>Deactivate</b></button><button title="Disable Account" class="btn btn-sm btn-outline-success" onclick="enableUser()" id="enable-button" style="display:none;"><b>Activate</b></button></td>
-                        </tr>
-                        <tr class="text-center">
-                            <td>2</td>
-                            <td>4</td>
-                            <td>Arnab Dey</td>
-                            <td>arnab2514@student.nstu.edu.bd</td>
-                            <td>5</td>
-                            <td class="d-flex justify-content-around"><button title="Disable Account" class="btn btn-sm btn-outline-danger" onclick="disableUser()" id="disable-button"><b>Deactivate</b></button><button title="Disable Account" class="btn btn-sm btn-outline-success" onclick="enableUser()" id="enable-button" style="display:none;"><b>Activate</b></button></td>
-                        </tr>
-                        <tr class="text-center">
-                            <td>3</td>
-                            <td>7</td>
-                            <td>Md Alamin</td>
-                            <td>alamin2514@student.nstu.edu.bd</td>
-                            <td>2</td>
-                            <td class="d-flex justify-content-around"><button title="Disable Account" class="btn btn-sm btn-outline-danger" onclick="disableUser()" id="disable-button"><b>Deactivate</b></button><button title="Disable Account" class="btn btn-sm btn-outline-success" onclick="enableUser()" id="enable-button" style="display:none;"><b>Activate</b></button></td>
-                        </tr>
-                        <tr class="text-center">
-                            <td>4</td>
-                            <td>8</td>
-                            <td>Farjana Yeasmin</td>
-                            <td>farjana2514@student.nstu.edu.bd</td>
-                            <td>12</td>
-                            <td class="d-flex justify-content-around"><button title="Disable Account" class="btn btn-sm btn-outline-danger" onclick="disableUser()" id="disable-button"><b>Deactivate</b></button><button title="Disable Account" class="btn btn-sm btn-outline-success" onclick="enableUser()" id="enable-button" style="display:none;"><b>Activate</b></button></td>
-                        </tr>
-                        <tr class="text-center">
-                            <td>5</td>
-                            <td>9</td>
-                            <td>Abdullah Al Tahmid</td>
-                            <td>tahmid2514@student.nstu.edu.bd</td>
-                            <td>1</td>
-                            <td class="d-flex justify-content-around"><button title="Disable Account" class="btn btn-sm btn-outline-danger" onclick="disableUser()" id="disable-button"><b>Deactivate</b></button><button title="Disable Account" class="btn btn-sm btn-outline-success" onclick="enableUser()" id="enable-button" style="display:none;"><b>Activate</b></button></td>
-                        </tr>
+                        <?php foreach ($data['users'] as $user) : ?>
+                            <tr class="text-center">
+                                <td class="tableDataWrap"><?php echo $user->user_id; ?></td>
+                                <td class="tableDataWrap"><?php echo $user->first_name; ?></td>
+                                <td class="tableDataWrap"><?php echo $user->last_name; ?></td>
+                                <td class="tableDataWrap"><?php echo $user->edu_mail; ?></td>
+                                <td class="tableDataWrap"><?php echo $user->isverified; ?></td>
+                                <td class="d-flex justify-content-around tableDataWrap">
+                                    <a href="<?php echo URLROOT; ?>/admins/deleteUser/<?php echo $user->user_id; ?>" class="btn btn-sm text-danger" style="font-size: 15px;">
+                                        <b>Delete User</b>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
@@ -88,7 +63,10 @@
             document.getElementById('disable-button').style.display = "block";
             document.getElementById('enable-button').style.display = "none";
         }
+
+        $(document).ready(function() {
+            $('.table').DataTable();
+        });
     </script>
-</body>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>
