@@ -227,7 +227,12 @@ class UsersController extends Controller {
         $_SESSION['user_email'] = $user->edu_mail;
         $_SESSION['is_admin'] = $user->isadmin;
 
-        setcookie('project-ovijog-session-data',json_encode($_SESSION),time()+2592000);
+        $data=[
+            'id'=>$user->user_id,
+            'hash'=>$user->pass_hash
+        ];
+
+        setcookie('project-ovijog-session-data',json_encode($data),time()+2592000);
 
         if ($user->isadmin) {
             redirect('admins');
