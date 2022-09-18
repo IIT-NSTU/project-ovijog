@@ -115,47 +115,49 @@
                         <?php endforeach; ?>
                     </div>
                     <hr>
-                    <div class="row py-1">
+                    <?php if (!$_SESSION['is_admin']) : ?>
+                        <div class="row py-1">
 
-                        <div class="col-sm up-down-vote-icon ">
-                            <b id="up-count"><?php echo $data['up-count']; ?></b>
-                            <a id="up" onclick="like(this.parentNode.parentNode,<?php echo $data['post']->post_id; ?>)" class="btn btn-sm <?php echo (!$data['up-voted']) ? 'btn-outline-success' : 'btn-success'; ?> ms-2"><i class="fa-solid fa-arrow-up "></i></a>
-                        </div>
-                        <div class="col-sm up-down-vote-icon">
-                            <b id="down-count"><?php echo $data['down-count']; ?></b>
-                            <a id="down" onclick="dislike(this.parentNode.parentNode,<?php echo $data['post']->post_id; ?>)" class="btn btn-sm <?php echo (!$data['down-voted']) ? 'btn-outline-danger' : 'btn-danger'; ?> ms-2"><i class="fa-solid fa-arrow-down"></i></a>
-                        </div>
-
-                        <?php if ($data['post']->user_id == $_SESSION['user_id']) : ?>
-                            <div class="col-sm text-center">
-                                <!-- <a class="btn btn-sm text-success" ><b>Solved</b></a> -->
-
-                                <button class="btn btn-sm text-success" data-bs-toggle="modal" data-bs-target="#solvedModal"><b>Solved</b>
-                                </button>
+                            <div class="col-sm up-down-vote-icon ">
+                                <b id="up-count"><?php echo $data['up-count']; ?></b>
+                                <a id="up" onclick="like(this.parentNode.parentNode,<?php echo $data['post']->post_id; ?>)" class="btn btn-sm <?php echo (!$data['up-voted']) ? 'btn-outline-success' : 'btn-success'; ?> ms-2"><i class="fa-solid fa-arrow-up "></i></a>
                             </div>
-                            <div class="col-sm text-center"><a href="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']->post_id; ?>" class="btn btn-sm text-primary"><b>Edit</b></a>
-                            </div>
-                            <div class="col-sm text-center">
-                                <button class="btn btn-sm text-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop1"><b>Detete</b>
-                                </button>
+                            <div class="col-sm up-down-vote-icon">
+                                <b id="down-count"><?php echo $data['down-count']; ?></b>
+                                <a id="down" onclick="dislike(this.parentNode.parentNode,<?php echo $data['post']->post_id; ?>)" class="btn btn-sm <?php echo (!$data['down-voted']) ? 'btn-outline-danger' : 'btn-danger'; ?> ms-2"><i class="fa-solid fa-arrow-down"></i></a>
                             </div>
 
-                        <?php else : ?>
-                            <div class="col-sm text-center">
-                                <button class="btn btn-sm text-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><b>Report</b>
-                                </button>
+                            <?php if ($data['post']->user_id == $_SESSION['user_id']) : ?>
+                                <div class="col-sm text-center">
+                                    <!-- <a class="btn btn-sm text-success" ><b>Solved</b></a> -->
+
+                                    <button class="btn btn-sm text-success" data-bs-toggle="modal" data-bs-target="#solvedModal"><b>Solved</b>
+                                    </button>
+                                </div>
+                                <div class="col-sm text-center"><a href="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']->post_id; ?>" class="btn btn-sm text-primary"><b>Edit</b></a>
+                                </div>
+                                <div class="col-sm text-center">
+                                    <button class="btn btn-sm text-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop1"><b>Detete</b>
+                                    </button>
+                                </div>
+
+                            <?php else : ?>
+                                <div class="col-sm text-center">
+                                    <button class="btn btn-sm text-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><b>Report</b>
+                                    </button>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-10 mb-2 mt-2">
+                                <input id="comment-text" type="text" class="form-control comment-text" placeholder="Write Comment">
                             </div>
-                        <?php endif; ?>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-10 mb-2 mt-2">
-                            <input id="comment-text" type="text" class="form-control comment-text" placeholder="Write Comment">
+                            <div class="col-sm-2">
+                                <a onclick="comment(this.parentNode.parentNode,<?php echo $data['post']->post_id; ?>)" class="btn btn-sm btn-primary mb-2 mt-2">Comment</a>
+                            </div>
                         </div>
-                        <div class="col-sm-2">
-                            <a onclick="comment(this.parentNode.parentNode,<?php echo $data['post']->post_id; ?>)" class="btn btn-sm btn-primary mb-2 mt-2">Comment</a>
-                        </div>
-                    </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
