@@ -40,7 +40,7 @@
                                 <td class="tableDataWrap"><?php echo $user->first_name; ?></td>
                                 <td class="tableDataWrap"><?php echo $user->last_name; ?></td>
                                 <td class="tableDataWrap"><?php echo $user->edu_mail; ?></td>
-                                <td class="tableDataWrap"><?php echo $user->isverified; ?></td>
+                                <td class="tableDataWrap"><?php echo ($user->isverified)?'True':'False'; ?></td>
                                 <td class="d-flex justify-content-around tableDataWrap">
                                     <a href="<?php echo URLROOT; ?>/admins/deleteUser/<?php echo $user->user_id; ?>" class="btn btn-sm text-danger" style="font-size: 15px;">
                                         <b>Delete User</b>
@@ -53,17 +53,8 @@
             </div>
         </div>
     </div>
+
     <script>
-        function disableUser() {
-            document.getElementById('disable-button').style.display = "none";
-            document.getElementById('enable-button').style.display = "block";
-        }
-
-        function enableUser() {
-            document.getElementById('disable-button').style.display = "block";
-            document.getElementById('enable-button').style.display = "none";
-        }
-
         $(document).ready(function() {
             $('.table').DataTable();
         });

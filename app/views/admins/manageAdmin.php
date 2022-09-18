@@ -13,25 +13,28 @@
 <div class="modal fade" id="addAdminModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h6 class="modal-title" id="staticBackdropLabel">Add New Admin</h6>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Enter new admin user_id:
-                <input class="form-control mb-1 mt-2" value="" type="text" name="text">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button class="btn btn-sm btn-success" data-bs-dismiss="modal">Add</button>
-            </div>
+            <form action="<?php echo URLROOT; ?>/admins/makeAdmin/" method="post">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="staticBackdropLabel">Add New Admin</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Enter new admin user_id:
+                    <input class="form-control mb-1 mt-2" value="" type="text" name="id">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <input type="submit" class="btn btn-sm btn-success" data-bs-dismiss="modal" value="Add">
+                </div>
+            </form>
         </div>
     </div>
 </div>
 <!-----------------Add category Modal end------------------------->
 
-<body>
+
     <div class="main py-5" style="margin-left:173px;">
+        <?php flash('admin'); ?>
         <div class="card" style="width: 100%;">
             <div class="card-header">
                 <div class="row">
@@ -45,64 +48,41 @@
                 </div>
             </div>
             <div class="card-body">
-                <table class="table table-bordered my-4">
+                <table class="table my-4 cell-border">
                     <thead>
-                        <tr class="text-center">
-                            <th>#</th>
-                            <th>Admin Name</th>
-                            <th style="width:30% ;">Admin email</th>
-                            <th>Added By</th>
-                            <th>Removed By</th>
-                            <th style="width: 10%;">Action</th>
-                        </tr>
+                    <tr class="text-center">
+                        <th>User ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>User email</th>
+                        <th>Action</th>
+                    </tr>
                     </thead>
                     <tbody>
-                        <tr class="text-center">
-                            <td>1</td>
-                            <td>Md Alamin</td>
-                            <td>alamin2514@student.nstu.edu.bd</td>
-                            <td>Armanur Rashid
-                            </td>
-                            <td>-</td>
-                            <td class="d-flex justify-content-around"><button title="Delete Post" class="btn btn-sm text-danger" style="font-size: 15px;"><b>X</b></button></td>
-                        </tr>
-                        <tr class="text-center">
-                            <td>2</td>
-                            <td>Admin Name</td>
-                            <td>Admin email</td>
-                            <td>Admin Name</td>
-                            <td>Admin Name</td>
-                            <td class="d-flex justify-content-around"><button title="Delete Post" class="btn btn-sm text-danger" style="font-size: 15px;"><b>X</b></button></td>
-                        </tr>
-                        <tr class="text-center">
-                            <td>3</td>
-                            <td>Admin Name</td>
-                            <td>Admin email</td>
-                            <td>Admin Name</td>
-                            <td>Admin Name</td>
-                            <td class="d-flex justify-content-around"><button title="Delete Post" class="btn btn-sm text-danger" style="font-size: 15px;"><b>X</b></button></td>
-                        </tr>
-                        <tr class="text-center">
-                            <td>4</td>
-                            <td>Admin Name</td>
-                            <td>Admin email</td>
-                            <td>Admin Name</td>
-                            <td>Admin Name</td>
-                            <td class="d-flex justify-content-around"><button title="Delete Post" class="btn btn-sm text-danger" style="font-size: 15px;"><b>X</b></button></td>
-                        </tr>
-                        <tr class="text-center">
-                            <td>5</td>
-                            <td>Admin Name</td>
-                            <td>Admin email</td>
-                            <td>Admin Name</td>
-                            <td>Admin Name</td>
-                            <td class="d-flex justify-content-around"><button title="Delete Post" class="btn btn-sm text-danger" style="font-size: 15px;"><b>X</b></button></td>
-                        </tr>
+                        <?php foreach ($data['admins'] as $user) : ?>
+                            <tr class="text-center">
+                                <td class="tableDataWrap"><?php echo $user->user_id; ?></td>
+                                <td class="tableDataWrap"><?php echo $user->first_name; ?></td>
+                                <td class="tableDataWrap"><?php echo $user->last_name; ?></td>
+                                <td class="tableDataWrap"><?php echo $user->edu_mail; ?></td>
+                                <td class="d-flex justify-content-around tableDataWrap">
+                                    <a href="<?php echo URLROOT; ?>/admins/removeAdminShip/<?php echo $user->user_id; ?>" class="btn btn-sm text-danger" style="font-size: 15px;">
+                                        <b>X</b>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-</body>
+
+    <script>
+        $(document).ready(function() {
+            $('.table').DataTable();
+        });
+    </script>
+
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

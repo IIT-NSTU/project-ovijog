@@ -94,15 +94,41 @@ class AdminsController extends Controller
     {
 
         $data = [
-            'title' => SITENAME,
+            'admins' => $this->adminModel->getAllAdmins(),
         ];
 
         $this->view('/admins/manageAdmin', $data);
     }
 
-    public function deletePost($id) {
+    public function makeAdmin(){
+        $id=$_POST['id'];
 
-        if ($this->postModel->deletePost($id)) {
+
+        if(!$this->userModel->getUserById($id)){
+            flash('admin', 'No User Found With Given Id','alert alert-danger');
+            redirect('admins/manageAdmin');
+        } elseif($this->adminModel->makeAdmin($id)){
+            flash('admin', 'Admin Added');
+            redirect('admins/manageAdmin');
+        }else{
+            die('Something went wrong');
+        }
+    }
+
+    public function removeAdminShip($id){
+        if($id==$_SESSION['user_id']){
+            flash('admin', 'You Cannot Remove You From Admins','alert alert-danger');
+            redirect('admins/manageAdmin');
+        }elseif ($this->adminModel->removeAdminShip($id)){
+            flash('admin', 'Admin removed');
+            redirect('admins/manageAdmin');
+        }else{
+            die('Something went wrong');
+        }
+    }
+
+    public function deletePost($id) {
+         if ($this->postModel->deletePost($id)) {
             flash('admin', 'Post Removed');
             redirect('admins/managePost');
         } else {
@@ -111,12 +137,16 @@ class AdminsController extends Controller
     }
 
     public function deleteUser($id){
-
-        if ($this->adminModel->deleteUser($id)) {
+        if($id==$_SESSION['user_id']){
+            flash('admin', 'You Cannot Remove You','alert alert-danger');
+            redirect('admins/manageUsers');
+        } elseif ($this->adminModel->deleteUser($id)) {
             flash('admin', 'User Removed');
             redirect('admins/manageUsers');
         } else {
             die('Something went wrong');
         }
     }
+
+
 }

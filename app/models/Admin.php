@@ -44,4 +44,24 @@ class Admin {
         return $this->db->execute();
     }
 
+    public function getAllAdmins(){
+        $this->db->query("select * from users where isadmin=1");
+
+        return $this->db->resultSet();
+    }
+
+    public function removeAdminShip($id){
+        $this->db->query("update users set isadmin=0 where user_id=:user_id");
+        $this->db->bind(':user_id',$id);
+
+        return $this->db->execute();
+    }
+
+    public function makeAdmin($id){
+        $this->db->query("update users set isadmin=1 where user_id=:user_id");
+        $this->db->bind(':user_id',$id);
+
+        return $this->db->execute();
+    }
+
 }
