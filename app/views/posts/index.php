@@ -53,7 +53,7 @@
         <div class="col-sm-2 overflow mt-2" style="position:fixed ;max-height: 75.2%; overflow-x: hidden;">
             <div class="card shadow-sm rounded bg-light ">
                 <div class="card-body pb-1 pt-0">
-                    <a class="btn px-0 btn-light" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1" style="position: fixed;width:16.65%; margin-left:-16px;"><b>Notification</b></a>
+                    <a class="btn px-0 btn-light" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1" style="position: fixed;width:16.65%; margin-left:-16px;"><i class="fa-solid fa-bell"></i><b> Notification</b></a>
                     <div class="collapse card " id="multiCollapseExample1" style="margin-top: 30%;">
 
                         <?php foreach ($data['notifications'] as $notification) : ?>
@@ -194,7 +194,7 @@
         }, (response) => {
             if (response === "") {
                 halt = true;
-                if($('#data').html()===""){
+                if ($('#data').html() === "") {
                     $('#data').html('<div class="col-md-8 mb-3"><div class="card"><div class="d-flex justify-content-between p-2 px-3"><h3> NO RESULT FOUND </h3></div></div></div>');
                 }
             }
