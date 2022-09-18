@@ -84,7 +84,6 @@
                         <h1 class="count text-center text-danger" style="font-size:500% ;">7</h1>
                         <hr class="mt-0 mb-1">
                         <h4 class="text-center">Delete</h4>
-
                     </div>
                 </div>
             </div>

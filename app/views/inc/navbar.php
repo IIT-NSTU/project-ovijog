@@ -19,6 +19,12 @@
                             <li class="nav-item">
                                 <a href="<?php echo URLROOT; ?>/pages/home" class="nav-link"><i class="fas fa-house-user"></i> Home</a>
                             </li>
+                            <?php if ($_SESSION['is_admin']) : ?>
+                                <li class="nav-item">
+                                    <a href="<?php echo URLROOT; ?>/admins/index" class="nav-link"><i class="fa-solid fa-sliders"></i> Manage</a>
+                                </li>
+                            <?php endif; ?>
+
                             <li class="nav-item">
                                 <a href="<?php echo URLROOT; ?>/posts" class="nav-link"><i class="fa-solid fa-sim-card"></i> Posts</a>
                             </li>

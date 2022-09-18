@@ -89,7 +89,6 @@
                                 </div>
 
                                 <div class="text-end mb-3 text-sm ">
-                                    <!-- <a href="<?php echo URLROOT; ?>/users/forgetPassword/" class="text-decoration-none" style="color:blue ;">Forgot Password? </a> -->
                                     <a class="btn btn-sm text-primary ps-0" data-bs-toggle="modal" data-bs-target="#forgotPassword">Forgot password</a>
                                 </div>
                                 <div class="row mb-2 px-3">
