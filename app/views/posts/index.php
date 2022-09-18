@@ -212,8 +212,6 @@
             });
         }
 
-
-
         // <!-----------------To Top------------------------->
         const toTop = document.querySelector(".to-top");
 
@@ -225,6 +223,5 @@
             }
         })
     </script>
-
 
     <?php require APPROOT . '/views/inc/footer.php'; ?>

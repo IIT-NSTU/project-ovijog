@@ -3,7 +3,12 @@
 <?php require_once APPROOT . '/views/inc/sidebar.php'; ?>
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/sidebar.css">
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/admin.css">
-
+<style>
+    .tableDataWrap {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+</style>
 <!-----------------Add New Admin Modal start------------------------->
 <div class="modal fade" id="addAdminModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">

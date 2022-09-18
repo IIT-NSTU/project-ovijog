@@ -3,6 +3,12 @@
 <?php require_once APPROOT . '/views/inc/sidebar.php'; ?>
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/sidebar.css">
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/admin.css">
+<style>
+    .tableDataWrap {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+</style>
 
 <body>
     <div class="main py-5" style="margin-left:173px;">
