@@ -17,7 +17,7 @@
 <?php flash('post_message'); ?>
 
 <div style="position: fixed;">
-    <?php if (!str_ends_with($_SESSION['user_email'], 'admin.nstu.edu.bd')) : ?>
+    <?php if (!isAcademicOfficial()) : ?>
         <div class="row">
             <div class="col">
                 <div class="mb-3" id="create-post-button-div" style="margin-left:-50px ;">

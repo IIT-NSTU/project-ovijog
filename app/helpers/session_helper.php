@@ -32,6 +32,10 @@ function restoreSessionIfAvailable(){
     }
 }
 
+function isAcademicOfficial(){
+    return str_ends_with($_SESSION['user_email'], 'admin.nstu.edu.bd');
+}
+
 function isLoggedIn() {
     if (isset($_SESSION['user_id'])) {
         return true;
