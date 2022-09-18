@@ -22,9 +22,20 @@ class AdminsController extends Controller
 
     public function index()
     {
+        $totalUser=count($this->adminModel->getAllUsers());
+
+        $totalPost = $this->postModel->totalPostCount();
+
+        $totalSolved = $this->postModel->totalSolvedCount();
+
+        $totalReport=count($this->adminModel->getAllReports());
 
         $data = [
-            'title' => SITENAME,
+            'total_user' => $totalUser,
+            'total_post' => $totalPost,
+            'total_solved' => $totalSolved,
+            'total_unsolved' => ($totalPost - $totalSolved),
+            'total_report'=>$totalReport
         ];
 
         $this->view('/admins/index', $data);
