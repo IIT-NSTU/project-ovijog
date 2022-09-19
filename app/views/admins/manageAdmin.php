@@ -1,6 +1,4 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<?php require_once APPROOT . '/views/inc/navbar.php'; ?>
-<?php require_once APPROOT . '/views/inc/sidebar.php'; ?>
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/sidebar.css">
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/admin.css">
 <style>
@@ -9,6 +7,13 @@
         text-overflow: ellipsis;
     }
 </style>
+<?php require_once APPROOT . '/views/inc/navbar.php'; ?>
+<?php require_once APPROOT . '/views/inc/sidebar.php'; ?>
+
+<!-----------------Delete User modal start------------------------->
+<div id="modal-here"></div>
+<!-----------------Delete User modal end------------------------->
+
 <!-----------------Add New Admin Modal start------------------------->
 <div class="modal fade" id="addAdminModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -66,9 +71,8 @@
                             <td class="tableDataWrap"><?php echo $user->last_name; ?></td>
                             <td class="tableDataWrap"><?php echo $user->edu_mail; ?></td>
                             <td class="d-flex justify-content-around tableDataWrap">
-                                <a href="<?php echo URLROOT; ?>/admins/removeAdminShip/<?php echo $user->user_id; ?>" class="btn btn-sm text-danger" style="font-size: 15px;">
-                                    <b>X</b>
-                                </a>
+                                <button onclick="removeAdmin(<?php echo $user->user_id; ?>)" class="btn btn-sm text-danger"><b>X</b>
+                                </button>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -82,6 +86,29 @@
     $(document).ready(function() {
         $('.table').DataTable();
     });
+
+    function removeAdmin(user_id) {
+        $('#modal-here').html("<div class='modal fade' id='deleteAdmin' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>" +
+            "<div class='modal-dialog'>" +
+            "<div class='modal-content'>" +
+            "<div class='modal-header'>" +
+            "<h6 class='modal-title' id='staticBackdropLabel'>Admin Delete Confirmation</h6>" +
+            "<button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>" +
+            "</div>" +
+            " <div class='modal-body'>" +
+            " Are you sure you want to remove this Admin?" +
+            "</div>" +
+            "<div class='modal-footer'>" +
+            "<button type='button' class='btn btn-sm btn-secondary' data-bs-dismiss='modal'>Close</button>" +
+            "<a href='<?php echo URLROOT; ?>/admins/removeAdminShip/" + user_id + "' class='btn btn-sm text-danger'>" +
+            "<b>Delete</b></a>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div>");
+
+        $('#deleteAdmin').modal('toggle');
+    }
 </script>
 
 
