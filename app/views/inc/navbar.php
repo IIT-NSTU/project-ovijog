@@ -32,12 +32,15 @@
                                 <a href="<?php echo URLROOT; ?>/users/profile" class="nav-link"><i class="fas fa-user"></i> My Profile</a>
                             </li>
 
+                            <li class="nav-item invisible" id="search-bar">
+                                <form class='search'>
+                                    <input id='search-text' class='search-input' type="text" />
+                                    <div class="after"></div>
+                                    <input id='search-btn' class='search-input' type="submit" />
+                                </form>
+                            </li>
 
-                            <div id="search-bar" class="invisible" style="display:flex ;">
-                                <li style="margin-top: 5px;">
-                                    <input id="search-text" type="text" class="search-click" name="" placeholder="search">
-                                </li>
-                            </div>
+
                         <?php else : ?>
                             <li class="nav-item">
                                 <a href="<?php echo URLROOT; ?>/pages/index" class="nav-link"><i class="fas fa-house-user"></i> Home</a>

@@ -2,6 +2,7 @@
 <?php require_once APPROOT . '/views/inc/navbar.php'; ?>
 
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/post.css">
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/searchBar.css">
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/toTopButton.css">
 
 <style>
@@ -99,6 +100,16 @@
     <script>
         $('#search-bar').toggleClass('invisible');
 
+        const input = document.getElementById("search-text");
+        const searchBtn = document.getElementById("search-btn");
+
+        const expand = () => {
+            searchBtn.classList.toggle("close");
+            input.classList.toggle("square");
+        };
+
+        searchBtn.addEventListener("click", expand);
+
 
         function like(d, id) {
 
@@ -190,6 +201,23 @@
             }, 1000);
         });
 
+        var search_btn_timer;
+        $('.after').click(function () {
+            clearTimeout(search_btn_timer);
+            search_btn_timer = setTimeout(function(){
+                // callback_function();
+                console.log("user stopped");
+                if (!isrunning && $('#search-text').val()!=="") {
+                    $('#search-text').val('');
+                    $('#data').html("");
+                    $(window).scrollTop(0);
+                    page_no = 1;
+                    halt = false;
+                    showMore();
+                }
+            }, 1000);
+        });
+
         $(window).scroll(function() {
             if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
                 if (!isrunning && !halt) {
@@ -230,5 +258,7 @@
             }
         })
     </script>
+
+    <script src="<?php echo URLROOT; ?>/js/searchBar.js"></script>
 
     <?php require APPROOT . '/views/inc/footer.php'; ?>
