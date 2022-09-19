@@ -6,10 +6,16 @@
 class PagesController extends Controller {
     private $postModel;
 
+    /**
+     *
+     */
     public function __construct() {
         $this->postModel = $this->model('Post');
     }
 
+    /**
+     * @return void
+     */
     public function index() {
 
         if (isLoggedIn()) {
@@ -23,6 +29,9 @@ class PagesController extends Controller {
         $this->view('/pages/index', $data);
     }
 
+    /**
+     * @return void
+     */
     public function about() {
         $data = [
             'title' => 'About us'
@@ -30,6 +39,9 @@ class PagesController extends Controller {
         $this->view('/pages/about', $data);
     }
 
+    /**
+     * @return void
+     */
     public function home() {
         security();
 

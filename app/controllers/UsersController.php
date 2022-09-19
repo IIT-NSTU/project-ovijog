@@ -9,20 +9,28 @@ class UsersController extends Controller {
     private $postModel;
     private $tagModel;
 
+    /**
+     *
+     */
     public function __construct() {
         $this->userModel = $this->model("User");
         $this->postModel = $this->model("Post");
         $this->tagModel = $this->model("Tag");
     }
 
-    public function loadPosts($type='created',$page = 1) {
+    /**
+     * @param $type
+     * @param $page
+     * @return void
+     */
+    public function loadPosts($type = 'created', $page = 1) {
         sleep(1);
 
-        if($type=='created'){
+        if ($type == 'created') {
             $posts = $this->userModel->getCreatedPosts($page);
-        }else if($type=='voted'){
+        } else if ($type == 'voted') {
             $posts = $this->userModel->getVotedPosts($page);
-        } else{
+        } else {
             $posts = $this->userModel->getCommentedPosts($page);
         }
 
@@ -54,6 +62,9 @@ class UsersController extends Controller {
         $this->view('users/profilePostList', $data);
     }
 
+    /**
+     * @return void
+     */
     public function profile() {
         security();
 
@@ -64,6 +75,9 @@ class UsersController extends Controller {
         $this->view('/users/profile', $data);
     }
 
+    /**
+     * @return void
+     */
     public function register() {
 
         if (isLoggedIn()) {
@@ -124,7 +138,7 @@ class UsersController extends Controller {
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
                 if ($this->userModel->register($data)) {
-                    flash('register_success', 'You are registered can log in');
+                    flash('register_success', 'A verification link has been sent to your email. Please verify your account to log in');
                     redirect('users/login');
                 } else {
                     die("something went wrong");
@@ -150,6 +164,9 @@ class UsersController extends Controller {
         }
     }
 
+    /**
+     * @return void
+     */
     public function verify() {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $user_id = $_GET['id'];
@@ -161,13 +178,14 @@ class UsersController extends Controller {
             } else {
                 die('BAD REQUEST');
             }
-
-
         } else {
             die('BAD REQUEST');
         }
     }
 
+    /**
+     * @return void
+     */
     public function login() {
 
         if (isLoggedIn()) {
@@ -224,36 +242,45 @@ class UsersController extends Controller {
         }
     }
 
+    /**
+     * @param $user
+     * @return void
+     */
     public function createUserSession($user) {
         $_SESSION['user_id'] = $user->user_id;
         $_SESSION['user_name'] = $user->fname . ' ' . $user->lname;
         $_SESSION['user_email'] = $user->edu_mail;
         $_SESSION['is_admin'] = $user->isadmin;
 
-        $data=[
-            'id'=>$user->user_id,
-            'hash'=>$user->pass_hash
+        $data = [
+            'id' => $user->user_id,
+            'hash' => $user->pass_hash
         ];
 
-        setcookie('project-ovijog-session-data',json_encode($data),time()+2592000);
+        setcookie('project-ovijog-session-data', json_encode($data), time() + 2592000);
 
         if ($user->isadmin) {
             redirect('admins');
         } else {
             redirect('pages/home');
         }
-
     }
 
+    /**
+     * @return void
+     */
     public function logout() {
         unset($_SESSION['user_id']);
         unset($_SESSION['user_name']);
         unset($_SESSION['user_email']);
         session_destroy();
-        setcookie('project-ovijog-session-data','',time()-2592000);
+        setcookie('project-ovijog-session-data', '', time() - 2592000);
         redirect('users/login');
     }
 
+    /**
+     * @return void
+     */
     public function sendChangePasswordRequest() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $res = $this->userModel->findUserByEmail($_POST['email']);
@@ -267,6 +294,9 @@ class UsersController extends Controller {
         }
     }
 
+    /**
+     * @return void
+     */
     public function forgetPassword() {
 
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
@@ -281,13 +311,14 @@ class UsersController extends Controller {
             } else {
                 echo "BAD REQUEST";
             }
-
         } else {
             echo "BAD REQUEST";
         }
-
     }
 
+    /**
+     * @return void
+     */
     public function changePasswordForForget() {
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -295,7 +326,7 @@ class UsersController extends Controller {
             $data = [];
 
             $hashed = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            if ($this->userModel->updatePassword($hashed,$_POST['user_id'])) {
+            if ($this->userModel->updatePassword($hashed, $_POST['user_id'])) {
                 $data['res'] = 'ok';
                 flash('register_success', 'Your password changed');
                 echo json_encode($data);
@@ -303,9 +334,11 @@ class UsersController extends Controller {
                 echo 'Some thing went wrong, try aging';
             }
         }
-
     }
 
+    /**
+     * @return void
+     */
     public function changePassword() {
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -323,8 +356,5 @@ class UsersController extends Controller {
                 echo 'Old password do not match';
             }
         }
-
     }
-
-
 }

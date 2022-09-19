@@ -9,6 +9,9 @@ class AdminsController extends Controller {
     private $postModel;
     private $userModel;
 
+    /**
+     *
+     */
     public function __construct() {
         security();
         if (!$_SESSION['is_admin']) {
@@ -20,7 +23,9 @@ class AdminsController extends Controller {
         $this->userModel = $this->model('User');
     }
 
-
+    /**
+     * @return void
+     */
     public function index() {
         $totalUser = count($this->adminModel->getAllUsers());
 
@@ -41,6 +46,9 @@ class AdminsController extends Controller {
         $this->view('/admins/index', $data);
     }
 
+    /**
+     * @return void
+     */
     public function managePost() {
 
         $data = [
@@ -50,6 +58,9 @@ class AdminsController extends Controller {
         $this->view('/admins/managePost', $data);
     }
 
+    /**
+     * @return void
+     */
     public function manageReport() {
 
         $data = [
@@ -59,6 +70,9 @@ class AdminsController extends Controller {
         $this->view('/admins/manageReport', $data);
     }
 
+    /**
+     * @return void
+     */
     public function manageCategory() {
         $categories = $this->postModel->getCategories();
 
@@ -69,6 +83,9 @@ class AdminsController extends Controller {
         $this->view('/admins/manageCategory', $data);
     }
 
+    /**
+     * @return void
+     */
     public function addCategory() {
         $category = $_POST['category'];
 
@@ -82,6 +99,10 @@ class AdminsController extends Controller {
         redirect('admins/manageCategory');
     }
 
+    /**
+     * @param $category
+     * @return void
+     */
     public function removeCategory($category) {
         $this->adminModel->removeCategory($category);
 
@@ -89,6 +110,9 @@ class AdminsController extends Controller {
         redirect('admins/manageCategory');
     }
 
+    /**
+     * @return void
+     */
     public function manageUsers() {
         $data = [
             'users' => $this->adminModel->getAllUsers()
@@ -97,6 +121,9 @@ class AdminsController extends Controller {
         $this->view('/admins/manageUsers', $data);
     }
 
+    /**
+     * @return void
+     */
     public function manageAdmin() {
 
         $data = [
@@ -106,6 +133,9 @@ class AdminsController extends Controller {
         $this->view('/admins/manageAdmin', $data);
     }
 
+    /**
+     * @return void
+     */
     public function makeAdmin() {
         $id = $_POST['id'];
 
@@ -121,6 +151,10 @@ class AdminsController extends Controller {
         }
     }
 
+    /**
+     * @param $id
+     * @return void
+     */
     public function removeAdminShip($id) {
         if ($id == $_SESSION['user_id']) {
             flash('admin', 'You Cannot Remove You From Admins', 'alert alert-danger');
@@ -133,6 +167,10 @@ class AdminsController extends Controller {
         }
     }
 
+    /**
+     * @param $id
+     * @return void
+     */
     public function deletePost($id) {
         if ($this->postModel->deletePost($id)) {
             flash('admin', 'Post Removed');
@@ -142,6 +180,24 @@ class AdminsController extends Controller {
         }
     }
 
+
+    /**
+     * @param $id
+     * @return void
+     */
+    public function deleteReportedPost($id) {
+        if ($this->postModel->deletePost($id)) {
+            flash('admin', 'Post Removed');
+            redirect('admins/manageReport');
+        } else {
+            die('Something went wrong');
+        }
+    }
+
+    /**
+     * @param $id
+     * @return void
+     */
     public function deleteUser($id) {
         if ($id == $_SESSION['user_id']) {
             flash('admin', 'You Cannot Remove You', 'alert alert-danger');
@@ -153,6 +209,4 @@ class AdminsController extends Controller {
             die('Something went wrong');
         }
     }
-
-
 }

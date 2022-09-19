@@ -50,11 +50,9 @@
                                 </a>
                                 <button onclick="removePost(<?php echo $post->post_id; ?>)" class="btn btn-sm text-danger"><b>X</b>
                                 </button>
-
                             </td>
                         </tr>
                     <?php endforeach; ?>
-
                 </tbody>
             </table>
         </div>
@@ -68,24 +66,23 @@
     });
 
     function removePost(post_id) {
-        console.log('wds');
-        $('#modal-here').html("<div class='modal fade' id='manageDeletePost' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>"+
-            "<div class='modal-dialog'>"+
-            "<div class='modal-content'>"+
-            "<div class='modal-header'>"+
-            "<h6 class='modal-title' id='staticBackdropLabel'>Delete Confirmation</h6>"+
-            "<button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>"+
-            "</div>"+
-            " <div class='modal-body'>"+
-            " Are you sure you want to delete the post?"+
-            "</div>"+
-            "<div class='modal-footer'>"+
-            "<button type='button' class='btn btn-sm btn-secondary' data-bs-dismiss='modal'>Close</button>"+
-            "<a href='<?php echo URLROOT; ?>/admins/deletePost/"+post_id+"' class='btn btn-sm text-danger'>"+
-            "<b>Delete</b></a>"+
-            "</div>"+
-            "</div>"+
-            "</div>"+
+        $('#modal-here').html("<div class='modal fade' id='manageDeletePost' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>" +
+            "<div class='modal-dialog'>" +
+            "<div class='modal-content'>" +
+            "<div class='modal-header'>" +
+            "<h6 class='modal-title' id='staticBackdropLabel'>Delete Confirmation</h6>" +
+            "<button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>" +
+            "</div>" +
+            " <div class='modal-body'>" +
+            " Are you sure you want to delete the post?" +
+            "</div>" +
+            "<div class='modal-footer'>" +
+            "<button type='button' class='btn btn-sm btn-secondary' data-bs-dismiss='modal'>Close</button>" +
+            "<a href='<?php echo URLROOT; ?>/admins/deletePost/" + post_id + "' class='btn btn-sm text-danger'>" +
+            "<b>Delete</b></a>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
             "</div>");
 
         $('#manageDeletePost').modal('toggle');

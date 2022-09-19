@@ -13,6 +13,10 @@
     .category_hover:hover {
         color: blue;
     }
+
+    a {
+        text-decoration: none;
+    }
 </style>
 
 <?php flash('post_message'); ?>
@@ -98,7 +102,7 @@
     </a>
 
     <script>
-        $('#search-bar').toggleClass('invisible');
+        // $('#search-bar').toggleClass('invisible');
 
         const input = document.getElementById("search-text");
         const searchBtn = document.getElementById("search-btn");
@@ -202,12 +206,12 @@
         });
 
         var search_btn_timer;
-        $('.after').click(function () {
+        $('.after').click(function() {
             clearTimeout(search_btn_timer);
-            search_btn_timer = setTimeout(function(){
+            search_btn_timer = setTimeout(function() {
                 // callback_function();
                 console.log("user stopped");
-                if (!isrunning && $('#search-text').val()!=="") {
+                if (!isrunning && $('#search-text').val() !== "") {
                     $('#search-text').val('');
                     $('#data').html("");
                     $(window).scrollTop(0);

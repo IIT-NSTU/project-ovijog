@@ -19,8 +19,8 @@ class Core {
         restoreSessionIfAvailable();
 
         //by default
-        $this->currentController=ControllerFactory::getInstance("pages");
-        $this->currentMethod="index";
+        $this->currentController = ControllerFactory::getInstance("pages");
+        $this->currentMethod = "index";
 
 
         //not by default
@@ -38,8 +38,9 @@ class Core {
         unset($url[1]);
         $this->params = $url ? array_values($url) : [];
 
-        call_user_func_array([$this->currentController,$this->currentMethod],$this->params);
+        call_user_func_array([$this->currentController, $this->currentMethod], $this->params);
     }
+
 
     /**
      * This method split the url into parts.
@@ -54,6 +55,4 @@ class Core {
             return $url;
         }
     }
-
-
 }

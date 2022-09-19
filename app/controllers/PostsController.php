@@ -11,6 +11,9 @@ class PostsController extends Controller {
     private $notificationModel;
     private $tagModel;
 
+    /**
+     *
+     */
     public function __construct() {
         security();
 
@@ -21,6 +24,9 @@ class PostsController extends Controller {
         $this->notificationModel = $this->model('Notification');
     }
 
+    /**
+     * @return void
+     */
     public function getAllTags() {
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -29,6 +35,10 @@ class PostsController extends Controller {
         }
     }
 
+    /**
+     * @param $page
+     * @return void
+     */
     public function load($page = 1) {
         sleep(1);
 
@@ -77,6 +87,9 @@ class PostsController extends Controller {
         $this->view('posts/list', $data);
     }
 
+    /**
+     * @return void
+     */
     public function markSolved() {
 
         $post_id = $_POST['post_id'];
@@ -94,6 +107,10 @@ class PostsController extends Controller {
         }
     }
 
+    /**
+     * @param $id
+     * @return void
+     */
     public function comment($id) {
 
         $commentMsg = $_POST['comment'];
@@ -114,6 +131,11 @@ class PostsController extends Controller {
         echo json_encode($data);
     }
 
+    /**
+     * @param $params0
+     * @param $params1
+     * @return void
+     */
     public function vote($params0, $params1) {
 
         $this->postModel->vote($params0, $params1);
@@ -128,6 +150,9 @@ class PostsController extends Controller {
         echo json_encode($data);
     }
 
+    /**
+     * @return void
+     */
     public function index() {
 
         $posts = $this->postModel->getAllPosts();
@@ -176,6 +201,10 @@ class PostsController extends Controller {
         $this->view('posts/index', $data);
     }
 
+    /**
+     * @param $id
+     * @return void
+     */
     public function report($id) {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -193,6 +222,10 @@ class PostsController extends Controller {
         }
     }
 
+    /**
+     * @param $id
+     * @return void
+     */
     public function show($id) {
 
         $this->postModel->addView($id);
@@ -224,6 +257,9 @@ class PostsController extends Controller {
         $this->view('posts/show', $data);
     }
 
+    /**
+     * @return void
+     */
     public function add() {
 
         $categories = $this->postModel->getCategories();
@@ -295,6 +331,10 @@ class PostsController extends Controller {
         }
     }
 
+    /**
+     * @param $id
+     * @return void
+     */
     public function edit($id) {
         $categories = $this->postModel->getCategories();
 
@@ -379,6 +419,10 @@ class PostsController extends Controller {
         }
     }
 
+    /**
+     * @param $id
+     * @return void
+     */
     public function delete($id) {
         $post = $this->postModel->getPostById($id);
 
@@ -394,6 +438,10 @@ class PostsController extends Controller {
         }
     }
 
+    /**
+     * @param $post_id
+     * @return void
+     */
     public function addVoteNotification($post_id) {
         $post = $this->postModel->getPostById($post_id);
         $user_id=$post->user_id;
@@ -402,6 +450,10 @@ class PostsController extends Controller {
         $this->notificationModel->addNotification($user_id,$post_id,$text);
     }
 
+    /**
+     * @param $post_id
+     * @return void
+     */
     public function addCommentNotification($post_id) {
         $post = $this->postModel->getPostById($post_id);
         $user_id=$post->user_id;
@@ -410,6 +462,11 @@ class PostsController extends Controller {
         $this->notificationModel->addNotification($user_id,$post_id,$text);
     }
 
+    /**
+     * @param $user_id
+     * @param $post_id
+     * @return void
+     */
     public function addSolvedNotification($user_id, $post_id) {
         $post = $this->postModel->getPostById($post_id);
         //$user_id=$post->user_id;

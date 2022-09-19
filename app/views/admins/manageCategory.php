@@ -9,6 +9,10 @@
         text-overflow: ellipsis;
     }
 </style>
+<!-----------------Delete Category modal start------------------------->
+<div id="modal-here"></div>
+<!-----------------Delete Category modal end------------------------->
+
 <!-----------------Add Category Modal start------------------------->
 <div class="modal fade" id="addCategoryModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -59,9 +63,8 @@
                         <tr class="text-center">
                             <td class="tableDataWrap"><?php echo $category->category; ?></td>
                             <td class="d-flex justify-content-around">
-                                <a href="<?php echo URLROOT; ?>/admins/removeCategory/<?php echo $category->category; ?>" title="Delete Post" class="btn btn-sm text-danger" style="font-size: 15px;">
-                                    <b>X</b>
-                                </a>
+                                <button onclick="removeCategory('<?php echo $category->category; ?>')" class="btn btn-sm text-danger"><b>X</b>
+                                </button>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -75,6 +78,29 @@
     $(document).ready(function() {
         $('.table').DataTable();
     });
+
+    function removeCategory(category) {
+        $('#modal-here').html("<div class='modal fade' id='deleteCategory' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>" +
+            "<div class='modal-dialog'>" +
+            "<div class='modal-content'>" +
+            "<div class='modal-header'>" +
+            "<h6 class='modal-title' id='staticBackdropLabel'>Category Delete Confirmation</h6>" +
+            "<button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>" +
+            "</div>" +
+            " <div class='modal-body'>" +
+            " Are you sure you want to delete the category?" +
+            "</div>" +
+            "<div class='modal-footer'>" +
+            "<button type='button' class='btn btn-sm btn-secondary' data-bs-dismiss='modal'>Close</button>" +
+            "<a href='<?php echo URLROOT; ?>/admins/removeCategory/" + category + "' class='btn btn-sm text-danger'>" +
+            "<b>Delete</b></a>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div>");
+
+        $('#deleteCategory').modal('toggle');
+    }
 </script>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>
