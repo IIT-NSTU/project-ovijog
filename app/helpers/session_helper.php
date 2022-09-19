@@ -24,12 +24,30 @@ function restoreSessionIfAvailable(){
     if(!isset($_SESSION['user_id'])){
         if(isset($_COOKIE['project-ovijog-session-data'])){
             $data=json_decode($_COOKIE['project-ovijog-session-data']);
-            $_SESSION['user_id']=$data->user_id;
-            $_SESSION['user_name'] = $data->user_name;
-            $_SESSION['user_email'] = $data->user_email;
-            $_SESSION['is_admin'] = $data->is_admin;
+
+            $id=$data->id;
+            $hash=$data->hash;
+
+            $db=Database::getInstance();
+
+            $db->query('select * from users where user_id=:user_id and pass_hash=:hash');
+            $db->bind(':user_id',$id);
+            $db->bind(':hash',$hash);
+
+            $user=$db->single();
+
+            if($user){
+                $_SESSION['user_id'] = $user->user_id;
+                $_SESSION['user_name'] = $user->fname . ' ' . $user->lname;
+                $_SESSION['user_email'] = $user->edu_mail;
+                $_SESSION['is_admin'] = $user->isadmin;
+            }
         }
     }
+}
+
+function isAcademicOfficial(){
+    return str_ends_with($_SESSION['user_email'], 'admin.nstu.edu.bd');
 }
 
 function isLoggedIn() {
