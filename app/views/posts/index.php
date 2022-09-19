@@ -31,7 +31,7 @@
     <?php endif; ?>
 
     <div class="row mt-1" style="margin-left:-65px ;">
-        <?php if (!$_SESSION['is_admin']) : ?>
+        <?php if (!isAcademicOfficial()) : ?>
             <div class="col">
             <?php else : ?>
                 <div class="col" style="width:250px ; height: 600px;margin-top:-3px;">
@@ -52,7 +52,7 @@
                 </div>
             </div>
     </div>
-    <?php if (!$_SESSION['is_admin']) : ?>
+    <?php if (!isAcademicOfficial()) : ?>
         <div class="row">
             <div class="col"></div>
             <div style='float:right; width: 180px;'>
@@ -69,7 +69,6 @@
                                         <hr>
                                     </div>
                                 <?php endforeach; ?>
-
                             </div>
                         </div>
                     </div>
@@ -171,9 +170,9 @@
         showMore();
 
         var search_timer;
-        $("#search-text").keyup(function (){
+        $("#search-text").keyup(function() {
             clearTimeout(search_timer);
-            search_timer = setTimeout(function(){
+            search_timer = setTimeout(function() {
                 // callback_function();
                 console.log("user stopped");
                 if (!isrunning) {
@@ -187,9 +186,9 @@
         });
 
         var category_timer;
-        $(".category").click(function (){
+        $(".category").click(function() {
             clearTimeout(category_timer);
-            category_timer = setTimeout(function(){
+            category_timer = setTimeout(function() {
                 // callback_function();
                 console.log("user stopped");
                 if (!isrunning) {
@@ -238,7 +237,7 @@
                 if (response === "") {
                     halt = true;
                     if ($('#data').html() === "") {
-                        $('#data').html('<div class="col-md-8 mb-3"><div class="card"><div class="d-flex justify-content-between p-2 px-3"><h3> NO RESULT FOUND </h3></div></div></div>');
+                        $('#data').html('<div class="col-md-8 mb-3"><div class="card"><div class="d-flex justify-content-center p-2 px-3"><h3 text-center> NO RESULT FOUND </h3></div></div></div>');
                     }
                 }
                 $('#data').append(response);
