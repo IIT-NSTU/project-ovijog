@@ -41,7 +41,7 @@
 <!-----------------Change Password modal end------------------------->
 
 <div class="main-body">
-    <?php if (!$_SESSION['is_admin']) : ?>
+    <?php if (!isAcademicOfficial()) : ?>
         <div class="row" style="margin-left: -27px;">
             <div class="col-md-5 d-flex flex-row" style="position: fixed;">
             <?php else : ?>
@@ -96,7 +96,7 @@
                     </div>
                     </div>
                 </div>
-                <?php if (!$_SESSION['is_admin']) : ?>
+                <?php if (!isAcademicOfficial()) : ?>
                     <div class="row" style="margin-left: -27px;">
                         <div class="col-md-5 d-flex flex-row" style="position: fixed;margin-top: 28.5%">
                             <div class="card card-body mb-1">
@@ -123,7 +123,7 @@
                         </div>
                     </div>
                 <?php endif; ?>
-                <?php if (!$_SESSION['is_admin']) : ?>
+                <?php if (!isAcademicOfficial()) : ?>
                     <div class="col-sm-8 d-flex" style="margin-left: 35%">
                         <div class="mb-2">
                             <div id="data" class="row d-flex align-items-center justify-content-end">
@@ -135,7 +135,7 @@
             </div>
 
             <!-------spinner------->
-            <?php if (!$_SESSION['is_admin']) : ?>
+            <?php if (!isAcademicOfficial()) : ?>
                 <div class="d-flex justify-content-center">
                     <div id="loading" class="spinner-border m-5" role="status">
                         <span class="visually-hidden">Loading...</span>
