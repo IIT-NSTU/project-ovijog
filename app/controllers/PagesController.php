@@ -3,20 +3,25 @@
 /**
  * Pages controller that handle request's prefix with 'pages'.
  */
-class PagesController extends Controller {
+class PagesController extends Controller
+{
     private $postModel;
 
     /**
-     *
+     * Default constructor.
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->postModel = $this->model('Post');
     }
 
     /**
+     * This method handle requests '/pages/index' and /pages.
+     * 
      * @return void
      */
-    public function index() {
+    public function index()
+    {
 
         if (isLoggedIn()) {
             redirect('posts');
@@ -30,9 +35,12 @@ class PagesController extends Controller {
     }
 
     /**
+     * This method handle requests '/pages/about'.
+     * 
      * @return void
      */
-    public function about() {
+    public function about()
+    {
         $data = [
             'title' => 'About us'
         ];
@@ -40,9 +48,12 @@ class PagesController extends Controller {
     }
 
     /**
+     * This method handle requests '/pages/home'.
+     * 
      * @return void
      */
-    public function home() {
+    public function home()
+    {
         security();
 
         $totalPost = $this->postModel->totalPostCount();
@@ -51,15 +62,15 @@ class PagesController extends Controller {
         $topUnsolved = $this->postModel->getTopUnsolved();
         $topSolved = $this->postModel->getTopSolved();
 
-        $topUnsolvedPosts=[];
-        $topSolvedPosts=[];
+        $topUnsolvedPosts = [];
+        $topSolvedPosts = [];
 
-        foreach ($topUnsolved as $post){
-            $topUnsolvedPosts[]=$this->postModel->getPostById($post->post_id);
+        foreach ($topUnsolved as $post) {
+            $topUnsolvedPosts[] = $this->postModel->getPostById($post->post_id);
         }
 
-        foreach ($topSolved as $post){
-            $topSolvedPosts[]=$this->postModel->getPostById($post->post_id);
+        foreach ($topSolved as $post) {
+            $topSolvedPosts[] = $this->postModel->getPostById($post->post_id);
         }
 
         $data = [
@@ -67,11 +78,10 @@ class PagesController extends Controller {
             'total_post' => $totalPost,
             'total_solved' => $totalSolved,
             'total_unsolved' => ($totalPost - $totalSolved),
-            'top_unsolved_posts'=>$topUnsolvedPosts,
-            'top_solved_posts'=>$topSolvedPosts
+            'top_unsolved_posts' => $topUnsolvedPosts,
+            'top_solved_posts' => $topSolvedPosts
         ];
 
         $this->view('/pages/home', $data);
     }
-
 }

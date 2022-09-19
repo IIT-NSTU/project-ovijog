@@ -3,27 +3,32 @@
 /**
  * Users controller that handle request's prefix with 'users'.
  */
-class UsersController extends Controller {
+class UsersController extends Controller
+{
 
     private $userModel;
     private $postModel;
     private $tagModel;
 
     /**
-     *
+     * Default constructor.
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->userModel = $this->model("User");
         $this->postModel = $this->model("Post");
         $this->tagModel = $this->model("Tag");
     }
 
     /**
+     * This method handle requests '/users/loadPosts'.
+     * 
      * @param $type
      * @param $page
      * @return void
      */
-    public function loadPosts($type = 'created', $page = 1) {
+    public function loadPosts($type = 'created', $page = 1)
+    {
         sleep(1);
 
         if ($type == 'created') {
@@ -63,9 +68,12 @@ class UsersController extends Controller {
     }
 
     /**
+     * This method handle requests '/users/profile'.
+     * 
      * @return void
      */
-    public function profile() {
+    public function profile()
+    {
         security();
 
         $data = [
@@ -76,9 +84,12 @@ class UsersController extends Controller {
     }
 
     /**
+     * This method handle requests '/users/register'.
+     * 
      * @return void
      */
-    public function register() {
+    public function register()
+    {
 
         if (isLoggedIn()) {
             redirect('posts');
@@ -165,9 +176,12 @@ class UsersController extends Controller {
     }
 
     /**
+     * This method handle requests '/users/verify'.
+     * 
      * @return void
      */
-    public function verify() {
+    public function verify()
+    {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $user_id = $_GET['id'];
             $key = $_GET['key'];
@@ -184,9 +198,12 @@ class UsersController extends Controller {
     }
 
     /**
+     * This method handle requests '/users/login'.
+     * 
      * @return void
      */
-    public function login() {
+    public function login()
+    {
 
         if (isLoggedIn()) {
             redirect('posts');
@@ -243,10 +260,13 @@ class UsersController extends Controller {
     }
 
     /**
+     * This method handle requests '/users/createUserSession'.
+     * 
      * @param $user
      * @return void
      */
-    public function createUserSession($user) {
+    public function createUserSession($user)
+    {
         $_SESSION['user_id'] = $user->user_id;
         $_SESSION['user_name'] = $user->fname . ' ' . $user->lname;
         $_SESSION['user_email'] = $user->edu_mail;
@@ -267,9 +287,12 @@ class UsersController extends Controller {
     }
 
     /**
+     * This method handle requests '/users/logout'.
+     * 
      * @return void
      */
-    public function logout() {
+    public function logout()
+    {
         unset($_SESSION['user_id']);
         unset($_SESSION['user_name']);
         unset($_SESSION['user_email']);
@@ -279,9 +302,12 @@ class UsersController extends Controller {
     }
 
     /**
+     * This method handle requests '/users/sendChangePasswordRequest'.
+     * 
      * @return void
      */
-    public function sendChangePasswordRequest() {
+    public function sendChangePasswordRequest()
+    {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $res = $this->userModel->findUserByEmail($_POST['email']);
             if ($res) {
@@ -295,9 +321,12 @@ class UsersController extends Controller {
     }
 
     /**
+     * This method handle requests '/users/forgetPassword'.
+     * 
      * @return void
      */
-    public function forgetPassword() {
+    public function forgetPassword()
+    {
 
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
@@ -317,9 +346,12 @@ class UsersController extends Controller {
     }
 
     /**
+     * This method handle requests '/users/changePasswordForForget'.
+     * 
      * @return void
      */
-    public function changePasswordForForget() {
+    public function changePasswordForForget()
+    {
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //echo json_encode($_POST);
@@ -337,9 +369,12 @@ class UsersController extends Controller {
     }
 
     /**
+     * This method handle requests '/users/changePassword'.
+     * 
      * @return void
      */
-    public function changePassword() {
+    public function changePassword()
+    {
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //echo json_encode($_POST);

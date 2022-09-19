@@ -3,7 +3,8 @@
 /**
  * Posts controller that handle request's prefix with 'posts'.
  */
-class PostsController extends Controller {
+class PostsController extends Controller
+{
 
     private $postModel;
     private $userModel;
@@ -12,9 +13,10 @@ class PostsController extends Controller {
     private $tagModel;
 
     /**
-     *
+     * Default constructor.
      */
-    public function __construct() {
+    public function __construct()
+    {
         security();
 
         $this->postModel = $this->model('Post');
@@ -25,9 +27,12 @@ class PostsController extends Controller {
     }
 
     /**
+     * This method handle requests '/posts/getAllTags'.
+     * 
      * @return void
      */
-    public function getAllTags() {
+    public function getAllTags()
+    {
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $data = $this->tagModel->getAllTags();
@@ -36,16 +41,19 @@ class PostsController extends Controller {
     }
 
     /**
+     * This method handle requests '/posts/load'.
+     * 
      * @param $page
      * @return void
      */
-    public function load($page = 1) {
+    public function load($page = 1)
+    {
         sleep(1);
 
-        $categories=$_POST['categories'];
-        $key=$_POST['key'];
+        $categories = $_POST['categories'];
+        $key = $_POST['key'];
 
-        $posts = $this->postModel->getPostsWithLimit($page,$categories,$key);
+        $posts = $this->postModel->getPostsWithLimit($page, $categories, $key);
 
         $upVotes = [];
         $downVotes = [];
@@ -88,30 +96,36 @@ class PostsController extends Controller {
     }
 
     /**
+     * This method handle requests '/posts/markSolved'.
+     * 
      * @return void
      */
-    public function markSolved() {
+    public function markSolved()
+    {
 
         $post_id = $_POST['post_id'];
 
         echo $this->postModel->markSolved($post_id);
 
-        $commentedUsers=$this->postModel->commentedUsers($post_id);
-        foreach ($commentedUsers as $commentedUser){
-            $this->addSolvedNotification($commentedUser->user_id,$post_id);
+        $commentedUsers = $this->postModel->commentedUsers($post_id);
+        foreach ($commentedUsers as $commentedUser) {
+            $this->addSolvedNotification($commentedUser->user_id, $post_id);
         }
 
-        $votedUsers=$this->postModel->votedUsers($post_id);
-        foreach ($votedUsers as $votedUser){
-            $this->addSolvedNotification($votedUser->user_id,$post_id);
+        $votedUsers = $this->postModel->votedUsers($post_id);
+        foreach ($votedUsers as $votedUser) {
+            $this->addSolvedNotification($votedUser->user_id, $post_id);
         }
     }
 
     /**
+     * This method handle requests '/posts/comment'.
+     * 
      * @param $id
      * @return void
      */
-    public function comment($id) {
+    public function comment($id)
+    {
 
         $commentMsg = $_POST['comment'];
 
@@ -132,11 +146,14 @@ class PostsController extends Controller {
     }
 
     /**
+     * This method handle requests '/posts/vote'.
+     * 
      * @param $params0
      * @param $params1
      * @return void
      */
-    public function vote($params0, $params1) {
+    public function vote($params0, $params1)
+    {
 
         $this->postModel->vote($params0, $params1);
 
@@ -151,9 +168,12 @@ class PostsController extends Controller {
     }
 
     /**
+     * This method handle requests '/posts/index' and '/index'.
+     * 
      * @return void
      */
-    public function index() {
+    public function index()
+    {
 
         $posts = $this->postModel->getAllPosts();
 
@@ -195,17 +215,20 @@ class PostsController extends Controller {
             'view-count' => $viewCount,
             'tags' => $tags,
             'categories' => $this->postModel->getCategories(),
-            'notifications'=>$notifications
+            'notifications' => $notifications
         ];
 
         $this->view('posts/index', $data);
     }
 
     /**
+     * This method handle requests '/posts/report'.
+     * 
      * @param $id
      * @return void
      */
-    public function report($id) {
+    public function report($id)
+    {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $data = [
@@ -223,10 +246,13 @@ class PostsController extends Controller {
     }
 
     /**
+     * This method handle requests '/posts/show'.
+     * 
      * @param $id
      * @return void
      */
-    public function show($id) {
+    public function show($id)
+    {
 
         $this->postModel->addView($id);
 
@@ -258,9 +284,12 @@ class PostsController extends Controller {
     }
 
     /**
+     * This method handle requests '/posts/add'.
+     * 
      * @return void
      */
-    public function add() {
+    public function add()
+    {
 
         $categories = $this->postModel->getCategories();
 
@@ -332,10 +361,13 @@ class PostsController extends Controller {
     }
 
     /**
+     * This method handle requests '/posts/edit'.
+     * 
      * @param $id
      * @return void
      */
-    public function edit($id) {
+    public function edit($id)
+    {
         $categories = $this->postModel->getCategories();
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -420,10 +452,13 @@ class PostsController extends Controller {
     }
 
     /**
+     * This method handle requests '/posts/delete'.
+     * 
      * @param $id
      * @return void
      */
-    public function delete($id) {
+    public function delete($id)
+    {
         $post = $this->postModel->getPostById($id);
 
         if ($post->user_id != $_SESSION['user_id']) {
@@ -439,39 +474,48 @@ class PostsController extends Controller {
     }
 
     /**
+     * This method handle requests '/posts/addVoteNotification'.
+     * 
      * @param $post_id
      * @return void
      */
-    public function addVoteNotification($post_id) {
+    public function addVoteNotification($post_id)
+    {
         $post = $this->postModel->getPostById($post_id);
-        $user_id=$post->user_id;
+        $user_id = $post->user_id;
         $text = '<p>You have a new vote on your post <a href="' . URLROOT . '/posts/show/' . $post_id . '">' . $post->title . '</a><p>';
 
-        $this->notificationModel->addNotification($user_id,$post_id,$text);
+        $this->notificationModel->addNotification($user_id, $post_id, $text);
     }
 
     /**
+     * This method handle requests '/posts/addCommentNotification'.
+     * 
      * @param $post_id
      * @return void
      */
-    public function addCommentNotification($post_id) {
+    public function addCommentNotification($post_id)
+    {
         $post = $this->postModel->getPostById($post_id);
-        $user_id=$post->user_id;
+        $user_id = $post->user_id;
         $text = '<p>You have a new comment on your post <a href="' . URLROOT . '/posts/show/' . $post_id . '">' . $post->title . '</a><p>';
 
-        $this->notificationModel->addNotification($user_id,$post_id,$text);
+        $this->notificationModel->addNotification($user_id, $post_id, $text);
     }
 
     /**
+     * This method handle requests '/posts/addSolvedNotification'.
+     * 
      * @param $user_id
      * @param $post_id
      * @return void
      */
-    public function addSolvedNotification($user_id, $post_id) {
+    public function addSolvedNotification($user_id, $post_id)
+    {
         $post = $this->postModel->getPostById($post_id);
         //$user_id=$post->user_id;
         $text = '<p>Post <a href="' . URLROOT . '/posts/show/' . $post_id . '">' . $post->title . '</a> is now solved!<p>';
 
-        $this->notificationModel->addNotification($user_id,$post_id,$text);
+        $this->notificationModel->addNotification($user_id, $post_id, $text);
     }
 }

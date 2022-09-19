@@ -3,16 +3,18 @@
 /**
  * Admins controller that handle request's prefix with 'admins'.
  */
-class AdminsController extends Controller {
+class AdminsController extends Controller
+{
 
     private $adminModel;
     private $postModel;
     private $userModel;
 
     /**
-     *
+     * Default constructor.
      */
-    public function __construct() {
+    public function __construct()
+    {
         security();
         if (!$_SESSION['is_admin']) {
             redirect('errors');
@@ -24,9 +26,12 @@ class AdminsController extends Controller {
     }
 
     /**
+     * This method handle requests '/admins/index' and '/admins'.
+     * 
      * @return void
      */
-    public function index() {
+    public function index()
+    {
         $totalUser = count($this->adminModel->getAllUsers());
 
         $totalPost = $this->postModel->totalPostCount();
@@ -47,9 +52,12 @@ class AdminsController extends Controller {
     }
 
     /**
+     * This method handle requests '/admins/managePost'.
+     * 
      * @return void
      */
-    public function managePost() {
+    public function managePost()
+    {
 
         $data = [
             'posts' => $this->postModel->getAllPosts()
@@ -59,9 +67,12 @@ class AdminsController extends Controller {
     }
 
     /**
+     * This method handle requests '/admins/manageReport'.
+     * 
      * @return void
      */
-    public function manageReport() {
+    public function manageReport()
+    {
 
         $data = [
             'reports' => $this->adminModel->getAllReports(),
@@ -71,9 +82,12 @@ class AdminsController extends Controller {
     }
 
     /**
+     * This method handle requests '/admins/manageCategory'.
+     * 
      * @return void
      */
-    public function manageCategory() {
+    public function manageCategory()
+    {
         $categories = $this->postModel->getCategories();
 
         $data = [
@@ -84,9 +98,12 @@ class AdminsController extends Controller {
     }
 
     /**
+     * This method handle requests '/admins/addCategory'.
+     * 
      * @return void
      */
-    public function addCategory() {
+    public function addCategory()
+    {
         $category = $_POST['category'];
 
         if ($this->adminModel->addCategory($category)) {
@@ -100,10 +117,13 @@ class AdminsController extends Controller {
     }
 
     /**
+     * This method handle requests '/admins/removeCategory'.
+     * 
      * @param $category
      * @return void
      */
-    public function removeCategory($category) {
+    public function removeCategory($category)
+    {
         $this->adminModel->removeCategory($category);
 
         flash('admin', 'Category Removed');
@@ -111,9 +131,12 @@ class AdminsController extends Controller {
     }
 
     /**
+     * This method handle requests '/admins/manageUsers'.
+     * 
      * @return void
      */
-    public function manageUsers() {
+    public function manageUsers()
+    {
         $data = [
             'users' => $this->adminModel->getAllUsers()
         ];
@@ -122,9 +145,12 @@ class AdminsController extends Controller {
     }
 
     /**
+     * This method handle requests '/admins/manageAdmin'.
+     * 
      * @return void
      */
-    public function manageAdmin() {
+    public function manageAdmin()
+    {
 
         $data = [
             'admins' => $this->adminModel->getAllAdmins(),
@@ -134,9 +160,12 @@ class AdminsController extends Controller {
     }
 
     /**
+     * This method handle requests '/admins/makeAdmin'.
+     * 
      * @return void
      */
-    public function makeAdmin() {
+    public function makeAdmin()
+    {
         $id = $_POST['id'];
 
 
@@ -152,10 +181,13 @@ class AdminsController extends Controller {
     }
 
     /**
+     * This method handle requests '/admins/removeAdminShip'.
+     * 
      * @param $id
      * @return void
      */
-    public function removeAdminShip($id) {
+    public function removeAdminShip($id)
+    {
         if ($id == $_SESSION['user_id']) {
             flash('admin', 'You Cannot Remove You From Admins', 'alert alert-danger');
             redirect('admins/manageAdmin');
@@ -168,10 +200,13 @@ class AdminsController extends Controller {
     }
 
     /**
+     * This method handle requests '/admins/deletePost'.
+     * 
      * @param $id
      * @return void
      */
-    public function deletePost($id) {
+    public function deletePost($id)
+    {
         if ($this->postModel->deletePost($id)) {
             flash('admin', 'Post Removed');
             redirect('admins/managePost');
@@ -182,10 +217,13 @@ class AdminsController extends Controller {
 
 
     /**
+     * This method handle requests '/admins/deletePortedPost'.
+     * 
      * @param $id
      * @return void
      */
-    public function deleteReportedPost($id) {
+    public function deleteReportedPost($id)
+    {
         if ($this->postModel->deletePost($id)) {
             flash('admin', 'Post Removed');
             redirect('admins/manageReport');
@@ -195,10 +233,13 @@ class AdminsController extends Controller {
     }
 
     /**
+     * This method handle requests '/admins/deleteUser'.
+     * 
      * @param $id
      * @return void
      */
-    public function deleteUser($id) {
+    public function deleteUser($id)
+    {
         if ($id == $_SESSION['user_id']) {
             flash('admin', 'You Cannot Remove You', 'alert alert-danger');
             redirect('admins/manageUsers');
