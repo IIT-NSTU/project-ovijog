@@ -260,9 +260,9 @@ class UsersController extends Controller
     }
 
     /**
-     * This method handle requests '/users/createUserSession'.
+     * This method handle requests '/users/createUserSession/params'.
      * 
-     * @param $user
+     * @param $user: user_data
      * @return void
      */
     public function createUserSession($user)
