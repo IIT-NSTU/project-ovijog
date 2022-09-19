@@ -33,56 +33,56 @@
 <!-----------------Add category Modal end------------------------->
 
 
-    <div class="main py-5" style="margin-left:173px;">
-        <?php flash('admin'); ?>
-        <div class="card" style="width: 100%;">
-            <div class="card-header">
-                <div class="row">
-                    <div class="col col-md-6">
-                        <i class="fas fa-table me-1"></i> <span class="table-head">Manage Admin</span>
-                    </div>
-                    <div class="col col-md-6" align="right">
-                        <button class="btn btn-sm text-primary" data-bs-toggle="modal" data-bs-target="#addAdminModal"><b><i class="fa-solid fa-plus"></i> Add Admin</b>
-                        </button>
-                    </div>
+<div class="main py-5" style="margin-left:173px;">
+    <?php flash('admin'); ?>
+    <div class="card" style="width: 100%;">
+        <div class="card-header">
+            <div class="row">
+                <div class="col col-md-6">
+                    <i class="fas fa-table me-1"></i> <span class="table-head">Manage Admin</span>
+                </div>
+                <div class="col col-md-6" align="right">
+                    <button class="btn btn-sm text-primary" data-bs-toggle="modal" data-bs-target="#addAdminModal"><b><i class="fa-solid fa-plus"></i> Add Admin</b>
+                    </button>
                 </div>
             </div>
-            <div class="card-body">
-                <table class="table my-4 cell-border">
-                    <thead>
-                    <tr class="text-center">
-                        <th>User ID</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>User email</th>
-                        <th>Action</th>
+        </div>
+        <div class="card-body">
+            <table class="table my-4 cell-border pt-3">
+                <thead>
+                    <tr>
+                        <th class="text-center">User ID</th>
+                        <th class="text-center">First Name</th>
+                        <th class="text-center">Last Name</th>
+                        <th class="text-center">User email</th>
+                        <th class="text-center">Action</th>
                     </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($data['admins'] as $user) : ?>
-                            <tr class="text-center">
-                                <td class="tableDataWrap"><?php echo $user->user_id; ?></td>
-                                <td class="tableDataWrap"><?php echo $user->first_name; ?></td>
-                                <td class="tableDataWrap"><?php echo $user->last_name; ?></td>
-                                <td class="tableDataWrap"><?php echo $user->edu_mail; ?></td>
-                                <td class="d-flex justify-content-around tableDataWrap">
-                                    <a href="<?php echo URLROOT; ?>/admins/removeAdminShip/<?php echo $user->user_id; ?>" class="btn btn-sm text-danger" style="font-size: 15px;">
-                                        <b>X</b>
-                                    </a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
+                </thead>
+                <tbody>
+                    <?php foreach ($data['admins'] as $user) : ?>
+                        <tr class="text-center">
+                            <td class="tableDataWrap"><?php echo $user->user_id; ?></td>
+                            <td class="tableDataWrap"><?php echo $user->first_name; ?></td>
+                            <td class="tableDataWrap"><?php echo $user->last_name; ?></td>
+                            <td class="tableDataWrap"><?php echo $user->edu_mail; ?></td>
+                            <td class="d-flex justify-content-around tableDataWrap">
+                                <a href="<?php echo URLROOT; ?>/admins/removeAdminShip/<?php echo $user->user_id; ?>" class="btn btn-sm text-danger" style="font-size: 15px;">
+                                    <b>X</b>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
         </div>
     </div>
+</div>
 
-    <script>
-        $(document).ready(function() {
-            $('.table').DataTable();
-        });
-    </script>
+<script>
+    $(document).ready(function() {
+        $('.table').DataTable();
+    });
+</script>
 
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>
