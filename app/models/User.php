@@ -1,12 +1,29 @@
 <?php
 
+/**
+ * User Model works to retrieve, manipulate or delete data that is associated to the users activity.
+ * This Model is a representation of all data that is used by a users and has the methods to change requuired data.
+ */
 class User {
+
+    /**
+     * @var Database instance of database.
+     */
     private $db;
 
+    /**
+     * Default constructor for User model, initialize the database instance.
+     */
     public function __construct() {
         $this->db = Database::getInstance();
     }
 
+    /**
+     * Find a verified user by email
+     *
+     * @param $email: user email
+     * @return mixed|false returns user details if find otherwise false
+     */
     public function findUserByEmail($email) {
         $this->db->query("Select * from users where edu_mail = :email");
         $this->db->bind(":email", $email);
@@ -20,6 +37,12 @@ class User {
         }
     }
 
+    /**
+     * Fetch a user by id
+     *
+     * @param $id: user_id
+     * @return mixed user details
+     */
     public function getUserById($id) {
         $this->db->query("Select * from users where user_id = :id");
         $this->db->bind(":id", $id);
@@ -27,6 +50,12 @@ class User {
         return $this->db->single();
     }
 
+    /**
+     * Register a user.
+     *
+     * @param $data: user data.
+     * @return bool ture if success and false otherwise.
+     */
     public function register($data) {
         $this->db->query("insert into users (first_name,last_name,edu_mail,pass_hash,isverified,isadmin)
                                 values (:fname,:lname,:edu_email,:password,false,false)");
@@ -44,7 +73,14 @@ class User {
         }
     }
 
-    public function verify($user_id,$key){
+    /**
+     * Verify a user.
+     *
+     * @param $user_id: user_id
+     * @param $key: verify_key
+     * @return bool ture if success and false otherwise.
+     */
+    public function verify($user_id, $key){
         $this->db->query("select * from verify_keys where user_id = :user_id and v_key = :v_key");
         $this->db->bind(':user_id',$user_id);
         $this->db->bind(':v_key',$key);
@@ -60,6 +96,12 @@ class User {
         }
     }
 
+    /**
+     * Send verify mail to specified email address
+     *
+     * @param $mail: email address
+     * @return void
+     */
     public function sendVerifyMail($mail){
         $user_id=$this->db->lastInsertId();
 
@@ -83,7 +125,14 @@ class User {
     }
 
 
-    public function sendChangePasswordMail($user_id,$mail){
+    /**
+     * Send change password mail to a user
+     *
+     * @param $user_id: user_id
+     * @param $mail: email address
+     * @return void
+     */
+    public function sendChangePasswordMail($user_id, $mail){
 
         $key=bin2hex($user_id).bin2hex(random_bytes(16));
 
@@ -104,6 +153,13 @@ class User {
         sendMail($mail,$link);
     }
 
+    /**
+     * Validate user email and password to login.
+     *
+     * @param $email: email address
+     * @param $password: user password
+     * @return mixed|false returns user details if find otherwise false
+     */
     public function login($email, $password) {
         $this->db->query('select * from users where edu_mail = :email');
         $this->db->bind(':email', $email);
@@ -113,14 +169,18 @@ class User {
         $hashed_password = $row->pass_hash;
 
         if (password_verify($password, $hashed_password)) {
-            //die('varified '.$email);
             return $row;
         } else {
-            //die('invalid '.$password);
             return false;
         }
     }
 
+    /**
+     * Validate current user password.
+     *
+     * @param $password: current user password.
+     * @return bool ture if success and false otherwise.
+     */
     public function verifyPassword($password) {
         $this->db->query('select * from users where user_id = :user_id');
         $this->db->bind(':user_id', $_SESSION['user_id']);
@@ -136,6 +196,13 @@ class User {
         }
     }
 
+    /**
+     * Update user password.
+     *
+     * @param $hashedPassword: hash of new password
+     * @param $id: default -1 means for current user otherwise for specified user.
+     * @return bool ture if success and false otherwise.
+     */
     public function updatePassword($hashedPassword, $id=-1){
         $this->db->query('update users set pass_hash = :pass_hash where user_id = :user_id');
         $this->db->bind(':pass_hash', $hashedPassword);
@@ -153,6 +220,11 @@ class User {
     }
 
 
+    /**
+     * Fetch all post of current user.
+     *
+     * @return mixed all post of current user.
+     */
     public function getPosts() {
         $user_id = $_SESSION['user_id'];
 
@@ -161,6 +233,12 @@ class User {
         return $this->db->resultSet();
     }
 
+    /**
+     * Load all voted posts of current user.
+     *
+     * @param $page
+     * @return mixed
+     */
     public function getVotedPosts($page){
         $user_id = $_SESSION['user_id'];
         $limit=4;
@@ -178,6 +256,10 @@ class User {
         return $this->db->resultSet();
     }
 
+    /**
+     * @param $page
+     * @return mixed
+     */
     public function getCommentedPosts($page){
         $user_id = $_SESSION['user_id'];
         $limit=4;
@@ -195,6 +277,10 @@ class User {
         return $this->db->resultSet();
     }
 
+    /**
+     * @param $page
+     * @return mixed
+     */
     public function getCreatedPosts($page){
         $user_id = $_SESSION['user_id'];
         $limit=4;

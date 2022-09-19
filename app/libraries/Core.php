@@ -29,13 +29,11 @@ class Core {
 
         if (isset($url[1]) && method_exists($this->currentController, $url[1])) {
             $this->currentMethod = $url[1];
-            //echo $url[1];
         }
 
         unset($url[0]);
         unset($url[1]);
         $this->params = $url ? array_values($url) : [];
-        //print_r($this->params);
 
         call_user_func_array([$this->currentController,$this->currentMethod],$this->params);
     }
