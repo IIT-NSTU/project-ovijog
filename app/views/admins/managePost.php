@@ -10,25 +10,9 @@
     }
 </style>
 <!-----------------Delete modal start------------------------->
-<div class="modal fade" id="manageDeletePost" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h6 class="modal-title" id="staticBackdropLabel">Delete Confirmation</h6>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Are you sure you want to delete the post?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
-                <a href="<?php echo URLROOT; ?>/admins/deletePost/<?php echo $post->post_id; ?>" class="btn btn-sm text-danger">
-                    <b>Delete</b></a>
-            </div>
-        </div>
-    </div>
-</div>
+<div id="modal-here"></div>
 <!-----------------Delete modal end------------------------->
+
 <div class="main py-5" style="margin-left:173px;">
     <?php flash('admin'); ?>
     <div class="card">
@@ -64,7 +48,7 @@
                                 <a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->post_id; ?>" title="See Post" class="btn btn-sm text-primary me-1" style="font-size: 15px;">
                                     <i class="fa-solid fa-eye"></i>
                                 </a>
-                                <button class="btn btn-sm text-danger" data-bs-toggle="modal" data-bs-target="#manageDeletePost"><b>X</b>
+                                <button onclick="removePost(<?php echo $post->post_id; ?>)" class="btn btn-sm text-danger"><b>X</b>
                                 </button>
 
                             </td>
@@ -82,6 +66,30 @@
     $(document).ready(function() {
         $('.table').DataTable();
     });
+
+    function removePost(post_id) {
+        console.log('wds');
+        $('#modal-here').html("<div class='modal fade' id='manageDeletePost' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>"+
+            "<div class='modal-dialog'>"+
+            "<div class='modal-content'>"+
+            "<div class='modal-header'>"+
+            "<h6 class='modal-title' id='staticBackdropLabel'>Delete Confirmation</h6>"+
+            "<button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>"+
+            "</div>"+
+            " <div class='modal-body'>"+
+            " Are you sure you want to delete the post?"+
+            "</div>"+
+            "<div class='modal-footer'>"+
+            "<button type='button' class='btn btn-sm btn-secondary' data-bs-dismiss='modal'>Close</button>"+
+            "<a href='<?php echo URLROOT; ?>/admins/deletePost/"+post_id+"' class='btn btn-sm text-danger'>"+
+            "<b>Delete</b></a>"+
+            "</div>"+
+            "</div>"+
+            "</div>"+
+            "</div>");
+
+        $('#manageDeletePost').modal('toggle');
+    }
 </script>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>
