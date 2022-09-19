@@ -58,7 +58,7 @@
                 <?php endforeach; ?>
             </div>
             <hr>
-            <?php if (!$_SESSION['is_admin']) : ?>
+            <?php if (!isAcademicOfficial()) : ?>
                 <div class="row ">
 
                     <div class="col-sm up-down-vote-icon py-1">

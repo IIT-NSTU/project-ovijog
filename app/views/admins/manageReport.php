@@ -21,16 +21,16 @@
             </div>
         </div>
         <div class="card-body">
-            <table class="table my-4 cell-border pt-3">
+            <table class="table my-4 cell-border pt-3" style="width: 100%; white-space: nowrap; table-layout: fixed;">
                 <thead>
                     <tr class="text-center">
-                        <th class="text-center">#</th>
-                        <th class="text-center">Reporter ID</th>
-                        <th class="text-center" style="width:30% ;">Post ID</th>
-                        <th class="text-center">Category</th>
+                        <th class="text-center" style="width:3%;">#</th>
+                        <th class="text-center" style="width:10%;">Reporter ID</th>
+                        <th class="text-center" style="width:5%;">Post ID</th>
+                        <th class="text-center" style="width:10%;">Category</th>
                         <th class="text-center">Feedback</th>
-                        <th class="text-center">Time</th>
-                        <th class="text-center" style="width: 10%;">Action</th>
+                        <th class="text-center" style="width:15%;">Time</th>
+                        <th class="text-center" style="width: 8%;">Action</th>
                     </tr>
                 </thead>
                 <tbody>

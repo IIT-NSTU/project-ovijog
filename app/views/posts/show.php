@@ -115,7 +115,7 @@
                         <?php endforeach; ?>
                     </div>
                     <hr>
-                    <?php if (!$_SESSION['is_admin']) : ?>
+                    <?php if (!isAcademicOfficial()) : ?>
                         <div class="row py-1">
 
                             <div class="col-sm up-down-vote-icon ">
@@ -149,15 +149,15 @@
                             <?php endif; ?>
                         </div>
                         <hr>
-                        <div class="row">
-                            <div class="col-sm-10 mb-2 mt-2">
-                                <input id="comment-text" type="text" class="form-control comment-text" placeholder="Write Comment">
-                            </div>
-                            <div class="col-sm-2">
-                                <a onclick="comment(this.parentNode.parentNode,<?php echo $data['post']->post_id; ?>)" class="btn btn-sm btn-primary mb-2 mt-2">Comment</a>
-                            </div>
-                        </div>
                     <?php endif; ?>
+                    <div class="row">
+                        <div class="col-sm-10 mb-2 mt-2">
+                            <input id="comment-text" type="text" class="form-control comment-text" placeholder="Write Comment">
+                        </div>
+                        <div class="col-sm-2">
+                            <a onclick="comment(this.parentNode.parentNode,<?php echo $data['post']->post_id; ?>)" class="btn btn-sm btn-primary mb-2 mt-2">Comment</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

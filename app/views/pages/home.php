@@ -1,104 +1,11 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<?php require_once APPROOT . '/views/inc/navbar.php'; ?>
 
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/home.css">
+
+
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/toTopButton.css">
-<style>
-    .post-hover:hover {
-        background-color: #a6b4c9;
-    }
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/home.css">
 
-    .solved-hover:hover {
-        background-color: #9bdac7;
-    }
-
-    .unsolved-hover:hover {
-        background-color: #e2a1a8;
-    }
-
-    .line {
-        height: 1px;
-        width: 45%;
-        /* background-color: #e0e0e0; */
-        background-color: black;
-        margin-top: 10px;
-    }
-
-    .or {
-        width: 10%;
-        font-weight: bold;
-    }
-
-    .card-effect:hover {
-        /* background-color: #bacad9; */
-        background-color: #f1fafe;
-    }
-
-
-    h6 {
-        color: #386fa7;
-    }
-
-    .row {
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .flip-main .flip-card {
-        flex: 0 0 calc(33.33% - 30px);
-        /* margin: 0 15px 30px; */
-        perspective: 1000px;
-        /*remove this if you dont want the 3d effect*/
-    }
-
-    .flip-main .flip-card-inner {
-        /* box-shadow: 0 0 10px #a9b3d6; */
-        position: relative;
-        transform-style: preserve-3d;
-        transition: all 1s ease;
-    }
-
-    .flip-main .flip-card-front img {
-        width: 100%;
-    }
-
-    .flip-main .flip-card-front,
-    .flip-main .flip-card-back {
-        backface-visibility: hidden;
-    }
-
-    .flip-main .flip-card-back {
-        background-color: #6e0ec5;
-        position: absolute;
-        left: 0;
-        top: 0;
-        padding: 15px;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        transform: rotateY(180deg);
-    }
-
-    .flip-main .flip-card:hover .flip-card-inner {
-        transform: rotateY(180deg);
-    }
-
-    /*responsive*/
-    @media(max-width: 991px) {
-        .flip-main .flip-card {
-            flex: 0 0 calc(50% - 30px);
-        }
-    }
-
-    @media(max-width: 767px) {
-        .flip-main .flip-card {
-            flex: 0 0 calc(100% - 30px);
-        }
-    }
-</style>
+<?php require_once APPROOT . '/views/inc/navbar.php'; ?>
 
 <body>
     <div class="row mt-3" style="display: flex;justify-content: space-between;">
@@ -131,7 +38,6 @@
                     <h1 class="count text-center text-danger" style="font-size:500% ;"><?php echo $data['total_unsolved']; ?></h1>
                     <hr class="mt-0 mb-1">
                     <h4 class="text-center">Unsolved</h4>
-
                 </div>
             </div>
         </div>
@@ -156,7 +62,7 @@
 
                 <div class="row">
 
-                    <?php foreach ($data['top_unsolved_posts'] as $post): ?>
+                    <?php foreach ($data['top_unsolved_posts'] as $post) : ?>
                         <div class="col-sm-4 pb-4" onclick="location.href='<?php echo URLROOT; ?>/posts/show/<?php echo $post->post_id; ?>'">
                             <div class="card">
                                 <div class="card-body py-0 card-effect">
@@ -197,20 +103,20 @@
             <div>
                 <div class="row">
 
-                    <?php foreach ($data['top_solved_posts'] as $post): ?>
-                    <div class="col-sm-4 pb-4" onclick="location.href='<?php echo URLROOT; ?>/posts/show/<?php echo $post->post_id; ?>'">
-                        <div class="card">
-                            <div class="card-body py-0 card-effect">
-                                <h6 class="mb-0 mt-2"><?php echo $post->title; ?></h6>
-                                <div class="d-flex" style="justify-content: space-between;">
-                                    <p class="text-muted mb-0"><small>Category: <?php echo $post->category; ?></small></p>
-                                    <p class="mb-0"> <small class="text-muted"><?php echo $post->created_time; ?></small></p>
+                    <?php foreach ($data['top_solved_posts'] as $post) : ?>
+                        <div class="col-sm-4 pb-4" onclick="location.href='<?php echo URLROOT; ?>/posts/show/<?php echo $post->post_id; ?>'">
+                            <div class="card">
+                                <div class="card-body py-0 card-effect">
+                                    <h6 class="mb-0 mt-2"><?php echo $post->title; ?></h6>
+                                    <div class="d-flex" style="justify-content: space-between;">
+                                        <p class="text-muted mb-0"><small>Category: <?php echo $post->category; ?></small></p>
+                                        <p class="mb-0"> <small class="text-muted"><?php echo $post->created_time; ?></small></p>
+                                    </div>
+                                    <hr class="mb-2">
+                                    <p> <small><?php echo $post->body; ?></small></p>
                                 </div>
-                                <hr class="mb-2">
-                                <p> <small><?php echo $post->body; ?></small></p>
                             </div>
                         </div>
-                    </div>
                     <?php endforeach; ?>
 
                 </div>
