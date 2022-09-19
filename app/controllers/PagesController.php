@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Pages controller that handle request's prefix with 'pages'.
+ */
 class PagesController extends Controller {
     private $postModel;
 

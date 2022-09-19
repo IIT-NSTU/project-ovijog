@@ -234,10 +234,10 @@ class User {
     }
 
     /**
-     * Load all voted posts of current user.
+     * Load all voted posts of current user by limit of 4 per page.
      *
-     * @param $page
-     * @return mixed
+     * @param $page page number
+     * @return mixed votes
      */
     public function getVotedPosts($page){
         $user_id = $_SESSION['user_id'];
@@ -257,8 +257,10 @@ class User {
     }
 
     /**
-     * @param $page
-     * @return mixed
+     * Load all commented posts of current user by limit of 4 per page.
+     *
+     * @param $page page number
+     * @return mixed votes
      */
     public function getCommentedPosts($page){
         $user_id = $_SESSION['user_id'];
@@ -278,8 +280,10 @@ class User {
     }
 
     /**
-     * @param $page
-     * @return mixed
+     * Load all created posts of current user by limit of 4 per page.
+     *
+     * @param $page page number
+     * @return mixed votes
      */
     public function getCreatedPosts($page){
         $user_id = $_SESSION['user_id'];

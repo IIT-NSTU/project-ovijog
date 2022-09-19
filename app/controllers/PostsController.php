@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Posts controller that handle request's prefix with 'posts'.
+ */
 class PostsController extends Controller {
 
     private $postModel;

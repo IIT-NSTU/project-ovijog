@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Users controller that handle request's prefix with 'users'.
+ */
 class UsersController extends Controller {
 
     private $userModel;

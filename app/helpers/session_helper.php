@@ -2,24 +2,11 @@
 use PHPMailer\PHPMailer\PHPMailer;
 session_start();
 
-function flash($name = '', $message = '', $class = 'alert alert-success') {
-    if (!empty($name)) {
-
-        if (!empty($message) && empty($_SESSION[$name])) {
-
-            $_SESSION[$name] = $message;
-            $_SESSION[$name . '_class'] = $class;
-
-        } elseif (empty($message) && !empty($_SESSION[$name])) {
-            $class = !empty($_SESSION[$name . '_class']) ? $_SESSION[$name . '_class'] : '';
-            echo '<div class="' . $class . '" id="msg-flash">' . $_SESSION[$name] . '</div>';
-
-            unset($_SESSION[$name]);
-            unset($_SESSION[$name . '_class']);
-        }
-    }
-}
-
+/**
+ * Recover a session if its in cookie.
+ *
+ * @return void
+ */
 function restoreSessionIfAvailable(){
     if(!isset($_SESSION['user_id'])){
         if(isset($_COOKIE['project-ovijog-session-data'])){
@@ -46,10 +33,20 @@ function restoreSessionIfAvailable(){
     }
 }
 
+/**
+ * Check for academic official users.
+ *
+ * @return bool true if academic official false otherwise.
+ */
 function isAcademicOfficial(){
     return str_ends_with($_SESSION['user_email'], 'admin.nstu.edu.bd');
 }
 
+/**
+ * Check if a user session is already active.
+ *
+ * @return bool true if user session is already active false otherwise.
+ */
 function isLoggedIn() {
     if (isset($_SESSION['user_id'])) {
         return true;
@@ -58,12 +55,52 @@ function isLoggedIn() {
     }
 }
 
+/**
+ * This method redirect to login if no session is active.
+ *
+ * @return void
+ */
 function security(){
     if (!isLoggedIn()) {
         redirect('users/login');
     }
 }
 
+/**
+ * Create a bootstrap flash alert with session.
+ *
+ * @param $name: alert name
+ * @param $message: alert message
+ * @param $class: alert classes
+ * @return void
+ */
+function flash($name = '', $message = '', $class = 'alert alert-success') {
+    if (!empty($name)) {
+
+        if (!empty($message) && empty($_SESSION[$name])) {
+
+            $_SESSION[$name] = $message;
+            $_SESSION[$name . '_class'] = $class;
+
+        } elseif (empty($message) && !empty($_SESSION[$name])) {
+            $class = !empty($_SESSION[$name . '_class']) ? $_SESSION[$name . '_class'] : '';
+            echo '<div class="' . $class . '" id="msg-flash">' . $_SESSION[$name] . '</div>';
+
+            unset($_SESSION[$name]);
+            unset($_SESSION[$name . '_class']);
+        }
+    }
+}
+
+
+/**
+ * Send a verify mail to specific email address with a verify link.
+ *
+ * @param $edu_mail: email address
+ * @param $link: verify link
+ * @return void
+ * @throws \PHPMailer\PHPMailer\Exception
+ */
 function sendMail($edu_mail, $link){
 
 // Create an instance; Pass `true` to enable exceptions

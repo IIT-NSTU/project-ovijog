@@ -1,7 +1,17 @@
 <?php
 
+
+/**
+ * Controller factory class.
+ */
 class ControllerFactory {
 
+    /**
+     * factory method for controllers
+     *
+     * @param $controllerName: controller name
+     * @return AdminsController|ErrorsController|PagesController|PostsController|UsersController
+     */
     public static function getInstance($controllerName){
         if(strtolower($controllerName)=="pages"){
             return new PagesController();

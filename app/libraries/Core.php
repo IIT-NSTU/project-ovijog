@@ -2,7 +2,7 @@
 
 /**
  * App Core Class
- * Creates URL & loads core controller
+ * Handles URL & loads core controller
  * URL format: /controller/method/params
  */
 class Core {
@@ -11,6 +11,9 @@ class Core {
     protected $currentMethod;
     protected $params = [];
 
+    /**
+     * Handles the URL by loading appropriate handler.
+     */
     public function __construct() {
 
         restoreSessionIfAvailable();
@@ -38,6 +41,11 @@ class Core {
         call_user_func_array([$this->currentController,$this->currentMethod],$this->params);
     }
 
+    /**
+     * This method split the url into parts.
+     *
+     * @return string[]|void splitted url.
+     */
     public function getUrl() {
         if (isset($_GET['url'])) {
             $url = rtrim($_GET['url'], '/');
