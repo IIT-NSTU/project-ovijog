@@ -102,7 +102,7 @@
     </a>
 
     <script>
-        // $('#search-bar').toggleClass('invisible');
+        document.querySelector('#search-bar').style.display = "block";
 
         const input = document.getElementById("search-text");
         const searchBtn = document.getElementById("search-btn");
