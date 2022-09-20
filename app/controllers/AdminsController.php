@@ -117,9 +117,9 @@ class AdminsController extends Controller
     }
 
     /**
-     * This method handle requests '/admins/removeCategory'.
+     * This method handle requests '/admins/removeCategory/params'.
      * 
-     * @param $category
+     * @param $category: category name
      * @return void
      */
     public function removeCategory($category)
@@ -181,9 +181,9 @@ class AdminsController extends Controller
     }
 
     /**
-     * This method handle requests '/admins/removeAdminShip'.
+     * This method handle requests '/admins/removeAdminShip/params'.
      * 
-     * @param $id
+     * @param $id: user_id
      * @return void
      */
     public function removeAdminShip($id)
@@ -200,9 +200,9 @@ class AdminsController extends Controller
     }
 
     /**
-     * This method handle requests '/admins/deletePost'.
+     * This method handle requests '/admins/deletePost/params'.
      * 
-     * @param $id
+     * @param $id: post_id
      * @return void
      */
     public function deletePost($id)
@@ -217,9 +217,9 @@ class AdminsController extends Controller
 
 
     /**
-     * This method handle requests '/admins/deletePortedPost'.
+     * This method handle requests '/admins/deletePortedPost/params'.
      * 
-     * @param $id
+     * @param $id: post_id
      * @return void
      */
     public function deleteReportedPost($id)
@@ -233,9 +233,9 @@ class AdminsController extends Controller
     }
 
     /**
-     * This method handle requests '/admins/deleteUser'.
+     * This method handle requests '/admins/deleteUser/params'.
      * 
-     * @param $id
+     * @param $id: user_id
      * @return void
      */
     public function deleteUser($id)

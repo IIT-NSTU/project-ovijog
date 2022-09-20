@@ -41,9 +41,9 @@ class PostsController extends Controller
     }
 
     /**
-     * This method handle requests '/posts/load'.
+     * This method handle requests '/posts/load/params'.
      * 
-     * @param $page
+     * @param $page: page number
      * @return void
      */
     public function load($page = 1)
@@ -119,9 +119,9 @@ class PostsController extends Controller
     }
 
     /**
-     * This method handle requests '/posts/comment'.
+     * This method handle requests '/posts/comment/params'.
      * 
-     * @param $id
+     * @param $id: comment_id
      * @return void
      */
     public function comment($id)
@@ -146,10 +146,10 @@ class PostsController extends Controller
     }
 
     /**
-     * This method handle requests '/posts/vote'.
+     * This method handle requests '/posts/vote/params0/params1'.
      * 
-     * @param $params0
-     * @param $params1
+     * @param $params0: post_id
+     * @param $params1: isagree
      * @return void
      */
     public function vote($params0, $params1)
@@ -222,9 +222,9 @@ class PostsController extends Controller
     }
 
     /**
-     * This method handle requests '/posts/report'.
+     * This method handle requests '/posts/report/params'.
      * 
-     * @param $id
+     * @param $id: post_id
      * @return void
      */
     public function report($id)
@@ -246,9 +246,9 @@ class PostsController extends Controller
     }
 
     /**
-     * This method handle requests '/posts/show'.
+     * This method handle requests '/posts/show/params'.
      * 
-     * @param $id
+     * @param $id: post_id
      * @return void
      */
     public function show($id)
@@ -361,9 +361,9 @@ class PostsController extends Controller
     }
 
     /**
-     * This method handle requests '/posts/edit'.
+     * This method handle requests '/posts/edit/params'.
      * 
-     * @param $id
+     * @param $id:post_id
      * @return void
      */
     public function edit($id)
@@ -452,9 +452,9 @@ class PostsController extends Controller
     }
 
     /**
-     * This method handle requests '/posts/delete'.
+     * This method handle requests '/posts/delete/params'.
      * 
-     * @param $id
+     * @param $id:post_id
      * @return void
      */
     public function delete($id)
@@ -474,9 +474,9 @@ class PostsController extends Controller
     }
 
     /**
-     * This method handle requests '/posts/addVoteNotification'.
+     * This method handle requests '/posts/addVoteNotification/params'.
      * 
-     * @param $post_id
+     * @param $post_id:post_id
      * @return void
      */
     public function addVoteNotification($post_id)
@@ -489,9 +489,9 @@ class PostsController extends Controller
     }
 
     /**
-     * This method handle requests '/posts/addCommentNotification'.
+     * This method handle requests '/posts/addCommentNotification/params'.
      * 
-     * @param $post_id
+     * @param $post_id:post_id
      * @return void
      */
     public function addCommentNotification($post_id)
@@ -504,10 +504,10 @@ class PostsController extends Controller
     }
 
     /**
-     * This method handle requests '/posts/addSolvedNotification'.
+     * This method handle requests '/posts/addSolvedNotification/params0/params1'.
      * 
-     * @param $user_id
-     * @param $post_id
+     * @param $user_id:user_id
+     * @param $post_id:post_id
      * @return void
      */
     public function addSolvedNotification($user_id, $post_id)
