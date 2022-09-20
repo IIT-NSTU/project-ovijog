@@ -186,6 +186,7 @@ class UsersController extends Controller
             $user_id = $_GET['id'];
             $key = $_GET['key'];
 
+
             if ($this->userModel->verify($user_id, $key)) {
                 flash('register_success', 'verification successful you can log in now');
                 redirect('users/login');

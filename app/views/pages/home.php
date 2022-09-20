@@ -1,11 +1,19 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
-
-
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/toTopButton.css">
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/home.css">
 
 <?php require_once APPROOT . '/views/inc/navbar.php'; ?>
+<style>
+    .crop-text {
+        width: 100%;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+    }
+</style>
 
 <body>
     <div class="row mt-3" style="display: flex;justify-content: space-between;">
@@ -59,9 +67,7 @@
     <div class="row mt-3" style="display: flex;justify-content: space-between;">
         <div>
             <div>
-
                 <div class="row">
-
                     <?php foreach ($data['top_unsolved_posts'] as $post) : ?>
                         <div class="col-sm-4 pb-4" onclick="location.href='<?php echo URLROOT; ?>/posts/show/<?php echo $post->post_id; ?>'">
                             <div class="card">
@@ -72,7 +78,7 @@
                                         <p class="mb-0"> <small class="text-muted"><?php echo $post->created_time; ?></small></p>
                                     </div>
                                     <hr class="mb-2">
-                                    <p> <small><?php echo $post->body; ?></small></p>
+                                    <p class="crop-text"> <small><?php echo $post->body; ?></small></p>
                                 </div>
                             </div>
                         </div>
@@ -113,7 +119,7 @@
                                         <p class="mb-0"> <small class="text-muted"><?php echo $post->created_time; ?></small></p>
                                     </div>
                                     <hr class="mb-2">
-                                    <p> <small><?php echo $post->body; ?></small></p>
+                                    <p class="crop-text"> <small><?php echo $post->body; ?></small></p>
                                 </div>
                             </div>
                         </div>
