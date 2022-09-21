@@ -41,7 +41,7 @@
     </div>
 
     <div class="card card-body mt-4 mb-4 bg-light" ;>
-        <form action=" <?php echo URLROOT; ?>/posts/edit/<?php echo $data['post_id']; ?>" method="post">
+        <form action=" <?php echo URLROOT; ?>/posts/edit/<?php echo $data['post_id']; ?>" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col">
                     <div class="form-group mb-4">
@@ -59,7 +59,8 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="formFileMultiple" class="form-label mb-2"><b>Photo:</b></label>
-                        <input class="form-control" type="file" name="image_file" value="" style="border-color:black;">
+                        <input id="img-input" class="form-control" type="file" accept="image/png, image/jpeg" name="image" value=""  style="border-color:black;">
+                        <img id="img-show" width="20%" src="<?php echo $data['img_link']; ?>">
                     </div>
                     <div class="form-group mb-3">
                         <label for="tags" class="mb-2"><b>Tags:</b></label>
@@ -89,6 +90,22 @@
 
 <script>
     $('#categorySelect').val('<?php echo $data['category']; ?>');
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#img-show').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#img-input").change(function(){
+        readURL(this);
+    });
 
     var inputElm = document.querySelector('input[name=tags]');
     var whitelist = ['POLITICAL', 'ACADEMICAL'];

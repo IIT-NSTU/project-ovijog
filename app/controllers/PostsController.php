@@ -444,6 +444,7 @@ class PostsController extends Controller
                 'category' => $post->category,
                 'body' => $post->body,
                 'tags' => $tagText,
+                'img_link'=>$post->img_link,
                 'title_err' => '',
                 'body_err' => ''
             ];

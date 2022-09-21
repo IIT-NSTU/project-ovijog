@@ -40,7 +40,8 @@
                         <label for="formFileMultiple" class="form-label mb-2"><b>Photo:</b></label>
                         <div class="row">
                             <div>
-                                <input class="form-control" type="file" accept="image/png, image/jpeg" name="image" value="<?php echo $data['image']; ?>" style="border-color:black;">
+                                <input id="img-input" class="form-control" type="file" accept="image/png, image/jpeg" name="image" value="<?php echo $data['image']; ?>" style="border-color:black;">
+                                <img id="img-show" width="20%">
                             </div>
                         </div>
                     </div>
@@ -72,6 +73,22 @@
 
 <script>
     $('#categorySelect').val('<?php echo $data['category']; ?>');
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#img-show').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#img-input").change(function(){
+        readURL(this);
+    });
 
     var inputElm = document.querySelector('input[name=tags]');
     var whitelist = ['POLITICAL', 'ACADEMICAL'];

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 18, 2022 at 05:40 PM
+-- Generation Time: Sep 21, 2022 at 01:16 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -83,7 +83,6 @@ INSERT INTO `post_categories` (`category`) VALUES
 ('Electricity'),
 ('Eve Teasing'),
 ('Food'),
-('Political'),
 ('Ragging'),
 ('Residence'),
 ('Safety'),
@@ -149,7 +148,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `edu_mail`, `pass_hash`, `isverified`, `isadmin`) VALUES
 (9, 'Project', 'Admin', 'projectovijog@gmail.com', '$2y$10$YMYpSTpmOCvibtj4r8Xd2uBhA3b4tGH9o93ZjgP8v2w9YJ8ljEEI2', 0, 1),
 (12, 'sadfsd', 'sdsds', 'anupa2514@student.nstu.edu.bd', '$2y$10$jpjg3ddmuj6pqNGGf6JVR.e9W3MB3uOdyJVAkvDpA9XUT70mCJIw6', 0, 1),
-(13, 'Arnab', 'Dey', 'arnab2514@student.nstu.edu.bd', '$2y$10$jDy9FY72C3Ypl/R.GO7bqeBsZH9qgSORW3sqPlY4rnz5hl3Xulmz6', 0, 1);
+(13, 'Arnab', 'Dey', 'arnab2514@student.nstu.edu.bd', '$2y$10$M.6EAJo838bPxFKVRjJC9u0rl3Kl9EfyiTFG3TPoMb2oZW9hRcj/G', 0, 1),
+(14, 'Arman', 'Blogger', 'armanur2514@student.nstu.edu.bd', '$2y$10$DFLFnPJxyFKrUl.X4HsSBO6.Mx/7eTlVWdTy1bVJhpSYl54861KCu', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -169,7 +169,8 @@ CREATE TABLE `verify_keys` (
 INSERT INTO `verify_keys` (`user_id`, `v_key`) VALUES
 (9, '39597e6704509c51f324d7559a9f7ae14b'),
 (12, '31324142212bdb89d23079486a49595e6531'),
-(13, '313387945cdd29481423714f4893fecd727d');
+(13, '313387945cdd29481423714f4893fecd727d'),
+(14, '3134eb9b5e4a9b33aebc85b6411305b7bdcb');
 
 -- --------------------------------------------------------
 
@@ -221,7 +222,8 @@ ALTER TABLE `notifications`
 --
 ALTER TABLE `posts`
   ADD PRIMARY KEY (`post_id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `category` (`category`);
 
 --
 -- Indexes for table `post_categories`
@@ -289,13 +291,13 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `reports`
@@ -307,7 +309,7 @@ ALTER TABLE `reports`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
@@ -331,7 +333,8 @@ ALTER TABLE `notifications`
 -- Constraints for table `posts`
 --
 ALTER TABLE `posts`
-  ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `posts_ibfk_2` FOREIGN KEY (`category`) REFERENCES `post_categories` (`category`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `reports`
