@@ -25,12 +25,12 @@
                 <div class="col">
                     <div class="form-group mb-3">
                         <label for="title" class="mb-2"><b>Title:</b> <sup class="star-color">*</sup></label>
-                        <input type="text" name="title" class="form-control<?php echo (!empty($data['title_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['title']; ?>" style="border-color:black;">
+                        <input type="text" name="title" class="form-control<?php echo (!empty($data['title_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['title']; ?>" style="border-color:black;" required>
                         <span class="invalid-feedback"><?php echo $data['title_err']; ?></span>
                     </div>
                     <div class="form-group mb-2">
                         <label for="exampleFormControlSelect1" class="mb-2"><b>Category:</b><sup class="star-color">*</sup></label>
-                        <select name="category" class="form-control" id="categorySelect" style="border-color:black;">
+                        <select name="category" class="form-control" id="categorySelect" style="border-color:black;" required>
                             <?php foreach ($data['categories'] as $category) : ?>
                                 <option><?php echo $category->category; ?></option>
                             <?php endforeach; ?>
@@ -52,7 +52,7 @@
                 <div class="col">
                     <div class="form-group">
                         <label for="body" class="mb-2"><b>Body:</b> <sup class="star-color">*</sup></label>
-                        <textarea name="body" class="form-control form-control-lg  <?php echo (!empty($data['body_err'])) ? 'is-invalid' : ''; ?>" rows="9" style="border-color:black;"><?php echo $data['body']; ?></textarea>
+                        <textarea name="body" class="form-control form-control-lg  <?php echo (!empty($data['body_err'])) ? 'is-invalid' : ''; ?>" rows="9" style="border-color:black;" required><?php echo $data['body']; ?></textarea>
                         <span class="invalid-feedback"><?php echo $data['body_err']; ?></span>
                     </div>
                 </div>
