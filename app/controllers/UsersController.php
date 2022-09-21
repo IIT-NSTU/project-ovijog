@@ -140,7 +140,8 @@ class UsersController extends Controller
                 $data['confirm_password_err'] = 'Please confirm password';
             } else {
                 if ($data['password'] != $data['confirm_password']) {
-                    $data['confirm_password_err'] = 'Password not matched';
+                    $data['confirm_password_err'] = 'Password and confirm password not matched';
+                    $data['password_err'] = 'Password and confirm password not matched';
                 }
             }
 
