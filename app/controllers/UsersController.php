@@ -227,20 +227,22 @@ class UsersController extends Controller
 
             if (empty($data['password'])) {
                 $data['password_err'] = 'Please enter password';
-            } elseif (strlen($data['password']) < 6) {
-                $data['password_err'] = 'Password must be at least 6 character';
-            } else {
-                if (!empty($data['email']) && !$this->userModel->findUserByEmail($data['email'])) {
-                    $data['email_err'] = 'Invalid email address';
-                    $data['password_err'] = 'Invalid password';
-                }
             }
 
             if (empty($data['email_err']) && empty($data['password_err'])) {
+
                 $loggedInUser = $this->userModel->login($data['email'], $data['password']);
 
                 if ($loggedInUser) {
-                    $this->createUserSession($loggedInUser);
+                    if($loggedInUser->isverified){
+                        $this->createUserSession($loggedInUser);
+                    }else{
+                        //die(print_r($loggedInUser));
+                        $this->userModel->sendVerifyMail($loggedInUser->user_id,$loggedInUser->edu_mail);
+                        flash('register_success', 'Hi, '.$loggedInUser->first_name.'. A verification link has been sent to your email. Please verify your account to log in','alert alert-warning');
+                        $data['email']='';
+                        $data['password']='';
+                    }
                 } else {
                     $data['email_err'] = 'Invalid email address';
                     $data['password_err'] = 'Invalid password';
@@ -269,7 +271,7 @@ class UsersController extends Controller
     public function createUserSession($user)
     {
         $_SESSION['user_id'] = $user->user_id;
-        $_SESSION['user_name'] = $user->fname . ' ' . $user->lname;
+        $_SESSION['user_name'] = $user->first_name . ' ' . $user->last_name;
         $_SESSION['user_email'] = $user->edu_mail;
         $_SESSION['is_admin'] = $user->isadmin;
 

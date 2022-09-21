@@ -25,7 +25,7 @@ class User {
      * @return mixed|false returns user details if find otherwise false
      */
     public function findUserByEmail($email) {
-        $this->db->query("Select * from users where edu_mail = :email");
+        $this->db->query("Select * from users where edu_mail = :email and isverified = 1");
         $this->db->bind(":email", $email);
 
         $res = $this->db->single();
@@ -66,7 +66,7 @@ class User {
         $this->db->bind(':password', $data['password']);
 
         if ($this->db->execute()) {
-            $this->sendVerifyMail($data['edu_email']);
+            $this->sendVerifyMail($this->db->lastInsertId(),$data['edu_email']);
             return true;
         } else {
             return false;
@@ -89,10 +89,23 @@ class User {
         if($this->db->rowCount()==0){
             return false;
         }else{
-            $this->db->query("update users set isverified = true where user_id = :user_id");
+            $user=$this->getUserById($user_id);
+
+            $this->db->query('DELETE FROM users 
+                                    WHERE edu_mail=:edu_mail and user_id!=:user_id');
+            $this->db->bind(':edu_mail',$user->edu_mail);
             $this->db->bind(':user_id',$user_id);
             $this->db->execute();
-            return true;
+
+
+            $this->db->query("update users set isverified = true where user_id = :user_id");
+            $this->db->bind(':user_id',$user_id);
+            if($this->db->execute()){
+                return true;
+            }else{
+                return false;
+            }
+
         }
     }
 
@@ -102,8 +115,7 @@ class User {
      * @param $mail: email address
      * @return void
      */
-    public function sendVerifyMail($mail){
-        $user_id=$this->db->lastInsertId();
+    public function sendVerifyMail($user_id,$mail){
 
         $key=bin2hex($user_id).bin2hex(random_bytes(16));
 
@@ -164,15 +176,17 @@ class User {
         $this->db->query('select * from users where edu_mail = :email');
         $this->db->bind(':email', $email);
 
-        $row = $this->db->single();
+        $rows = $this->db->resultSet();
 
-        $hashed_password = $row->pass_hash;
+        foreach ($rows as $row){
+            $hashed_password = $row->pass_hash;
 
-        if (password_verify($password, $hashed_password)) {
-            return $row;
-        } else {
-            return false;
+            if (password_verify($password, $hashed_password)) {
+                return $row;
+            }
         }
+
+        return false;
     }
 
     /**
