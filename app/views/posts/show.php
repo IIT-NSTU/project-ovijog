@@ -129,8 +129,6 @@
 
                             <?php if ($data['post']->user_id == $_SESSION['user_id']) : ?>
                                 <div class="col-sm text-center">
-                                    <!-- <a class="btn btn-sm text-success" ><b>Solved</b></a> -->
-
                                     <button class="btn btn-sm text-success" data-bs-toggle="modal" data-bs-target="#solvedModal"><b>Solved</b>
                                     </button>
                                 </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 21, 2022 at 01:16 PM
+-- Generation Time: Sep 21, 2022 at 08:48 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -65,6 +65,16 @@ CREATE TABLE `posts` (
   `img_link` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`post_id`, `title`, `body`, `category`, `issolved`, `created_time`, `user_id`, `img_link`) VALUES
+(30, 'aaa', 'dfdfdfdfdfsdf', 'Electricity', 0, '2022-09-21 17:24:15', 14, 'http://localhost/ovijog/dir/632af85cacaeb.jpeg'),
+(31, 'dfgsdf', 'dfdf', 'Food', 0, '2022-09-21 18:00:22', 14, ''),
+(32, 'fff', 'rere', 'Food', 0, '2022-09-21 18:21:08', 14, ''),
+(33, 'wewewe', 'wewew', 'Electricity', 0, '2022-09-21 18:21:54', 14, '');
+
 -- --------------------------------------------------------
 
 --
@@ -125,6 +135,21 @@ CREATE TABLE `tags` (
   `tag` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tags`
+--
+
+INSERT INTO `tags` (`post_id`, `tag`) VALUES
+(30, 'aa'),
+(30, 'aaaa'),
+(30, 'bb'),
+(30, 'dd'),
+(30, 'ff'),
+(30, 'ss'),
+(31, 'dfd'),
+(32, 'erer'),
+(33, 'dfd');
+
 -- --------------------------------------------------------
 
 --
@@ -148,8 +173,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `edu_mail`, `pass_hash`, `isverified`, `isadmin`) VALUES
 (9, 'Project', 'Admin', 'projectovijog@gmail.com', '$2y$10$YMYpSTpmOCvibtj4r8Xd2uBhA3b4tGH9o93ZjgP8v2w9YJ8ljEEI2', 0, 1),
 (12, 'sadfsd', 'sdsds', 'anupa2514@student.nstu.edu.bd', '$2y$10$jpjg3ddmuj6pqNGGf6JVR.e9W3MB3uOdyJVAkvDpA9XUT70mCJIw6', 0, 1),
-(13, 'Arnab', 'Dey', 'arnab2514@student.nstu.edu.bd', '$2y$10$M.6EAJo838bPxFKVRjJC9u0rl3Kl9EfyiTFG3TPoMb2oZW9hRcj/G', 0, 1),
-(14, 'Arman', 'Blogger', 'armanur2514@student.nstu.edu.bd', '$2y$10$DFLFnPJxyFKrUl.X4HsSBO6.Mx/7eTlVWdTy1bVJhpSYl54861KCu', 0, 0);
+(14, 'Arman', 'Blogger', 'armanur2514@student.nstu.edu.bd', '$2y$10$DFLFnPJxyFKrUl.X4HsSBO6.Mx/7eTlVWdTy1bVJhpSYl54861KCu', 0, 0),
+(17, 'Arnab', 'Dey', 'arnab2514@student.nstu.edu.bd', '$2y$10$FUB4cQ/yAdX7cWJYN5sFiOUe051TGayrFQXVVdt1sq5YkusJpVFme', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -169,8 +194,8 @@ CREATE TABLE `verify_keys` (
 INSERT INTO `verify_keys` (`user_id`, `v_key`) VALUES
 (9, '39597e6704509c51f324d7559a9f7ae14b'),
 (12, '31324142212bdb89d23079486a49595e6531'),
-(13, '313387945cdd29481423714f4893fecd727d'),
-(14, '3134eb9b5e4a9b33aebc85b6411305b7bdcb');
+(14, '313424e9a6ec10db6e9eec82d8721fc0e967'),
+(17, '313798832a305ffdb2379526cadc6779036f');
 
 -- --------------------------------------------------------
 
@@ -183,6 +208,14 @@ CREATE TABLE `views` (
   `post_id` int(11) NOT NULL,
   `time` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `views`
+--
+
+INSERT INTO `views` (`user_id`, `post_id`, `time`) VALUES
+(14, 30, '2022-09-21 17:24:26'),
+(14, 31, '2022-09-21 18:00:26');
 
 -- --------------------------------------------------------
 
@@ -297,7 +330,7 @@ ALTER TABLE `notifications`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `reports`
@@ -309,7 +342,7 @@ ALTER TABLE `reports`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Constraints for dumped tables

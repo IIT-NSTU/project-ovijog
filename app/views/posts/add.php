@@ -11,6 +11,14 @@
     }
 </style>
 <?php require_once APPROOT . '/views/inc/navbar.php'; ?>
+<!-----------------Delete Category modal start------------------------->
+<div id="modal-here"></div>
+<!-----------------Delete Category modal end------------------------->
+
+<!-----------------Alert modal start------------------------->
+
+<!-----------------Alert modal end------------------------->
+
 
 <div class="container ">
     <div class="card create-post-heading">
@@ -64,7 +72,13 @@
                     <a href="<?php echo URLROOT; ?>/posts" class="btn button-background-color">Back</a>
                 </div>
                 <div class="col-lg-1 mt-1">
-                    <button type="submit" name="submit" class="btn button-background-color">Post</button>
+                    <!--if condition  -->
+                    <button onclick="postConfirmation()" class="btn button-background-color">Post
+                    </button>
+                    <!-- <a href="#" class="btn button-background-color" data-bs-toggle="modal" data-bs-target="#postConfirmation">Post
+                    </a> -->
+                    <!-- else  -->
+                    <!-- <button type="submit" name="submit" class="btn button-background-color">Post</button> -->
                 </div>
             </div>
         </form>
@@ -78,7 +92,7 @@
         if (input.files && input.files[0]) {
             var reader = new FileReader();
 
-            reader.onload = function (e) {
+            reader.onload = function(e) {
                 $('#img-show').attr('src', e.target.result);
             }
 
@@ -86,7 +100,7 @@
         }
     }
 
-    $("#img-input").change(function(){
+    $("#img-input").change(function() {
         readURL(this);
     });
 
@@ -114,6 +128,31 @@
             console.log(err);
         }
     });
+
+
+    function postConfitmation() {
+        $('#modal-here').html("<div class='modal fade' id='Confirmation' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>" +
+            "<div class='modal-dialog'>" +
+            "<div class='modal-content'>" +
+            "<div class='modal-header'>" +
+            "<h6 class='modal-title' id='staticBackdropLabel'> Confirmation</h6>" +
+            "<button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>" +
+            "</div>" +
+            " <div class='modal-body'>" +
+            " Already posted with same tag and same category." + "<br/>" +
+            "Do you still want to post?" +
+            "</div>" +
+            "<div class='modal-footer'>" +
+            "<button type='button' class='btn btn-sm btn-secondary' data-bs-dismiss='modal'>Close</button>" +
+            "<a href='#" + "' class='btn btn-sm text-danger'>" +
+            "<b>Delete</b></a>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div>");
+
+        $('#Confirmation').modal('toggle');
+    }
 </script>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>
