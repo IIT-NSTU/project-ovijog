@@ -520,4 +520,63 @@ class PostsController extends Controller
 
         $this->notificationModel->addNotification($user_id, $post_id, $text);
     }
+
+    /**
+     * Helper method to calculates similarity between 2 text.
+     *
+     * @param $text1 : text 1
+     * @param $text2 : text 2
+     * @return float|int similarity
+     */
+    public function validateSimilarTexts($text1, $text2) {
+
+        $similarity = new CosineSimilarity();
+        $tokenizer = new WhitespaceTokenizer();
+
+        $text1 = preg_replace('/[^a-z0-9]+/i', ' ', $text1);
+        $text2 = preg_replace('/[^a-z0-9]+/i', ' ', $text2);
+
+        $setA = $tokenizer->tokenize($text1);
+        $setB = $tokenizer->tokenize($text2);
+
+
+        return $similarity->similarity($setA, $setB);
+    }
+
+    /**
+     * This method handle requests '/posts/getSimilarPosts'.
+     *
+     * @return void
+     */
+    public function getSimilarPosts(){
+        $content=$_POST['content'];
+
+        $posts=$this->postModel->getAllPosts();
+        $similarPosts=[];
+
+        foreach ($posts as $post){
+            $postContent=$post->title.' '.$post->category.' '.$post->body;
+            $similarity=$this->validateSimilarTexts($content,$postContent);
+            if($similarity>0.50){
+                $similarPosts[$post->post_id]=$similarity;
+            }
+        }
+
+        arsort($similarPosts);
+
+        $suggestedPosts=[];
+
+        foreach ($similarPosts as $k=>$v){
+            $suggestedPosts[]=$this->postModel->getPostById($k);
+            if(count($suggestedPosts)==3)break;
+        }
+
+        $data=[];
+
+        $data['suggestedPosts']=$suggestedPosts;
+
+        echo json_encode($data);
+
+    }
+
 }

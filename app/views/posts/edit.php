@@ -59,7 +59,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="formFileMultiple" class="form-label mb-2"><b>Photo:</b></label>
-                        <input id="img-input" class="form-control" type="file" accept="image/png, image/jpeg" name="image" value=""  style="border-color:black;">
+                        <input id="img-input" class="form-control" type="file" accept="image/png, image/jpeg" name="image" value="" style="border-color:black;">
                         <img id="img-show" width="20%" src="<?php echo $data['img_link']; ?>">
                     </div>
                     <div class="form-group mb-3">
@@ -95,7 +95,7 @@
         if (input.files && input.files[0]) {
             var reader = new FileReader();
 
-            reader.onload = function (e) {
+            reader.onload = function(e) {
                 $('#img-show').attr('src', e.target.result);
             }
 
@@ -103,12 +103,12 @@
         }
     }
 
-    $("#img-input").change(function(){
+    $("#img-input").change(function() {
         readURL(this);
     });
 
     var inputElm = document.querySelector('input[name=tags]');
-    var whitelist = ['POLITICAL', 'ACADEMICAL'];
+    var whitelist = [];
 
     // initialize Tagify on the above input node reference
     var tagify = new Tagify(inputElm, {

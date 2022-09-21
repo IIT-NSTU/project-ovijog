@@ -76,10 +76,10 @@
                                     <label class="mb-1" for="confirm_password">
                                         <h6 class="mb-0 text-sm">Confirm Password<sup style="color:red;">*</sup></h6>
                                     </label>
-                                    <input type="password" name="confirm_password" placeholder="Confirm Password " class="form-control mb-3<?php echo (!empty($data['confirm_password_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['confirm_password']; ?>">
-                                    <span class="invalid-feedback mb-1"><?php echo $data['confirm_password_err']; ?></span>
+                                    <input type="password" name="confirm_password" placeholder="Confirm Password " class="form-control mb-3 <?php echo (!empty($data['confirm_password_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['confirm_password']; ?>">
+                                    <span class="invalid-feedback"><?php echo $data['confirm_password_err']; ?></span>
                                 </div>
-                                <div class="row mb-3 px-3">
+                                <div class="row mb-3 px-3 mt-5">
                                     <input class="btn btn-block button-background-color " name="signup" type="submit" value="Register">
                                 </div>
                                 <div class="row px-3 ">
