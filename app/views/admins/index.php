@@ -33,7 +33,7 @@
 
             <div class="col-sm-3 pb-2">
                 <div class="card counter">
-                    <div class="card-body py-0 solved-hover">
+                    <div class="card-body py-0 post-hover">
                         <h1 class="count text-center text-success" style="font-size:500% ;"><?php echo $data['total_post']; ?></h1>
                         <hr class="mt-0 mb-1">
                         <h4 class="text-center">Posts</h4>
@@ -43,7 +43,7 @@
             </div>
             <div class="col-sm-3 pb-2">
                 <div class="card counter">
-                    <div class="card-body py-0 unsolved-hover">
+                    <div class="card-body py-0 solved-hover">
                         <h1 class="count text-center text-success" style="font-size:500% ;"><?php echo $data['total_solved']; ?></h1>
                         <hr class="mt-0 mb-1">
                         <h4 class="text-center">Solved</h4>
@@ -59,7 +59,7 @@
             <div class="col-sm-1"></div>
             <div class="col-sm-3 pb-2">
                 <div class="card">
-                    <div class="card-body py-0 post-hover">
+                    <div class="card-body py-0 unsolved-hover">
                         <h1 class="count text-center text-danger" style="font-size:500% ;"><?php echo $data['total_unsolved']; ?></h1>
                         <hr class="mt-0 mb-1">
                         <h4 class="text-center">Unsolved</h4>
@@ -70,7 +70,7 @@
 
             <div class="col-sm-3 pb-2">
                 <div class="card counter">
-                    <div class="card-body py-0 solved-hover">
+                    <div class="card-body py-0 unsolved-hover">
                         <h1 class="count text-center text-danger" style="font-size:500% ;"><?php echo $data['total_report']; ?></h1>
                         <hr class="mt-0 mb-1">
                         <h4 class="text-center">Report</h4>

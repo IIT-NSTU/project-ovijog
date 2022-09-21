@@ -8,6 +8,10 @@
         overflow: hidden;
         text-overflow: ellipsis;
     }
+
+    .dataTables_wrapper .dataTables_filter input {
+        border: 1px solid black;
+    }
 </style>
 <!-----------------Delete Category modal start------------------------->
 <div id="modal-here"></div>
@@ -51,7 +55,7 @@
             </div>
         </div>
         <div class="card-body">
-            <table class="table my-4 cell-border pt-3">
+            <table class="table my-4 cell-border pt-3 table-striped">
                 <thead>
                     <tr>
                         <th class="text-center">Category Name</th>

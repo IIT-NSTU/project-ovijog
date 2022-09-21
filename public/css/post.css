@@ -17,6 +17,10 @@
     color: white;
 }
 
+.button-background-color:hover {
+    color: white;
+}
+
 #create-post-button {
     height: 40px;
 }
@@ -26,7 +30,7 @@
 }
 
 .create-post-heading {
-    /* background-color: #dae1e9; */
+    background-color: #dae1e9;
     margin-top: 25px;
     display: flex;
     justify-content: center;

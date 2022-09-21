@@ -8,6 +8,10 @@
         overflow: hidden;
         text-overflow: ellipsis;
     }
+
+    .dataTables_wrapper .dataTables_filter input {
+        border: 1px solid black;
+    }
 </style>
 <!-----------------Delete modal start------------------------->
 <div id="modal-here"></div>
@@ -25,7 +29,7 @@
             </div>
         </div>
         <div class="card-body">
-            <table class="table my-4 cell-border pt-3" style="width: 100%; white-space: nowrap; table-layout: fixed;">
+            <table class="table my-4 cell-border pt-3 table-striped" style="width: 100%; white-space: nowrap; table-layout: fixed;">
                 <thead>
                     <tr>
                         <th class="text-center" style="width:10%;">Post ID</th>

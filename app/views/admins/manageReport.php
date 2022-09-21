@@ -6,6 +6,10 @@
         overflow: hidden;
         text-overflow: ellipsis;
     }
+
+    .dataTables_wrapper .dataTables_filter input {
+        border: 1px solid black;
+    }
 </style>
 <?php require_once APPROOT . '/views/inc/navbar.php'; ?>
 <?php require_once APPROOT . '/views/inc/sidebar.php'; ?>
@@ -24,7 +28,7 @@
             </div>
         </div>
         <div class="card-body">
-            <table class="table my-4 cell-border pt-3" style="width: 100%; white-space: nowrap; table-layout: fixed;">
+            <table class="table my-4 cell-border pt-3 table-striped" style="width: 100%; white-space: nowrap; table-layout: fixed;">
                 <thead>
                     <tr class="text-center">
                         <th class="text-center" style="width:3%;">#</th>
