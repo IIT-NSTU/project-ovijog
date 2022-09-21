@@ -108,7 +108,7 @@
     });
 
     var inputElm = document.querySelector('input[name=tags]');
-    var whitelist = ['POLITICAL', 'ACADEMICAL'];
+    var whitelist = [];
 
     // initialize Tagify on the above input node reference
     var tagify = new Tagify(inputElm, {
