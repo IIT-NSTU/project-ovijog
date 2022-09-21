@@ -66,11 +66,31 @@ class Post {
      * @param $key: search key
      * @return mixed result
      */
-    public function getPostsWithLimit($page, $categories = '', $key = '') {
+    public function filterPostsWithLimit($page, $categories = '', $key = '') {
         $limit = 4;
         $row = ($page - 1) * $limit;
 
-        if ($key) {
+        if($key && $categories){
+            $key = '%' . $key . '%';
+
+            $this->db->query("WITH scopeposts as (
+	                                    select * 
+                                        from posts
+                                        where category IN (" . $categories . ")
+                                    )
+
+                                select distinct scopeposts.post_id,title,body,category,issolved,created_time,user_id,img_link
+                                from scopeposts LEFT JOIN tags on scopeposts.post_id=tags.post_id
+                                where title LIKE :key OR body LIKE :key OR category LIKE :key OR tag LIKE :key OR created_time LIKE :key
+                                ORDER BY created_time DESC limit :row, :limit");
+
+            $this->db->bind(':key', $key);
+            $this->db->bind(':row', $row);
+            $this->db->bind(':limit', $limit);
+
+            return $this->db->resultSet();
+
+        } else if ($key) {
             $key = '%' . $key . '%';
 
             $this->db->query("select distinct posts.post_id,title,body,category,issolved,created_time,user_id,img_link

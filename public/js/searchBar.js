@@ -1,7 +1,6 @@
-var s = $('input'),
-    f  = $('form'),
-    a = $('.after'),
-    m = $('h4');
+var s = $('.search-input'),
+    f  = $('.search'),
+    a = $('.after');
 
 s.focus(function(){
     if( f.hasClass('open') ) return;
@@ -24,11 +23,9 @@ a.on('click', function(e){
 
 f.submit(function(e){
     e.preventDefault();
-    m.html('Thanks, high five!').addClass('show');
     f.addClass('explode');
     setTimeout(function(){
         s.val('');
         f.removeClass('explode');
-        m.removeClass('show');
     }, 3000);
 })
