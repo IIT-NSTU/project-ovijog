@@ -125,10 +125,6 @@ form.close .after:after {
     animation-name: aftermagic;
 }
 
-
-/* Hold final focused state
- ****************************/
-
 form.open {
     width: 250px;
     color: #fff;

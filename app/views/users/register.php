@@ -9,6 +9,10 @@
         background-color: #293462;
         color: white;
     }
+
+    .button-background-color:hover {
+        color: white;
+    }
 </style>
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/Login.css">
 
