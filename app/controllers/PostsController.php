@@ -297,6 +297,7 @@ class PostsController extends Controller
 
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
+
             $data = [
                 'categories' => $categories,
 
