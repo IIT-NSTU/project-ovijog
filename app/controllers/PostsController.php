@@ -102,6 +102,9 @@ class PostsController extends Controller
      */
     public function markSolved()
     {
+        if(isAcademicOfficial()){
+            return;
+        }
 
         $post_id = $_POST['post_id'];
 
@@ -154,6 +157,9 @@ class PostsController extends Controller
      */
     public function vote($params0, $params1)
     {
+        if(isAcademicOfficial()){
+            return;
+        }
 
         $this->postModel->vote($params0, $params1);
 
@@ -229,6 +235,10 @@ class PostsController extends Controller
      */
     public function report($id)
     {
+        if(isAcademicOfficial()){
+            redirect('posts');
+        }
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $data = [
@@ -290,6 +300,9 @@ class PostsController extends Controller
      */
     public function add()
     {
+        if(isAcademicOfficial()){
+            redirect('posts');
+        }
 
         $categories = $this->postModel->getCategories();
 
@@ -369,6 +382,13 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
+
+        $post = $this->postModel->getPostById($id);
+
+        if ($post->user_id != $_SESSION['user_id']) {
+            redirect('posts');
+        }
+
         $categories = $this->postModel->getCategories();
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
