@@ -102,11 +102,11 @@ class PostsController extends Controller
      */
     public function markSolved()
     {
-        if(isAcademicOfficial()){
+        if (isAcademicOfficial()) {
             return;
         }
 
-        $post_id = $_POST['post_id'];
+        $post_id = htmlentities($_POST['post_id']);
 
         echo $this->postModel->markSolved($post_id);
 
@@ -130,7 +130,7 @@ class PostsController extends Controller
     public function comment($id)
     {
 
-        $commentMsg = $_POST['comment'];
+        $commentMsg = htmlentities($_POST['comment']);
 
         $comment_id = $this->commentModel->addComment($id, $commentMsg);
 
@@ -157,7 +157,7 @@ class PostsController extends Controller
      */
     public function vote($params0, $params1)
     {
-        if(isAcademicOfficial()){
+        if (isAcademicOfficial()) {
             return;
         }
 
@@ -235,15 +235,15 @@ class PostsController extends Controller
      */
     public function report($id)
     {
-        if(isAcademicOfficial()){
+        if (isAcademicOfficial()) {
             redirect('posts');
         }
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $data = [
-                'category' => $_POST['reportCategory'],
-                'feedback' => $_POST['feedback'],
+                'category' => htmlentities($_POST['reportCategory']),
+                'feedback' => htmlentities($_POST['feedback']),
                 'post_id' => $id
             ];
 
@@ -300,7 +300,7 @@ class PostsController extends Controller
      */
     public function add()
     {
-        if(isAcademicOfficial()){
+        if (isAcademicOfficial()) {
             redirect('posts');
         }
 
@@ -464,7 +464,7 @@ class PostsController extends Controller
                 'category' => $post->category,
                 'body' => $post->body,
                 'tags' => $tagText,
-                'img_link'=>$post->img_link,
+                'img_link' => $post->img_link,
                 'title_err' => '',
                 'body_err' => ''
             ];
@@ -548,7 +548,8 @@ class PostsController extends Controller
      * @param $text2 : text 2
      * @return float|int similarity
      */
-    public function validateSimilarTexts($text1, $text2) {
+    public function validateSimilarTexts($text1, $text2)
+    {
 
         $similarity = new CosineSimilarity();
         $tokenizer = new WhitespaceTokenizer();
@@ -568,35 +569,34 @@ class PostsController extends Controller
      *
      * @return void
      */
-    public function getSimilarPosts(){
-        $content=$_POST['content'];
+    public function getSimilarPosts()
+    {
+        $content = $_POST['content'];
 
-        $posts=$this->postModel->getAllPosts();
-        $similarPosts=[];
+        $posts = $this->postModel->getAllPosts();
+        $similarPosts = [];
 
-        foreach ($posts as $post){
-            $postContent=$post->title.' '.$post->category.' '.$post->body;
-            $similarity=$this->validateSimilarTexts($content,$postContent);
-            if($similarity>0.50){
-                $similarPosts[$post->post_id]=$similarity;
+        foreach ($posts as $post) {
+            $postContent = $post->title . ' ' . $post->category . ' ' . $post->body;
+            $similarity = $this->validateSimilarTexts($content, $postContent);
+            if ($similarity > 0.50) {
+                $similarPosts[$post->post_id] = $similarity;
             }
         }
 
         arsort($similarPosts);
 
-        $suggestedPosts=[];
+        $suggestedPosts = [];
 
-        foreach ($similarPosts as $k=>$v){
-            $suggestedPosts[]=$this->postModel->getPostById($k);
-            if(count($suggestedPosts)==3)break;
+        foreach ($similarPosts as $k => $v) {
+            $suggestedPosts[] = $this->postModel->getPostById($k);
+            if (count($suggestedPosts) == 3) break;
         }
 
-        $data=[];
+        $data = [];
 
-        $data['suggestedPosts']=$suggestedPosts;
+        $data['suggestedPosts'] = $suggestedPosts;
 
         echo json_encode($data);
-
     }
-
 }

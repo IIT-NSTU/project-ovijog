@@ -96,7 +96,7 @@
             "</div>" +
             "<div class='modal-footer'>" +
             "<button type='button' class='btn btn-sm btn-secondary' data-bs-dismiss='modal'>Close</button>" +
-            "<a href='<?php echo URLROOT; ?>/admins/removeCategory/" + category + "' class='btn btn-sm text-danger'>" +
+            "<a href='<?php echo URLROOT; ?>/admins/removeCategory/" + category + "' class='btn btn-sm btn-danger'>" +
             "<b>Delete</b></a>" +
             "</div>" +
             "</div>" +

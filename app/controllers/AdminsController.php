@@ -104,7 +104,7 @@ class AdminsController extends Controller
      */
     public function addCategory()
     {
-        $category = $_POST['category'];
+        $category = str_replace(['/', '<', '>', '"'], '', $_POST['category']);
 
         if ($this->adminModel->addCategory($category)) {
             flash('admin', 'Category Added');
@@ -166,7 +166,7 @@ class AdminsController extends Controller
      */
     public function makeAdmin()
     {
-        $id = $_POST['id'];
+        $id = htmlentities($_POST['id']);
 
 
         if (!$this->userModel->getUserById($id)) {

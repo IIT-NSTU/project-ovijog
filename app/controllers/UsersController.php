@@ -235,14 +235,14 @@ class UsersController extends Controller
                 $loggedInUser = $this->userModel->login($data['email'], $data['password']);
 
                 if ($loggedInUser) {
-                    if($loggedInUser->isverified){
+                    if ($loggedInUser->isverified) {
                         $this->createUserSession($loggedInUser);
-                    }else{
+                    } else {
                         //die(print_r($loggedInUser));
-                        $this->userModel->sendVerifyMail($loggedInUser->user_id,$loggedInUser->edu_mail);
-                        flash('register_success', 'Hi, '.$loggedInUser->first_name.'. A verification link has been sent to your email. Please verify your account to log in','alert alert-warning');
-                        $data['email']='';
-                        $data['password']='';
+                        $this->userModel->sendVerifyMail($loggedInUser->user_id, $loggedInUser->edu_mail);
+                        flash('register_success', 'Hi, ' . $loggedInUser->first_name . '. A verification link has been sent to your email. Please verify your account to log in', 'alert alert-warning');
+                        $data['email'] = '';
+                        $data['password'] = '';
                     }
                 } else {
                     $data['email_err'] = 'Invalid email address';
@@ -337,7 +337,7 @@ class UsersController extends Controller
             if ($this->userModel->verify($_GET['id'], $_GET['key'])) {
 
                 $data = [
-                    'user_id' => $_GET['id'],
+                    'user_id' => htmlentities($_GET['id']),
                 ];
 
                 $this->view('/users/forgetpassword', $data);

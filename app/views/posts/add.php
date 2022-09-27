@@ -30,7 +30,7 @@
                         <input type="text" name="title" id="title" class="form-control<?php echo (!empty($data['title_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['title']; ?>" style="border-color:black;" required>
                         <span class="invalid-feedback"><?php echo $data['title_err']; ?></span>
                     </div>
-                    <div class="form-group mb-2">
+                    <div class="form-group mb-3">
                         <label for="exampleFormControlSelect1" class="mb-2"><b>Category:</b><sup class="star-color">*</sup></label>
                         <select name="category" class="form-control" id="categorySelect" style="border-color:black;" required>
                             <?php foreach ($data['categories'] as $category) : ?>
@@ -38,7 +38,7 @@
                             <?php endforeach; ?>
                         </select>
                     </div>
-                    <div class="form-group mb-3">
+                    <div class="form-group">
                         <label for="formFileMultiple" class="form-label mb-2"><b>Photo:</b></label>
                         <div class="row">
                             <div>
@@ -141,12 +141,6 @@
             $('#staticBackdrop').modal('toggle');
         }
     });
-    /*function handlePostRequest(e) {
-        if($('#title').val()!=='' && $('#categorySelect').val()!=='' && $('#body').val()!==''){
-            e.preventDefault();
-            $('#staticBackdrop').modal('toggle');
-        }
-    }*/
 
     function readURL(input) {
         if (input.files && input.files[0]) {
